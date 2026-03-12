@@ -61,7 +61,7 @@
                             "self": {
                                 "alignItems": "center",
                                 "flexDirection": "row",
-                                "padding": ["pt-16", "pl-16", "pb-16", "pr-16"]
+                                "padding": ["pt-36", "pl-16", "pb-36", "pr-16"]
                             }
                         },
                         "$$type": "GenericSection"

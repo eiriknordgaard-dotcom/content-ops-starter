@@ -1,6 +1,9 @@
 <svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="42" cy="42" r="42" fill="white"/>
-<circle opacity="0.8" cx="41.7988" cy="31.1032" r="10.1032" fill="#4A4A4A"/>
-<circle cx="27.1032" cy="53.6057" r="10.1032" fill="#D9D9D9"/>
-<circle cx="56.4943" cy="53.6057" r="9.92962" stroke="#222222" stroke-width="0.347229"/>
+<!-- Shield outline -->
+<path d="M42 18L58 26V40C58 50.5 51 58.5 42 62C33 58.5 26 50.5 26 40V26L42 18Z" fill="#E8EDF2" stroke="#3D4F6B" stroke-width="1.5" stroke-linejoin="round"/>
+<!-- Inner shield face -->
+<path d="M42 22L55 28.5V40C55 49 49 56 42 59C35 56 29 49 29 40V28.5L42 22Z" fill="#F0F4F8"/>
+<!-- Checkmark -->
+<path d="M34 40L39.5 45.5L50 35" stroke="#4A7C59" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

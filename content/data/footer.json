@@ -1,33 +1,25 @@
 {
     "logo": {
         "url": "/images/logo-white.svg",
-        "altText": "Logo light",
+        "altText": "Eirik Nordgaard FINOP",
         "type": "ImageBlock"
     },
-    "text": "A description of your brand",
+    "text": "Outsourced FINOP for introducing broker-dealers. Net capital, FOCUS reporting, audit readiness, and FINRA exam support. San Diego-based, serving broker-dealers nationally.",
     "primaryLinks": {
-        "title": "Product",
+        "title": "Services",
         "links": [
             {
-                "label": "Features",
-                "altText": "Features page",
-                "url": "/",
+                "label": "What I Do",
+                "altText": "FINOP services",
+                "url": "/#services",
                 "icon": "arrowRight",
                 "iconPosition": "right",
                 "style": "secondary",
                 "type": "Link"
             },
             {
-                "label": "Pricing",
-                "url": "/pricing",
-                "icon": "arrowRight",
-                "iconPosition": "right",
-                "style": "secondary",
-                "type": "Link"
-            },
-            {
-                "label": "Documentation",
-                "url": "/",
+                "label": "Licenses",
+                "url": "/#licenses",
                 "icon": "arrowRight",
                 "iconPosition": "right",
                 "style": "secondary",
@@ -37,20 +29,28 @@
         "type": "FooterLinksGroup"
     },
     "secondaryLinks": {
-        "title": "Company",
+        "title": "Connect",
         "links": [
             {
-                "label": "Careers",
-                "altText": "careers page",
-                "url": "/careers",
+                "label": "Contact",
+                "altText": "Get in touch",
+                "url": "/#contact",
                 "icon": "arrowRight",
                 "iconPosition": "right",
                 "style": "secondary",
                 "type": "Link"
             },
             {
-                "label": "Blog",
-                "url": "/blog",
+                "label": "LinkedIn",
+                "url": "https://www.linkedin.com/in/eiriknordgaard",
+                "icon": "arrowRight",
+                "iconPosition": "right",
+                "style": "secondary",
+                "type": "Link"
+            },
+            {
+                "label": "Email",
+                "url": "mailto:eirik.nordgaard@gmail.com",
                 "icon": "arrowRight",
                 "iconPosition": "right",
                 "style": "secondary",
@@ -61,41 +61,21 @@
     },
     "socialLinks": [
         {
-            "altText": "GitHub link",
-            "url": "https://github.com/netlify",
-            "icon": "github",
-            "type": "Social"
-        },
-        {
-            "altText": "Twitter link",
-            "url": "https://twitter.com/netlify",
-            "icon": "twitter",
-            "type": "Social"
-        },
-        {
-            "altText": "LinkedIn link",
-            "url": "https://www.linkedin.com/company/netlify",
+            "altText": "LinkedIn",
+            "url": "https://www.linkedin.com/in/eiriknordgaard",
             "icon": "linkedin",
             "type": "Social"
         },
         {
-            "altText": "Email link",
-            "url": "/",
+            "altText": "Email",
+            "url": "mailto:eirik.nordgaard@gmail.com",
             "icon": "mail",
             "type": "Social"
         }
     ],
     "legalLinks": [
         {
-            "label": "Terms",
-            "url": "/",
-            "icon": "arrowRight",
-            "iconPosition": "right",
-            "style": "secondary",
-            "type": "Link"
-        },
-        {
-            "label": "Privacy",
+            "label": "Privacy Policy",
             "url": "/",
             "icon": "arrowRight",
             "iconPosition": "right",
@@ -103,7 +83,7 @@
             "type": "Link"
         }
     ],
-    "copyrightText": "Powered by [Netlify](https://www.netlify.com/)\n",
+    "copyrightText": "2025 Eirik Nordgaard. All rights reserved.\n",
     "colors": "bg-dark-fg-light",
     "type": "Footer"
 }

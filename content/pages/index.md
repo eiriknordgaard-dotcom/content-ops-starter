@@ -4,42 +4,41 @@ slug: /
 sections:
   - type: GenericSection
     title:
-      text: Unblock your team boost your time to production
+      text: FINOP Services for Broker-Dealers
       color: text-dark
       type: TitleBlock
-    subtitle: Subtitle goes here
+    subtitle: ''
     text: >
-      A Netlify Create website is a git repo that you own. Every code commit is
-      instantly reflected in the visual editor and since every visual edit is a
-      git commit, git workflows and collaboration just work.
+      Independent FINOP support for broker-dealers that need disciplined
+      financial oversight and reliable regulatory reporting. Services include
+      ongoing net capital monitoring, FOCUS filings, audit preparation, and
+      operational support for firms that require experienced financial
+      compliance leadership without hiring a full-time principal.
     actions:
-      - label: Get started
-        altText: ''
-        url: /
+      - label: Get In Touch
+        altText: Contact for FINOP services
+        url: '#contact'
         showIcon: false
-        icon: arrowRight
-        iconPosition: right
-        style: secondary
-        elementId: ''
-        type: Button
-      - label: See Tutorials
-        altText: ''
-        url: /
-        showIcon: true
         icon: arrowRight
         iconPosition: right
         style: primary
         elementId: ''
+        type: Button
+      - label: View Services
+        altText: See FINOP services offered
+        url: '#services'
+        showIcon: true
+        icon: arrowRight
+        iconPosition: right
+        style: secondary
+        elementId: ''
         type: Link
     media:
       url: /images/main-hero.svg
-      altText: Unblock your team boost your time to production preview
+      altText: FINOP dashboard with compliance checklist and reporting metrics
       elementId: ''
       type: ImageBlock
-    badge:
-      label: This is a badge
-      color: text-primary
-      type: Badge
+    badge: null
     elementId: ''
     colors: bg-light-fg-dark
     styles:
@@ -47,36 +46,46 @@ sections:
         alignItems: center
         flexDirection: row
         padding:
-          - pt-16
+          - pt-32
           - pl-16
-          - pb-16
+          - pb-32
           - pr-16
+  - title: Divider
+    colors: bg-light-fg-dark
+    styles:
+      self:
+        padding:
+          - pt-7
+          - pl-7
+          - pb-7
+          - pr-7
+    type: DividerSection
   - type: FeaturedItemsSection
     title:
-      text: Key Benefits
+      text: FINOP Services for Broker-Dealers
       color: text-dark
       styles:
         self:
           textAlign: center
       type: TitleBlock
-    subtitle: Subtitle goes here
+    subtitle: Ongoing FINOP Support
     items:
       - type: FeaturedItem
-        title: 500k
-        subtitle: Numbers Done
+        title: Net Capital Oversight
+        subtitle: Rule 15c3-1
         text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
+          Monthly net capital computations, monitoring, and early warning
+          analysis to help keep your firm compliant and ahead of capital
+          issues.
         actions: []
         elementId: null
         colors: bg-neutralAlt-fg-dark
         styles:
           self:
             padding:
-              - pt-8
+              - pt-6
               - pl-8
-              - pb-8
+              - pb-6
               - pr-8
             borderRadius: x-large
             flexDirection: row
@@ -84,21 +93,20 @@ sections:
             textAlign: left
         image:
           type: ImageBlock
-          altText: Lightning bolt symbol on red background
+          altText: Net capital icon
           elementId: ''
-          url: /images/icon1.svg
+          url: /images/icon-shield-check.svg
           styles:
             self:
               borderRadius: x-large
-      - title: 20x
-        subtitle: The Job Stuff
+      - title: FOCUS Reporting
+        subtitle: Part II / IIA
         text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
+          Preparation and filing support for FOCUS Part II and IIA, with
+          accurate and timely reporting to FINRA and the SEC.
         image:
-          url: /images/icon2.svg
-          altText: Featured icon two
+          url: /images/icon-document-check.svg
+          altText: FOCUS reporting icon
           elementId: ''
           type: ImageBlock
         actions: []
@@ -106,24 +114,23 @@ sections:
         styles:
           self:
             padding:
-              - pt-8
+              - pt-6
               - pl-8
-              - pb-8
+              - pb-6
               - pr-8
             borderRadius: x-large
             flexDirection: row
             textAlign: left
             justifyContent: center
         type: FeaturedItem
-      - title: 200%
-        subtitle: Faster
+      - title: Capital Planning & Early Warning Monitoring
+        subtitle: Risk Management
         text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
+          Capital forecasting, liquidity monitoring, and threshold analysis
+          to support stability and reduce regulatory surprises.
         image:
-          url: /images/icon3.svg
-          altText: Featured icon three
+          url: /images/icon-chart-activity.svg
+          altText: Capital planning icon
           elementId: ''
           type: ImageBlock
         actions: []
@@ -131,25 +138,123 @@ sections:
         styles:
           self:
             padding:
-              - pt-8
+              - pt-6
               - pl-8
-              - pb-8
+              - pb-6
               - pr-8
             borderRadius: x-large
             flexDirection: row
         type: FeaturedItem
-    actions:
-      - label: Get started
-        altText: ''
-        url: /
-        showIcon: false
-        icon: arrowRight
-        iconPosition: right
-        style: primary
-        elementId: ''
-        type: Button
+    actions: []
     badge:
-      label: This is a badge
+      label: Services
+      color: text-primary
+      styles:
+        self:
+          textAlign: center
+      type: Badge
+    elementId: services
+    variant: three-col-grid
+    colors: bg-light-fg-dark
+    styles:
+      self:
+        padding:
+          - pb-4
+          - pt-16
+          - pl-16
+          - pr-16
+        justifyContent: center
+      subtitle:
+        textAlign: center
+  - type: FeaturedItemsSection
+    title:
+      text: ''
+      color: text-dark
+      styles:
+        self:
+          textAlign: center
+      type: TitleBlock
+    subtitle: Project-Based & Periodic Support
+    items:
+      - type: FeaturedItem
+        title: Annual Audit & Financial Statement Support
+        subtitle: Rule 17a-5
+        text: >-
+          Audit preparation and year-end financial statement support,
+          including tie-outs, schedules, and coordination with external
+          auditors.
+        actions: []
+        elementId: null
+        colors: bg-neutralAlt-fg-dark
+        styles:
+          self:
+            padding:
+              - pt-6
+              - pl-8
+              - pb-6
+              - pr-8
+            borderRadius: x-large
+            flexDirection: row
+            justifyContent: center
+            textAlign: left
+        image:
+          type: ImageBlock
+          altText: Audit support icon
+          elementId: ''
+          url: /images/icon-clipboard-check.svg
+          styles:
+            self:
+              borderRadius: x-large
+      - title: FINRA Exam Support
+
+        subtitle: Regulatory Response
+        text: >-
+          Support for FINRA examinations and regulatory requests, with
+          organized documentation and structured response coordination.
+        image:
+          url: /images/icon-folder-search.svg
+          altText: Exam support icon
+          elementId: ''
+          type: ImageBlock
+        actions: []
+        colors: bg-neutralAlt-fg-dark
+        styles:
+          self:
+            padding:
+              - pt-6
+              - pl-8
+              - pb-6
+              - pr-8
+            borderRadius: x-large
+            flexDirection: row
+            textAlign: left
+            justifyContent: center
+        type: FeaturedItem
+      - title: Formation & Financial Infrastructure Build-Out
+        subtitle: New Firm Support
+        text: >-
+          Financial infrastructure support for new broker-dealers, including
+          reporting processes, controls, and operational setup.
+        image:
+          url: /images/icon-grid-build.svg
+          altText: Formation icon
+          elementId: ''
+          type: ImageBlock
+        actions: []
+        colors: bg-neutralAlt-fg-dark
+        styles:
+          self:
+            padding:
+              - pt-6
+              - pl-8
+              - pb-6
+              - pr-8
+            borderRadius: x-large
+            flexDirection: row
+        type: FeaturedItem
+    actions: []
+    badge:
+      label: ''
       color: text-primary
       styles:
         self:
@@ -157,67 +262,17 @@ sections:
       type: Badge
     elementId: ''
     variant: three-col-grid
-    colors: bg-neutral-fg-dark
+    colors: bg-light-fg-dark
     styles:
       self:
         padding:
-          - pb-16
-          - pt-16
+          - pb-14
+          - pt-6
           - pl-16
           - pr-16
         justifyContent: center
       subtitle:
         textAlign: center
-  - subtitle: Award winning enterprises trust us
-    images:
-      - url: /images/empathy-logo.svg
-        altText: Empathy logo
-        type: ImageBlock
-      - url: /images/wellster-logo.svg
-        altText: Wellster logo
-        type: ImageBlock
-      - url: /images/vise-logo.svg
-        altText: Vise logo
-        type: ImageBlock
-      - url: /images/telus-logo.svg
-        altText: Telus logo
-        type: ImageBlock
-      - url: /images/contenful-logo.svg
-        altText: Contentful logo
-        type: ImageBlock
-      - url: /images/sanity-logo.svg
-        altText: Sanity logo
-        type: ImageBlock
-      - url: /images/rangle-logo.svg
-        altText: Rangle logo
-        type: ImageBlock
-    motion: move-to-left
-    colors: bg-light-fg-dark
-    styles:
-      self:
-        justifyContent: center
-      subtitle:
-        textAlign: center
-    type: ImageGallerySection
-  - posts:
-      - content/pages/blog/case-study-1.md
-      - content/pages/blog/case-study-2.md
-      - content/pages/blog/case-study-3.md
-    showThumbnail: true
-    showDate: true
-    showAuthor: true
-    variant: three-col-grid
-    colors: bg-light-fg-dark
-    styles:
-      self:
-        padding:
-          - pt-16
-          - pl-16
-          - pb-16
-          - pr-16
-        justifyContent: center
-    type: FeaturedPostsSection
-    hoverEffect: move-up
   - title: Divider
     colors: bg-light-fg-dark
     styles:
@@ -229,40 +284,29 @@ sections:
           - pr-7
     type: DividerSection
   - title:
-      text: Grow your business 10x faster
+      text: Who I Support
       color: text-dark
       styles:
         self:
           textAlign: center
       type: TitleBlock
-    subtitle: This is a subtitle
-    text: |-
-      Aenean eros ipsum, interdum quis dignissim non, sollicitudin vitae nisl.
-      Aenean vel aliquet elit, at blandit ipsum. Sed eleifend felis sit amet
-      erat molestie, hendrerit malesuada justo ultrices. Nunc volutpat at erat
-      vitae interdum. Ut nec massa eget lorem blandit condimentum et at risus.
+    subtitle: >-
+      Introducing broker-dealers at formation and growth stages — and firms
+      that need structured, disciplined FINOP oversight.
+    text: >-
+      I work with introducing broker-dealers that require disciplined net
+      capital oversight and reliable financial infrastructure. Whether you're
+      forming a new broker-dealer and building operations from the ground up,
+      or you're an established firm seeking structured FINOP support, I provide
+      direct, hands-on oversight to keep your firm compliant, organized, and
+      audit-ready.
     media:
-      title: Title of the video
-      url: /images/placeholder-video.mp4
-      controls: false
-      aspectRatio: '16:9'
-      styles:
-        self:
-          padding:
-            - pt-2
-            - pb-2
-            - pl-2
-            - pr-2
-          borderColor: border-dark
-          borderStyle: solid
-          borderWidth: 1
-          borderRadius: large
-      type: VideoBlock
-      autoplay: true
-      loop: true
-      muted: true
+      url: /images/clients-financial-ops.svg
+      altText: Abstract financial oversight graphic with ascending capital monitoring bars, a capital ratio ring metric, proportion indicators, and a trend monitoring sweep
+      elementId: ''
+      type: ImageBlock
     badge:
-      label: Key Benefits
+      label: Clients
       color: text-primary
       styles:
         self:
@@ -273,123 +317,17 @@ sections:
       self:
         flexDirection: col
         justifyContent: center
+        padding:
+          - pt-28
+          - pb-16
+          - pl-4
+          - pr-4
       subtitle:
         textAlign: center
+      text:
+        textAlign: center
     type: GenericSection
-  - type: GenericSection
-    title:
-      text: Generic section with a video
-      color: text-dark
-      styles:
-        self:
-          textAlign: left
-      type: TitleBlock
-    subtitle: Section with a video subtitle
-    text: |-
-      Aenean eros ipsum, interdum quis dignissim non, sollicitudin vitae nisl.
-      Aenean vel aliquet elit, at blandit ipsum. Sed eleifend felis sit amet
-      erat molestie, hendrerit malesuada justo ultrices. Nunc volutpat at erat
-      vitae interdum. Ut nec massa eget lorem blandit condimentum et at risus.
-    actions: []
-    media:
-      title: Title of the video
-      url: /images/placeholder-video.mp4
-      autoplay: true
-      loop: true
-      muted: true
-      controls: false
-      aspectRatio: '16:9'
-      styles:
-        self:
-          padding:
-            - pt-2
-            - pb-2
-            - pl-2
-            - pr-2
-          borderColor: border-dark
-          borderStyle: solid
-          borderWidth: 1
-          borderRadius: large
-      type: VideoBlock
-    elementId: null
-    colors: bg-light-fg-dark
-    styles:
-      self:
-        flexDirection: row
-        justifyContent: center
-      subtitle:
-        textAlign: left
-  - title:
-      text: Social Media Management
-      color: text-dark
-      type: TitleBlock
-    subtitle: Increase your reach
-    text: >
-      A service that helps businesses to manage their social media accounts and
-      posts.
-    actions:
-      - label: Get started
-        url: /
-        icon: arrowRight
-        iconPosition: right
-        style: secondary
-        type: Button
-      - label: See Tutorials
-        url: /
-        showIcon: true
-        icon: arrowRight
-        iconPosition: right
-        style: primary
-        type: Link
-    media:
-      url: /images/hero2.svg
-      altText: Fun feature preview
-      type: ImageBlock
-    badge:
-      label: This is a badge
-      color: text-primary
-      type: Badge
-    colors: bg-light-fg-dark
-    styles:
-      self:
-        alignItems: center
-    type: GenericSection
-  - title:
-      text: Business Consulting
-      color: text-dark
-      type: TitleBlock
-    subtitle: Be in good company
-    text: >
-      A service that provides advice and guidance to startups and small
-      businesses.
-    actions:
-      - label: Get started
-        url: /
-        icon: arrowRight
-        iconPosition: right
-        style: secondary
-        type: Button
-      - label: See Tutorials
-        url: /
-        showIcon: true
-        icon: arrowRight
-        iconPosition: right
-        style: primary
-        type: Link
-    media:
-      url: /images/hero3.svg
-      altText: Dope design preview
-      type: ImageBlock
-    badge:
-      label: This is a badge
-      color: text-primary
-      type: Badge
-    colors: bg-light-fg-dark
-    styles:
-      self:
-        alignItems: center
-        flexDirection: row-reverse
-    type: GenericSection
+    elementId: about
   - title: Divider
     colors: bg-light-fg-dark
     styles:
@@ -400,216 +338,72 @@ sections:
           - pb-7
           - pr-7
     type: DividerSection
-  - type: CarouselSection
-    title: null
-    subtitle: What our customers say about us
-    items:
-      - title: >-
-          “A designer knows he has achieved perfection not when there is nothing
-          left to add, but when there is nothing left to take away.”
-        tagline: Testimonial 1
-        subtitle: 'Maria Walters, Company'
-        text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
-        image:
-          url: /images/person-placeholder-light.png
-          altText: Maria Walters
-          styles:
-            self:
-              borderRadius: full
-          type: ImageBlock
-        actions: []
-        colors: bg-neutralAlt-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-9
-              - pb-9
-              - pl-9
-              - pr-9
-            textAlign: left
-            borderRadius: large
-            flexDirection: row
-            justifyContent: center
-        type: FeaturedItem
-      - title: >-
-          "Design is a plan for arranging elements in such a way as best to accomplish a particular purpose."
-        tagline: Testimonial 2
-        subtitle: 'John Doe, Company'
-        text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
-        image:
-          url: /images/person-placeholder-light.png
-          altText: John Doe
-          styles:
-            self:
-              borderRadius: full
-          type: ImageBlock
-        actions: []
-        colors: bg-neutralAlt-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-9
-              - pb-9
-              - pl-9
-              - pr-9
-            textAlign: left
-            borderRadius: large
-            flexDirection: row
-            justifyContent: center
-        type: FeaturedItem
-      - title: >-
-          "Design is how it works, how it functions. Good design doesn't just make a product aesthetically pleasing, it makes it a pleasure to use."
-        tagline: Testimonial 3
-        subtitle: 'Maria Walters, Company'
-        text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
-        image:
-          url: /images/person-placeholder-light.png
-          altText: Maria Walters
-          styles:
-            self:
-              borderRadius: full
-          type: ImageBlock
-        actions: []
-        colors: bg-neutralAlt-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-9
-              - pb-9
-              - pl-9
-              - pr-9
-            textAlign: left
-            borderRadius: large
-            flexDirection: row
-            justifyContent: center
-        type: FeaturedItem
-      - title: >-
-          “A designer knows he has achieved perfection not when there is nothing
-          left to add, but when there is nothing left to take away.”
-        tagline: Testimonial 4
-        subtitle: 'Maria Walters, Company'
-        text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
-        image:
-          url: /images/person-placeholder-light.png
-          altText: Maria Walters
-          styles:
-            self:
-              borderRadius: full
-          type: ImageBlock
-        actions: []
-        colors: bg-neutralAlt-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-9
-              - pb-9
-              - pl-9
-              - pr-9
-            textAlign: left
-            borderRadius: large
-            flexDirection: row
-            justifyContent: center
-        type: FeaturedItem
-      - title: >-
-          "Design can be art. Design can be aesthetics. Design is so simple, that's why it is so complicated."
-        tagline: Testimonial 5
-        subtitle: 'Jane Walters, Company'
-        text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
-        image:
-          url: /images/person-placeholder-light.png
-          altText: Maria Walters
-          styles:
-            self:
-              borderRadius: full
-          type: ImageBlock
-        actions: []
-        colors: bg-neutralAlt-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-9
-              - pb-9
-              - pl-9
-              - pr-9
-            textAlign: left
-            borderRadius: large
-            flexDirection: row
-            justifyContent: center
-        type: FeaturedItem
-      - title: >-
-          “Quote from some important person goes right here. I love using Netlify Create.”
-        tagline: Testimonial 6
-        subtitle: 'Jane Doe, Company'
-        text: >-
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
-          explicabo.
-        image:
-          url: /images/img-placeholder-dark.png
-          altText: Jane Doe
-          styles:
-            self:
-              borderRadius: full
-          type: ImageBlock
-        actions: []
-        colors: bg-dark-fg-light
-        styles:
-          self:
-            padding:
-              - pt-9
-              - pb-9
-              - pl-9
-              - pr-9
-            textAlign: left
-            borderRadius: large
-            flexDirection: row
-            justifyContent: center
-        type: FeaturedItem
-    elementId: null
-    variant: next-prev-nav
+  - title:
+      text: |-
+        Why Firms Rely
+        on Me
+      color: text-dark
+      type: TitleBlock
+    subtitle: Regulatory finance for real broker-dealer operations
+    text: >
+      I have served as both an internal Financial Principal and a long-term
+      outsourced FINOP, with hands-on experience supporting broker-dealer
+      operations, regulatory reporting, and financial oversight. That allows
+      me to approach FINOP work as part of the infrastructure that helps a
+      firm stay compliant, organized, and built to scale.
+    actions:
+      - label: Get In Touch
+        url: '#contact'
+        icon: arrowRight
+        iconPosition: right
+        style: secondary
+        type: Button
+    media:
+      url: /images/hero2.svg
+      altText: Why choose outsourced FINOP
+      type: ImageBlock
+    badge:
+      label: Approach
+      color: text-primary
+      type: Badge
     colors: bg-light-fg-dark
     styles:
       self:
-        justifyContent: center
-      subtitle:
-        textAlign: center
-  - title:
-      text: List of features here
-      color: text-primary
+        alignItems: center
+        padding:
+          - pt-24
+          - pb-24
+          - pl-4
+          - pr-4
+    type: GenericSection
+    elementId: why
+  - title: Divider
+    colors: bg-light-fg-dark
+    styles:
+      self:
+        padding:
+          - pt-7
+          - pl-7
+          - pb-7
+          - pr-7
+    type: DividerSection
+  - type: FeaturedItemsSection
+    title:
+      text: FINRA Licenses
+      color: text-dark
       styles:
         self:
           textAlign: center
       type: TitleBlock
-    subtitle: Featured items section subtitle
+    subtitle: ''
     items:
-      - title: Feature Item One
-        tagline: This is the tagline
-        subtitle: This is the item subtitle
-        text: |
-          Follow the tutorial to build your first Netlify Create site.
-        image:
-          url: /images/abstract-feature1.svg
-          altText: Placeholder Image
-          styles:
-            self:
-              borderRadius: x-large
-          type: ImageBlock
-        colors: bg-light-fg-dark
+      - type: FeaturedItem
+        title: Series 28
+        subtitle: FINOP Qualification
+        text: ''
+        actions: []
+        elementId: null
+        colors: bg-neutralAlt-fg-dark
         styles:
           self:
             padding:
@@ -618,21 +412,27 @@ sections:
               - pb-8
               - pr-8
             borderRadius: x-large
-            flexDirection: col
-        type: FeaturedItem
-      - title: Feature Item Two
-        tagline: This is the tagline
-        subtitle: This is the item subtitle
-        text: |
-          Follow the tutorial to build your first awesome Netlify Create site.
+            flexDirection: row
+            justifyContent: center
+            textAlign: left
         image:
-          url: /images/abstract-feature2.svg
-          altText: Placeholder image
+          type: ImageBlock
+          altText: Series 28 icon
+          elementId: ''
+          url: /images/icon1.svg
           styles:
             self:
               borderRadius: x-large
+      - title: Series 24
+        subtitle: General Securities Principal
+        text: ''
+        image:
+          url: /images/icon2.svg
+          altText: Series 24 icon
+          elementId: ''
           type: ImageBlock
-        colors: bg-light-fg-dark
+        actions: []
+        colors: bg-neutralAlt-fg-dark
         styles:
           self:
             padding:
@@ -641,21 +441,20 @@ sections:
               - pb-8
               - pr-8
             borderRadius: x-large
-            flexDirection: col
+            flexDirection: row
+            textAlign: left
+            justifyContent: center
         type: FeaturedItem
-      - title: Feature Item Three
-        tagline: This is the tagline
-        subtitle: This is the item subtitle
-        text: |
-          Learn from the tutorial and build your first awesome Netlify Create site.
+      - title: Series 7 / 63
+        subtitle: Representative Qualification
+        text: ''
         image:
-          url: /images/abstract-feature1.svg
-          altText: Placeholder image
-          styles:
-            self:
-              borderRadius: x-large
+          url: /images/icon3.svg
+          altText: Series 7 and 63 icon
+          elementId: ''
           type: ImageBlock
-        colors: bg-light-fg-dark
+        actions: []
+        colors: bg-neutralAlt-fg-dark
         styles:
           self:
             padding:
@@ -664,83 +463,108 @@ sections:
               - pb-8
               - pr-8
             borderRadius: x-large
-            flexDirection: col
+            flexDirection: row
         type: FeaturedItem
+    actions: []
+    badge:
+      label: Licensing
+      color: text-primary
+      styles:
+        self:
+          textAlign: center
+      type: Badge
+    elementId: licenses
     variant: three-col-grid
-    colors: bg-neutral-fg-dark
+    colors: bg-light-fg-dark
     styles:
       self:
         padding:
-          - pt-16
-          - pl-8
           - pb-16
-          - pr-8
+          - pt-16
+          - pl-16
+          - pr-16
         justifyContent: center
-      subtitle:
-        textAlign: center
-    type: FeaturedItemsSection
+  - title: Divider
+    colors: bg-light-fg-dark
+    styles:
+      self:
+        padding:
+          - pt-7
+          - pl-7
+          - pb-7
+          - pr-7
+    type: DividerSection
   - title:
-      text: Generic Section With A Form
+      text: Get In Touch
       color: text-dark
       type: TitleBlock
-    subtitle: Section with a form subtitle
-    text: |-
-      Aenean eros ipsum, interdum quis dignissim non, sollicitudin vitae nisl.
-      Aenean vel aliquet elit, at blandit ipsum. Sed eleifend felis sit amet
-      erat molestie, hendrerit malesuada justo ultrices. Nunc volutpat at erat
-      vitae interdum. Ut nec massa eget lorem blandit condimentum et at risus.
+    subtitle: Discuss your firm's FINOP and regulatory finance needs
+    text: >-
+      Whether you are forming a new broker-dealer, need ongoing outsourced
+      FINOP support, or want help preparing for an audit or FINRA examination,
+      feel free to reach out. I'm happy to discuss your firm's needs and
+      whether I can help.
     media:
       fields:
         - name: name
           label: Name
           hideLabel: true
-          placeholder: Your name
+          placeholder: Full name
           isRequired: true
           width: full
           type: TextFormControl
         - name: email
           label: Email
           hideLabel: true
-          placeholder: Your email
+          placeholder: Email address
           isRequired: true
           width: full
           type: EmailFormControl
         - name: message
           label: Message
           hideLabel: true
-          placeholder: Your message
+          placeholder: Tell me a bit about your firm and how I may be able to help
           width: full
           type: TextareaFormControl
       elementId: contact-form
       styles:
         self:
           padding:
-            - pt-6
-            - pb-6
-            - pl-6
-            - pr-6
-          borderColor: border-dark
-          borderStyle: solid
-          borderWidth: 1
-          borderRadius: large
+            - pt-8
+            - pb-8
+            - pl-8
+            - pr-8
+          borderRadius: x-large
       type: FormBlock
       submitButton:
         type: SubmitButtonFormControl
-        label: Submit
+        label: Send Message
         showIcon: false
         icon: arrowRight
         iconPosition: right
         style: primary
         elementId: null
     badge:
-      label: Contact Us
+      label: Contact
       color: text-primary
       type: Badge
     colors: bg-light-fg-dark
     type: GenericSection
+    elementId: contact
+    styles:
+      self:
+        padding:
+          - pt-28
+          - pb-28
+          - pl-4
+          - pr-4
 seo:
-  metaTitle: Home - Demo site
-  metaDescription: This demo site is built with Netlify Create.
+  metaTitle: Eirik Nordgaard – Outsourced FINOP for Broker-Dealers
+  metaDescription: >-
+    Outsourced FINOP services for introducing broker-dealers. Net capital
+    computations, FOCUS reporting, audit coordination, FINRA exam support,
+    and formation-stage financial infrastructure. Series 28, 24, 7, 63
+    licensed. San Diego-based, serving broker-dealers nationally.
   socialImage: /images/main-hero.jpg
   type: Seo
 type: PageLayout

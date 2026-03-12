@@ -10,7 +10,7 @@ import TitleBlock from '../../blocks/TitleBlock';
 import { Action, Badge } from '../../atoms';
 
 export default function GenericSection(props) {
-    const { elementId, colors, backgroundImage, badge, title, subtitle, text, actions = [], media, styles = {}, enableAnnotations } = props;
+    const { elementId, colors, backgroundImage, badge, title, subtitle, text, actions = [], media, styles = {}, enableAnnotations, bottomText, isHero } = props;
     const flexDirection = styles?.self?.flexDirection ?? 'row';
     const alignItems = styles?.self?.alignItems ?? 'flex-start';
     const hasTextContent = !!(badge?.url || title?.text || subtitle || text || actions.length > 0);
@@ -20,7 +20,9 @@ export default function GenericSection(props) {
     return (
         <Section
             elementId={elementId}
-            className="sb-component-generic-section"
+            className={classNames('sb-component-generic-section', {
+                'lg:min-h-[78vh] lg:flex lg:items-center': isHero
+            })}
             colors={colors}
             backgroundImage={backgroundImage}
             styles={styles?.self}
@@ -67,7 +69,7 @@ export default function GenericSection(props) {
                             <Markdown
                                 options={{ forceBlock: true, forceWrapper: true }}
                                 className={classNames('sb-markdown', 'sm:text-lg', styles?.text ? mapStyles(styles?.text) : undefined, {
-                                    'mt-6': badge?.label || title?.text || subtitle
+                                    [isHero ? 'mt-10' : 'mt-6']: badge?.label || title?.text || subtitle
                                 })}
                                 {...(enableAnnotations && { 'data-sb-field-path': '.text' })}
                             >
@@ -83,7 +85,7 @@ export default function GenericSection(props) {
                                     'items-center',
                                     'gap-4',
                                     {
-                                        'mt-8': badge?.label || title?.text || subtitle || text
+                                        [isHero ? 'mt-12' : 'mt-8']: badge?.label || title?.text || subtitle || text
                                     }
                                 )}
                                 {...(enableAnnotations && { 'data-sb-field-path': '.actions' })}
@@ -97,6 +99,14 @@ export default function GenericSection(props) {
                                     />
                                 ))}
                             </div>
+                        )}
+                        {bottomText && (
+                            <p
+                                className={classNames('text-sm', 'opacity-70', 'mt-4', styles?.bottomText ? mapStyles(styles?.bottomText) : undefined)}
+                                {...(enableAnnotations && { 'data-sb-field-path': '.bottomText' })}
+                            >
+                                {bottomText}
+                            </p>
                         )}
                     </div>
                 )}

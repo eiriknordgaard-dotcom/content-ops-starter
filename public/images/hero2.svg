@@ -1,96 +1,226 @@
 <svg width="742" height="463" viewBox="0 0 742 463" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_d_949_1861)">
-<rect x="694.168" y="234.364" width="74.2027" height="251.535" rx="37.1013" transform="rotate(140.598 694.168 234.364)" fill="white"/>
-<rect x="694.168" y="234.364" width="74.2027" height="251.535" rx="37.1013" transform="rotate(140.598 694.168 234.364)" fill="url(#paint0_linear_949_1861)"/>
-<rect x="694.168" y="234.364" width="74.2027" height="251.535" rx="37.1013" transform="rotate(140.598 694.168 234.364)" fill="url(#paint1_radial_949_1861)"/>
-</g>
-<g filter="url(#filter1_d_949_1861)">
-<rect x="106.418" y="81.5415" width="533.707" height="321.032" rx="4.75952" fill="#8F8F8F"/>
-<ellipse cx="115.781" cy="93.6908" rx="2.34082" ry="2.34212" fill="#FEFEFE"/>
-<ellipse cx="125.144" cy="93.6908" rx="2.34082" ry="2.34212" fill="#FEFEFE"/>
-<ellipse cx="134.507" cy="93.6908" rx="2.34082" ry="2.34212" fill="#FEFEFE"/>
-<g clip-path="url(#clip0_949_1861)">
-<path d="M106.418 107.224H640.248V398.905C640.248 400.931 638.606 402.574 636.579 402.574H110.087C108.061 402.574 106.418 400.931 106.418 398.905V107.224Z" fill="#E8E8EB"/>
-<g filter="url(#filter2_d_949_1861)">
-<path d="M485.076 341.435C489.208 333.481 500.401 332.982 505.224 340.537L557.076 421.764C561.899 429.319 556.734 439.262 547.78 439.661L451.509 443.953C442.555 444.352 436.526 434.908 440.658 426.954L485.076 341.435Z" fill="white"/>
-<path d="M485.076 341.435C489.208 333.481 500.401 332.982 505.224 340.537L557.076 421.764C561.899 429.319 556.734 439.262 547.78 439.661L451.509 443.953C442.555 444.352 436.526 434.908 440.658 426.954L485.076 341.435Z" fill="url(#paint2_linear_949_1861)"/>
-<path d="M485.076 341.435C489.208 333.481 500.401 332.982 505.224 340.537L557.076 421.764C561.899 429.319 556.734 439.262 547.78 439.661L451.509 443.953C442.555 444.352 436.526 434.908 440.658 426.954L485.076 341.435Z" fill="url(#paint3_radial_949_1861)"/>
-</g>
-</g>
-<rect x="285.279" y="88.8794" width="175.192" height="11.924" rx="1.83447" fill="white"/>
-</g>
-<g filter="url(#filter3_d_949_1861)">
-<circle cx="105.969" cy="313.543" r="41.9695" fill="white"/>
-<circle cx="105.969" cy="313.543" r="41.9695" fill="url(#paint4_linear_949_1861)"/>
-<circle cx="105.969" cy="313.543" r="41.9695" fill="url(#paint5_radial_949_1861)"/>
-</g>
-<defs>
-<filter id="filter0_d_949_1861" x="429.971" y="32.0384" width="311.392" height="335.854" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="39.2331"/>
-<feGaussianBlur stdDeviation="31.1557"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_949_1861"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_949_1861" result="shape"/>
-</filter>
-<filter id="filter1_d_949_1861" x="66.0597" y="54.0245" width="614.547" height="401.749" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="12.8413"/>
-<feGaussianBlur stdDeviation="20.1792"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_949_1861"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_949_1861" result="shape"/>
-</filter>
-<filter id="filter2_d_949_1861" x="407.89" y="323.514" width="182.47" height="171.684" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="19.7945"/>
-<feGaussianBlur stdDeviation="15.7192"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_949_1861"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_949_1861" result="shape"/>
-</filter>
-<filter id="filter3_d_949_1861" x="3.69431" y="230.827" width="204.55" height="204.55" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="19.5586"/>
-<feGaussianBlur stdDeviation="30.1528"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.34 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_949_1861"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_949_1861" result="shape"/>
-</filter>
-<linearGradient id="paint0_linear_949_1861" x1="731.269" y1="234.364" x2="731.269" y2="485.899" gradientUnits="userSpaceOnUse">
-<stop stop-color="#727272"/>
-<stop offset="1" stop-opacity="0"/>
-</linearGradient>
-<radialGradient id="paint1_radial_949_1861" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(755.276 457.786) rotate(-103.185) scale(155.007 70.6843)">
-<stop stop-color="white"/>
-<stop offset="0.671875" stop-color="white" stop-opacity="0"/>
-</radialGradient>
-<linearGradient id="paint2_linear_949_1861" x1="606.125" y1="412.627" x2="448.674" y2="408.188" gradientUnits="userSpaceOnUse">
-<stop/>
-<stop offset="1" stop-opacity="0"/>
-</linearGradient>
-<radialGradient id="paint3_radial_949_1861" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(551.635 461.332) rotate(-131.006) scale(120.94)">
-<stop stop-color="white"/>
-<stop offset="0.671875" stop-color="white" stop-opacity="0"/>
-</radialGradient>
-<linearGradient id="paint4_linear_949_1861" x1="132.863" y1="421.116" x2="237.583" y2="243.458" gradientUnits="userSpaceOnUse">
-<stop/>
-<stop offset="1" stop-opacity="0"/>
-</linearGradient>
-<radialGradient id="paint5_radial_949_1861" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(142.083 346.728) rotate(-149.287) scale(114.662)">
-<stop stop-color="white"/>
-<stop offset="0.671875" stop-color="white" stop-opacity="0"/>
-</radialGradient>
-<clipPath id="clip0_949_1861">
-<path d="M106.418 107.224H640.248V398.905C640.248 400.931 638.606 402.574 636.579 402.574H110.087C108.061 402.574 106.418 400.931 106.418 398.905V107.224Z" fill="white"/>
-</clipPath>
-</defs>
+
+  <!-- ============================================ -->
+  <!-- EXECUTIVE OVERSIGHT BOARD                    -->
+  <!-- Single focal-point composition               -->
+  <!-- ============================================ -->
+
+  <defs>
+    <!-- Board interior clip (respects rounded corners) -->
+    <clipPath id="board-clip">
+      <rect x="124" y="33" width="496" height="370" rx="12"/>
+    </clipPath>
+
+    <!-- Main board shadow -->
+    <filter id="shadow-board" x="92" y="9" width="560" height="424" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="8"/>
+      <feGaussianBlur stdDeviation="14"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.059 0 0 0 0 0.133 0 0 0 0 0.208 0 0 0 0.13 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect"/>
+    </filter>
+
+    <!-- Top-right badge shadow -->
+    <filter id="shadow-badge-tr" x="614" y="7" width="128" height="92" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="4"/>
+      <feGaussianBlur stdDeviation="8"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.059 0 0 0 0 0.133 0 0 0 0 0.208 0 0 0 0.11 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect"/>
+    </filter>
+
+    <!-- Bottom-left badge shadow -->
+    <filter id="shadow-badge-bl" x="18" y="293" width="160" height="104" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="4"/>
+      <feGaussianBlur stdDeviation="8"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.059 0 0 0 0 0.133 0 0 0 0 0.208 0 0 0 0.12 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect"/>
+    </filter>
+  </defs>
+
+
+  <!-- ========================== -->
+  <!-- 1. MAIN OVERSIGHT BOARD (central dominant element) -->
+  <!-- ========================== -->
+
+  <!-- Board card with shadow -->
+  <g filter="url(#shadow-board)">
+    <rect x="124" y="33" width="496" height="370" rx="12" fill="white"/>
+  </g>
+
+  <!-- Board interior content (clipped to rounded rect) -->
+  <g clip-path="url(#board-clip)">
+
+    <!-- Navy authority stripe (top edge) -->
+    <rect x="124" y="33" width="496" height="7" fill="#0F2235" opacity="0.92"/>
+
+    <!-- Header background -->
+    <rect x="124" y="40" width="496" height="54" fill="#F4F5F8"/>
+
+    <!-- Board heading text -->
+    <rect x="158" y="51" width="164" height="11" rx="3.5" fill="#0F2235" opacity="0.92"/>
+    <!-- Board subtitle -->
+    <rect x="158" y="68" width="96" height="7" rx="2.5" fill="#B8C0CC" opacity="0.72"/>
+
+    <!-- Record status count pill (header right) -->
+    <rect x="538" y="51" width="58" height="22" rx="11" fill="#0D8E47" opacity="0.34"/>
+    <rect x="551" y="59" width="32" height="7" rx="3" fill="#0D8E47" opacity="0.88"/>
+
+  </g>
+
+  <!-- Column header labels -->
+  <rect x="178" y="105" width="46" height="5" rx="2" fill="#8B95A5" opacity="0.72"/>
+  <rect x="294" y="105" width="66" height="5" rx="2" fill="#8B95A5" opacity="0.72"/>
+  <rect x="426" y="105" width="50" height="5" rx="2" fill="#8B95A5" opacity="0.72"/>
+  <rect x="548" y="105" width="36" height="5" rx="2" fill="#8B95A5" opacity="0.72"/>
+
+  <!-- Header-to-rows divider -->
+  <line x1="158" y1="119" x2="600" y2="119" stroke="#D5DAE2" stroke-width="0.8"/>
+
+
+  <!-- Row 1: Net Capital Oversight — Approved -->
+  <circle cx="166" cy="143" r="3.5" fill="#0D8E47" opacity="1.0"/>
+  <rect x="178" y="139" width="96" height="8" rx="2.5" fill="#0F2235" opacity="0.72"/>
+  <rect x="294" y="139" width="104" height="7" rx="2" fill="#B8C0CC" opacity="0.68"/>
+  <!-- Approved pill -->
+  <rect x="426" y="133" width="72" height="20" rx="10" fill="#0D8E47" opacity="0.26"/>
+  <circle cx="440" cy="143" r="2.5" fill="#0D8E47" opacity="1.0"/>
+  <rect x="448" y="140" width="38" height="6" rx="3" fill="#0D8E47" opacity="0.85"/>
+  <!-- Verification check circle -->
+  <circle cx="566" cy="143" r="10" fill="#0D8E47" opacity="0.34"/>
+  <path d="M561 143 L564 146 L571 139" stroke="#0D8E47" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.0"/>
+  <line x1="158" y1="163" x2="600" y2="163" stroke="#E2E6EC" stroke-width="0.5"/>
+
+
+  <!-- Row 2: Reporting Status — Filed -->
+  <circle cx="166" cy="187" r="3.5" fill="#0D8E47" opacity="1.0"/>
+  <rect x="178" y="183" width="84" height="8" rx="2.5" fill="#0F2235" opacity="0.72"/>
+  <rect x="294" y="183" width="92" height="7" rx="2" fill="#B8C0CC" opacity="0.68"/>
+  <!-- Filed pill -->
+  <rect x="426" y="177" width="72" height="20" rx="10" fill="#0D8E47" opacity="0.26"/>
+  <circle cx="440" cy="187" r="2.5" fill="#0D8E47" opacity="1.0"/>
+  <rect x="448" y="184" width="38" height="6" rx="3" fill="#0D8E47" opacity="0.85"/>
+  <!-- Verification check circle -->
+  <circle cx="566" cy="187" r="10" fill="#0D8E47" opacity="0.34"/>
+  <path d="M561 187 L564 190 L571 183" stroke="#0D8E47" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.0"/>
+  <line x1="158" y1="207" x2="600" y2="207" stroke="#E2E6EC" stroke-width="0.5"/>
+
+
+  <!-- Row 3: Compliance Review — Reviewed -->
+  <circle cx="166" cy="231" r="3.5" fill="#0D8E47" opacity="1.0"/>
+  <rect x="178" y="227" width="92" height="8" rx="2.5" fill="#0F2235" opacity="0.72"/>
+  <rect x="294" y="227" width="108" height="7" rx="2" fill="#B8C0CC" opacity="0.68"/>
+  <!-- Reviewed pill -->
+  <rect x="426" y="221" width="72" height="20" rx="10" fill="#0D8E47" opacity="0.26"/>
+  <circle cx="440" cy="231" r="2.5" fill="#0D8E47" opacity="1.0"/>
+  <rect x="448" y="228" width="38" height="6" rx="3" fill="#0D8E47" opacity="0.85"/>
+  <!-- Verification check circle -->
+  <circle cx="566" cy="231" r="10" fill="#0D8E47" opacity="0.34"/>
+  <path d="M561 231 L564 234 L571 227" stroke="#0D8E47" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.0"/>
+  <line x1="158" y1="251" x2="600" y2="251" stroke="#E2E6EC" stroke-width="0.5"/>
+
+
+  <!-- Row 4: Regulatory Filing — Monitored -->
+  <circle cx="166" cy="275" r="3.5" fill="#0D8E47" opacity="1.0"/>
+  <rect x="178" y="271" width="78" height="8" rx="2.5" fill="#0F2235" opacity="0.72"/>
+  <rect x="294" y="271" width="96" height="7" rx="2" fill="#B8C0CC" opacity="0.68"/>
+  <!-- Monitored pill -->
+  <rect x="426" y="265" width="72" height="20" rx="10" fill="#0D8E47" opacity="0.26"/>
+  <circle cx="440" cy="275" r="2.5" fill="#0D8E47" opacity="1.0"/>
+  <rect x="448" y="272" width="38" height="6" rx="3" fill="#0D8E47" opacity="0.85"/>
+  <!-- Verification check circle -->
+  <circle cx="566" cy="275" r="10" fill="#0D8E47" opacity="0.34"/>
+  <path d="M561 275 L564 278 L571 271" stroke="#0D8E47" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="1.0"/>
+  <line x1="158" y1="295" x2="600" y2="295" stroke="#E2E6EC" stroke-width="0.5"/>
+
+
+  <!-- Row 5: Audit Readiness — Pending (amber) -->
+  <circle cx="166" cy="319" r="3.5" fill="#B8862D" opacity="0.62"/>
+  <rect x="178" y="315" width="88" height="8" rx="2.5" fill="#0F2235" opacity="0.65"/>
+  <rect x="294" y="315" width="100" height="7" rx="2" fill="#B8C0CC" opacity="0.60"/>
+  <!-- Pending pill -->
+  <rect x="426" y="309" width="72" height="20" rx="10" fill="#B8862D" opacity="0.16"/>
+  <circle cx="440" cy="319" r="2.5" fill="#B8862D" opacity="0.62"/>
+  <rect x="448" y="316" width="38" height="6" rx="3" fill="#B8862D" opacity="0.48"/>
+  <!-- Pending clock indicator -->
+  <circle cx="566" cy="319" r="10" fill="#B8862D" opacity="0.12"/>
+  <circle cx="566" cy="319" r="5" stroke="#B8862D" stroke-width="1" fill="none" opacity="0.55"/>
+  <line x1="566" y1="316" x2="566" y2="319" stroke="#B8862D" stroke-width="1" stroke-linecap="round" opacity="0.55"/>
+  <line x1="566" y1="319" x2="568.5" y2="320.5" stroke="#B8862D" stroke-width="1" stroke-linecap="round" opacity="0.55"/>
+
+
+  <!-- Footer divider -->
+  <line x1="158" y1="343" x2="600" y2="343" stroke="#D5DAE2" stroke-width="0.8"/>
+
+  <!-- Footer: Sign-off indicators (three green check circles) -->
+  <circle cx="174" cy="367" r="7" fill="#0D8E47" opacity="0.28"/>
+  <path d="M171 367 L173 369 L177.5 364" stroke="#0D8E47" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="1.0"/>
+
+  <circle cx="200" cy="367" r="7" fill="#0D8E47" opacity="0.28"/>
+  <path d="M197 367 L199 369 L203.5 364" stroke="#0D8E47" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="1.0"/>
+
+  <circle cx="226" cy="367" r="7" fill="#0D8E47" opacity="0.28"/>
+  <path d="M223 367 L225 369 L229.5 364" stroke="#0D8E47" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="1.0"/>
+
+  <!-- Sign-off summary label -->
+  <rect x="244" y="363" width="72" height="7" rx="2" fill="#B8C0CC" opacity="0.58"/>
+
+  <!-- Overall completion progress bar -->
+  <rect x="354" y="365" width="138" height="5" rx="2.5" fill="#E2E6EC" opacity="0.80"/>
+  <rect x="354" y="365" width="110" height="5" rx="2.5" fill="#0D8E47" opacity="0.65"/>
+  <circle cx="464" cy="367.5" r="2.5" fill="#0D8E47" opacity="0.95"/>
+
+  <!-- Overall status pill (footer right) -->
+  <rect x="528" y="357" width="62" height="20" rx="10" fill="#0D8E47" opacity="0.28"/>
+  <rect x="540" y="364" width="38" height="7" rx="3" fill="#0D8E47" opacity="0.85"/>
+
+
+  <!-- ========================== -->
+  <!-- 2. FLOATING VERIFIED BADGE (top-right) -->
+  <!-- ========================== -->
+  <g filter="url(#shadow-badge-tr)">
+    <rect x="634" y="23" width="90" height="58" rx="10" fill="white"/>
+    <!-- Verified circle -->
+    <circle cx="660" cy="46" r="12" fill="#0D8E47" opacity="0.34"/>
+    <path d="M655 46 L658 49 L665 42" stroke="#0D8E47" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="1.0"/>
+    <!-- Status text -->
+    <rect x="678" y="40" width="34" height="5.5" rx="2" fill="#0F2235" opacity="0.62"/>
+    <rect x="678" y="50" width="26" height="5" rx="2" fill="#0D8E47" opacity="0.75"/>
+  </g>
+
+  <!-- Subtle connecting dots (badge to board) -->
+  <circle cx="628" cy="49" r="1.5" fill="#B8C0CC" opacity="0.45"/>
+  <circle cx="624" cy="55" r="1" fill="#B8C0CC" opacity="0.30"/>
+
+
+  <!-- ========================== -->
+  <!-- 3. FLOATING SIGN-OFF CARD (bottom-left) -->
+  <!-- ========================== -->
+  <g filter="url(#shadow-badge-bl)">
+    <rect x="40" y="311" width="114" height="64" rx="10" fill="white"/>
+    <!-- Sign-off check icon -->
+    <circle cx="72" cy="335" r="13" fill="#0D8E47" opacity="0.30"/>
+    <path d="M67 335 L70.5 338.5 L78 331" stroke="#0D8E47" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="1.0"/>
+    <!-- Label text -->
+    <rect x="92" y="329" width="48" height="5.5" rx="2" fill="#0F2235" opacity="0.55"/>
+    <rect x="92" y="339" width="36" height="5" rx="2" fill="#0D8E47" opacity="0.68"/>
+    <!-- Small completion bar -->
+    <rect x="56" y="361" width="84" height="4" rx="2" fill="#E2E6EC" opacity="0.72"/>
+    <rect x="56" y="361" width="68" height="4" rx="2" fill="#0D8E47" opacity="0.62"/>
+  </g>
+
+  <!-- Subtle connecting dots (card to board) -->
+  <circle cx="156" cy="339" r="1.5" fill="#B8C0CC" opacity="0.45"/>
+  <circle cx="152" cy="347" r="1" fill="#B8C0CC" opacity="0.30"/>
+
 </svg>

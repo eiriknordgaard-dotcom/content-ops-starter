@@ -22,7 +22,16 @@ export default function TitleBlock(props) {
             )}
             data-sb-field-path={fieldPath}
         >
-            <span {...(fieldPath && { 'data-sb-field-path': '.text' })}>{text}</span>
+            <span {...(fieldPath && { 'data-sb-field-path': '.text' })}>
+                {typeof text === 'string' && text.includes('\n')
+                    ? text.split('\n').map((part, i, arr) => (
+                          <React.Fragment key={i}>
+                              {part}
+                              {i < arr.length - 1 && <br />}
+                          </React.Fragment>
+                      ))
+                    : text}
+            </span>
         </h2>
     );
 }

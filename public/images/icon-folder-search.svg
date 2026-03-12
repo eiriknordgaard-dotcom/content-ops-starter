@@ -1,0 +1,13 @@
+<svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="42" cy="42" r="42" fill="#F0F4F7"/>
+<!-- Folder body -->
+<path d="M26 32C26 30.3 27.3 29 29 29H38L41 33H55C56.7 33 58 34.3 58 36V56C58 57.7 56.7 59 55 59H29C27.3 59 26 57.7 26 56V32Z" fill="#E0ECF5" stroke="#2D6A8A" stroke-width="1.5" stroke-linejoin="round"/>
+<!-- Folder tab accent -->
+<path d="M26 32C26 30.3 27.3 29 29 29H38L41 33H26V32Z" fill="#D0E0ED"/>
+<!-- Magnifying glass circle -->
+<circle cx="44" cy="46" r="7" stroke="#2D6A8A" stroke-width="1.8" fill="#EAF3F7"/>
+<!-- Magnifying glass handle -->
+<line x1="49" y1="51" x2="54" y2="56" stroke="#2D6A8A" stroke-width="2" stroke-linecap="round"/>
+<!-- Check inside magnifying glass -->
+<path d="M40.5 46L43 48.5L48 43" stroke="#2D8A6E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

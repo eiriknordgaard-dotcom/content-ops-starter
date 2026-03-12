@@ -279,7 +279,7 @@ function ListOfLinks(props) {
                         >
                             <Action
                                 {...link}
-                                className={classNames('whitespace-nowrap', inMobileMenu ? 'w-full' : 'text-sm', {
+                                className={classNames('whitespace-nowrap', inMobileMenu ? 'w-full' : 'text-[1.1875rem]', {
                                     'justify-start py-3': inMobileMenu && link.__metadata.modelName === 'Link'
                                 })}
                                 {...(enableAnnotations && { 'data-sb-field-path': `.${index}` })}
@@ -339,7 +339,7 @@ function LinkWithSubnav(props) {
                     link.labelStyle === 'secondary' ? 'sb-component-link-secondary' : 'sb-component-link-primary',
                     'inline-flex',
                     'items-center',
-                    inMobileMenu ? 'w-full' : 'text-sm',
+                    inMobileMenu ? 'w-full' : 'text-[1.1875rem]',
                     {
                         'group-hover:no-underline hover:no-underline': !inMobileMenu && (link.labelStyle ?? 'primary') === 'primary',
                         'group-hover:text-primary': !inMobileMenu && link.labelStyle === 'secondary'
@@ -374,7 +374,7 @@ function ListOfSubNavLinks({ links = [], hasAnnotations, inMobileMenu = false })
                 <li key={index}>
                     <Action
                         {...link}
-                        className={classNames(inMobileMenu ? 'w-full justify-start' : 'text-sm')}
+                        className={classNames(inMobileMenu ? 'w-full justify-start' : 'text-[1.1875rem]')}
                         {...(hasAnnotations && { 'data-sb-field-path': `.${index}` })}
                     />
                 </li>

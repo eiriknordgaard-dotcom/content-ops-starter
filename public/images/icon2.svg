@@ -1,6 +1,13 @@
 <svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="42" cy="42" r="42" fill="white"/>
-<path d="M41.5282 20L63.0564 41.5282L41.5282 63.0564L20 41.5282L41.5282 20Z" fill="#D9D9D9"/>
-<circle opacity="0.8" cx="51.6316" cy="32.8811" r="10.1032" fill="#4A4A4A"/>
-<circle opacity="0.8" cx="30.1032" cy="53.0202" r="10.1032" fill="#4A4A4A"/>
+<!-- Outer badge ring -->
+<circle cx="42" cy="40" r="18" fill="#E8EDF2" stroke="#3D4F6B" stroke-width="1.5"/>
+<!-- Inner badge circle -->
+<circle cx="42" cy="40" r="12" fill="#F0F4F8" stroke="#3D4F6B" stroke-width="1"/>
+<!-- Star/principal mark -->
+<path d="M42 31L44.2 36.5H50L45.4 39.8L47 45.5L42 42L37 45.5L38.6 39.8L34 36.5H39.8L42 31Z" fill="#3D4F6B" opacity="0.7"/>
+<!-- Badge ribbon left -->
+<path d="M33 54L36 48L39 54" stroke="#4A7C59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<!-- Badge ribbon right -->
+<path d="M45 54L48 48L51 54" stroke="#4A7C59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 </svg>

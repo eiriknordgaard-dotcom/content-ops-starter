@@ -1,7 +1,7 @@
 {
     "logo": {
         "url": "/images/logo-dark.svg",
-        "altText": "Logo dark",
+        "altText": "Eirik Nordgaard FINOP",
         "styles": {
             "self": {
                 "margin": ["mr-3"]
@@ -9,79 +9,46 @@
         },
         "type": "ImageBlock"
     },
+    "title": "Eirik Nordgaard",
     "primaryLinks": [
         {
-            "label": "Pricing",
-            "url": "/pricing",
+            "label": "Services",
+            "url": "/#services",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "secondary",
             "type": "Link"
         },
         {
-            "label": "Blog",
-            "altText": "Blog",
-            "url": "/blog",
+            "label": "Why Me",
+            "url": "/#why",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "secondary",
             "type": "Link"
         },
         {
-            "label": "Careers",
-            "altText": "Careers page",
-            "url": "/careers",
+            "label": "Licenses",
+            "url": "/#licenses",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "secondary",
             "type": "Link"
         },
         {
-            "label": "Dropdown",
-            "altText": "Dropdown",
-            "links": [
-                {
-                    "label": "Dropdown item",
-                    "url": "/",
-                    "icon": "arrowRight",
-                    "iconPosition": "right",
-                    "style": "secondary",
-                    "type": "Link"
-                },
-                {
-                    "label": "Dropdown item",
-                    "url": "/",
-                    "icon": "arrowRight",
-                    "iconPosition": "right",
-                    "style": "secondary",
-                    "type": "Link"
-                },
-                {
-                    "label": "Dropdown item",
-                    "url": "/",
-                    "icon": "arrowRight",
-                    "iconPosition": "right",
-                    "style": "secondary",
-                    "type": "Link"
-                }
-            ],
-            "labelStyle": "secondary",
-            "type": "SubNav"
+            "label": "Contact",
+            "url": "/#contact",
+            "icon": "arrowRight",
+            "iconPosition": "right",
+            "style": "secondary",
+            "type": "Link"
         }
     ],
     "secondaryLinks": [
         {
-            "label": "Sign up",
-            "altText": "Sign up",
-            "url": "https://app.netlify.com/signup",
-            "icon": "arrowRight",
-            "iconPosition": "right",
-            "style": "secondary",
-            "type": "Button"
-        },
-        {
-            "label": "Log in",
-            "url": "/",
+            "label": "Get In Touch",
+            "altText": "Contact for FINOP services",
+            "url": "/#contact",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "primary",

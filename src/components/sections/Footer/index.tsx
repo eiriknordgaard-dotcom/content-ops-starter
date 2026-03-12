@@ -29,6 +29,7 @@ export default function Footer(props) {
                 styles?.self?.margin ? mapStyles({ padding: styles?.self?.margin }) : undefined,
                 styles?.self?.padding ? mapStyles({ padding: styles?.self?.padding }) : 'px-4 py-28'
             )}
+            style={{ backgroundColor: '#0B2740' }}
             {...(enableAnnotations && { 'data-sb-object-id': props?.__metadata?.id })}
         >
             <div className="mx-auto max-w-7xl">

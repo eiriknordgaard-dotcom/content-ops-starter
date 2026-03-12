@@ -98,7 +98,7 @@ function FeaturedItemsThreeColGrid(props) {
     const FeaturedItem = getComponent('FeaturedItem');
     return (
         <div
-            className={classNames('w-full', 'grid', 'gap-10', 'sm:grid-cols-2', 'lg:grid-cols-3', { 'mt-12': hasTopMargin })}
+            className={classNames('w-full', 'grid', 'gap-8', 'sm:grid-cols-2', 'lg:grid-cols-3', { 'mt-10': hasTopMargin })}
             {...(hasAnnotations && { 'data-sb-field-path': '.items' })}
         >
             {items.map((item, index) => (

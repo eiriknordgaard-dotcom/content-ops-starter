@@ -1,0 +1,22 @@
+<svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="42" cy="42" r="42" fill="#F0F4F7"/>
+<!-- Grid blocks - 3x3 arrangement suggesting infrastructure -->
+<!-- Row 1 -->
+<rect x="26" y="26" width="12" height="12" rx="2" fill="#2D6A8A" opacity="0.8"/>
+<rect x="41" y="26" width="12" height="12" rx="2" fill="#2D6A8A" opacity="0.55"/>
+<rect x="56" y="26" width="5" height="12" rx="1.5" fill="#2D6A8A" opacity="0.25"/>
+<!-- Row 2 -->
+<rect x="26" y="41" width="12" height="12" rx="2" fill="#2D6A8A" opacity="0.55"/>
+<rect x="41" y="41" width="12" height="12" rx="2" fill="#E5A832" opacity="0.55"/>
+<rect x="56" y="41" width="5" height="12" rx="1.5" fill="#2D6A8A" opacity="0.2"/>
+<!-- Row 3 - partial, suggesting in-progress build -->
+<rect x="26" y="56" width="12" height="5" rx="1.5" fill="#2D6A8A" opacity="0.3"/>
+<rect x="41" y="56" width="12" height="5" rx="1.5" fill="#2D6A8A" opacity="0.2"/>
+<!-- Connection lines suggesting structure -->
+<line x1="40" y1="32" x2="41" y2="32" stroke="white" stroke-width="1"/>
+<line x1="40" y1="47" x2="41" y2="47" stroke="white" stroke-width="1"/>
+<line x1="32" y1="40" x2="32" y2="41" stroke="white" stroke-width="1"/>
+<line x1="47" y1="40" x2="47" y2="41" stroke="white" stroke-width="1"/>
+<!-- Small check in completed block -->
+<path d="M29.5 32L32 34.5L36 29.5" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+</svg>
