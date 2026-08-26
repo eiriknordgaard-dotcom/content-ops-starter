@@ -4,14 +4,14 @@ slug: /
 sections:
   - type: GenericSection
     title:
-      text: Financial oversight your broker-dealer can rely on.
+      text: Outsourced FINOP oversight for broker-dealers.
       color: text-dark
       type: TitleBlock
     subtitle: ''
     text: >
-      Outsourced Financial and Operations Principal support for broker-dealers
-      that need reliable net capital oversight, regulatory reporting, and audit
-      readiness—without adding a full-time principal.
+      Flexible, fractional Series 28 support that keeps your books and records,
+      net capital, FOCUS filings, audits, and FINRA responses organized and
+      ready.
     actions:
       - label: Schedule a 30-Minute Call
         altText: Schedule a confidential 30-minute introductory call
@@ -37,7 +37,7 @@ sections:
       elementId: ''
       type: ImageBlock
     badge:
-      label: Outsourced FINOP · Series 28
+      label: Fractional Support · Series 28
       color: text-primary
       type: Badge
     bottomText: Confidential · No obligation · Nationwide support
