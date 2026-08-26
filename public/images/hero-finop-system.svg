@@ -1,0 +1,116 @@
+<svg width="760" height="520" viewBox="0 0 760 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="panel" x1="42" y1="24" x2="720" y2="496" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9FBFD"/>
+      <stop offset="1" stop-color="#EEF3F7"/>
+    </linearGradient>
+    <linearGradient id="hub" x1="286" y1="184" x2="474" y2="336" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#173D5B"/>
+      <stop offset="1" stop-color="#0B2239"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#43A7C7"/>
+      <stop offset="1" stop-color="#2A6F97"/>
+    </linearGradient>
+    <filter id="panelShadow" x="0" y="0" width="760" height="520" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0B2239" flood-opacity="0.10"/>
+    </filter>
+    <filter id="cardShadow" x="-30%" y="-40%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#0B2239" flood-opacity="0.10"/>
+    </filter>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#0F2235" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <g filter="url(#panelShadow)">
+    <rect x="28" y="18" width="704" height="476" rx="28" fill="url(#panel)" stroke="#D8E1E8"/>
+  </g>
+  <rect x="29" y="19" width="702" height="474" rx="27" fill="url(#grid)"/>
+
+  <circle cx="58" cy="50" r="5" fill="#2A6F97"/>
+  <circle cx="76" cy="50" r="5" fill="#B8C8D4"/>
+  <circle cx="94" cy="50" r="5" fill="#D6E0E7"/>
+  <text x="119" y="56" fill="#0F2235" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="1.4">FINOP OPERATING SYSTEM</text>
+  <rect x="554" y="36" width="145" height="28" rx="14" fill="#E3F2EE"/>
+  <circle cx="573" cy="50" r="4" fill="#21865D"/>
+  <text x="585" y="55" fill="#176747" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="0.8">COORDINATED</text>
+
+  <g stroke="#7EA5BC" stroke-width="2" stroke-linecap="round" opacity="0.65">
+    <path d="M286 221C236 221 234 145 206 145"/>
+    <path d="M474 221C524 221 526 145 554 145"/>
+    <path d="M286 260H205"/>
+    <path d="M474 260H555"/>
+    <path d="M286 299C236 299 238 403 211 403"/>
+    <path d="M474 299C524 299 522 403 549 403"/>
+  </g>
+  <g fill="#2A6F97">
+    <circle cx="286" cy="221" r="4"/><circle cx="474" cy="221" r="4"/>
+    <circle cx="286" cy="260" r="4"/><circle cx="474" cy="260" r="4"/>
+    <circle cx="286" cy="299" r="4"/><circle cx="474" cy="299" r="4"/>
+  </g>
+
+  <g filter="url(#cardShadow)">
+    <rect x="276" y="172" width="208" height="176" rx="24" fill="url(#hub)"/>
+  </g>
+  <rect x="299" y="195" width="117" height="24" rx="12" fill="#FFFFFF" fill-opacity="0.12"/>
+  <circle cx="315" cy="207" r="4" fill="#6DD1C3"/>
+  <text x="327" y="211" fill="#D8EBF2" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="0.9">CENTRAL OVERSIGHT</text>
+  <path d="M331 248L350 256V274C350 287 331 296 331 296C331 296 312 287 312 274V256L331 248Z" fill="#FFFFFF" fill-opacity="0.10" stroke="#93C8D9" stroke-width="1.4"/>
+  <path d="M321 272L328 279L341 264" stroke="#6DD1C3" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="365" y="267" fill="white" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="700">FINOP</text>
+  <text x="365" y="288" fill="#BCD2DF" font-family="Inter, Arial, sans-serif" font-size="11">One accountable system</text>
+  <rect x="299" y="313" width="162" height="1" fill="#FFFFFF" fill-opacity="0.12"/>
+  <text x="299" y="331" fill="#8FB5C8" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" letter-spacing="0.8">MONITOR · ORGANIZE · REPORT</text>
+
+  <g filter="url(#cardShadow)">
+    <rect x="63" y="103" width="163" height="84" rx="16" fill="white" stroke="#D7E2E9"/>
+    <rect x="534" y="103" width="163" height="84" rx="16" fill="white" stroke="#D7E2E9"/>
+    <rect x="47" y="218" width="178" height="84" rx="16" fill="white" stroke="#D7E2E9"/>
+    <rect x="535" y="218" width="178" height="84" rx="16" fill="white" stroke="#D7E2E9"/>
+    <rect x="69" y="361" width="172" height="84" rx="16" fill="white" stroke="#D7E2E9"/>
+    <rect x="519" y="361" width="172" height="84" rx="16" fill="white" stroke="#D7E2E9"/>
+  </g>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="80" y="120" width="35" height="35" rx="10" fill="#E8F2F7"/>
+    <path d="M89 130H106M89 138H106M89 146H99" stroke="#2A6F97" stroke-width="2" stroke-linecap="round"/>
+    <text x="127" y="134" fill="#0F2235" font-size="12" font-weight="700">BOOKKEEPING</text>
+    <text x="127" y="153" fill="#607887" font-size="11">Monthly close</text>
+    <circle cx="208" cy="171" r="4" fill="#2C9B6F"/>
+
+    <rect x="551" y="120" width="35" height="35" rx="10" fill="#E8F2F7"/>
+    <path d="M559 129H578V147H559V129ZM565 129V147M559 136H578" stroke="#2A6F97" stroke-width="1.7"/>
+    <text x="598" y="134" fill="#0F2235" font-size="12" font-weight="700">BOOKS &amp; RECORDS</text>
+    <text x="598" y="153" fill="#607887" font-size="11">Reconciled</text>
+    <circle cx="679" cy="171" r="4" fill="#2C9B6F"/>
+
+    <rect x="64" y="235" width="35" height="35" rx="10" fill="#E8F2F7"/>
+    <path d="M73 259V246M81 259V240M89 259V250" stroke="#2A6F97" stroke-width="2.2" stroke-linecap="round"/>
+    <text x="111" y="249" fill="#0F2235" font-size="12" font-weight="700">NET CAPITAL</text>
+    <text x="111" y="268" fill="#607887" font-size="11">Continuously monitored</text>
+    <circle cx="207" cy="286" r="4" fill="#2C9B6F"/>
+
+    <rect x="552" y="235" width="35" height="35" rx="10" fill="#E8F2F7"/>
+    <path d="M561 241H578V264H561V241ZM565 248H574M565 253H574M565 258H571" stroke="#2A6F97" stroke-width="1.7" stroke-linecap="round"/>
+    <text x="599" y="249" fill="#0F2235" font-size="12" font-weight="700">FOCUS REPORTING</text>
+    <text x="599" y="268" fill="#607887" font-size="11">Prepared &amp; filed</text>
+    <circle cx="695" cy="286" r="4" fill="#2C9B6F"/>
+
+    <rect x="86" y="378" width="35" height="35" rx="10" fill="#E8F2F7"/>
+    <circle cx="102" cy="394" r="8" stroke="#2A6F97" stroke-width="1.8"/>
+    <path d="M108 400L114 406M98 394L101 397L106 390" stroke="#2A6F97" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="133" y="392" fill="#0F2235" font-size="12" font-weight="700">AUDIT READINESS</text>
+    <text x="133" y="411" fill="#607887" font-size="11">Schedules organized</text>
+    <circle cx="222" cy="429" r="4" fill="#2C9B6F"/>
+
+    <rect x="536" y="378" width="35" height="35" rx="10" fill="#E8F2F7"/>
+    <path d="M544 386H563V401H554L549 406V401H544V386Z" stroke="#2A6F97" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="583" y="392" fill="#0F2235" font-size="12" font-weight="700">FINRA RESPONSE</text>
+    <text x="583" y="411" fill="#607887" font-size="11">Documentation ready</text>
+    <circle cx="673" cy="429" r="4" fill="#2C9B6F"/>
+  </g>
+
+  <rect x="255" y="459" width="250" height="22" rx="11" fill="#DDEAF0"/>
+  <text x="380" y="474" text-anchor="middle" fill="#315F78" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1">ONE COORDINATED FINANCIAL SYSTEM</text>
+</svg>

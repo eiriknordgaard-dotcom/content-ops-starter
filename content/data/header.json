@@ -36,9 +36,9 @@
     ],
     "secondaryLinks": [
         {
-            "label": "Get In Touch",
-            "altText": "Contact for FINOP services",
-            "url": "/#contact",
+            "label": "Schedule a Call",
+            "altText": "Schedule a confidential 30-minute introductory call",
+            "url": "https://calendly.com/eirik-nordgaard/30min",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "primary",

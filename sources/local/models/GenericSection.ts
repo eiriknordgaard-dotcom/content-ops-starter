@@ -35,6 +35,15 @@ export const GenericSection: Model = {
             localized: false
         },
         {
+            type: 'string',
+            name: 'bottomText',
+            label: 'Supporting text below actions',
+            description: 'Short reassurance or contextual note shown beneath the section actions',
+            required: false,
+            hidden: false,
+            localized: false
+        },
+        {
             type: 'list',
             name: 'actions',
             label: 'Actions',
@@ -143,6 +152,9 @@ export const GenericSection: Model = {
                     textAlign: '*'
                 },
                 text: {
+                    textAlign: '*'
+                },
+                bottomText: {
                     textAlign: '*'
                 }
             }

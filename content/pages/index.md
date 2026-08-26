@@ -4,7 +4,7 @@ slug: /
 sections:
   - type: GenericSection
     title:
-      text: FINOP Services for Broker-Dealers
+      text: Financial oversight your broker-dealer can rely on.
       color: text-dark
       type: TitleBlock
     subtitle: ''
@@ -16,16 +16,16 @@ sections:
       broker-dealers that require experienced FINOP leadership without hiring a
       full-time principal. Based in San Diego, serving firms nationwide.
     actions:
-      - label: Get In Touch
-        altText: Contact for FINOP services
-        url: '#contact'
+      - label: Schedule a Confidential Introduction
+        altText: Schedule a confidential 30-minute introductory call
+        url: https://calendly.com/eirik-nordgaard/30min
         showIcon: false
         icon: arrowRight
         iconPosition: right
         style: primary
         elementId: ''
         type: Button
-      - label: View Services
+      - label: Explore Services
         altText: See FINOP services offered
         url: '#services'
         showIcon: true
@@ -35,11 +35,15 @@ sections:
         elementId: ''
         type: Link
     media:
-      url: /images/main-hero.svg
-      altText: FINOP dashboard with compliance checklist and reporting metrics
+      url: /images/hero-finop-system.svg
+      altText: Connected FINOP operating system coordinating bookkeeping, books and records, net capital, FOCUS reporting, audit readiness, and FINRA response
       elementId: ''
       type: ImageBlock
-    badge: null
+    badge:
+      label: Outsourced FINOP · Series 28
+      color: text-primary
+      type: Badge
+    bottomText: 30-minute introductory call · No obligation
     elementId: ''
     colors: bg-light-fg-dark
     styles:
