@@ -88,7 +88,7 @@
   <line x1="158" y1="119" x2="600" y2="119" stroke="#D5DAE2" stroke-width="0.8"/>
 
 
-  <!-- Row 1: Net Capital Oversight — Approved -->
+  <!-- Row 1: Net Capital Oversight, Approved -->
   <circle cx="166" cy="143" r="3.5" fill="#0D8E47" opacity="1.0"/>
   <rect x="178" y="139" width="96" height="8" rx="2.5" fill="#0F2235" opacity="0.72"/>
   <rect x="294" y="139" width="104" height="7" rx="2" fill="#B8C0CC" opacity="0.68"/>
@@ -102,7 +102,7 @@
   <line x1="158" y1="163" x2="600" y2="163" stroke="#E2E6EC" stroke-width="0.5"/>
 
 
-  <!-- Row 2: Reporting Status — Filed -->
+  <!-- Row 2: Reporting Status, Filed -->
   <circle cx="166" cy="187" r="3.5" fill="#0D8E47" opacity="1.0"/>
   <rect x="178" y="183" width="84" height="8" rx="2.5" fill="#0F2235" opacity="0.72"/>
   <rect x="294" y="183" width="92" height="7" rx="2" fill="#B8C0CC" opacity="0.68"/>
@@ -116,7 +116,7 @@
   <line x1="158" y1="207" x2="600" y2="207" stroke="#E2E6EC" stroke-width="0.5"/>
 
 
-  <!-- Row 3: Compliance Review — Reviewed -->
+  <!-- Row 3: Compliance Review, Reviewed -->
   <circle cx="166" cy="231" r="3.5" fill="#0D8E47" opacity="1.0"/>
   <rect x="178" y="227" width="92" height="8" rx="2.5" fill="#0F2235" opacity="0.72"/>
   <rect x="294" y="227" width="108" height="7" rx="2" fill="#B8C0CC" opacity="0.68"/>
@@ -130,7 +130,7 @@
   <line x1="158" y1="251" x2="600" y2="251" stroke="#E2E6EC" stroke-width="0.5"/>
 
 
-  <!-- Row 4: Regulatory Filing — Monitored -->
+  <!-- Row 4: Regulatory Filing, Monitored -->
   <circle cx="166" cy="275" r="3.5" fill="#0D8E47" opacity="1.0"/>
   <rect x="178" y="271" width="78" height="8" rx="2.5" fill="#0F2235" opacity="0.72"/>
   <rect x="294" y="271" width="96" height="7" rx="2" fill="#B8C0CC" opacity="0.68"/>
@@ -144,7 +144,7 @@
   <line x1="158" y1="295" x2="600" y2="295" stroke="#E2E6EC" stroke-width="0.5"/>
 
 
-  <!-- Row 5: Audit Readiness — Pending (amber) -->
+  <!-- Row 5: Audit Readiness, Pending (amber) -->
   <circle cx="166" cy="319" r="3.5" fill="#B8862D" opacity="0.62"/>
   <rect x="178" y="315" width="88" height="8" rx="2.5" fill="#0F2235" opacity="0.65"/>
   <rect x="294" y="315" width="100" height="7" rx="2" fill="#B8C0CC" opacity="0.60"/>

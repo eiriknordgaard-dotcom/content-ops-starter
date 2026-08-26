@@ -71,7 +71,7 @@ sections:
           textAlign: center
       type: TitleBlock
     description: >-
-      Ongoing financial oversight and focused project support—structured to
+      Ongoing financial oversight and focused project support. Structured to
       keep every responsibility monitored, documented, and ready.
     groupLabel: Ongoing oversight
     items:

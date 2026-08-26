@@ -36,7 +36,7 @@
 
   <!-- ============================================================ -->
   <!-- ASCENDING CAPITAL BARS (left/center)                         -->
-  <!-- Primary visual element — capital levels rising over periods   -->
+  <!-- Primary visual element: capital levels rising over periods   -->
   <!-- ============================================================ -->
 
   <!-- Baseline -->
@@ -54,7 +54,7 @@
   <rect x="100" y="264" width="24" height="101" rx="1.5" fill="url(#barGrad)"/>
   <!-- Bar 3 -->
   <rect x="138" y="236" width="24" height="129" rx="1.5" fill="url(#barGrad)"/>
-  <!-- Bar 4 — transition to accent color, stronger growth phase -->
+  <!-- Bar 4: transition to accent color, stronger growth phase -->
   <rect x="176" y="212" width="24" height="153" rx="1.5" fill="url(#barAccent)"/>
   <!-- Bar 5 -->
   <rect x="214" y="186" width="24" height="179" rx="1.5" fill="url(#barAccent)"/>
@@ -112,7 +112,7 @@
 
   <!-- ============================================================ -->
   <!-- MONITORING METRICS (lower right)                             -->
-  <!-- Abstract proportion indicators — reporting breakdown          -->
+  <!-- Abstract proportion indicators: reporting breakdown          -->
   <!-- ============================================================ -->
 
   <!-- Metric 1 -->
@@ -123,7 +123,7 @@
   <rect x="398" y="296" width="30" height="3" rx="1" fill="#091D33" opacity="0.12"/>
   <rect x="450" y="292" width="90" height="9" rx="1.5" fill="#0A8C42" opacity="0.28"/>
 
-  <!-- Metric 3 (strongest — suggests primary reporting metric) -->
+  <!-- Metric 3 (strongest, suggests primary reporting metric) -->
   <rect x="398" y="322" width="42" height="3" rx="1" fill="#091D33" opacity="0.12"/>
   <rect x="450" y="318" width="138" height="9" rx="1.5" fill="#0A8C42" opacity="0.26"/>
 
@@ -156,7 +156,7 @@
 
   <!-- ============================================================ -->
   <!-- COMPLIANCE SHIELD ACCENT (upper right corner)                -->
-  <!-- Subtle oversight authority mark — not prominent, just accent  -->
+  <!-- Subtle oversight authority mark: not prominent, just accent  -->
   <!-- ============================================================ -->
 
   <!-- Shield -->
@@ -185,7 +185,7 @@
   <!-- Suggest key financial figures without literal text            -->
   <!-- ============================================================ -->
 
-  <!-- Label near bars (upper left) — suggests chart title/metric name -->
+  <!-- Label near bars (upper left): suggests chart title/metric name -->
   <rect x="56" y="88" width="52" height="4.5" rx="1.5" fill="#091D33" opacity="0.18"/>
   <rect x="56" y="96" width="32" height="3" rx="1" fill="#091D33" opacity="0.10"/>
 

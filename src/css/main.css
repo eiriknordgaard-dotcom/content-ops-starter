@@ -310,7 +310,7 @@
         opacity: 0.6;
     }
 
-    /* Services — calm, monitored system language */
+    /* Services: calm, monitored system language */
     #services,
     #services-projects {
         background-color: #ffffff;
@@ -355,14 +355,14 @@
     }
     #services .featured-item-icon,
     #services-projects .featured-item-icon {
-        width: 3rem;
-        height: 3rem;
-        flex: 0 0 3rem;
+        width: 3.5rem;
+        height: 3.5rem;
+        flex: 0 0 3.5rem;
     }
     #services .featured-item-icon img,
     #services-projects .featured-item-icon img {
-        width: 3rem;
-        height: 3rem;
+        width: 3.5rem;
+        height: 3.5rem;
     }
     #services .featured-item-status,
     #services-projects .featured-item-status {
