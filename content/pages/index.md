@@ -10,8 +10,8 @@ sections:
     subtitle: ''
     text: >
       Flexible, fractional Series 28 support that keeps your books and records,
-      net capital, FOCUS filings, audits, and FINRA responses organized and
-      ready.
+      net capital, FOCUS filings, audits, and FINRA responses organized, ready,
+      and compliant.
     actions:
       - label: Schedule a 30-Minute Call
         altText: Schedule a confidential 30-minute introductory call
