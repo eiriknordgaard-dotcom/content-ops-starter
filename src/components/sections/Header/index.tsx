@@ -87,14 +87,14 @@ function HeaderLogoLeftPrimaryCentered(props) {
             )}
             {primaryLinks.length > 0 && (
                 <ul
-                    className="absolute hidden w-auto -translate-x-1/2 -translate-y-1/2 lg:flex lg:items-center gap-x-10 left-1/2 top-1/2"
+                    className="absolute hidden w-auto -translate-x-1/2 -translate-y-1/2 md:flex md:items-center gap-x-6 lg:gap-x-10 left-1/2 top-1/2"
                     {...(enableAnnotations && { 'data-sb-field-path': 'primaryLinks' })}
                 >
                     <ListOfLinks links={primaryLinks} colors={colors} enableAnnotations={enableAnnotations} />
                 </ul>
             )}
             {secondaryLinks.length > 0 && (
-                <ul className="hidden lg:flex lg:items-center ml-auto gap-x-2.5" {...(enableAnnotations && { 'data-sb-field-path': 'secondaryLinks' })}>
+                <ul className="hidden md:flex md:items-center ml-auto gap-x-2.5" {...(enableAnnotations && { 'data-sb-field-path': 'secondaryLinks' })}>
                     <ListOfLinks links={secondaryLinks} enableAnnotations={enableAnnotations} />
                 </ul>
             )}
@@ -211,7 +211,7 @@ function MobileMenu(props) {
     }, [router.events]);
 
     return (
-        <div className="ml-auto lg:hidden">
+        <div className="ml-auto md:hidden">
             <button aria-label="Open Menu" title="Open Menu" className="p-2 -mr-1 focus:outline-none" onClick={openMobileMenu}>
                 <span className="sr-only">Open Menu</span>
                 <MenuIcon className="w-6 h-6 fill-current" />

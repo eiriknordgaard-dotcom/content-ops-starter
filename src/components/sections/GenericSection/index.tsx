@@ -21,7 +21,7 @@ export default function GenericSection(props) {
         <Section
             elementId={elementId}
             className={classNames('sb-component-generic-section', {
-                'lg:min-h-[78vh] lg:flex lg:items-center': isHero
+                'lg:min-h-[68vh] lg:flex lg:items-center': isHero
             })}
             colors={colors}
             backgroundImage={backgroundImage}

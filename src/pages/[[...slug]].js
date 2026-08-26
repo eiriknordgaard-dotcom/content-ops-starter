@@ -4,7 +4,7 @@ import { allContent } from '../utils/local-content';
 import { getComponent } from '../components/components-registry';
 import { resolveStaticProps } from '../utils/static-props-resolvers';
 import { resolveStaticPaths } from '../utils/static-paths-resolvers';
-import { seoGenerateTitle, seoGenerateMetaTags, seoGenerateMetaDescription } from '../utils/seo-utils';
+import { seoGenerateTitle, seoGenerateMetaTags, seoGenerateMetaDescription, seoGenerateCanonicalUrl } from '../utils/seo-utils';
 
 function Page(props) {
     const { page, site } = props;
@@ -19,10 +19,13 @@ function Page(props) {
     const title = seoGenerateTitle(page, site);
     const metaTags = seoGenerateMetaTags(page, site);
     const metaDescription = seoGenerateMetaDescription(page, site);
+    const canonicalUrl = seoGenerateCanonicalUrl(page, site);
     return (
         <>
             <Head>
                 <title>{title}</title>
+                {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+                {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
                 {metaDescription && <meta name="description" content={metaDescription} />}
                 {metaTags.map((metaTag) => {
                     if (metaTag.format === 'property') {

@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Outsourced FINOP Services for Broker-Dealers
 slug: /
 sections:
   - type: GenericSection
@@ -9,11 +9,12 @@ sections:
       type: TitleBlock
     subtitle: ''
     text: >
-      Independent FINOP support for broker-dealers that need disciplined
-      financial oversight and reliable regulatory reporting. Services include
-      ongoing net capital monitoring, FOCUS filings, audit preparation, and
-      operational support for firms that require experienced financial
-      compliance leadership without hiring a full-time principal.
+      Outsourced Financial and Operations Principal support for broker-dealers
+      that need disciplined financial oversight and reliable regulatory
+      reporting. Services include ongoing net capital monitoring, FOCUS
+      filings, audit preparation, and FINRA exam support for introducing
+      broker-dealers that require experienced FINOP leadership without hiring a
+      full-time principal. Based in San Diego, serving firms nationwide.
     actions:
       - label: Get In Touch
         altText: Contact for FINOP services
@@ -46,9 +47,9 @@ sections:
         alignItems: center
         flexDirection: row
         padding:
-          - pt-32
+          - pt-20
           - pl-16
-          - pb-32
+          - pb-24
           - pr-16
   - title: Divider
     colors: bg-light-fg-dark
@@ -62,7 +63,7 @@ sections:
     type: DividerSection
   - type: FeaturedItemsSection
     title:
-      text: FINOP Services for Broker-Dealers
+      text: Services I Provide
       color: text-dark
       styles:
         self:
@@ -291,15 +292,15 @@ sections:
           textAlign: center
       type: TitleBlock
     subtitle: >-
-      Introducing broker-dealers at formation and growth stages — and firms
-      that need structured, disciplined FINOP oversight.
+      Introducing broker-dealers at formation and growth stages, and firms
+      that need structured, disciplined outsourced FINOP oversight.
     text: >-
       I work with introducing broker-dealers that require disciplined net
       capital oversight and reliable financial infrastructure. Whether you're
       forming a new broker-dealer and building operations from the ground up,
-      or you're an established firm seeking structured FINOP support, I provide
-      direct, hands-on oversight to keep your firm compliant, organized, and
-      audit-ready.
+      or you're an established firm seeking an experienced outsourced Financial
+      and Operations Principal, I provide direct, hands-on regulatory finance
+      support to keep your firm compliant, organized, and audit-ready.
     media:
       url: /images/clients-financial-ops.svg
       altText: Abstract financial oversight graphic with ascending capital monitoring bars, a capital ratio ring metric, proportion indicators, and a trend monitoring sweep
@@ -348,9 +349,9 @@ sections:
     text: >
       I have served as both an internal Financial Principal and a long-term
       outsourced FINOP, with hands-on experience supporting broker-dealer
-      operations, regulatory reporting, and financial oversight. That allows
-      me to approach FINOP work as part of the infrastructure that helps a
-      firm stay compliant, organized, and built to scale.
+      operations, regulatory reporting, and net capital oversight. That allows
+      me to approach FINOP consulting work as part of the infrastructure that
+      helps a firm stay compliant, organized, and built to scale.
     actions:
       - label: Get In Touch
         url: '#contact'
@@ -360,7 +361,7 @@ sections:
         type: Button
     media:
       url: /images/hero2.svg
-      altText: Why choose outsourced FINOP
+      altText: Outsourced FINOP services illustration with compliance dashboard and broker-dealer reporting metrics
       type: ImageBlock
     badge:
       label: Approach
@@ -499,11 +500,10 @@ sections:
       color: text-dark
       type: TitleBlock
     subtitle: Discuss your firm's FINOP and regulatory finance needs
-    text: >-
-      Whether you are forming a new broker-dealer, need ongoing outsourced
-      FINOP support, or want help preparing for an audit or FINRA examination,
-      feel free to reach out. I'm happy to discuss your firm's needs and
-      whether I can help.
+    text: |
+      Whether you are forming a new broker-dealer, need ongoing outsourced FINOP support, or want help preparing for an audit or FINRA examination, feel free to reach out. I work with introducing broker-dealers across California and nationwide, and I'm happy to discuss your firm's needs.
+
+      Information submitted through this form is handled as described in the [Privacy Policy](/privacy/).
     media:
       fields:
         - name: name
@@ -559,13 +559,28 @@ sections:
           - pl-4
           - pr-4
 seo:
-  metaTitle: Eirik Nordgaard – Outsourced FINOP for Broker-Dealers
+  metaTitle: Outsourced FINOP Services for Broker-Dealers | Eirik Nordgaard
+  addTitleSuffix: false
   metaDescription: >-
-    Outsourced FINOP services for introducing broker-dealers. Net capital
-    computations, FOCUS reporting, audit coordination, FINRA exam support,
-    and formation-stage financial infrastructure. Series 28, 24, 7, 63
-    licensed. San Diego-based, serving broker-dealers nationally.
+    Independent outsourced FINOP support for broker-dealers, including net
+    capital oversight, FOCUS reporting, audit preparation, financial
+    infrastructure, and FINRA exam support.
   socialImage: /images/main-hero.jpg
+  metaTags:
+    - property: og:description
+      content: Independent outsourced FINOP support for broker-dealers, including net capital oversight, FOCUS reporting, audit preparation, financial infrastructure, and FINRA exam support.
+    - property: og:type
+      content: website
+    - property: og:site_name
+      content: Eirik Nordgaard | Outsourced FINOP
+    - property: og:locale
+      content: en_US
+    - property: twitter:card
+      content: summary_large_image
+    - property: twitter:title
+      content: Outsourced FINOP Services for Broker-Dealers | Eirik Nordgaard
+    - property: twitter:description
+      content: Independent outsourced FINOP support for broker-dealers, including net capital oversight, FOCUS reporting, audit preparation, financial infrastructure, and FINRA exam support.
   type: Seo
 type: PageLayout
 ---

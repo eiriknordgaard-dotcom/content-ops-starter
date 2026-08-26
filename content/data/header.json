@@ -1,14 +1,4 @@
 {
-    "logo": {
-        "url": "/images/logo-dark.svg",
-        "altText": "Eirik Nordgaard FINOP",
-        "styles": {
-            "self": {
-                "margin": ["mr-3"]
-            }
-        },
-        "type": "ImageBlock"
-    },
     "title": "Eirik Nordgaard",
     "primaryLinks": [
         {

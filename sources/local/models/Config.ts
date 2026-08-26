@@ -18,6 +18,15 @@ export const Config: Model = {
             localized: false
         },
         {
+            type: 'string',
+            name: 'siteUrl',
+            label: 'Canonical site URL',
+            description: 'Absolute public URL used for canonical links and social images',
+            required: true,
+            hidden: false,
+            localized: false
+        },
+        {
             type: 'reference',
             name: 'header',
             label: 'Header configuration',

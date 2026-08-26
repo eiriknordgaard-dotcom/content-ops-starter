@@ -74,15 +74,26 @@ export function seoGenerateOgImage(page, site) {
         ogImage = page.seo?.socialImage;
     }
 
-    // ogImage should use an absolute URL. Get the Netlify domain URL from the Netlify environment variable process.env.URL
-    const domainUrl = site.env?.URL ? site.env.URL : null;
-
     if (ogImage) {
-        if (domainUrl) {
-            return domainUrl + ogImage;
-        } else {
-            return ogImage;
-        }
+        return seoGenerateAbsoluteUrl(ogImage, site);
     }
     return null;
+}
+
+export function seoGenerateCanonicalUrl(page, site) {
+    const rawPagePath = page.__metadata?.urlPath || page.slug || '/';
+    const pagePath = rawPagePath === '/' ? '/' : `${rawPagePath.replace(/\/$/, '')}/`;
+    return seoGenerateAbsoluteUrl(pagePath, site);
+}
+
+function seoGenerateAbsoluteUrl(pathOrUrl, site) {
+    if (!pathOrUrl) {
+        return null;
+    }
+
+    try {
+        return new URL(pathOrUrl, site.siteUrl || process.env.URL).toString();
+    } catch {
+        return pathOrUrl;
+    }
 }

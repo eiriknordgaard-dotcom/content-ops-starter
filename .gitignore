@@ -9,6 +9,9 @@
 .stackbit/cache
 .cache
 
+# Netlify local build and deployment state
+/.netlify/
+
 # testing
 /coverage
 

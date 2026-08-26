@@ -1,9 +1,5 @@
 {
-    "logo": {
-        "url": "/images/logo-white.svg",
-        "altText": "Eirik Nordgaard FINOP",
-        "type": "ImageBlock"
-    },
+    "title": "Eirik Nordgaard",
     "text": "Outsourced FINOP for introducing broker-dealers. Net capital, FOCUS reporting, audit readiness, and FINRA exam support. San Diego-based, serving broker-dealers nationally.",
     "primaryLinks": {
         "title": "Services",
@@ -76,14 +72,14 @@
     "legalLinks": [
         {
             "label": "Privacy Policy",
-            "url": "/",
+            "url": "/privacy/",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "secondary",
             "type": "Link"
         }
     ],
-    "copyrightText": "2025 Eirik Nordgaard. All rights reserved.\n",
+    "copyrightText": "© 2026 Eirik Nordgaard. All rights reserved.\n",
     "colors": "bg-dark-fg-light",
     "type": "Footer"
 }
