@@ -64,15 +64,15 @@ sections:
     type: DividerSection
   - type: FeaturedItemsSection
     title:
-      text: FINOP support, organized around your firm.
+      text: FINOP oversight, organized around your firm.
       color: text-dark
       styles:
         self:
           textAlign: center
       type: TitleBlock
     description: >-
-      Ongoing financial oversight and focused project support. Structured to
-      keep every responsibility monitored, documented, and ready.
+      Ongoing oversight and focused project support that keep your regulatory
+      responsibilities monitored, documented, and ready.
     groupLabel: Ongoing oversight
     items:
       - type: FeaturedItem
@@ -80,9 +80,8 @@ sections:
         title: Net Capital Oversight
         tagline: Rule 15c3-1
         text: >-
-          Monthly net capital computations, monitoring, and early warning
-          analysis to help keep your firm compliant and ahead of capital
-          issues.
+          Monthly computations, early warning monitoring, and forward planning
+          to identify capital pressure before it becomes a regulatory issue.
         actions: []
         elementId: null
         colors: bg-light-fg-dark
@@ -109,8 +108,8 @@ sections:
         status: Ongoing
         tagline: Part II / IIA
         text: >-
-          Preparation and filing support for FOCUS Part II and IIA, with
-          accurate and timely reporting to FINRA and the SEC.
+          Preparation, review, and timely filing support for FOCUS Part II or
+          IIA, backed by reconciled numbers and organized records.
         image:
           url: /images/icon-document-check.svg
           altText: FOCUS reporting icon
@@ -135,7 +134,7 @@ sections:
         tagline: Risk Management
         text: >-
           Capital forecasting, liquidity monitoring, and threshold analysis
-          to support stability and reduce regulatory surprises.
+          that keep management informed and reduce last-minute decisions.
         image:
           url: /images/icon-chart-activity.svg
           altText: Capital planning icon
@@ -182,16 +181,15 @@ sections:
         self:
           textAlign: center
       type: TitleBlock
-    groupLabel: Periodic & project support
+    groupLabel: Periodic and project support
     items:
       - type: FeaturedItem
-        status: Available
+        status: As needed
         title: Annual Audit Support
         tagline: Rule 17a-5
         text: >-
-          Audit preparation and year-end financial statement support,
-          including tie-outs, schedules, and coordination with external
-          auditors.
+          Year-end preparation, tie-outs, schedules, and auditor coordination
+          that make the Rule 17a-5 audit process orderly and efficient.
         actions: []
         elementId: null
         colors: bg-light-fg-dark
@@ -215,11 +213,11 @@ sections:
             self:
               borderRadius: x-large
       - title: FINRA Exam Support
-        status: Available
+        status: As needed
         tagline: Regulatory Response
         text: >-
-          Support for FINRA examinations and regulatory requests, with
-          organized documentation and structured response coordination.
+          Organized records, response coordination, and financial support for
+          FINRA examinations and regulatory requests.
         image:
           url: /images/icon-folder-search.svg
           altText: Exam support icon
@@ -240,11 +238,11 @@ sections:
             justifyContent: center
         type: FeaturedItem
       - title: Infrastructure Build-Out
-        status: Available
+        status: As needed
         tagline: New Firm Support
         text: >-
-          Financial infrastructure support for new broker-dealers, including
-          reporting processes, controls, and operational setup.
+          Reporting processes, financial controls, and operating routines that
+          keep a new broker-dealer organized from day one.
         image:
           url: /images/icon-grid-build.svg
           altText: Formation icon
@@ -263,7 +261,7 @@ sections:
             flexDirection: col
         type: FeaturedItem
     actions:
-      - label: Discuss Your FINOP Needs
+      - label: Schedule a Confidential Call
         altText: Schedule a confidential 30-minute introductory call
         url: https://calendly.com/eirik-nordgaard/30min
         showIcon: true
@@ -272,7 +270,7 @@ sections:
         style: primary
         elementId: ''
         type: Button
-    bottomText: 30-minute confidential introduction
+    bottomText: 30 minutes. Confidential. No obligation.
     badge:
       label: ''
       color: text-primary
