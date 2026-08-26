@@ -4,6 +4,7 @@ import NextLink from 'next/link';
 export default function Link({ children, href, ...other }) {
     // Pass Any internal link to Next.js Link, for anything else, use <a> tag
     const internal = /^\/(?!\/)/.test(href);
+    const externalHttp = /^https?:\/\//i.test(href);
     if (internal) {
         return (
             <NextLink href={href} {...other}>
@@ -13,7 +14,7 @@ export default function Link({ children, href, ...other }) {
     }
 
     return (
-        <a href={href} {...other}>
+        <a href={href} {...(externalHttp ? { target: '_blank', rel: 'noopener noreferrer' } : {})} {...other}>
             {children}
         </a>
     );
