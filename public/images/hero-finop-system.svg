@@ -1,32 +1,28 @@
 <svg width="760" height="480" viewBox="0 0 760 480" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="hub" x1="296" y1="156" x2="464" y2="324" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#194766"/>
-      <stop offset="1" stop-color="#0B2239"/>
-    </linearGradient>
     <filter id="cardShadow" x="-25%" y="-45%" width="150%" height="190%">
-      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0B2239" flood-opacity="0.10"/>
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0F2235" flood-opacity="0.09"/>
     </filter>
     <filter id="hubShadow" x="-30%" y="-30%" width="160%" height="170%">
-      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#0B2239" flood-opacity="0.18"/>
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#0F2235" flood-opacity="0.13"/>
     </filter>
   </defs>
 
-  <g stroke="#9BBACB" stroke-width="2.2" stroke-linecap="round">
-    <path d="M319 179C292 151 282 121 260 91"/>
-    <path d="M441 179C468 151 478 121 500 91"/>
-    <path d="M292 240H230"/>
-    <path d="M468 240H530"/>
-    <path d="M319 301C292 329 282 359 260 389"/>
-    <path d="M441 301C468 329 478 359 500 389"/>
+  <g stroke="#A3B2BD" stroke-width="2" stroke-linecap="round">
+    <path d="M318 178C291 150 282 120 260 91"/>
+    <path d="M442 178C469 150 478 120 500 91"/>
+    <path d="M290 240H230"/>
+    <path d="M470 240H530"/>
+    <path d="M318 302C291 330 282 360 260 389"/>
+    <path d="M442 302C469 330 478 360 500 389"/>
   </g>
-  <g fill="#2A6F97">
-    <circle cx="319" cy="179" r="4"/><circle cx="441" cy="179" r="4"/>
-    <circle cx="292" cy="240" r="4"/><circle cx="468" cy="240" r="4"/>
-    <circle cx="319" cy="301" r="4"/><circle cx="441" cy="301" r="4"/>
+  <g fill="#607482">
+    <circle cx="318" cy="178" r="3.5"/><circle cx="442" cy="178" r="3.5"/>
+    <circle cx="290" cy="240" r="3.5"/><circle cx="470" cy="240" r="3.5"/>
+    <circle cx="318" cy="302" r="3.5"/><circle cx="442" cy="302" r="3.5"/>
   </g>
 
-  <g filter="url(#cardShadow)" fill="white" stroke="#D6E2E9">
+  <g filter="url(#cardShadow)" fill="white" stroke="#D8E0E6">
     <rect x="60" y="60" width="200" height="62" rx="18"/>
     <rect x="500" y="60" width="200" height="62" rx="18"/>
     <rect x="20" y="209" width="210" height="62" rx="18"/>
@@ -35,54 +31,76 @@
     <rect x="500" y="358" width="200" height="62" rx="18"/>
   </g>
 
+  <g fill="#F1F4F6">
+    <rect x="76" y="72" width="38" height="38" rx="11"/>
+    <rect x="516" y="72" width="38" height="38" rx="11"/>
+    <rect x="36" y="221" width="38" height="38" rx="11"/>
+    <rect x="546" y="221" width="38" height="38" rx="11"/>
+    <rect x="76" y="370" width="38" height="38" rx="11"/>
+    <rect x="516" y="370" width="38" height="38" rx="11"/>
+  </g>
+
+  <g stroke="#172B3D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Bookkeeping: balanced ledger -->
+    <path d="M84 79.5H106V102.5H84V79.5Z"/>
+    <path d="M89 79.5V102.5M93 86H102M93 91H102M93 96H98"/>
+    <path d="M86.5 86H88M86.5 91H88M86.5 96H88"/>
+
+    <!-- Books and records: archived documents -->
+    <path d="M524 82H545V102H524V82Z"/>
+    <path d="M528 78H541L545 82H524L528 78Z"/>
+    <path d="M529 88H540M529 93H540M529 98H536"/>
+
+    <!-- Net capital: gauge and reserve -->
+    <path d="M44 248A11 11 0 0 1 66 248"/>
+    <path d="M55 248L62 239"/>
+    <circle cx="55" cy="248" r="2"/>
+    <path d="M46 253H64M48 256H62"/>
+
+    <!-- FOCUS reporting: filed report -->
+    <path d="M554 227H571L576 232V253H554V227Z"/>
+    <path d="M571 227V232H576M559 237H570M559 242H570M559 247H566"/>
+    <path d="M571 248L573 250L577 245"/>
+
+    <!-- Audit readiness: checklist under review -->
+    <path d="M83 377H101V397H83V377Z"/>
+    <path d="M87 383L89 385L92 381M94 384H98M87 390L89 392L92 388M94 391H98"/>
+    <circle cx="101" cy="397" r="5"/>
+    <path d="M105 401L109 405"/>
+
+    <!-- FINRA response: regulator and reply -->
+    <path d="M523 384L535 378L547 384M525 385H545M527 386V395M533 386V395M539 386V395M545 396H525"/>
+    <path d="M542 400H549M546 397L549 400L546 403"/>
+  </g>
+
   <g font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#10263A">
-    <g>
-      <rect x="77" y="73" width="36" height="36" rx="11" fill="#E8F2F7"/>
-      <path d="M86 83H103M86 91H103M86 99H97" stroke="#2A6F97" stroke-width="2" stroke-linecap="round"/>
-      <text x="126" y="95">BOOKKEEPING</text>
-    </g>
-    <g>
-      <rect x="517" y="73" width="36" height="36" rx="11" fill="#E8F2F7"/>
-      <path d="M525 81H545V101H525V81ZM532 81V101M525 89H545" stroke="#2A6F97" stroke-width="1.8"/>
-      <text x="566" y="95">BOOKS &amp; RECORDS</text>
-    </g>
-    <g>
-      <rect x="37" y="222" width="36" height="36" rx="11" fill="#E8F2F7"/>
-      <path d="M46 247V235M55 247V229M64 247V239" stroke="#2A6F97" stroke-width="2.2" stroke-linecap="round"/>
-      <text x="86" y="244">NET CAPITAL</text>
-    </g>
-    <g>
-      <rect x="547" y="222" width="36" height="36" rx="11" fill="#E8F2F7"/>
-      <path d="M556 228H574V252H556V228ZM560 235H570M560 240H570M560 245H567" stroke="#2A6F97" stroke-width="1.7" stroke-linecap="round"/>
-      <text x="596" y="244">FOCUS REPORTING</text>
-    </g>
-    <g>
-      <rect x="77" y="371" width="36" height="36" rx="11" fill="#E8F2F7"/>
-      <circle cx="94" cy="388" r="8" stroke="#2A6F97" stroke-width="1.8"/>
-      <path d="M100 394L106 400M90 388L93 391L98 384" stroke="#2A6F97" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      <text x="126" y="393">AUDIT READINESS</text>
-    </g>
-    <g>
-      <rect x="517" y="371" width="36" height="36" rx="11" fill="#E8F2F7"/>
-      <path d="M525 379H545V394H536L531 400V394H525V379Z" stroke="#2A6F97" stroke-width="1.8" stroke-linejoin="round"/>
-      <text x="566" y="393">FINRA RESPONSE</text>
-    </g>
+    <text x="126" y="95">BOOKKEEPING</text>
+    <text x="566" y="95">BOOKS &amp; RECORDS</text>
+    <text x="86" y="244">NET CAPITAL</text>
+    <text x="596" y="244">FOCUS REPORTING</text>
+    <text x="126" y="393">AUDIT READINESS</text>
+    <text x="566" y="393">FINRA RESPONSE</text>
   </g>
 
   <g filter="url(#hubShadow)">
-    <circle cx="380" cy="240" r="88" fill="url(#hub)"/>
+    <circle cx="380" cy="240" r="90" fill="white" stroke="#C8D3DB" stroke-width="2"/>
   </g>
-  <circle cx="380" cy="216" r="35" fill="white" fill-opacity="0.08"/>
-  <g stroke-linecap="round" stroke-linejoin="round">
-    <path d="M361 218L375 202L397 210L401 229L382 239L362 230L361 218Z" stroke="#9CC9D9" stroke-width="2"/>
-    <path d="M375 202L382 239M397 210L362 230M361 218L401 229" stroke="#69D0C2" stroke-width="1.6" opacity="0.9"/>
-    <circle cx="375" cy="202" r="4" fill="#69D0C2" stroke="none"/>
-    <circle cx="397" cy="210" r="4" fill="#69D0C2" stroke="none"/>
-    <circle cx="401" cy="229" r="4" fill="#69D0C2" stroke="none"/>
-    <circle cx="382" cy="239" r="4" fill="#69D0C2" stroke="none"/>
-    <circle cx="362" cy="230" r="4" fill="#69D0C2" stroke="none"/>
-    <circle cx="361" cy="218" r="4" fill="#69D0C2" stroke="none"/>
+  <circle cx="380" cy="240" r="78" stroke="#E2E8EC"/>
+
+  <!-- Central operator coordinating the system -->
+  <g stroke="#172B3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="380" cy="193" r="8"/>
+    <path d="M366 216C367 207 372 203 380 203C388 203 393 207 394 216"/>
+    <path d="M351 199C347 205 345 211 345 218M409 199C413 205 415 211 415 218"/>
+    <path d="M352 199L362 201M408 199L398 201"/>
+    <circle cx="349" cy="196" r="4"/>
+    <circle cx="411" cy="196" r="4"/>
+    <circle cx="345" cy="222" r="4"/>
+    <circle cx="415" cy="222" r="4"/>
+    <path d="M349 196L345 222M411 196L415 222"/>
+    <path d="M358 224H402"/>
+    <path d="M362 224V232H398V224"/>
   </g>
-  <text x="380" y="274" text-anchor="middle" fill="white" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">FINOP</text>
-  <text x="380" y="295" text-anchor="middle" fill="#AFC9D7" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.1">ONE CONNECTED SYSTEM</text>
+  <text x="380" y="259" text-anchor="middle" fill="#10263A" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700">EIRIK NORDGAARD</text>
+  <text x="380" y="279" text-anchor="middle" fill="#607482" font-family="Inter, Arial, sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.2">FINANCIAL OVERSIGHT</text>
 </svg>
