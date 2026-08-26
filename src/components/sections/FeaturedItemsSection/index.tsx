@@ -9,7 +9,22 @@ import { Action, Badge } from '../../atoms';
 import TitleBlock from '../../blocks/TitleBlock';
 
 export default function FeaturedItemsSection(props) {
-    const { elementId, colors, backgroundImage, badge, title, subtitle, items = [], actions = [], variant, styles = {}, enableAnnotations } = props;
+    const {
+        elementId,
+        colors,
+        backgroundImage,
+        badge,
+        title,
+        subtitle,
+        description,
+        groupLabel,
+        items = [],
+        actions = [],
+        bottomText,
+        variant,
+        styles = {},
+        enableAnnotations
+    } = props;
     return (
         <Section
             elementId={elementId}
@@ -45,17 +60,34 @@ export default function FeaturedItemsSection(props) {
                         {subtitle}
                     </p>
                 )}
+                {description && (
+                    <p
+                        className="featured-items-description w-full max-w-sectionBody mt-5 text-lg"
+                        {...(enableAnnotations && { 'data-sb-field-path': '.description' })}
+                    >
+                        {description}
+                    </p>
+                )}
+                {groupLabel && (
+                    <div
+                        className="featured-items-group-label w-full flex items-center gap-4 mt-12"
+                        {...(enableAnnotations && { 'data-sb-field-path': '.groupLabel' })}
+                    >
+                        <span>{groupLabel}</span>
+                        <span className="featured-items-group-rule grow" aria-hidden="true" />
+                    </div>
+                )}
                 <FeaturedItemVariants
                     variant={variant}
                     items={items}
-                    hasTopMargin={!!(badge?.label || title?.text || subtitle)}
+                    hasTopMargin={!!(badge?.label || title?.text || subtitle || description || groupLabel)}
                     hasSectionTitle={!!title?.text}
                     hasAnnotations={enableAnnotations}
                 />
-                {actions.length > 0 && (
+                {(actions.length > 0 || bottomText) && (
                     <div
-                        className={classNames('flex', 'flex-wrap', 'items-center', 'gap-4', {
-                            'mt-12': badge?.label || title?.text || subtitle || items.length > 0
+                        className={classNames('featured-items-footer', 'w-full', 'flex', 'flex-wrap', 'items-center', 'justify-center', 'gap-4', {
+                            'mt-12': badge?.label || title?.text || subtitle || description || groupLabel || items.length > 0
                         })}
                         {...(enableAnnotations && { 'data-sb-field-path': '.actions' })}
                     >
@@ -67,6 +99,11 @@ export default function FeaturedItemsSection(props) {
                                 {...(enableAnnotations && { 'data-sb-field-path': `.${index}` })}
                             />
                         ))}
+                        {bottomText && (
+                            <p className="featured-items-bottom-text" {...(enableAnnotations && { 'data-sb-field-path': '.bottomText' })}>
+                                {bottomText}
+                            </p>
+                        )}
                     </div>
                 )}
             </div>

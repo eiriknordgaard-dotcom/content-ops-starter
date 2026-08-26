@@ -28,6 +28,15 @@ export const FeaturedItem: Model = {
         },
         {
             type: 'string',
+            name: 'status',
+            label: 'Status',
+            description: 'A short service availability label, such as Ongoing or Available',
+            required: false,
+            hidden: false,
+            localized: false
+        },
+        {
+            type: 'string',
             name: 'subtitle',
             label: 'Subtitle',
             required: false,

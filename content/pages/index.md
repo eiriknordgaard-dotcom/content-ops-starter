@@ -64,24 +64,28 @@ sections:
     type: DividerSection
   - type: FeaturedItemsSection
     title:
-      text: Services I Provide
+      text: FINOP support, organized around your firm.
       color: text-dark
       styles:
         self:
           textAlign: center
       type: TitleBlock
-    subtitle: Ongoing FINOP Support
+    description: >-
+      Ongoing financial oversight and focused project support—structured to
+      keep every responsibility monitored, documented, and ready.
+    groupLabel: Ongoing oversight
     items:
       - type: FeaturedItem
+        status: Ongoing
         title: Net Capital Oversight
-        subtitle: Rule 15c3-1
+        tagline: Rule 15c3-1
         text: >-
           Monthly net capital computations, monitoring, and early warning
           analysis to help keep your firm compliant and ahead of capital
           issues.
         actions: []
         elementId: null
-        colors: bg-neutralAlt-fg-dark
+        colors: bg-light-fg-dark
         styles:
           self:
             padding:
@@ -90,7 +94,7 @@ sections:
               - pb-6
               - pr-8
             borderRadius: x-large
-            flexDirection: row
+            flexDirection: col
             justifyContent: center
             textAlign: left
         image:
@@ -102,7 +106,8 @@ sections:
             self:
               borderRadius: x-large
       - title: FOCUS Reporting
-        subtitle: Part II / IIA
+        status: Ongoing
+        tagline: Part II / IIA
         text: >-
           Preparation and filing support for FOCUS Part II and IIA, with
           accurate and timely reporting to FINRA and the SEC.
@@ -112,7 +117,7 @@ sections:
           elementId: ''
           type: ImageBlock
         actions: []
-        colors: bg-neutralAlt-fg-dark
+        colors: bg-light-fg-dark
         styles:
           self:
             padding:
@@ -121,12 +126,13 @@ sections:
               - pb-6
               - pr-8
             borderRadius: x-large
-            flexDirection: row
+            flexDirection: col
             textAlign: left
             justifyContent: center
         type: FeaturedItem
-      - title: Capital Planning & Early Warning Monitoring
-        subtitle: Risk Management
+      - title: Capital Planning
+        status: Ongoing
+        tagline: Risk Management
         text: >-
           Capital forecasting, liquidity monitoring, and threshold analysis
           to support stability and reduce regulatory surprises.
@@ -136,7 +142,7 @@ sections:
           elementId: ''
           type: ImageBlock
         actions: []
-        colors: bg-neutralAlt-fg-dark
+        colors: bg-light-fg-dark
         styles:
           self:
             padding:
@@ -145,7 +151,7 @@ sections:
               - pb-6
               - pr-8
             borderRadius: x-large
-            flexDirection: row
+            flexDirection: col
         type: FeaturedItem
     actions: []
     badge:
@@ -161,10 +167,10 @@ sections:
     styles:
       self:
         padding:
-          - pb-4
+          - pb-10
           - pt-16
-          - pl-16
-          - pr-16
+          - pl-6
+          - pr-6
         justifyContent: center
       subtitle:
         textAlign: center
@@ -176,18 +182,19 @@ sections:
         self:
           textAlign: center
       type: TitleBlock
-    subtitle: Project-Based & Periodic Support
+    groupLabel: Periodic & project support
     items:
       - type: FeaturedItem
-        title: Annual Audit & Financial Statement Support
-        subtitle: Rule 17a-5
+        status: Available
+        title: Annual Audit Support
+        tagline: Rule 17a-5
         text: >-
           Audit preparation and year-end financial statement support,
           including tie-outs, schedules, and coordination with external
           auditors.
         actions: []
         elementId: null
-        colors: bg-neutralAlt-fg-dark
+        colors: bg-light-fg-dark
         styles:
           self:
             padding:
@@ -196,7 +203,7 @@ sections:
               - pb-6
               - pr-8
             borderRadius: x-large
-            flexDirection: row
+            flexDirection: col
             justifyContent: center
             textAlign: left
         image:
@@ -208,8 +215,8 @@ sections:
             self:
               borderRadius: x-large
       - title: FINRA Exam Support
-
-        subtitle: Regulatory Response
+        status: Available
+        tagline: Regulatory Response
         text: >-
           Support for FINRA examinations and regulatory requests, with
           organized documentation and structured response coordination.
@@ -219,7 +226,7 @@ sections:
           elementId: ''
           type: ImageBlock
         actions: []
-        colors: bg-neutralAlt-fg-dark
+        colors: bg-light-fg-dark
         styles:
           self:
             padding:
@@ -228,12 +235,13 @@ sections:
               - pb-6
               - pr-8
             borderRadius: x-large
-            flexDirection: row
+            flexDirection: col
             textAlign: left
             justifyContent: center
         type: FeaturedItem
-      - title: Formation & Financial Infrastructure Build-Out
-        subtitle: New Firm Support
+      - title: Infrastructure Build-Out
+        status: Available
+        tagline: New Firm Support
         text: >-
           Financial infrastructure support for new broker-dealers, including
           reporting processes, controls, and operational setup.
@@ -243,7 +251,7 @@ sections:
           elementId: ''
           type: ImageBlock
         actions: []
-        colors: bg-neutralAlt-fg-dark
+        colors: bg-light-fg-dark
         styles:
           self:
             padding:
@@ -252,9 +260,19 @@ sections:
               - pb-6
               - pr-8
             borderRadius: x-large
-            flexDirection: row
+            flexDirection: col
         type: FeaturedItem
-    actions: []
+    actions:
+      - label: Discuss Your FINOP Needs
+        altText: Schedule a confidential 30-minute introductory call
+        url: https://calendly.com/eirik-nordgaard/30min
+        showIcon: true
+        icon: arrowRight
+        iconPosition: right
+        style: primary
+        elementId: ''
+        type: Button
+    bottomText: 30-minute confidential introduction
     badge:
       label: ''
       color: text-primary
@@ -262,16 +280,16 @@ sections:
         self:
           textAlign: center
       type: Badge
-    elementId: ''
+    elementId: services-projects
     variant: three-col-grid
     colors: bg-light-fg-dark
     styles:
       self:
         padding:
-          - pb-14
-          - pt-6
-          - pl-16
-          - pr-16
+          - pb-16
+          - pt-0
+          - pl-6
+          - pr-6
         justifyContent: center
       subtitle:
         textAlign: center

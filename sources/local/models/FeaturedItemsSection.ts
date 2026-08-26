@@ -25,6 +25,22 @@ export const FeaturedItemsSection: Model = {
             localized: false
         },
         {
+            type: 'string',
+            name: 'description',
+            label: 'Description',
+            required: false,
+            hidden: false,
+            localized: false
+        },
+        {
+            type: 'string',
+            name: 'groupLabel',
+            label: 'Group label',
+            required: false,
+            hidden: false,
+            localized: false
+        },
+        {
             type: 'list',
             name: 'items',
             label: 'Items',
@@ -56,6 +72,14 @@ export const FeaturedItemsSection: Model = {
             hidden: false,
             localized: false,
             models: ['Badge']
+        },
+        {
+            type: 'string',
+            name: 'bottomText',
+            label: 'Supporting text beside actions',
+            required: false,
+            hidden: false,
+            localized: false
         },
         {
             type: 'string',

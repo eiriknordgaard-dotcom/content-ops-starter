@@ -7,7 +7,7 @@ import Action from '../../../atoms/Action';
 import ImageBlock from '../../../blocks/ImageBlock';
 
 export default function FeaturedItem(props) {
-    const { elementId, title, tagline, subtitle, text, image, actions = [], colors = 'bg-light-fg-dark', styles = {}, hasSectionTitle } = props;
+    const { elementId, title, tagline, subtitle, status, text, image, actions = [], colors = 'bg-light-fg-dark', styles = {}, hasSectionTitle } = props;
     const fieldPath = props['data-sb-field-path'];
     const TitleTag = hasSectionTitle ? 'h3' : 'h2';
     const flexDirection = styles?.self?.flexDirection ?? 'col';
@@ -35,8 +35,20 @@ export default function FeaturedItem(props) {
             )}
             data-sb-field-path={fieldPath}
         >
-            <div className={classNames('w-full', 'flex', mapFlexDirectionStyles(flexDirection, hasTextContent, hasImage), 'gap-6')}>
-                {hasImage && (
+            <div className={classNames('w-full', 'flex', mapFlexDirectionStyles(flexDirection, hasTextContent, hasImage), status ? 'gap-0' : 'gap-6')}>
+                {hasImage && status && (
+                    <div className="featured-item-topline flex items-center justify-between gap-4">
+                        <ImageBlock
+                            {...image}
+                            className="featured-item-icon flex"
+                            {...(fieldPath && { 'data-sb-field-path': '.image' })}
+                        />
+                        <span className="featured-item-status" {...(fieldPath && { 'data-sb-field-path': '.status' })}>
+                            {status}
+                        </span>
+                    </div>
+                )}
+                {hasImage && !status && (
                     <ImageBlock
                         {...image}
                         className={classNames('flex', mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }), {
@@ -52,7 +64,7 @@ export default function FeaturedItem(props) {
                         })}
                     >
                         {tagline && (
-                            <p className="text-sm" {...(fieldPath && { 'data-sb-field-path': '.tagline' })}>
+                            <p className={classNames('text-sm', { 'mt-6': status })} {...(fieldPath && { 'data-sb-field-path': '.tagline' })}>
                                 {tagline}
                             </p>
                         )}
