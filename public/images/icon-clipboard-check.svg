@@ -1,20 +1,11 @@
 <svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="42" cy="42" r="42" fill="#F0F4F7"/>
-<!-- Clipboard body -->
-<rect x="28" y="26" width="28" height="36" rx="2.5" fill="#E0ECF5" stroke="#2D6A8A" stroke-width="1.5"/>
-<!-- Clipboard clip -->
-<rect x="36" y="22" width="12" height="8" rx="2" fill="#2D6A8A"/>
-<rect x="38" y="24" width="8" height="4" rx="1" fill="#E0ECF5"/>
-<!-- Checklist row 1 - checked -->
-<rect x="33" y="34" width="5" height="5" rx="1" stroke="#2D8A6E" stroke-width="1.3" fill="#D8EDE0"/>
-<path d="M34 36.5L35.5 38L38.5 34.5" stroke="#2D8A6E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-<line x1="41" y1="36.5" x2="51" y2="36.5" stroke="#7A9BB5" stroke-width="1.3" stroke-linecap="round"/>
-<!-- Checklist row 2 - checked -->
-<rect x="33" y="42" width="5" height="5" rx="1" stroke="#2D8A6E" stroke-width="1.3" fill="#D8EDE0"/>
-<path d="M34 44.5L35.5 46L38.5 42.5" stroke="#2D8A6E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-<line x1="41" y1="44.5" x2="49" y2="44.5" stroke="#7A9BB5" stroke-width="1.3" stroke-linecap="round"/>
-<!-- Checklist row 3 - checked -->
-<rect x="33" y="50" width="5" height="5" rx="1" stroke="#2D8A6E" stroke-width="1.3" fill="#D8EDE0"/>
-<path d="M34 52.5L35.5 54L38.5 50.5" stroke="#2D8A6E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-<line x1="41" y1="52.5" x2="50" y2="52.5" stroke="#7A9BB5" stroke-width="1.3" stroke-linecap="round"/>
+  <circle cx="42" cy="42" r="39" fill="white" stroke="#34C759" stroke-width="2"/>
+  <g stroke="#172B3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="25" y="24" width="34" height="42" rx="4"/>
+    <path d="M35 24V20H49V24M35 20H49M42 20V17"/>
+    <path d="M39 37H51M39 47H51M39 57H48" opacity="0.7"/>
+  </g>
+  <g stroke="#34C759" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M30 36L33 39L37 34M30 46L33 49L37 44M30 56L33 59L37 54"/>
+  </g>
 </svg>
