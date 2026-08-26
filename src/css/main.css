@@ -184,7 +184,7 @@
             @apply placeholder-dark/50;
         }
         .sb-component-button-primary {
-            @apply bg-primary border-primary text-light;
+            @apply bg-action border-action text-light hover:bg-actionHover hover:border-actionHover;
         }
         .sb-component-button-secondary {
             @apply border-dark text-dark;
@@ -219,7 +219,7 @@
             @apply placeholder-dark/50;
         }
         .sb-component-button-primary {
-            @apply bg-primary border-primary text-light;
+            @apply bg-action border-action text-light hover:bg-actionHover hover:border-actionHover;
         }
         .sb-component-button-secondary {
             @apply border-dark text-dark;
@@ -254,7 +254,7 @@
             @apply placeholder-light/50;
         }
         .sb-component-button-primary {
-            @apply bg-primary border-primary text-light;
+            @apply bg-action border-action text-light hover:bg-actionHover hover:border-actionHover;
         }
         .sb-component-button-secondary {
             @apply border-light text-light;
@@ -287,7 +287,7 @@
         border: 1px solid rgba(15, 34, 53, 0.10);
         box-shadow: 0 1px 3px rgba(15, 34, 53, 0.05), 0 4px 14px rgba(15, 34, 53, 0.045);
         .sb-component-button-primary {
-            @apply bg-primary border-primary text-light;
+            @apply bg-action border-action text-light hover:bg-actionHover hover:border-actionHover;
         }
         .sb-component-button-secondary {
             @apply border-dark text-dark;

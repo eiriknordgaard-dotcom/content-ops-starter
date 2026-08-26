@@ -20,7 +20,10 @@ module.exports = {
                 dark: themeStyle.dark,
                 neutral: themeStyle.neutral,
                 neutralAlt: themeStyle.neutralAlt,
-                primary: themeStyle.primary
+                primary: themeStyle.primary,
+                action: '#006EDB',
+                actionHover: '#005FCC',
+                status: '#34C759'
             },
             fontFamily: {
                 sans: ['Inter', 'sans-serif'],
