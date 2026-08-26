@@ -52,7 +52,7 @@ export default function GenericSection(props) {
                         {title && (
                             <TitleBlock
                                 {...title}
-                                className={classNames({ [isHero ? 'mt-6' : 'mt-4']: badge?.label })}
+                                className={classNames({ [isHero ? 'mt-8' : 'mt-4']: badge?.label })}
                                 {...(enableAnnotations && { 'data-sb-field-path': '.title' })}
                             />
                         )}
@@ -70,7 +70,7 @@ export default function GenericSection(props) {
                             <Markdown
                                 options={{ forceBlock: true, forceWrapper: true }}
                                 className={classNames('sb-markdown', 'sm:text-lg', styles?.text ? mapStyles(styles?.text) : undefined, {
-                                    [isHero ? 'mt-8' : 'mt-6']: badge?.label || title?.text || subtitle
+                                    [isHero ? 'mt-10' : 'mt-6']: badge?.label || title?.text || subtitle
                                 })}
                                 {...(enableAnnotations && { 'data-sb-field-path': '.text' })}
                             >
@@ -85,7 +85,7 @@ export default function GenericSection(props) {
                                     mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }),
                                     'items-center',
                                     'gap-4',
-                                    { [isHero ? 'mt-10' : 'mt-8']: badge?.label || title?.text || subtitle || text }
+                                    { [isHero ? 'mt-12' : 'mt-8']: badge?.label || title?.text || subtitle || text }
                                 )}
                                 {...(enableAnnotations && { 'data-sb-field-path': '.actions' })}
                             >
@@ -104,7 +104,7 @@ export default function GenericSection(props) {
                                 className={classNames(
                                     'text-sm',
                                     'opacity-70',
-                                    isHero ? 'mt-5' : 'mt-4',
+                                    isHero ? 'mt-6' : 'mt-4',
                                     styles?.bottomText ? mapStyles(styles?.bottomText) : undefined
                                 )}
                                 {...(enableAnnotations && { 'data-sb-field-path': '.bottomText' })}

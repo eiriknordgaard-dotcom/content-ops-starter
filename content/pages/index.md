@@ -50,7 +50,7 @@ sections:
         padding:
           - pt-16
           - pl-6
-          - pb-20
+          - pb-12
           - pr-6
   - title: Divider
     colors: bg-light-fg-dark
