@@ -113,7 +113,7 @@ export default function GenericSection(props) {
                     <div
                         className={classNames('w-full', 'flex', mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }), {
                             'max-w-sectionBody': media.__metadata.modelName === 'FormBlock',
-                            'max-w-[760px] mx-auto xl:mx-0 xl:w-[56%] xl:max-w-none xl:shrink-0': isHero && hasTextContent && hasXDirection,
+                            'max-w-[640px] mx-auto xl:mx-0 xl:w-[56%] xl:max-w-none xl:shrink-0': isHero && hasTextContent && hasXDirection,
                             'lg:w-[57.5%] lg:shrink-0': !isHero && hasTextContent && hasXDirection,
                             'lg:mt-10': badge?.label && media.__metadata.modelName === 'FormBlock' && hasXDirection
                         })}

@@ -1,116 +1,37 @@
-<svg width="760" height="520" viewBox="0 0 760 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="760" height="460" viewBox="0 0 760 460" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="panel" x1="42" y1="24" x2="720" y2="496" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#F9FBFD"/>
-      <stop offset="1" stop-color="#EEF3F7"/>
-    </linearGradient>
-    <linearGradient id="hub" x1="286" y1="184" x2="474" y2="336" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#173D5B"/>
-      <stop offset="1" stop-color="#0B2239"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#43A7C7"/>
-      <stop offset="1" stop-color="#2A6F97"/>
-    </linearGradient>
-    <filter id="panelShadow" x="0" y="0" width="760" height="520" filterUnits="userSpaceOnUse">
-      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0B2239" flood-opacity="0.10"/>
-    </filter>
-    <filter id="cardShadow" x="-30%" y="-40%" width="160%" height="180%">
-      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#0B2239" flood-opacity="0.10"/>
-    </filter>
-    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
-      <path d="M28 0H0V28" fill="none" stroke="#0F2235" stroke-opacity="0.035" stroke-width="1"/>
-    </pattern>
+    <linearGradient id="surface" x1="38" y1="22" x2="718" y2="438" gradientUnits="userSpaceOnUse"><stop stop-color="#F8FBFD"/><stop offset="1" stop-color="#EDF3F7"/></linearGradient>
+    <linearGradient id="hub" x1="205" y1="88" x2="555" y2="192" gradientUnits="userSpaceOnUse"><stop stop-color="#173F5E"/><stop offset="1" stop-color="#0B2239"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-30%" width="140%" height="170%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#0B2239" flood-opacity="0.10"/></filter>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#18364D" stroke-opacity="0.035"/></pattern>
   </defs>
-
-  <g filter="url(#panelShadow)">
-    <rect x="28" y="18" width="704" height="476" rx="28" fill="url(#panel)" stroke="#D8E1E8"/>
+  <rect x="24" y="20" width="712" height="420" rx="28" fill="url(#surface)" stroke="#D7E2E9"/>
+  <rect x="25" y="21" width="710" height="418" rx="27" fill="url(#grid)"/>
+  <text x="52" y="58" fill="#5D7687" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5">BROKER-DEALER FINANCIAL OPERATIONS</text>
+  <rect x="624" y="40" width="84" height="28" rx="14" fill="#E0F1EC"/><circle cx="642" cy="54" r="4" fill="#23845F"/>
+  <text x="653" y="58" fill="#176747" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="0.7">CONNECTED</text>
+  <g stroke="#83ABC1" stroke-width="2" stroke-linecap="round" opacity="0.7">
+    <path d="M380 192V220M145 220H615M145 220V244M380 220V244M615 220V244"/>
+    <path d="M380 309V326M145 326H615M145 326V350M380 326V350M615 326V350"/>
   </g>
-  <rect x="29" y="19" width="702" height="474" rx="27" fill="url(#grid)"/>
-
-  <circle cx="58" cy="50" r="5" fill="#2A6F97"/>
-  <circle cx="76" cy="50" r="5" fill="#B8C8D4"/>
-  <circle cx="94" cy="50" r="5" fill="#D6E0E7"/>
-  <text x="119" y="56" fill="#0F2235" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="1.4">FINOP OPERATING SYSTEM</text>
-  <rect x="554" y="36" width="145" height="28" rx="14" fill="#E3F2EE"/>
-  <circle cx="573" cy="50" r="4" fill="#21865D"/>
-  <text x="585" y="55" fill="#176747" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="0.8">COORDINATED</text>
-
-  <g stroke="#7EA5BC" stroke-width="2" stroke-linecap="round" opacity="0.65">
-    <path d="M286 221C236 221 234 145 206 145"/>
-    <path d="M474 221C524 221 526 145 554 145"/>
-    <path d="M286 260H205"/>
-    <path d="M474 260H555"/>
-    <path d="M286 299C236 299 238 403 211 403"/>
-    <path d="M474 299C524 299 522 403 549 403"/>
+  <g fill="#2A6F97"><circle cx="380" cy="220" r="4"/><circle cx="145" cy="220" r="3"/><circle cx="615" cy="220" r="3"/><circle cx="380" cy="326" r="4"/><circle cx="145" cy="326" r="3"/><circle cx="615" cy="326" r="3"/></g>
+  <g filter="url(#shadow)"><rect x="205" y="88" width="350" height="104" rx="22" fill="url(#hub)"/></g>
+  <rect x="228" y="111" width="58" height="58" rx="17" fill="#FFFFFF" fill-opacity="0.10"/>
+  <path d="M257 120L276 128V143C276 155 257 164 257 164C257 164 238 155 238 143V128L257 120Z" stroke="#9AC9D9" stroke-width="1.8"/>
+  <path d="M247 142L254 149L267 134" stroke="#69D0C2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="310" y="121" fill="#8FB8CC" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.2">YOUR OUTSOURCED FINOP</text>
+  <text x="310" y="148" fill="white" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="700">One accountable system</text>
+  <text x="310" y="169" fill="#BED3DF" font-family="Inter, Arial, sans-serif" font-size="11">Eirik coordinates every critical financial function.</text>
+  <g filter="url(#shadow)" fill="white" stroke="#D7E2E9">
+    <rect x="55" y="244" width="180" height="65" rx="16"/><rect x="290" y="244" width="180" height="65" rx="16"/><rect x="525" y="244" width="180" height="65" rx="16"/>
+    <rect x="55" y="350" width="180" height="65" rx="16"/><rect x="290" y="350" width="180" height="65" rx="16"/><rect x="525" y="350" width="180" height="65" rx="16"/>
   </g>
-  <g fill="#2A6F97">
-    <circle cx="286" cy="221" r="4"/><circle cx="474" cy="221" r="4"/>
-    <circle cx="286" cy="260" r="4"/><circle cx="474" cy="260" r="4"/>
-    <circle cx="286" cy="299" r="4"/><circle cx="474" cy="299" r="4"/>
+  <g font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#10263A">
+    <g><rect x="73" y="259" width="35" height="35" rx="10" fill="#E8F2F7"/><path d="M82 269H99M82 276H99M82 283H94" stroke="#2A6F97" stroke-width="2" stroke-linecap="round"/><text x="121" y="281">BOOKKEEPING</text></g>
+    <g><rect x="308" y="259" width="35" height="35" rx="10" fill="#E8F2F7"/><path d="M316 267H335V286H316V267ZM322 267V286M316 274H335" stroke="#2A6F97" stroke-width="1.7"/><text x="356" y="281">BOOKS &amp; RECORDS</text></g>
+    <g><rect x="543" y="259" width="35" height="35" rx="10" fill="#E8F2F7"/><path d="M552 284V273M560 284V266M568 284V276" stroke="#2A6F97" stroke-width="2.2" stroke-linecap="round"/><text x="591" y="281">NET CAPITAL</text></g>
+    <g><rect x="73" y="365" width="35" height="35" rx="10" fill="#E8F2F7"/><path d="M82 371H99V394H82V371ZM86 378H95M86 383H95M86 388H92" stroke="#2A6F97" stroke-width="1.7" stroke-linecap="round"/><text x="121" y="387">FOCUS REPORTING</text></g>
+    <g><rect x="308" y="365" width="35" height="35" rx="10" fill="#E8F2F7"/><circle cx="324" cy="381" r="8" stroke="#2A6F97" stroke-width="1.8"/><path d="M330 387L336 393M320 381L323 384L328 377" stroke="#2A6F97" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><text x="356" y="387">AUDIT READINESS</text></g>
+    <g><rect x="543" y="365" width="35" height="35" rx="10" fill="#E8F2F7"/><path d="M551 373H570V388H561L556 393V388H551V373Z" stroke="#2A6F97" stroke-width="1.8" stroke-linejoin="round"/><text x="591" y="387">FINRA RESPONSE</text></g>
   </g>
-
-  <g filter="url(#cardShadow)">
-    <rect x="276" y="172" width="208" height="176" rx="24" fill="url(#hub)"/>
-  </g>
-  <rect x="299" y="195" width="117" height="24" rx="12" fill="#FFFFFF" fill-opacity="0.12"/>
-  <circle cx="315" cy="207" r="4" fill="#6DD1C3"/>
-  <text x="327" y="211" fill="#D8EBF2" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="0.9">CENTRAL OVERSIGHT</text>
-  <path d="M331 248L350 256V274C350 287 331 296 331 296C331 296 312 287 312 274V256L331 248Z" fill="#FFFFFF" fill-opacity="0.10" stroke="#93C8D9" stroke-width="1.4"/>
-  <path d="M321 272L328 279L341 264" stroke="#6DD1C3" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="365" y="267" fill="white" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="700">FINOP</text>
-  <text x="365" y="288" fill="#BCD2DF" font-family="Inter, Arial, sans-serif" font-size="11">One accountable system</text>
-  <rect x="299" y="313" width="162" height="1" fill="#FFFFFF" fill-opacity="0.12"/>
-  <text x="299" y="331" fill="#8FB5C8" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="600" letter-spacing="0.8">MONITOR · ORGANIZE · REPORT</text>
-
-  <g filter="url(#cardShadow)">
-    <rect x="63" y="103" width="163" height="84" rx="16" fill="white" stroke="#D7E2E9"/>
-    <rect x="534" y="103" width="163" height="84" rx="16" fill="white" stroke="#D7E2E9"/>
-    <rect x="47" y="218" width="178" height="84" rx="16" fill="white" stroke="#D7E2E9"/>
-    <rect x="535" y="218" width="178" height="84" rx="16" fill="white" stroke="#D7E2E9"/>
-    <rect x="69" y="361" width="172" height="84" rx="16" fill="white" stroke="#D7E2E9"/>
-    <rect x="519" y="361" width="172" height="84" rx="16" fill="white" stroke="#D7E2E9"/>
-  </g>
-
-  <g font-family="Inter, Arial, sans-serif">
-    <rect x="80" y="120" width="35" height="35" rx="10" fill="#E8F2F7"/>
-    <path d="M89 130H106M89 138H106M89 146H99" stroke="#2A6F97" stroke-width="2" stroke-linecap="round"/>
-    <text x="127" y="134" fill="#0F2235" font-size="12" font-weight="700">BOOKKEEPING</text>
-    <text x="127" y="153" fill="#607887" font-size="11">Monthly close</text>
-    <circle cx="208" cy="171" r="4" fill="#2C9B6F"/>
-
-    <rect x="551" y="120" width="35" height="35" rx="10" fill="#E8F2F7"/>
-    <path d="M559 129H578V147H559V129ZM565 129V147M559 136H578" stroke="#2A6F97" stroke-width="1.7"/>
-    <text x="598" y="134" fill="#0F2235" font-size="12" font-weight="700">BOOKS &amp; RECORDS</text>
-    <text x="598" y="153" fill="#607887" font-size="11">Reconciled</text>
-    <circle cx="679" cy="171" r="4" fill="#2C9B6F"/>
-
-    <rect x="64" y="235" width="35" height="35" rx="10" fill="#E8F2F7"/>
-    <path d="M73 259V246M81 259V240M89 259V250" stroke="#2A6F97" stroke-width="2.2" stroke-linecap="round"/>
-    <text x="111" y="249" fill="#0F2235" font-size="12" font-weight="700">NET CAPITAL</text>
-    <text x="111" y="268" fill="#607887" font-size="11">Continuously monitored</text>
-    <circle cx="207" cy="286" r="4" fill="#2C9B6F"/>
-
-    <rect x="552" y="235" width="35" height="35" rx="10" fill="#E8F2F7"/>
-    <path d="M561 241H578V264H561V241ZM565 248H574M565 253H574M565 258H571" stroke="#2A6F97" stroke-width="1.7" stroke-linecap="round"/>
-    <text x="599" y="249" fill="#0F2235" font-size="12" font-weight="700">FOCUS REPORTING</text>
-    <text x="599" y="268" fill="#607887" font-size="11">Prepared &amp; filed</text>
-    <circle cx="695" cy="286" r="4" fill="#2C9B6F"/>
-
-    <rect x="86" y="378" width="35" height="35" rx="10" fill="#E8F2F7"/>
-    <circle cx="102" cy="394" r="8" stroke="#2A6F97" stroke-width="1.8"/>
-    <path d="M108 400L114 406M98 394L101 397L106 390" stroke="#2A6F97" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="133" y="392" fill="#0F2235" font-size="12" font-weight="700">AUDIT READINESS</text>
-    <text x="133" y="411" fill="#607887" font-size="11">Schedules organized</text>
-    <circle cx="222" cy="429" r="4" fill="#2C9B6F"/>
-
-    <rect x="536" y="378" width="35" height="35" rx="10" fill="#E8F2F7"/>
-    <path d="M544 386H563V401H554L549 406V401H544V386Z" stroke="#2A6F97" stroke-width="1.8" stroke-linejoin="round"/>
-    <text x="583" y="392" fill="#0F2235" font-size="12" font-weight="700">FINRA RESPONSE</text>
-    <text x="583" y="411" fill="#607887" font-size="11">Documentation ready</text>
-    <circle cx="673" cy="429" r="4" fill="#2C9B6F"/>
-  </g>
-
-  <rect x="255" y="459" width="250" height="22" rx="11" fill="#DDEAF0"/>
-  <text x="380" y="474" text-anchor="middle" fill="#315F78" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1">ONE COORDINATED FINANCIAL SYSTEM</text>
 </svg>
