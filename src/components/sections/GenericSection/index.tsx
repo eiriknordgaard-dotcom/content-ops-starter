@@ -21,7 +21,7 @@ export default function GenericSection(props) {
         <Section
             elementId={elementId}
             className={classNames('sb-component-generic-section', {
-                'lg:min-h-[68vh] lg:flex lg:items-center': isHero
+                'xl:min-h-[68vh] xl:flex xl:items-center': isHero
             })}
             colors={colors}
             backgroundImage={backgroundImage}
@@ -44,7 +44,7 @@ export default function GenericSection(props) {
                 {hasTextContent && (
                     <div
                         className={classNames('w-full', 'max-w-sectionBody', {
-                            'min-[900px]:max-w-[29rem]': isHero && hasMedia && hasXDirection,
+                            'xl:w-[40%] xl:max-w-none': isHero && hasMedia && hasXDirection,
                             'lg:max-w-[27.5rem]': !isHero && hasMedia && hasXDirection
                         })}
                     >
@@ -70,7 +70,7 @@ export default function GenericSection(props) {
                             <Markdown
                                 options={{ forceBlock: true, forceWrapper: true }}
                                 className={classNames('sb-markdown', 'sm:text-lg', styles?.text ? mapStyles(styles?.text) : undefined, {
-                                    [isHero ? 'mt-10' : 'mt-6']: badge?.label || title?.text || subtitle
+                                    'mt-6': badge?.label || title?.text || subtitle
                                 })}
                                 {...(enableAnnotations && { 'data-sb-field-path': '.text' })}
                             >
@@ -85,9 +85,7 @@ export default function GenericSection(props) {
                                     mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }),
                                     'items-center',
                                     'gap-4',
-                                    {
-                                        [isHero ? 'mt-12' : 'mt-8']: badge?.label || title?.text || subtitle || text
-                                    }
+                                    { 'mt-8': badge?.label || title?.text || subtitle || text }
                                 )}
                                 {...(enableAnnotations && { 'data-sb-field-path': '.actions' })}
                             >
@@ -115,7 +113,7 @@ export default function GenericSection(props) {
                     <div
                         className={classNames('w-full', 'flex', mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }), {
                             'max-w-sectionBody': media.__metadata.modelName === 'FormBlock',
-                            'min-[900px]:w-[48%] min-[900px]:shrink-0': isHero && hasTextContent && hasXDirection,
+                            'max-w-[760px] mx-auto xl:mx-0 xl:w-[56%] xl:max-w-none xl:shrink-0': isHero && hasTextContent && hasXDirection,
                             'lg:w-[57.5%] lg:shrink-0': !isHero && hasTextContent && hasXDirection,
                             'lg:mt-10': badge?.label && media.__metadata.modelName === 'FormBlock' && hasXDirection
                         })}
@@ -145,13 +143,13 @@ function mapFlexDirectionStyles(flexDirection: string, hasTextContent: boolean, 
         case 'row':
             return hasTextContent && hasMedia
                 ? isHero
-                    ? 'flex-col min-[900px]:flex-row min-[900px]:justify-between'
+                    ? 'flex-col xl:flex-row xl:justify-between'
                     : 'flex-col lg:flex-row lg:justify-between'
                 : 'flex-col';
         case 'row-reverse':
             return hasTextContent && hasMedia
                 ? isHero
-                    ? 'flex-col min-[900px]:flex-row-reverse min-[900px]:justify-between'
+                    ? 'flex-col xl:flex-row-reverse xl:justify-between'
                     : 'flex-col lg:flex-row-reverse lg:justify-between'
                 : 'flex-col';
         case 'col':
@@ -166,11 +164,11 @@ function mapFlexDirectionStyles(flexDirection: string, hasTextContent: boolean, 
 function mapAlignItemsStyles(alignItems: string, isHero: boolean) {
     switch (alignItems) {
         case 'flex-start':
-            return isHero ? 'min-[900px]:items-start' : 'lg:items-start';
+            return isHero ? 'xl:items-start' : 'lg:items-start';
         case 'flex-end':
-            return isHero ? 'min-[900px]:items-end' : 'lg:items-end';
+            return isHero ? 'xl:items-end' : 'lg:items-end';
         case 'center':
-            return isHero ? 'min-[900px]:items-center' : 'lg:items-center';
+            return isHero ? 'xl:items-center' : 'lg:items-center';
         default:
             return null;
     }

@@ -10,13 +10,10 @@ sections:
     subtitle: ''
     text: >
       Outsourced Financial and Operations Principal support for broker-dealers
-      that need disciplined financial oversight and reliable regulatory
-      reporting. Services include ongoing net capital monitoring, FOCUS
-      filings, audit preparation, and FINRA exam support for introducing
-      broker-dealers that require experienced FINOP leadership without hiring a
-      full-time principal. Based in San Diego, serving firms nationwide.
+      that need reliable net capital oversight, regulatory reporting, and audit
+      readiness—without adding a full-time principal.
     actions:
-      - label: Schedule a Confidential Introduction
+      - label: Schedule a 30-Minute Call
         altText: Schedule a confidential 30-minute introductory call
         url: https://calendly.com/eirik-nordgaard/30min
         showIcon: false
@@ -25,7 +22,7 @@ sections:
         style: primary
         elementId: ''
         type: Button
-      - label: Explore Services
+      - label: View Services
         altText: See FINOP services offered
         url: '#services'
         showIcon: true
@@ -43,7 +40,7 @@ sections:
       label: Outsourced FINOP · Series 28
       color: text-primary
       type: Badge
-    bottomText: 30-minute introductory call · No obligation
+    bottomText: Confidential · No obligation · Nationwide support
     elementId: ''
     colors: bg-light-fg-dark
     styles:
@@ -51,10 +48,10 @@ sections:
         alignItems: center
         flexDirection: row
         padding:
-          - pt-20
-          - pl-16
-          - pb-24
-          - pr-16
+          - pt-14
+          - pl-6
+          - pb-16
+          - pr-6
   - title: Divider
     colors: bg-light-fg-dark
     styles:
