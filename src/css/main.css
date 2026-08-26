@@ -407,7 +407,11 @@
         line-height: 1.65;
     }
     #services-projects .featured-items-footer {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         margin-top: 3rem;
+        text-align: center;
     }
     #services-projects .featured-items-bottom-text {
         color: rgba(15, 34, 53, 0.55);
