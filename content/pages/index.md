@@ -9,9 +9,9 @@ sections:
       type: TitleBlock
     subtitle: ''
     text: >
-      Flexible, fractional Series 28 support that keeps your books and records,
-      net capital, FOCUS filings, audits, and FINRA responses organized, ready,
-      and compliant.
+      Flexible, fractional Series 28 support that helps keep your books and
+      records, net capital, FOCUS filings, audits, and FINRA responses
+      organized, ready, and compliant.
     actions:
       - label: Schedule a 30-Minute Call
         altText: Schedule a confidential 30-minute introductory call
@@ -189,7 +189,7 @@ sections:
         tagline: Rule 17a-5
         text: >-
           Year-end preparation, tie-outs, schedules, and auditor coordination
-          that make the Rule 17a-5 audit process orderly and efficient.
+          for an orderly Rule 17a-5 audit.
         actions: []
         elementId: null
         colors: bg-light-fg-dark
