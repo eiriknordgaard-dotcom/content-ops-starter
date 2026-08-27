@@ -1,7 +1,7 @@
 module.exports = {
     ci: {
         collect: {
-            startServerCommand: 'node node_modules/serve/build/main.js out -l 4173 --no-clipboard',
+            startServerCommand: 'node node_modules/serve/build/main.js out -l 4173 --no-clipboard 2>&1',
             startServerReadyPattern: 'Local:',
             url: [
                 'http://127.0.0.1:4173/',

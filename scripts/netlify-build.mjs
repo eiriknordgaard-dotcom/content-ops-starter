@@ -7,7 +7,7 @@ const projectDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.
 const steps = [
     ['scripts/generate-sitemap.mjs'],
     ['scripts/check-seo.mjs'],
-    ['node_modules/next/dist/bin/next', 'build']
+    ['node_modules/next/dist/bin/next', 'build', '--webpack']
 ];
 
 for (const args of steps) {
