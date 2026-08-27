@@ -4,7 +4,7 @@ const checks = [
     { path: '/', status: 200, contains: 'Outsourced FINOP Consultant' },
     { path: '/sitemap.xml', status: 200, contains: '<urlset' },
     { path: '/robots.txt', status: 200, contains: 'Sitemap: https://eiriknordgaard.com/sitemap.xml' },
-    { path: '/missing-production-monitor/', status: 404, contains: 'Page Not Found' },
+    { path: '/missing-production-monitor/', status: 404, contains: 'That page is not available.' },
     { path: '/api/calendly-webhook', status: 200, contains: '"ok":true' }
 ];
 

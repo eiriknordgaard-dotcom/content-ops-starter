@@ -1,4 +1,5 @@
 import { spawnSync } from 'node:child_process';
+import { copyFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -20,4 +21,9 @@ for (const args of steps) {
     if (result.status !== 0) {
         process.exit(result.status ?? 1);
     }
+}
+
+const exported404 = path.join(projectDir, 'out', '404', 'index.html');
+if (existsSync(exported404)) {
+    copyFileSync(exported404, path.join(projectDir, 'out', '404.html'));
 }
