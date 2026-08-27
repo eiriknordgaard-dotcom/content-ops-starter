@@ -1,4 +1,4 @@
-import { getStore } from '@netlify/blobs';
+import { getDeployStore, getStore } from '@netlify/blobs';
 import type { Config, Context } from '@netlify/functions';
 
 declare const Netlify: {
@@ -7,7 +7,10 @@ declare const Netlify: {
     };
 };
 
-const processedEvents = getStore({ name: 'calendly-webhook-events', consistency: 'strong' });
+const getProcessedEvents = (context: Context) =>
+    context.deploy.context === 'production'
+        ? getStore({ name: 'calendly-webhook-events', consistency: 'strong' })
+        : getDeployStore({ name: 'calendly-webhook-events', deployID: context.deploy.id, consistency: 'strong' });
 
 const json = (body: Record<string, unknown>, status = 200) =>
     new Response(JSON.stringify(body), {
@@ -112,6 +115,7 @@ const calendlyWebhook = async (request: Request, context: Context) => {
             : {};
     const sourceId = String(payload.uri || scheduledEvent.uri || webhook.created_at || 'calendly-booking');
     const eventKey = `invitee-created/${await sha256(sourceId)}`;
+    const processedEvents = getProcessedEvents(context);
     const existingEvent = await processedEvents.getMetadata(eventKey);
 
     if (existingEvent) {
