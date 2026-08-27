@@ -1,16 +1,26 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import Markdown from 'markdown-to-jsx';
 
 import { getComponent } from '../../components-registry';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 import SubmitButtonFormControl from './SubmitButtonFormControl';
+import { trackEvent } from '../../../utils/analytics';
 
 export default function FormBlock(props) {
     const [status, setStatus] = React.useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-    const { fields = [], elementId, submitButton, className, styles = {}, 'data-sb-field-path': fieldPath } = props;
+    const formStarted = React.useRef(false);
+    const { fields = [], elementId, heading, privacyText, submitButton, className, styles = {}, 'data-sb-field-path': fieldPath } = props;
+    const formName = elementId || 'contact-form';
 
     if (fields.length === 0) {
         return null;
+    }
+
+    function handleFormStart() {
+        if (formStarted.current) return;
+        formStarted.current = true;
+        trackEvent('form_start', { form_name: formName, form_type: 'contact' });
     }
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -35,8 +45,11 @@ export default function FormBlock(props) {
 
             form.reset();
             setStatus('success');
+            trackEvent('contact_form_submit', { form_name: formName });
+            trackEvent('generate_lead', { form_name: formName, lead_type: 'contact_form' });
         } catch {
             setStatus('error');
+            trackEvent('contact_form_error', { form_name: formName, error_type: 'submission_failed' });
         }
     }
 
@@ -62,12 +75,19 @@ export default function FormBlock(props) {
             id={elementId}
             method="POST"
             onSubmit={handleSubmit}
+            onFocus={handleFormStart}
             data-netlify="true"
             data-netlify-honeypot="bot-field"
             data-sb-field-path={fieldPath}
         >
+            {heading && (
+                <div className="contact-form-heading">
+                    <span className="contact-form-status" aria-hidden="true" />
+                    <h3 {...(fieldPath && { 'data-sb-field-path': '.heading' })}>{heading}</h3>
+                </div>
+            )}
             <div
-                className={classNames('w-full', 'flex', 'flex-wrap', 'gap-8', mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }))}
+                className={classNames('contact-form-fields', 'w-full', 'flex', 'flex-wrap', 'gap-8', mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }))}
                 {...(fieldPath && { 'data-sb-field-path': '.fields' })}
             >
                 <input type="hidden" name="form-name" value={elementId} />
@@ -89,7 +109,7 @@ export default function FormBlock(props) {
                 })}
             </div>
             {submitButton && (
-                <div className={classNames('mt-8', 'flex', mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }))}>
+                <div className={classNames('contact-form-submit', 'mt-8', 'flex', mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }))}>
                     <SubmitButtonFormControl
                         {...submitButton}
                         disabled={status === 'submitting'}
@@ -97,11 +117,18 @@ export default function FormBlock(props) {
                     />
                 </div>
             )}
-            <div className="mt-4 text-sm" aria-live="polite">
-                {status === 'submitting' && <p>Sending your message…</p>}
-                {status === 'success' && <p>Thank you. Your message has been sent.</p>}
-                {status === 'error' && <p>Something went wrong. Please email me directly or try again.</p>}
-            </div>
+            {privacyText && (
+                <Markdown className="contact-form-privacy" {...(fieldPath && { 'data-sb-field-path': '.privacyText' })}>
+                    {privacyText}
+                </Markdown>
+            )}
+            {status !== 'idle' && (
+                <div className="mt-4 text-sm" aria-live="polite">
+                    {status === 'submitting' && <p>Sending your message…</p>}
+                    {status === 'success' && <p>Thank you. Your message has been sent.</p>}
+                    {status === 'error' && <p>Something went wrong. Please email me directly or try again.</p>}
+                </div>
+            )}
         </form>
     );
 }

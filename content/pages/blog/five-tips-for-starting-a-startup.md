@@ -1,6 +1,7 @@
 ---
 title: 5 Tips for Starting a Startup
 slug: five-tips-for-starting-a-startup
+isDraft: true
 date: '2023-03-18'
 excerpt: >-
   Sit ratione eligendi et quis distinctio et maiores accusantium aut accusamus
@@ -15,7 +16,6 @@ featuredImage:
       borderRadius: medium
 bottomSections: []
 isFeatured: false
-isDraft: false
 seo:
   metaTitle: 5 Tips for Starting a Startup
   metaDescription: You can add the excerpt and main keywords of your blog post here.

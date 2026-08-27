@@ -30,6 +30,14 @@ export const Header: Model = {
             localized: false
         },
         {
+            type: 'string',
+            name: 'subtitle',
+            label: 'Subtitle',
+            required: false,
+            hidden: false,
+            localized: false
+        },
+        {
             type: 'model',
             name: 'logo',
             label: 'Logo',

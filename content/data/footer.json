@@ -1,65 +1,15 @@
 {
-    "title": "Eirik Nordgaard",
-    "text": "Outsourced FINOP for introducing broker-dealers. Net capital, FOCUS reporting, audit readiness, and FINRA exam support. San Diego-based, serving broker-dealers nationally.",
-    "primaryLinks": {
-        "title": "Services",
-        "links": [
-            {
-                "label": "What I Do",
-                "altText": "FINOP services",
-                "url": "/#services",
-                "icon": "arrowRight",
-                "iconPosition": "right",
-                "style": "secondary",
-                "type": "Link"
-            },
-            {
-                "label": "Licenses",
-                "url": "/#licenses",
-                "icon": "arrowRight",
-                "iconPosition": "right",
-                "style": "secondary",
-                "type": "Link"
-            }
-        ],
-        "type": "FooterLinksGroup"
-    },
-    "secondaryLinks": {
-        "title": "Connect",
-        "links": [
-            {
-                "label": "Contact",
-                "altText": "Get in touch",
-                "url": "/#contact",
-                "icon": "arrowRight",
-                "iconPosition": "right",
-                "style": "secondary",
-                "type": "Link"
-            },
-            {
-                "label": "LinkedIn",
-                "url": "https://www.linkedin.com/in/eiriknordgaard",
-                "icon": "arrowRight",
-                "iconPosition": "right",
-                "style": "secondary",
-                "type": "Link"
-            },
-            {
-                "label": "Email",
-                "url": "mailto:eirik.nordgaard@gmail.com",
-                "icon": "arrowRight",
-                "iconPosition": "right",
-                "style": "secondary",
-                "type": "Link"
-            }
-        ],
-        "type": "FooterLinksGroup"
-    },
     "socialLinks": [
         {
             "altText": "LinkedIn",
             "url": "https://www.linkedin.com/in/eiriknordgaard",
             "icon": "linkedin",
+            "type": "Social"
+        },
+        {
+            "altText": "Verify Eirik Nordgaard on FINRA BrokerCheck",
+            "url": "https://brokercheck.finra.org/individual/summary/6882463#examsSection",
+            "icon": "brokercheck",
             "type": "Social"
         },
         {
@@ -71,15 +21,25 @@
     ],
     "legalLinks": [
         {
+            "label": "Series 28 FINOP Consultant",
+            "url": "/fractional-finop/",
+            "style": "secondary",
+            "type": "Link"
+        },
+        {
+            "label": "FINOP Readiness Checklist",
+            "url": "/finop-audit-readiness-checklist/",
+            "style": "secondary",
+            "type": "Link"
+        },
+        {
             "label": "Privacy Policy",
             "url": "/privacy/",
-            "icon": "arrowRight",
-            "iconPosition": "right",
             "style": "secondary",
             "type": "Link"
         }
     ],
-    "copyrightText": "© 2026 Eirik Nordgaard. All rights reserved.\n",
+    "copyrightText": "© 2026 Eirik Nordgaard\n",
     "colors": "bg-dark-fg-light",
     "type": "Footer"
 }

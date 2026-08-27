@@ -2,6 +2,7 @@
 type: PostLayout
 title: Track the right analytics for your business
 slug: track-the-right-analytics-for-your-business
+isDraft: true
 date: '2023-02-20'
 excerpt: >-
   Sit ratione eligendi et quis distinctio et maiores accusantium aut accusamus
@@ -16,7 +17,6 @@ featuredImage:
       borderRadius: medium
 bottomSections: []
 isFeatured: false
-isDraft: false
 seo:
   metaTitle: Track the right analytics for your business
   metaDescription: You can add the excerpt and main keywords of your blog post here.

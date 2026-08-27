@@ -1,6 +1,7 @@
 ---
 title: A Day in the Life of Our Development Team
 slug: life-of-our-development-team
+isDraft: true
 date: '2025-01-15'
 excerpt: >-
   Vel repellat dolores ut unde voluptatum ut optio voluptates est aliquid. Ut

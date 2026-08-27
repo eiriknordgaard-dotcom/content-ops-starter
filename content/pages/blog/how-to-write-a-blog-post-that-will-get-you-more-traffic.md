@@ -2,6 +2,7 @@
 type: PostLayout
 title: How to Write a Blog Post That Will Get You More Traffic
 slug: how-to-write-a-blog-post-that-will-get-you-more-traffic
+isDraft: true
 date: '2023-01-18'
 excerpt: >-
   Sit ratione eligendi et quis distinctio et maiores accusantium aut accusamus
@@ -16,7 +17,6 @@ featuredImage:
       borderRadius: medium
 bottomSections: []
 isFeatured: false
-isDraft: false
 seo:
   metaTitle: How to Write a Blog Post That Will Get You More Traffic
   metaDescription: You can add the excerpt and main keywords of your blog post here.

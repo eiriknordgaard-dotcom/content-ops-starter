@@ -31,11 +31,13 @@ export function getComponent(key: string): ComponentType {
  *     return <Section {...section} />;
  */
 const components = {
+    ApproachSection: dynamic(() => import('./sections/ApproachSection')),
     AutoCompletePosts: dynamic(() => import('./blocks/SearchBlock/AutoCompletePosts')),
     CarouselSection: dynamic(() => import('./sections/CarouselSection')),
     CheckboxFormControl: dynamic(() => import('./blocks/FormBlock/CheckboxFormControl')),
     DividerSection: dynamic(() => import('./sections/DividerSection')),
     EmailFormControl: dynamic(() => import('./blocks/FormBlock/EmailFormControl')),
+    FaqSection: dynamic(() => import('./sections/FaqSection')),
     FeaturedItem: dynamic(() => import('./sections/FeaturedItemsSection/FeaturedItem')),
     FeaturedItemToggle: dynamic(() => import('./sections/FeaturedItemsSection/FeaturedItemToggle')),
     FeaturedItemsSection: dynamic(() => import('./sections/FeaturedItemsSection')),

@@ -9,7 +9,17 @@
             <input type="hidden" name="form-name" value="contact-form" />
             <input type="text" name="name" />
             <input type="email" name="email" />
+            <input type="text" name="firm" />
             <textarea name="message"></textarea>
+            <input name="bot-field" />
+        </form>
+        <form name="finop-checklist-download" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+            <input type="hidden" name="form-name" value="finop-checklist-download" />
+            <input type="hidden" name="resource" />
+            <input type="hidden" name="subject" />
+            <input type="email" name="email" />
+            <input type="text" name="firm" />
+            <input type="checkbox" name="marketing-consent" value="yes" />
             <input name="bot-field" />
         </form>
     </body>

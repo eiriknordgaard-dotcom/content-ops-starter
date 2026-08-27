@@ -1,6 +1,7 @@
 ---
 title: Case study 2
 slug: case-study-2
+isDraft: true
 date: '2022-02-16'
 excerpt: >-
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem,

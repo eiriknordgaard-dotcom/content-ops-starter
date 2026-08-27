@@ -1,17 +1,19 @@
 ---
-title: Outsourced FINOP Services for Broker-Dealers
+title: FINOP Consultant and Outsourced FINOP Services
 slug: /
+datePublished: '2026-08-26'
+dateModified: '2026-08-27'
 sections:
   - type: GenericSection
     title:
-      text: Outsourced FINOP oversight for broker-dealers.
+      text: Outsourced FINOP Consultant for Broker-Dealers
       color: text-dark
       type: TitleBlock
     subtitle: ''
     text: >
-      Flexible, fractional Series 28 support that helps keep your books and
-      records, net capital, FOCUS filings, audits, and FINRA responses
-      organized, ready, and compliant.
+      Work directly with an experienced FINOP consultant for outsourced Series
+      28 support that keeps your books and records, net capital, FOCUS filings,
+      audits, and FINRA responses organized, ready, and compliant.
     actions:
       - label: Schedule a 30-Minute Call
         altText: Schedule a confidential 30-minute introductory call
@@ -37,7 +39,7 @@ sections:
       elementId: ''
       type: ImageBlock
     badge:
-      label: Fractional Support · Series 28
+      label: FINOP Consulting · Series 28
       color: text-primary
       type: Badge
     bottomText: Confidential · No obligation · Nationwide support
@@ -64,7 +66,7 @@ sections:
     type: DividerSection
   - type: FeaturedItemsSection
     title:
-      text: FINOP oversight, organized around your firm.
+      text: FINOP Consulting, Organized Around Your Firm
       color: text-dark
       styles:
         self:
@@ -301,28 +303,70 @@ sections:
           - pb-7
           - pr-7
     type: DividerSection
-  - title:
-      text: Who I Support
+  - type: FeaturedItemsSection
+    title:
+      text: FINOP Support for Every Stage of Your Firm
       color: text-dark
       styles:
         self:
           textAlign: center
       type: TitleBlock
-    subtitle: >-
-      Introducing broker-dealers at formation and growth stages, and firms
-      that need structured, disciplined outsourced FINOP oversight.
-    text: >-
-      I work with introducing broker-dealers that require disciplined net
-      capital oversight and reliable financial infrastructure. Whether you're
-      forming a new broker-dealer and building operations from the ground up,
-      or you're an established firm seeking an experienced outsourced Financial
-      and Operations Principal, I provide direct, hands-on regulatory finance
-      support to keep your firm compliant, organized, and audit-ready.
-    media:
-      url: /images/clients-financial-ops.svg
-      altText: Abstract financial oversight graphic with ascending capital monitoring bars, a capital ratio ring metric, proportion indicators, and a trend monitoring sweep
-      elementId: ''
-      type: ImageBlock
+    description: >-
+      I work with introducing broker-dealers that need experienced financial
+      oversight without building a full internal FINOP function.
+    items:
+      - type: FeaturedItem
+        tagline: Formation
+        title: Forming a Broker-Dealer
+        text: >-
+          Build the reporting routines, controls, and capital processes needed
+          for an organized and compliant launch.
+        image:
+          type: ImageBlock
+          url: /images/client-formation.svg
+          altText: Connected formation controls with completed status checks
+          elementId: ''
+        actions: []
+        colors: bg-light-fg-dark
+        styles:
+          self:
+            padding:
+              - pt-6
+              - pl-6
+              - pb-6
+              - pr-6
+            borderRadius: x-large
+            flexDirection: col
+            textAlign: left
+      - type: FeaturedItem
+        tagline: Ongoing
+        title: Established or Growing Firm
+        text: >-
+          Add disciplined FINOP oversight that supports daily operations,
+          regulatory reporting, and continued growth.
+        image:
+          type: ImageBlock
+          url: /images/client-ongoing.svg
+          altText: Financial oversight dashboard showing monitored activity and completed checks
+          elementId: ''
+        actions: []
+        colors: bg-light-fg-dark
+        styles:
+          self:
+            padding:
+              - pt-6
+              - pl-6
+              - pb-6
+              - pr-6
+            borderRadius: x-large
+            flexDirection: col
+            textAlign: left
+    supportingItems:
+      - Introducing broker-dealers
+      - Fractional Series 28 oversight
+      - Formation, growth, or ongoing operations
+      - Nationwide support
+    actions: []
     badge:
       label: Clients
       color: text-primary
@@ -333,18 +377,15 @@ sections:
     colors: bg-light-fg-dark
     styles:
       self:
-        flexDirection: col
         justifyContent: center
         padding:
-          - pt-28
-          - pb-16
-          - pl-4
-          - pr-4
+          - pt-16
+          - pb-12
+          - pl-6
+          - pr-6
       subtitle:
         textAlign: center
-      text:
-        textAlign: center
-    type: GenericSection
+    variant: two-col-grid
     elementId: about
   - title: Divider
     colors: bg-light-fg-dark
@@ -356,44 +397,61 @@ sections:
           - pb-7
           - pr-7
     type: DividerSection
-  - title:
-      text: |-
-        Why Firms Rely
-        on Me
-      color: text-dark
-      type: TitleBlock
-    subtitle: Regulatory finance for real broker-dealer operations
-    text: >
-      I have served as both an internal Financial Principal and a long-term
-      outsourced FINOP, with hands-on experience supporting broker-dealer
-      operations, regulatory reporting, and net capital oversight. That allows
-      me to approach FINOP consulting work as part of the infrastructure that
-      helps a firm stay compliant, organized, and built to scale.
-    actions:
-      - label: Get In Touch
-        url: '#contact'
-        icon: arrowRight
-        iconPosition: right
-        style: secondary
-        type: Button
-    media:
-      url: /images/hero2.svg
-      altText: Outsourced FINOP services illustration with compliance dashboard and broker-dealer reporting metrics
-      type: ImageBlock
+  - type: ApproachSection
     badge:
       label: Approach
       color: text-primary
       type: Badge
+    title:
+      text: Hands-On FINOP Consulting, Backed by Principal-Level Experience
+      color: text-dark
+      type: TitleBlock
+    intro: >-
+      As an outsourced FINOP consultant, I bring internal FINOP experience to
+      a flexible external role, working directly with management to keep
+      financial reporting, controls, and regulatory responsibilities organized.
+    principles:
+      - title: Direct accountability
+        text: >-
+          Hands-on involvement in the books, filings, controls, and financial
+          decisions that shape your operation.
+        icon: accountability
+      - title: Proactive oversight
+        text: >-
+          Clear updates on deadlines, capital position, open items, and what
+          needs attention next.
+        icon: oversight
+      - title: Operational continuity
+        text: >-
+          Repeatable routines and organized records that make filings, audits,
+          and regulatory requests easier to manage.
+        icon: continuity
+    profileImage:
+      type: ImageBlock
+      url: /images/eirik-nordgaard-white.jpg
+      altText: Eirik Nordgaard
+      elementId: ''
+    profileName: Eirik Nordgaard
+    profileLinkedIn: https://www.linkedin.com/in/eiriknordgaard
+    profileBrokerCheck: https://brokercheck.finra.org/individual/summary/6882463#examsSection
+    qualifications:
+      - series: '28'
+        title: Series 28
+        subtitle: FINOP Qualification
+      - series: '24'
+        title: Series 24
+        subtitle: General Securities Principal
+      - series: 7/63
+        title: Series 7 / 63
+        subtitle: Representative Qualifications
     colors: bg-light-fg-dark
     styles:
       self:
-        alignItems: center
         padding:
-          - pt-24
-          - pb-24
-          - pl-4
-          - pr-4
-    type: GenericSection
+          - pt-16
+          - pb-16
+          - pl-6
+          - pr-6
     elementId: why
   - title: Divider
     colors: bg-light-fg-dark
@@ -405,142 +463,55 @@ sections:
           - pb-7
           - pr-7
     type: DividerSection
-  - type: FeaturedItemsSection
-    title:
-      text: FINRA Licenses
+  - title:
+      text: Let's Discuss Your FINOP Consulting Needs
       color: text-dark
-      styles:
-        self:
-          textAlign: center
       type: TitleBlock
     subtitle: ''
-    items:
-      - type: FeaturedItem
-        title: Series 28
-        subtitle: FINOP Qualification
-        text: ''
-        actions: []
-        elementId: null
-        colors: bg-neutralAlt-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-8
-              - pl-8
-              - pb-8
-              - pr-8
-            borderRadius: x-large
-            flexDirection: row
-            justifyContent: center
-            textAlign: left
-        image:
-          type: ImageBlock
-          altText: Series 28 icon
-          elementId: ''
-          url: /images/icon1.svg
-          styles:
-            self:
-              borderRadius: x-large
-      - title: Series 24
-        subtitle: General Securities Principal
-        text: ''
-        image:
-          url: /images/icon2.svg
-          altText: Series 24 icon
-          elementId: ''
-          type: ImageBlock
-        actions: []
-        colors: bg-neutralAlt-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-8
-              - pl-8
-              - pb-8
-              - pr-8
-            borderRadius: x-large
-            flexDirection: row
-            textAlign: left
-            justifyContent: center
-        type: FeaturedItem
-      - title: Series 7 / 63
-        subtitle: Representative Qualification
-        text: ''
-        image:
-          url: /images/icon3.svg
-          altText: Series 7 and 63 icon
-          elementId: ''
-          type: ImageBlock
-        actions: []
-        colors: bg-neutralAlt-fg-dark
-        styles:
-          self:
-            padding:
-              - pt-8
-              - pl-8
-              - pb-8
-              - pr-8
-            borderRadius: x-large
-            flexDirection: row
-        type: FeaturedItem
-    actions: []
-    badge:
-      label: Licensing
-      color: text-primary
-      styles:
-        self:
-          textAlign: center
-      type: Badge
-    elementId: licenses
-    variant: three-col-grid
-    colors: bg-light-fg-dark
-    styles:
-      self:
-        padding:
-          - pb-16
-          - pt-16
-          - pl-16
-          - pr-16
-        justifyContent: center
-  - title: Divider
-    colors: bg-light-fg-dark
-    styles:
-      self:
-        padding:
-          - pt-7
-          - pl-7
-          - pb-7
-          - pr-7
-    type: DividerSection
-  - title:
-      text: Get In Touch
-      color: text-dark
-      type: TitleBlock
-    subtitle: Discuss your firm's FINOP and regulatory finance needs
     text: |
-      Whether you are forming a new broker-dealer, need ongoing outsourced FINOP support, or want help preparing for an audit or FINRA examination, feel free to reach out. I work with introducing broker-dealers across California and nationwide, and I'm happy to discuss your firm's needs.
+      Tell me where your firm is today and what kind of support you need. I'll follow up personally to discuss the right next step.
 
-      Information submitted through this form is handled as described in the [Privacy Policy](/privacy/).
+      - Confidential conversation
+      - Response within one business day
+    actions:
+      - label: Prefer to talk? Schedule a 30-minute call
+        altText: Schedule a confidential 30-minute introductory call
+        url: https://calendly.com/eirik-nordgaard/30min
+        showIcon: true
+        icon: arrowRight
+        iconPosition: right
+        style: primary
+        elementId: ''
+        type: Link
     media:
+      heading: Send a confidential message
+      privacyText: Your information is kept private and used only to respond to your inquiry. [Privacy Policy](/privacy/)
       fields:
         - name: name
-          label: Name
-          hideLabel: true
-          placeholder: Full name
+          label: Full name
+          hideLabel: false
+          placeholder: Your full name
           isRequired: true
-          width: full
+          width: 1/2
           type: TextFormControl
         - name: email
-          label: Email
-          hideLabel: true
-          placeholder: Email address
+          label: Work email
+          hideLabel: false
+          placeholder: you@firm.com
           isRequired: true
-          width: full
+          width: 1/2
           type: EmailFormControl
+        - name: firm
+          label: Firm name (optional)
+          hideLabel: false
+          placeholder: Your firm
+          isRequired: false
+          width: full
+          type: TextFormControl
         - name: message
-          label: Message
-          hideLabel: true
-          placeholder: Tell me a bit about your firm and how I may be able to help
+          label: How can I help?
+          hideLabel: false
+          placeholder: Tell me briefly about your firm and what you need help with
           width: full
           type: TextareaFormControl
       elementId: contact-form
@@ -555,7 +526,7 @@ sections:
       type: FormBlock
       submitButton:
         type: SubmitButtonFormControl
-        label: Send Message
+        label: Send Confidential Message
         showIcon: false
         icon: arrowRight
         iconPosition: right
@@ -571,21 +542,21 @@ sections:
     styles:
       self:
         padding:
-          - pt-28
-          - pb-28
+          - pt-16
+          - pb-16
           - pl-4
           - pr-4
 seo:
-  metaTitle: Outsourced FINOP Services for Broker-Dealers | Eirik Nordgaard
+  metaTitle: FINOP Consultant & Outsourced FINOP Services | Eirik Nordgaard
   addTitleSuffix: false
   metaDescription: >-
-    Independent outsourced FINOP support for broker-dealers, including net
-    capital oversight, FOCUS reporting, audit preparation, financial
-    infrastructure, and FINRA exam support.
+    FINOP consultant providing outsourced Series 28 services for introducing
+    broker-dealers, including net capital, FOCUS filings, audits, and FINRA
+    responses.
   socialImage: /images/main-hero.jpg
   metaTags:
     - property: og:description
-      content: Independent outsourced FINOP support for broker-dealers, including net capital oversight, FOCUS reporting, audit preparation, financial infrastructure, and FINRA exam support.
+      content: FINOP consultant providing outsourced Series 28 services for introducing broker-dealers, including net capital, FOCUS filings, audits, books and records, and FINRA responses.
     - property: og:type
       content: website
     - property: og:site_name
@@ -595,9 +566,9 @@ seo:
     - property: twitter:card
       content: summary_large_image
     - property: twitter:title
-      content: Outsourced FINOP Services for Broker-Dealers | Eirik Nordgaard
+      content: FINOP Consultant & Outsourced FINOP Services | Eirik Nordgaard
     - property: twitter:description
-      content: Independent outsourced FINOP support for broker-dealers, including net capital oversight, FOCUS reporting, audit preparation, financial infrastructure, and FINRA exam support.
+      content: FINOP consultant providing outsourced Series 28 services for introducing broker-dealers, including net capital, FOCUS filings, audits, books and records, and FINRA responses.
   type: Seo
 type: PageLayout
 ---

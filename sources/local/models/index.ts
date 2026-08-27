@@ -1,3 +1,4 @@
+import { ApproachSection } from './ApproachSection';
 import { BackgroundImage } from './BackgroundImage';
 import { Badge } from './Badge';
 import { Button } from './Button';
@@ -10,6 +11,7 @@ import { FeaturedItem } from './FeaturedItem';
 import { FeaturedItemsSection } from './FeaturedItemsSection';
 import { FeaturedPeopleSection } from './FeaturedPeopleSection';
 import { FeaturedPostsSection } from './FeaturedPostsSection';
+import { FaqSection } from './FaqSection';
 import { Footer } from './Footer';
 import { FormBlock } from './FormBlock';
 import { GenericSection } from './GenericSection';
@@ -44,6 +46,7 @@ import { FooterLinksGroup } from './FooterLinksGroup';
 import { Seo } from './Seo';
 
 export const allModels = {
+    ApproachSection,
     BackgroundImage,
     Badge,
     Button,
@@ -56,6 +59,7 @@ export const allModels = {
     FeaturedItemsSection,
     FeaturedPeopleSection,
     FeaturedPostsSection,
+    FaqSection,
     Footer,
     FormBlock,
     GenericSection,

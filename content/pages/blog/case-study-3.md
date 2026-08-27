@@ -1,6 +1,7 @@
 ---
 title: Case study 3
 slug: case-study-3
+isDraft: true
 date: '2021-11-18'
 excerpt: >-
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante lorem,

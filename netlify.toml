@@ -1,3 +1,53 @@
 [build]
-  command = "npm run build"
-  publish = ".next"
+  command = "node scripts/netlify-build.mjs"
+  publish = "out"
+
+[functions]
+  included_files = [
+    "!node_modules/@img/sharp-darwin-*/**/*",
+    "!node_modules/@img/sharp-win32-*/**/*",
+    "!node_modules/@img/sharp-wasm32/**/*",
+    "!node_modules/@img/sharp-linux-arm/**/*",
+    "!node_modules/@img/sharp-linux-arm64/**/*",
+    "!node_modules/@img/sharp-linux-ppc64/**/*",
+    "!node_modules/@img/sharp-linux-riscv64/**/*",
+    "!node_modules/@img/sharp-linux-s390x/**/*",
+    "!node_modules/@img/sharp-linuxmusl-*/**/*",
+    "!node_modules/@img/sharp-libvips-darwin-*/**/*",
+    "!node_modules/@img/sharp-libvips-linux-arm/**/*",
+    "!node_modules/@img/sharp-libvips-linux-arm64/**/*",
+    "!node_modules/@img/sharp-libvips-linux-ppc64/**/*",
+    "!node_modules/@img/sharp-libvips-linux-riscv64/**/*",
+    "!node_modules/@img/sharp-libvips-linux-s390x/**/*",
+    "!node_modules/@img/sharp-libvips-linuxmusl-*/**/*"
+  ]
+
+[[redirects]]
+  from = "/pricing"
+  to = "/fractional-finop/"
+  status = 301
+
+[[redirects]]
+  from = "/careers"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/blog"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/404.html"
+  status = 404
+
+[[headers]]
+  for = "/*"
+
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"

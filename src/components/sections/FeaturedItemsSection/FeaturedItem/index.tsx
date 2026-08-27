@@ -13,6 +13,7 @@ export default function FeaturedItem(props) {
     const flexDirection = styles?.self?.flexDirection ?? 'col';
     const hasTextContent = !!(tagline || title || subtitle || text || actions.length > 0);
     const hasImage = !!image?.url;
+    const hasClientIllustration = image?.url === '/images/client-formation.svg' || image?.url === '/images/client-ongoing.svg';
 
     return (
         <div
@@ -31,6 +32,7 @@ export default function FeaturedItem(props) {
                     : undefined,
                 styles?.self?.borderRadius ? mapStyles({ borderRadius: styles?.self?.borderRadius }) : undefined,
                 styles?.self?.textAlign ? mapStyles({ textAlign: styles?.self?.textAlign }) : undefined,
+                { relative: hasClientIllustration },
                 'overflow-hidden'
             )}
             data-sb-field-path={fieldPath}
@@ -43,7 +45,12 @@ export default function FeaturedItem(props) {
                             className="featured-item-icon flex"
                             {...(fieldPath && { 'data-sb-field-path': '.image' })}
                         />
-                        <span className="featured-item-status" {...(fieldPath && { 'data-sb-field-path': '.status' })}>
+                        <span
+                            className={classNames('featured-item-status', {
+                                'featured-item-status-ongoing': status?.trim().toLowerCase() === 'ongoing'
+                            })}
+                            {...(fieldPath && { 'data-sb-field-path': '.status' })}
+                        >
                             {status}
                         </span>
                     </div>
@@ -126,6 +133,9 @@ export default function FeaturedItem(props) {
                     </div>
                 )}
             </div>
+            {hasClientIllustration && (
+                <span className="absolute inset-x-0 bottom-0 h-px pointer-events-none" data-client-animation-trigger aria-hidden="true" />
+            )}
         </div>
     );
 }

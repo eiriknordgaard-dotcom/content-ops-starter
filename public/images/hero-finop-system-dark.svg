@@ -1,0 +1,339 @@
+<svg width="760" height="480" viewBox="0 0 760 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="cardShadow" x="-25%" y="-45%" width="150%" height="190%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.09"/>
+    </filter>
+    <filter id="hubShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#000000" flood-opacity="0.13"/>
+    </filter>
+    <style>
+      .system-center {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: system-center-online 400ms cubic-bezier(.2,.8,.2,1) both;
+      }
+
+      .system-center &gt; circle {
+        transform-box: fill-box;
+        transform-origin: center;
+        transform: rotate(-90deg);
+        stroke-dasharray: 490.1;
+        animation:
+          system-ring-online 1640ms linear 360ms both,
+          system-ring-calm 3s ease-in-out 5.2s infinite;
+      }
+
+      .system-connectors path {
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        animation: system-line-online 260ms ease-out both;
+      }
+
+      .system-connector-points circle,
+      .system-card-shells &gt; rect,
+      .system-icon-tiles &gt; rect,
+      .system-icons &gt; g,
+      .system-labels &gt; text {
+        opacity: 0;
+        animation: system-node-online 220ms ease-out both;
+      }
+
+      .system-hub-endpoints circle {
+        transform-box: fill-box;
+        transform-origin: center;
+        opacity: 0;
+        filter: drop-shadow(0 0 0 #30D158);
+        animation:
+          system-node-online 220ms ease-out both,
+          system-hub-ready 3s ease-in-out 5.2s infinite;
+      }
+
+      .system-connectors path:nth-child(1) { animation-delay: 360ms; }
+      .system-connectors path:nth-child(2) { animation-delay: 620ms; }
+      .system-connectors path:nth-child(4) { animation-delay: 880ms; }
+      .system-connectors path:nth-child(6) { animation-delay: 1140ms; }
+      .system-connectors path:nth-child(5) { animation-delay: 1400ms; }
+      .system-connectors path:nth-child(3) { animation-delay: 1660ms; }
+
+      .system-connector-points circle:nth-child(1),
+      .system-card-shells &gt; rect:nth-child(1),
+      .system-icon-tiles &gt; rect:nth-child(1),
+      .system-icons &gt; g:nth-child(1),
+      .system-labels &gt; text:nth-child(1) { animation-delay: 580ms; }
+
+      .system-connector-points circle:nth-child(2),
+      .system-card-shells &gt; rect:nth-child(2),
+      .system-icon-tiles &gt; rect:nth-child(2),
+      .system-icons &gt; g:nth-child(2),
+      .system-labels &gt; text:nth-child(2) { animation-delay: 840ms; }
+
+      .system-connector-points circle:nth-child(4),
+      .system-card-shells &gt; rect:nth-child(4),
+      .system-icon-tiles &gt; rect:nth-child(4),
+      .system-icons &gt; g:nth-child(4),
+      .system-labels &gt; text:nth-child(4) { animation-delay: 1100ms; }
+
+      .system-connector-points circle:nth-child(6),
+      .system-card-shells &gt; rect:nth-child(6),
+      .system-icon-tiles &gt; rect:nth-child(6),
+      .system-icons &gt; g:nth-child(6),
+      .system-labels &gt; text:nth-child(6) { animation-delay: 1360ms; }
+
+      .system-connector-points circle:nth-child(5),
+      .system-card-shells &gt; rect:nth-child(5),
+      .system-icon-tiles &gt; rect:nth-child(5),
+      .system-icons &gt; g:nth-child(5),
+      .system-labels &gt; text:nth-child(5) { animation-delay: 1620ms; }
+
+      .system-connector-points circle:nth-child(3),
+      .system-card-shells &gt; rect:nth-child(3),
+      .system-icon-tiles &gt; rect:nth-child(3),
+      .system-icons &gt; g:nth-child(3),
+      .system-labels &gt; text:nth-child(3) { animation-delay: 1880ms; }
+
+      .system-hub-endpoints circle:nth-child(1) { animation-delay: 580ms, 5.2s; }
+      .system-hub-endpoints circle:nth-child(2) { animation-delay: 840ms, 5.2s; }
+      .system-hub-endpoints circle:nth-child(4) { animation-delay: 1100ms, 5.2s; }
+      .system-hub-endpoints circle:nth-child(6) { animation-delay: 1360ms, 5.2s; }
+      .system-hub-endpoints circle:nth-child(5) { animation-delay: 1620ms, 5.2s; }
+      .system-hub-endpoints circle:nth-child(3) { animation-delay: 1880ms, 5.2s; }
+
+      .system-center-status circle {
+        transform-box: fill-box;
+        transform-origin: center;
+        opacity: 0;
+        animation:
+          system-status-confirm 320ms ease-out both,
+          system-status-heartbeat 3s ease-in-out infinite;
+      }
+
+      .system-center-status circle:nth-child(1) { animation-delay: 2020ms, 5.2s; }
+      .system-center-status circle:nth-child(2) { animation-delay: 2100ms, 5.2s; }
+      .system-center-status circle:nth-child(3) { animation-delay: 2180ms, 5.2s; }
+
+      .system-signals circle {
+        fill: #30D158;
+        opacity: 0;
+        offset-distance: 0%;
+        offset-rotate: 0deg;
+        animation: system-signal-calm 3s ease-in-out 5.2s infinite;
+      }
+
+      .system-signals circle:nth-child(1) { offset-path: path("M266 100 C283 122 292 151 318 178"); }
+      .system-signals circle:nth-child(2) { offset-path: path("M494 100 C477 122 468 151 442 178"); }
+      .system-signals circle:nth-child(3) { offset-path: path("M240 240 H290"); }
+      .system-signals circle:nth-child(4) { offset-path: path("M520 240 H470"); }
+      .system-signals circle:nth-child(5) { offset-path: path("M266 380 C283 358 292 329 318 302"); }
+      .system-signals circle:nth-child(6) { offset-path: path("M494 380 C477 358 468 329 442 302"); }
+
+      @keyframes system-center-online {
+        from { opacity: 0; transform: scale(.95); }
+        to { opacity: 1; transform: scale(1); }
+      }
+
+      @keyframes system-ring-online {
+        from { stroke-dashoffset: 490.1; }
+        to { stroke-dashoffset: 0; }
+      }
+
+      @keyframes system-line-online {
+        from { opacity: .18; stroke-dashoffset: 1; }
+        to { opacity: 1; stroke-dashoffset: 0; }
+      }
+
+      @keyframes system-node-online {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      @keyframes system-status-confirm {
+        0% { opacity: 0; transform: scale(.55); }
+        65% { opacity: 1; transform: scale(1.5); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+
+      @keyframes system-status-heartbeat {
+        0%, 19%, 32%, 100% { opacity: 1; transform: scale(1); }
+        22% { opacity: .78; transform: scale(.92); }
+        26% { opacity: 1; transform: scale(1.24); }
+      }
+
+      @keyframes system-ring-calm {
+        0%, 19%, 32%, 100% { stroke-opacity: .9; stroke-width: 4; }
+        26% { stroke-opacity: 1; stroke-width: 4.6; }
+      }
+
+      @keyframes system-hub-ready {
+        0%, 15%, 100% {
+          opacity: .88;
+          transform: scale(1);
+          filter: drop-shadow(0 0 0 #30D158);
+        }
+        7% {
+          opacity: 1;
+          transform: scale(1.58);
+          filter: drop-shadow(0 0 8px #30D158);
+        }
+      }
+
+      @keyframes system-signal-calm {
+        0%, 9% { opacity: 0; offset-distance: 0%; }
+        10% { opacity: .7; offset-distance: 0%; }
+        23% { opacity: 1; offset-distance: 100%; }
+        28%, 100% { opacity: 0; offset-distance: 100%; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .system-center,
+        .system-center &gt; circle,
+        .system-connectors path,
+        .system-connector-points circle,
+        .system-hub-endpoints circle,
+        .system-card-shells &gt; rect,
+        .system-icon-tiles &gt; rect,
+        .system-icons &gt; g,
+        .system-labels &gt; text,
+        .system-center-status circle,
+        .system-signals circle {
+          animation: none;
+          opacity: 1;
+          transform: none;
+          stroke-dashoffset: 0;
+        }
+
+        .system-signals circle { opacity: 0; }
+      }
+    </style>
+  </defs>
+
+  <g class="system-connectors" stroke="#30D158" stroke-width="2.4" stroke-linecap="round" opacity="0.9">
+    <path pathLength="1" d="M318 178C291 150 282 120 260 91"/>
+    <path pathLength="1" d="M442 178C469 150 478 120 500 91"/>
+    <path pathLength="1" d="M290 240H230"/>
+    <path pathLength="1" d="M470 240H530"/>
+    <path pathLength="1" d="M318 302C291 330 282 360 260 389"/>
+    <path pathLength="1" d="M442 302C469 330 478 360 500 389"/>
+  </g>
+  <g class="system-connector-points" fill="#30D158">
+    <circle cx="318" cy="178" r="3.5"/><circle cx="442" cy="178" r="3.5"/>
+    <circle cx="290" cy="240" r="3.5"/><circle cx="470" cy="240" r="3.5"/>
+    <circle cx="318" cy="302" r="3.5"/><circle cx="442" cy="302" r="3.5"/>
+  </g>
+
+  <g class="system-card-shells" filter="url(#cardShadow)" fill="#1C1C1E" stroke="#30D158" stroke-width="1.5">
+    <rect x="60" y="60" width="200" height="62" rx="18"/>
+    <rect x="500" y="60" width="200" height="62" rx="18"/>
+    <rect x="20" y="209" width="210" height="62" rx="18"/>
+    <rect x="530" y="209" width="210" height="62" rx="18"/>
+    <rect x="60" y="358" width="200" height="62" rx="18"/>
+    <rect x="500" y="358" width="200" height="62" rx="18"/>
+  </g>
+
+  <g class="system-icon-tiles" fill="#2C2C2E">
+    <rect x="73" y="69" width="44" height="44" rx="12"/>
+    <rect x="513" y="69" width="44" height="44" rx="12"/>
+    <rect x="33" y="218" width="44" height="44" rx="12"/>
+    <rect x="543" y="218" width="44" height="44" rx="12"/>
+    <rect x="73" y="367" width="44" height="44" rx="12"/>
+    <rect x="513" y="367" width="44" height="44" rx="12"/>
+  </g>
+
+  <g class="system-icons" stroke="#F5F5F7" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Bookkeeping: balanced ledger -->
+    <g transform="translate(-14.25 -13.65) scale(1.15)">
+      <path d="M84 79.5H106V102.5H84V79.5Z"/>
+      <path d="M89 79.5V102.5M93 86H102M93 91H102M93 96H98"/>
+      <path d="M86.5 86H88M86.5 91H88M86.5 96H88"/>
+      <path d="M98 98L101 101L106 95" stroke="#30D158" stroke-width="2.2"/>
+    </g>
+
+    <!-- Books and records: archived documents -->
+    <g transform="translate(-80.25 -13.65) scale(1.15)">
+      <path d="M524 82H545V102H524V82Z"/>
+      <path d="M528 78H541L545 82H524L528 78Z"/>
+      <path d="M529 88H540M529 93H540M529 98H536"/>
+      <circle cx="543" cy="99" r="3" fill="#30D158" stroke="none"/>
+    </g>
+
+    <!-- Net capital: gauge and reserve -->
+    <g transform="translate(-8.25 -36) scale(1.15)">
+      <path d="M44 248A11 11 0 0 1 66 248"/>
+      <path d="M46 244A10 10 0 0 1 64 240" stroke="#30D158" stroke-width="2.5"/>
+      <path d="M55 248L62 239" stroke="#30D158" stroke-width="2.2"/>
+      <circle cx="55" cy="248" r="2"/>
+      <path d="M46 253H64M48 256H62"/>
+    </g>
+
+    <!-- FOCUS reporting: filed report -->
+    <g transform="translate(-84.75 -36) scale(1.15)">
+      <path d="M554 227H571L576 232V253H554V227Z"/>
+      <path d="M571 227V232H576M559 237H570M559 242H570M559 247H566"/>
+      <path d="M570 248L573 251L578 244" stroke="#30D158" stroke-width="2.2"/>
+    </g>
+
+    <!-- Audit readiness: checklist under review -->
+    <g transform="translate(-14.25 -58.35) scale(1.15)">
+      <path d="M83 377H101V397H83V377Z"/>
+      <path d="M94 384H98M94 391H98"/>
+      <path d="M87 383L89 385L92 381M87 390L89 392L92 388" stroke="#30D158" stroke-width="2.2"/>
+      <circle cx="101" cy="397" r="5"/>
+      <path d="M105 401L109 405"/>
+    </g>
+
+    <!-- FINRA response: regulator and reply -->
+    <g transform="translate(-80.25 -58.35) scale(1.15)">
+      <path d="M523 384L535 378L547 384M525 385H545M527 386V395M533 386V395M539 386V395M545 396H525"/>
+      <path d="M542 400H549M546 397L549 400L546 403" stroke="#30D158" stroke-width="2.2"/>
+    </g>
+  </g>
+
+  <g class="system-labels" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#F5F5F7">
+    <text x="126" y="95">BOOKKEEPING</text>
+    <text x="566" y="95">BOOKS &amp; RECORDS</text>
+    <text x="86" y="244">NET CAPITAL</text>
+    <text x="596" y="244">FOCUS REPORTING</text>
+    <text x="126" y="393">AUDIT READINESS</text>
+    <text x="566" y="393">FINRA RESPONSE</text>
+  </g>
+
+  <g class="system-hub-endpoints" fill="#30D158" aria-hidden="true">
+    <circle cx="266" cy="100" r="4.5"/><circle cx="494" cy="100" r="4.5"/>
+    <circle cx="240" cy="240" r="4.5"/><circle cx="520" cy="240" r="4.5"/>
+    <circle cx="266" cy="380" r="4.5"/><circle cx="494" cy="380" r="4.5"/>
+  </g>
+
+  <g class="system-center">
+  <g filter="url(#hubShadow)">
+    <circle cx="380" cy="240" r="90" fill="none" stroke="#545458" stroke-width="2"/>
+  </g>
+  <circle cx="380" cy="240" r="78" fill="none" stroke="#30D158" stroke-width="4"/>
+
+  <!-- Central operator coordinating the system -->
+  <g class="system-center-operator" stroke="#F5F5F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="380" cy="208" r="10"/>
+    <path d="M361 240C363 226 369 220 380 220C391 220 397 226 399 240"/>
+    <path d="M341 210C336 219 334 228 334 240M419 210C424 219 426 228 426 240"/>
+    <path d="M344 207L358 212M416 207L402 212"/>
+    <circle cx="340" cy="204" r="5"/>
+    <circle cx="420" cy="204" r="5"/>
+    <circle cx="334" cy="246" r="5"/>
+    <circle cx="426" cy="246" r="5"/>
+    <path d="M340 204L334 246M420 204L426 246"/>
+    <path d="M352 249H408"/>
+    <path d="M357 249V263H403V249"/>
+  </g>
+  <g class="system-center-status" fill="#30D158">
+    <circle cx="369" cy="256" r="2.5"/>
+    <circle cx="380" cy="256" r="2.5"/>
+    <circle cx="391" cy="256" r="2.5"/>
+  </g>
+  </g>
+  <g class="system-signals" aria-hidden="true">
+    <circle cx="0" cy="0" r="4"/>
+    <circle cx="0" cy="0" r="4"/>
+    <circle cx="0" cy="0" r="4"/>
+    <circle cx="0" cy="0" r="4"/>
+    <circle cx="0" cy="0" r="4"/>
+    <circle cx="0" cy="0" r="4"/>
+  </g>
+</svg>

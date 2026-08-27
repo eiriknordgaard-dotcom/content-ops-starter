@@ -2,6 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
+import { trackEvent } from '../../../utils/analytics';
 
 export default function VideoBlock(props) {
     const { elementId, className, url, aspectRatio = '16:9', styles = {}, ...rest } = props;
@@ -77,6 +78,7 @@ function YouTubeVideo({ id, autoplay, loop, muted, controls = true, hasAnnotatio
     paramsObj.loop = loop ? '1' : '0';
     paramsObj.mute = muted ? '1' : '0';
     paramsObj.rel = '0';
+    paramsObj.enablejsapi = '1';
     const queryParams = new URLSearchParams(paramsObj).toString();
     return (
         <iframe
@@ -92,15 +94,67 @@ function YouTubeVideo({ id, autoplay, loop, muted, controls = true, hasAnnotatio
 }
 
 function VimeoVideo({ id, autoplay, loop, muted, controls = true, hasAnnotations }) {
+    const iframeRef = React.useRef<HTMLIFrameElement>(null);
+    const trackedProgress = React.useRef(new Set<number>());
+    const started = React.useRef(false);
     const paramsObj: any = {};
     paramsObj.autoplay = autoplay ? '1' : '0';
     paramsObj.controls = controls ? '1' : '0';
     paramsObj.loop = loop ? '1' : '0';
     paramsObj.muted = muted ? '1' : '0';
     paramsObj.transparent = '0';
+    paramsObj.api = '1';
+    paramsObj.player_id = `vimeo-${id}`;
     const queryParams = new URLSearchParams(paramsObj).toString();
+
+    React.useEffect(() => {
+        const iframe = iframeRef.current;
+        if (!iframe) return;
+
+        const subscribe = () => {
+            ['play', 'timeupdate', 'finish'].forEach((eventName) => {
+                iframe.contentWindow?.postMessage(JSON.stringify({ method: 'addEventListener', value: eventName }), 'https://player.vimeo.com');
+            });
+        };
+
+        const handleMessage = (event: MessageEvent) => {
+            if (event.origin !== 'https://player.vimeo.com' || event.source !== iframe.contentWindow) return;
+            let message = event.data;
+            if (typeof message === 'string') {
+                try {
+                    message = JSON.parse(message);
+                } catch {
+                    return;
+                }
+            }
+
+            const parameters = { video_provider: 'vimeo', video_id: String(id) };
+            if (message?.event === 'play' && !started.current) {
+                started.current = true;
+                trackEvent('video_start', parameters);
+            }
+            if (message?.event === 'timeupdate' && message?.data?.duration) {
+                const percent = Math.floor((message.data.seconds / message.data.duration) * 100);
+                [25, 50, 75].forEach((threshold) => {
+                    if (percent < threshold || trackedProgress.current.has(threshold)) return;
+                    trackedProgress.current.add(threshold);
+                    trackEvent('video_progress', { ...parameters, video_percent: threshold });
+                });
+            }
+            if (message?.event === 'finish') trackEvent('video_complete', parameters);
+        };
+
+        iframe.addEventListener('load', subscribe);
+        window.addEventListener('message', handleMessage);
+        return () => {
+            iframe.removeEventListener('load', subscribe);
+            window.removeEventListener('message', handleMessage);
+        };
+    }, [id]);
+
     return (
         <iframe
+            ref={iframeRef}
             src={`https://player.vimeo.com/video/${id}?${queryParams}`}
             title="Vimeo video player"
             frameBorder="0"
@@ -112,6 +166,27 @@ function VimeoVideo({ id, autoplay, loop, muted, controls = true, hasAnnotations
 }
 
 function SelfHostedVideo({ url, id, poster, autoplay, loop, muted, controls = true, hasAnnotations }) {
+    const trackedProgress = React.useRef(new Set<number>());
+    const started = React.useRef(false);
+    const parameters = { video_provider: 'self_hosted', video_url: url };
+
+    function handlePlay() {
+        if (started.current) return;
+        started.current = true;
+        trackEvent('video_start', parameters);
+    }
+
+    function handleTimeUpdate(event: React.SyntheticEvent<HTMLVideoElement>) {
+        const video = event.currentTarget;
+        if (!video.duration) return;
+        const percent = Math.floor((video.currentTime / video.duration) * 100);
+        [25, 50, 75].forEach((threshold) => {
+            if (percent < threshold || trackedProgress.current.has(threshold)) return;
+            trackedProgress.current.add(threshold);
+            trackEvent('video_progress', { ...parameters, video_percent: threshold });
+        });
+    }
+
     return (
         <video
             {...(autoplay && { autoPlay: true })}
@@ -120,6 +195,9 @@ function SelfHostedVideo({ url, id, poster, autoplay, loop, muted, controls = tr
             {...(controls && { controls: true })}
             {...(poster && { poster: poster })}
             playsInline
+            onPlay={handlePlay}
+            onTimeUpdate={handleTimeUpdate}
+            onEnded={() => trackEvent('video_complete', parameters)}
             className="absolute left-0 top-0 h-full w-full"
         >
             <source src={url} type={id} {...(hasAnnotations && { 'data-sb-field-path': '.url#@src' })} />

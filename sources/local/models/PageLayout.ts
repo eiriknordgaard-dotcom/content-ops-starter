@@ -39,8 +39,10 @@ export const PageLayout: Model = {
             items: {
                 type: 'model',
                 models: [
+                    'ApproachSection',
                     'CarouselSection',
                     'DividerSection',
+                    'FaqSection',
                     'FeaturedItemsSection',
                     'FeaturedPeopleSection',
                     'FeaturedPostsSection',
@@ -70,6 +72,20 @@ export const PageLayout: Model = {
             default: false,
             hidden: false,
             localized: false,
+            group: 'settings'
+        },
+        {
+            type: 'date',
+            name: 'datePublished',
+            label: 'Published date',
+            required: false,
+            group: 'settings'
+        },
+        {
+            type: 'date',
+            name: 'dateModified',
+            label: 'Last modified date',
+            required: false,
             group: 'settings'
         },
         {

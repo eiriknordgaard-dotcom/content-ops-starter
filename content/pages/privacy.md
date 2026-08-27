@@ -1,13 +1,15 @@
 ---
 title: Privacy Policy
 slug: /privacy
+datePublished: '2026-08-26'
+dateModified: '2026-08-26'
 sections:
   - type: GenericSection
     title:
       text: Privacy Policy
       color: text-dark
       type: TitleBlock
-    subtitle: Effective August 26, 2026
+    subtitle: Effective August 27, 2026
     text: |
       This website collects the information you choose to provide through the contact form, including your name, email address, and message. That information is used only to respond to your inquiry, discuss services you request, and maintain related business records.
 
@@ -25,7 +27,9 @@ sections:
 
       **Cookies and tracking**
 
-      This website does not use advertising cookies or sell visitor information. Hosting providers may process standard technical information, such as IP address, browser type, device information, and request logs, to deliver and secure the website.
+      This website uses Google Analytics to understand how visitors find and use the site. Google Analytics may collect information such as pages viewed, referral source, approximate location, browser and device information, and interactions with links or forms. This information is used to measure site performance and improve the website. It is not used for advertising personalization, and visitor information is not sold.
+
+      Google Analytics and the hosting provider may use cookies or similar technologies and process standard technical information, including IP address and request logs. You can limit this collection through your browser settings or use the [Google Analytics opt-out browser add-on](https://tools.google.com/dlpage/gaoptout).
 
       **Changes to this policy**
 

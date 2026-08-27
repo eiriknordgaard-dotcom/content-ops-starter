@@ -7,6 +7,22 @@ export const FormBlock: Model = {
     labelField: 'elementId',
     fields: [
         {
+            type: 'string',
+            name: 'heading',
+            label: 'Form heading',
+            required: false,
+            hidden: false,
+            localized: false
+        },
+        {
+            type: 'markdown',
+            name: 'privacyText',
+            label: 'Privacy reassurance',
+            required: false,
+            hidden: false,
+            localized: false
+        },
+        {
             type: 'list',
             name: 'fields',
             label: 'Fields',

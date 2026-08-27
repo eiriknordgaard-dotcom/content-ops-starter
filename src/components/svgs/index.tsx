@@ -2,6 +2,7 @@ import ArrowDown from './arrow-down';
 import ArrowLeft from './arrow-left';
 import ArrowRight from './arrow-right';
 import ArrowUp from './arrow-up';
+import BrokerCheck from './brokercheck';
 import ChevronDown from './chevron-down';
 import ChevronLeft from './chevron-left';
 import ChevronBigLeft from './chevron-big-left';
@@ -28,6 +29,7 @@ export const iconMap = {
     arrowLeft: ArrowLeft,
     arrowRight: ArrowRight,
     arrowUp: ArrowUp,
+    brokercheck: BrokerCheck,
     chevronDown: ChevronDown,
     chevronLeft: ChevronLeft,
     chevronBigLeft: ChevronBigLeft,

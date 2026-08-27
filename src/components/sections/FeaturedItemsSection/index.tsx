@@ -18,6 +18,7 @@ export default function FeaturedItemsSection(props) {
         subtitle,
         description,
         groupLabel,
+        supportingItems = [],
         items = [],
         actions = [],
         bottomText,
@@ -69,21 +70,34 @@ export default function FeaturedItemsSection(props) {
                     </p>
                 )}
                 {groupLabel && (
-                    <div
+                    <h2
                         className="featured-items-group-label w-full flex items-center gap-4 mt-12"
                         {...(enableAnnotations && { 'data-sb-field-path': '.groupLabel' })}
                     >
                         <span>{groupLabel}</span>
                         <span className="featured-items-group-rule grow" aria-hidden="true" />
-                    </div>
+                    </h2>
                 )}
                 <FeaturedItemVariants
                     variant={variant}
                     items={items}
                     hasTopMargin={!!(badge?.label || title?.text || subtitle || description || groupLabel)}
-                    hasSectionTitle={!!title?.text}
+                    hasSectionTitle={!!(title?.text || groupLabel)}
                     hasAnnotations={enableAnnotations}
                 />
+                {supportingItems.length > 0 && (
+                    <ul
+                        className="featured-items-supporting-list w-full"
+                        aria-label="Client fit"
+                        {...(enableAnnotations && { 'data-sb-field-path': '.supportingItems' })}
+                    >
+                        {supportingItems.map((item, index) => (
+                            <li key={index} {...(enableAnnotations && { 'data-sb-field-path': `.${index}` })}>
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+                )}
                 {(actions.length > 0 || bottomText) && (
                     <div
                         className={classNames('featured-items-footer', 'w-full', 'flex', 'flex-wrap', 'items-center', 'justify-center', 'gap-4', {
@@ -135,7 +149,7 @@ function FeaturedItemsThreeColGrid(props) {
     const FeaturedItem = getComponent('FeaturedItem');
     return (
         <div
-            className={classNames('w-full', 'grid', 'gap-8', 'sm:grid-cols-2', 'lg:grid-cols-3', { 'mt-10': hasTopMargin })}
+            className={classNames('featured-items-grid-three', 'w-full', 'grid', 'gap-8', 'sm:grid-cols-2', 'lg:grid-cols-3', { 'mt-10': hasTopMargin })}
             {...(hasAnnotations && { 'data-sb-field-path': '.items' })}
         >
             {items.map((item, index) => (

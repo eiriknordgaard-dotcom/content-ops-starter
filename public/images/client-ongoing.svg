@@ -1,0 +1,88 @@
+<svg width="520" height="160" viewBox="0 0 520 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .oversight-panel {
+      opacity: 0;
+      transform: translateY(6px);
+      animation: oversight-panel-in 700ms cubic-bezier(.22,.76,.22,1) 250ms forwards;
+    }
+    .oversight-copy {
+      opacity: 0;
+      animation: oversight-fade-in 450ms ease-out 750ms forwards;
+    }
+    .oversight-bar {
+      transform: scaleY(0);
+      transform-box: fill-box;
+      transform-origin: center bottom;
+      animation: oversight-bar-grow 900ms cubic-bezier(.2,.78,.24,1) forwards;
+    }
+    .oversight-bar-1 { animation-delay: 1050ms; }
+    .oversight-bar-2 { animation-delay: 1250ms; }
+    .oversight-bar-3 { animation-delay: 1450ms; }
+    .oversight-bar-4 { animation-delay: 1650ms; }
+    .oversight-line {
+      stroke-dasharray: 64;
+      stroke-dashoffset: 64;
+      animation: oversight-line-draw 750ms cubic-bezier(.25,.74,.3,1) forwards;
+    }
+    .oversight-line-1 { animation-delay: 1250ms; }
+    .oversight-line-2 { animation-delay: 1550ms; }
+    .oversight-line-3 { animation-delay: 1850ms; }
+    .oversight-status {
+      opacity: 0;
+      transform: scale(.6);
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: oversight-status-on 500ms cubic-bezier(.2,.82,.3,1.22) 2500ms forwards;
+    }
+    @keyframes oversight-panel-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes oversight-fade-in {
+      to { opacity: 1; }
+    }
+    @keyframes oversight-bar-grow {
+      to { transform: scaleY(1); }
+    }
+    @keyframes oversight-line-draw {
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes oversight-status-on {
+      to { opacity: 1; transform: scale(1); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .oversight-panel,
+      .oversight-copy,
+      .oversight-bar,
+      .oversight-line,
+      .oversight-status {
+        opacity: 1;
+        transform: none;
+        stroke-dashoffset: 0;
+        animation: none;
+      }
+    }
+  </style>
+  <rect width="520" height="160" rx="16" fill="#F7F9FA"/>
+  <g opacity="0.55" stroke="#DCE3E8">
+    <path d="M0 32H520M0 64H520M0 96H520M0 128H520"/>
+    <path d="M32 0V160M64 0V160M96 0V160M128 0V160M160 0V160M192 0V160M224 0V160M256 0V160M288 0V160M320 0V160M352 0V160M384 0V160M416 0V160M448 0V160M480 0V160"/>
+  </g>
+  <g class="oversight-panel">
+    <rect x="150" y="26" width="220" height="108" rx="13" fill="white" stroke="#0F2235" stroke-width="2"/>
+    <text class="oversight-copy" x="169" y="51" fill="#627180" font-family="Inter, Arial, sans-serif" font-size="11">Financial oversight</text>
+    <circle class="oversight-status" cx="349" cy="47" r="5" fill="#34C759"/>
+    <rect x="169" y="65" width="87" height="50" rx="8" fill="#EDF6FF"/>
+    <g fill="#007AFF">
+      <rect class="oversight-bar oversight-bar-1" x="181" y="92" width="9" height="14" rx="2"/>
+      <rect class="oversight-bar oversight-bar-2" x="197" y="81" width="9" height="25" rx="2"/>
+      <rect class="oversight-bar oversight-bar-3" x="213" y="86" width="9" height="20" rx="2"/>
+      <rect class="oversight-bar oversight-bar-4" x="229" y="72" width="9" height="34" rx="2"/>
+    </g>
+    <rect x="264" y="65" width="87" height="50" rx="8" fill="#ECF9F0"/>
+    <g stroke="#34C759" stroke-width="4" stroke-linecap="round">
+      <path class="oversight-line oversight-line-1" d="M278 78H337"/>
+      <path class="oversight-line oversight-line-2" d="M278 90H325"/>
+      <path class="oversight-line oversight-line-3" d="M278 102H332"/>
+    </g>
+  </g>
+</svg>

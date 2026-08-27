@@ -54,6 +54,17 @@ export const FeaturedItemsSection: Model = {
         },
         {
             type: 'list',
+            name: 'supportingItems',
+            label: 'Supporting items',
+            required: false,
+            hidden: false,
+            localized: false,
+            items: {
+                type: 'string'
+            }
+        },
+        {
+            type: 'list',
             name: 'actions',
             label: 'Actions',
             required: false,

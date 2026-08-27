@@ -4,14 +4,15 @@ import classNames from 'classnames';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 
 export default function TitleBlock(props) {
-    const { className, text = [], color = 'text-dark', styles = {} } = props;
+    const { className, text = [], color = 'text-dark', styles = {}, level = 2 } = props;
     const fieldPath = props['data-sb-field-path'];
+    const TitleTag = level === 1 ? 'h1' : level === 3 ? 'h3' : 'h2';
     if (!text) {
         return null;
     }
 
     return (
-        <h2
+        <TitleTag
             className={classNames(
                 'sb-component',
                 'sb-component-block',
@@ -32,6 +33,6 @@ export default function TitleBlock(props) {
                       ))
                     : text}
             </span>
-        </h2>
+        </TitleTag>
     );
 }

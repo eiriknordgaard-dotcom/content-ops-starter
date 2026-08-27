@@ -3,8 +3,129 @@ import classNames from 'classnames';
 
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 
+const imageDimensions: Record<string, { width: number; height: number }> = {
+    '/images/hero-finop-system.svg': { width: 760, height: 480 },
+    '/images/client-formation.svg': { width: 520, height: 160 },
+    '/images/client-ongoing.svg': { width: 520, height: 160 },
+    '/images/icon-shield-check.svg': { width: 84, height: 84 },
+    '/images/icon-document-check.svg': { width: 84, height: 84 },
+    '/images/icon-chart-activity.svg': { width: 84, height: 84 },
+    '/images/icon-clipboard-check.svg': { width: 84, height: 84 },
+    '/images/icon-folder-search.svg': { width: 84, height: 84 },
+    '/images/icon-grid-build.svg': { width: 84, height: 84 }
+};
+
 export default function ImageBlock(props) {
     const { elementId, className, imageClassName, url, altText = '', styles = {} } = props;
+    const imageWrapRef = React.useRef<HTMLDivElement>(null);
+    const [replayCount, setReplayCount] = React.useState(0);
+    const [animationInstance, setAnimationInstance] = React.useState('');
+    const [clientAnimationStarted, setClientAnimationStarted] = React.useState(false);
+    const isHeroSystemImage = url === '/images/hero-finop-system.svg';
+    const isClientIllustration = url === '/images/client-formation.svg' || url === '/images/client-ongoing.svg';
+    const isReplayableIllustration = isHeroSystemImage || isClientIllustration;
+    const dimensions = imageDimensions[url];
+    const replayQuery = isReplayableIllustration && animationInstance ? `?replay=${animationInstance}-${replayCount}` : '';
+    const imageUrl = `${url}${replayQuery}`;
+    const imageStyle = (() => {
+        if (isHeroSystemImage) {
+            return { '--hero-system-dark-image': `url("/images/hero-finop-system-dark.svg${replayQuery}")` } as React.CSSProperties;
+        }
+
+        if (url === '/images/client-formation.svg') {
+            return { '--client-illustration-dark-image': `url("/images/client-formation-dark.svg${replayQuery}")` } as React.CSSProperties;
+        }
+
+        if (url === '/images/client-ongoing.svg') {
+            return { '--client-illustration-dark-image': `url("/images/client-ongoing-dark.svg${replayQuery}")` } as React.CSSProperties;
+        }
+
+        return undefined;
+    })();
+
+    React.useEffect(() => {
+        if (!isReplayableIllustration) {
+            return;
+        }
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            if (isClientIllustration) {
+                setClientAnimationStarted(true);
+            }
+            return;
+        }
+
+        setAnimationInstance(`${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`);
+    }, [isReplayableIllustration, isClientIllustration]);
+
+    React.useEffect(() => {
+        const imageWrap = imageWrapRef.current;
+        if (!isReplayableIllustration || !imageWrap || typeof IntersectionObserver === 'undefined') {
+            return;
+        }
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            return;
+        }
+
+        if (isClientIllustration) {
+            const clientTrigger = imageWrap.closest('.sb-card')?.querySelector<HTMLElement>('[data-client-animation-trigger]');
+            if (!clientTrigger) {
+                return;
+            }
+
+            let wasVisible = false;
+            const clientObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting && !wasVisible) {
+                        wasVisible = true;
+                        setClientAnimationStarted(true);
+                        setReplayCount((count) => count + 1);
+                    } else if (!entry.isIntersecting) {
+                        wasVisible = false;
+                        setClientAnimationStarted(false);
+                    }
+                },
+                { threshold: 0.01 }
+            );
+
+            clientObserver.observe(clientTrigger);
+            return () => clientObserver.disconnect();
+        }
+
+        let initialized = false;
+        let wasVisible = false;
+        let hasLeftView = false;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                const isVisible = entry.isIntersecting && entry.intersectionRatio >= 0.35;
+
+                if (!initialized) {
+                    initialized = true;
+                    wasVisible = isVisible;
+                    hasLeftView = !isVisible;
+                    return;
+                }
+
+                if (isVisible && !wasVisible) {
+                    if (hasLeftView) {
+                        setReplayCount((count) => count + 1);
+                    }
+                    wasVisible = true;
+                    hasLeftView = false;
+                } else if (!isVisible && wasVisible && entry.intersectionRatio < 0.1) {
+                    wasVisible = false;
+                    hasLeftView = true;
+                }
+            },
+            { threshold: [0, 0.1, 0.35] }
+        );
+
+        observer.observe(imageWrap);
+        return () => observer.disconnect();
+    }, [isReplayableIllustration, isClientIllustration]);
+
     if (!url) {
         return null;
     }
@@ -15,17 +136,28 @@ export default function ImageBlock(props) {
 
     return (
         <div
+            ref={imageWrapRef}
             className={classNames(
                 'sb-component',
                 'sb-component-block',
                 'sb-component-image-block',
+                {
+                    'client-illustration-wrap': isClientIllustration,
+                    'client-illustration-pending': isClientIllustration && !clientAnimationStarted
+                },
                 className,
                 styles?.self?.margin ? mapStyles({ margin: styles?.self?.margin }) : undefined
             )}
             {...annotations}
         >
             <img
+                key={isReplayableIllustration ? `${animationInstance}-${replayCount}` : undefined}
                 id={elementId}
+                data-hero-system-image={isHeroSystemImage ? 'true' : undefined}
+                data-client-illustration={isClientIllustration ? 'true' : undefined}
+                data-animation-replay-count={isReplayableIllustration ? replayCount : undefined}
+                data-animation-instance={isReplayableIllustration ? animationInstance : undefined}
+                style={imageStyle}
                 className={classNames(
                     imageClassName,
                     styles?.self?.padding ? mapStyles({ padding: styles?.self?.padding }) : undefined,
@@ -38,8 +170,13 @@ export default function ImageBlock(props) {
                         : undefined,
                     styles?.self?.borderRadius ? mapStyles({ borderRadius: styles?.self?.borderRadius }) : undefined
                 )}
-                src={url}
+                src={imageUrl}
                 alt={altText}
+                width={dimensions?.width}
+                height={dimensions?.height}
+                loading={isHeroSystemImage ? 'eager' : 'lazy'}
+                fetchPriority={isHeroSystemImage ? 'high' : 'auto'}
+                decoding="async"
             />
         </div>
     );

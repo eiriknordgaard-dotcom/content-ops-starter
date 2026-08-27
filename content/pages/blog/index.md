@@ -1,6 +1,7 @@
 ---
 title: Blog
 slug: /blog
+isDraft: true
 numOfPostsPerPage: 8
 enableSearch: true
 topSections:

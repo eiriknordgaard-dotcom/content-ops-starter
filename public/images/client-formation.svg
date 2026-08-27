@@ -1,0 +1,65 @@
+<svg width="520" height="160" viewBox="0 0 520 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .formation-module {
+      opacity: 0;
+      transform: translateY(7px);
+      animation: formation-module-in 650ms cubic-bezier(.22,.76,.22,1) forwards;
+    }
+    .formation-module-1 { animation-delay: 250ms; }
+    .formation-module-2 { animation-delay: 500ms; }
+    .formation-module-3 { animation-delay: 750ms; }
+    .formation-check {
+      opacity: 0;
+      transform: scale(.72);
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: formation-check-in 550ms cubic-bezier(.2,.82,.3,1.22) forwards;
+    }
+    .formation-check-1 { animation-delay: 1450ms; }
+    .formation-check-2 { animation-delay: 1900ms; }
+    .formation-check-3 { animation-delay: 2350ms; }
+    @keyframes formation-module-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes formation-check-in {
+      to { opacity: 1; transform: scale(1); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .formation-module,
+      .formation-check {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
+  <rect width="520" height="160" rx="16" fill="#F7F9FA"/>
+  <g opacity="0.55" stroke="#DCE3E8">
+    <path d="M0 32H520M0 64H520M0 96H520M0 128H520"/>
+    <path d="M32 0V160M64 0V160M96 0V160M128 0V160M160 0V160M192 0V160M224 0V160M256 0V160M288 0V160M320 0V160M352 0V160M384 0V160M416 0V160M448 0V160M480 0V160"/>
+  </g>
+  <g class="formation-module formation-module-1" stroke="#0F2235" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="157" y="69" width="64" height="58" rx="11" fill="white"/>
+    <path d="M174 106V87L189 80L204 87V106M181 106V94H197V106M171 106H207"/>
+  </g>
+  <g class="formation-module formation-module-2" stroke="#0F2235" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="228" y="31" width="64" height="58" rx="11" fill="white"/>
+    <path d="M247 46H269L275 52V74H247V46ZM269 46V52H275M253 61L257 65L266 56"/>
+  </g>
+  <g class="formation-module formation-module-3" stroke="#0F2235" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="299" y="69" width="64" height="58" rx="11" fill="white"/>
+    <path d="M314 109V94M325 109V85M336 109V98M347 109V79"/>
+  </g>
+  <g class="formation-check formation-check-1">
+    <circle cx="218" cy="68" r="11" fill="#34C759" stroke="white" stroke-width="3"/>
+    <path d="M213 68L217 72L224 64" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g class="formation-check formation-check-2">
+    <circle cx="289" cy="30" r="11" fill="#34C759" stroke="white" stroke-width="3"/>
+    <path d="M284 30L288 34L295 26" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g class="formation-check formation-check-3">
+    <circle cx="360" cy="68" r="11" fill="#34C759" stroke="white" stroke-width="3"/>
+    <path d="M355 68L359 72L366 64" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

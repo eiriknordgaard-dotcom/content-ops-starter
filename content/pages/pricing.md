@@ -1,6 +1,7 @@
 ---
 title: Pricing
 slug: pricing
+isDraft: true
 sections:
   - title:
       text: Flexible Pricing

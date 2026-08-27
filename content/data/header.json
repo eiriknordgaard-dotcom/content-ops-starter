@@ -1,5 +1,6 @@
 {
     "title": "Eirik Nordgaard",
+    "subtitle": "Regulatory Finance Consultant",
     "primaryLinks": [
         {
             "label": "Services",
@@ -10,16 +11,16 @@
             "type": "Link"
         },
         {
-            "label": "Why Me",
-            "url": "/#why",
+            "label": "Clients",
+            "url": "/#about",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "secondary",
             "type": "Link"
         },
         {
-            "label": "Licenses",
-            "url": "/#licenses",
+            "label": "Approach",
+            "url": "/#why",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "secondary",

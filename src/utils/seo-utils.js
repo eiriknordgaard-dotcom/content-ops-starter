@@ -13,7 +13,7 @@ export function seoGenerateMetaTags(page, site) {
     pageMetaTags = {
         ...pageMetaTags,
         ...(seoTitle && { 'og:title': seoTitle }),
-        ...(ogImage && { 'og:image': ogImage })
+        ...(ogImage && { 'og:image': ogImage, 'twitter:image': ogImage })
     };
 
     if (page.seo?.metaTags?.length) {
