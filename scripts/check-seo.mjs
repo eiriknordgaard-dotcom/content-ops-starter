@@ -37,7 +37,7 @@ const indexablePages = pages.filter(({ attributes, pagePath }) =>
 const knownPaths = new Set(indexablePages.map(({ pagePath }) => pagePath));
 const seenTitles = new Map();
 
-for (const { filePath, attributes, pagePath } of indexablePages) {
+for (const { filePath, attributes } of indexablePages) {
     const relativePath = path.relative(projectRoot, filePath);
     const seo = attributes.seo || {};
     const title = seo.metaTitle || attributes.title;

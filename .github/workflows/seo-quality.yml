@@ -1,4 +1,4 @@
-name: SEO quality
+name: Production quality
 
 on:
   pull_request:
@@ -6,8 +6,9 @@ on:
     branches: [main]
 
 jobs:
-  audit:
+  quality:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -15,5 +16,18 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
       - run: npm run build
+      - run: npx playwright install --with-deps chromium firefox webkit
+      - run: npm run test:e2e
       - run: npm run audit:lighthouse
+      - run: npm audit --omit=dev --audit-level=critical
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-test-results
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14

@@ -1,6 +1,8 @@
 import * as React from 'react';
+import Link from 'next/link';
 
 import { trackEvent } from '../../../utils/analytics';
+import { fetchWithTimeout, isAbortError } from '../../../utils/fetch-with-timeout';
 
 const FORM_NAME = 'finop-checklist-download';
 const DOWNLOAD_URL = '/downloads/finop-audit-readiness-checklist.pdf';
@@ -25,7 +27,7 @@ export default function ResourceDownloadGate() {
         data.forEach((value, key) => body.append(key, String(value)));
 
         try {
-            const response = await fetch('/__forms.html', {
+            const response = await fetchWithTimeout('/__forms.html', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: body.toString()
@@ -46,9 +48,12 @@ export default function ResourceDownloadGate() {
             downloadLink.click();
             downloadLink.remove();
             form.reset();
-        } catch {
+        } catch (error) {
             setStatus('error');
-            trackEvent('resource_download_error', { resource: 'finop_audit_readiness_checklist', error_type: 'submission_failed' });
+            trackEvent('resource_download_error', {
+                resource: 'finop_audit_readiness_checklist',
+                error_type: isAbortError(error) ? 'timeout' : 'submission_failed'
+            });
         }
     }
 
@@ -99,7 +104,7 @@ export default function ResourceDownloadGate() {
                     </button>
 
                     <p className="resource-gate-privacy">
-                        Your information is used to deliver this resource. See the <a href="/privacy/">Privacy Policy</a>.
+                        Your information is used to deliver this resource. See the <Link href="/privacy/">Privacy Policy</Link>.
                     </p>
 
                     <div className="resource-gate-status" aria-live="polite">

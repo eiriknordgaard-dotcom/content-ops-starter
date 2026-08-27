@@ -79,7 +79,7 @@ export default function GenericSection(props) {
                     /* handle horizontal positioning of content on small screens or when direction is col or col-reverse, mapping justifyContent to alignItems instead since it's a flex column */
                     mapStyles({ alignItems: styles?.self?.justifyContent ?? 'flex-start' }),
                     /* handle vertical positioning of content on large screens if it's a two col layout */
-                    hasMedia && hasTextContent && hasXDirection ? mapAlignItemsStyles(alignItems, isHero) : undefined,
+                    hasMedia && hasTextContent && hasXDirection ? mapAlignItemsStyles(alignItems) : undefined,
                     'gap-x-12',
                     'gap-y-16'
                 )}
@@ -219,7 +219,7 @@ function mapFlexDirectionStyles(flexDirection: string, hasTextContent: boolean, 
     }
 }
 
-function mapAlignItemsStyles(alignItems: string, isHero: boolean) {
+function mapAlignItemsStyles(alignItems: string) {
     switch (alignItems) {
         case 'flex-start':
             return 'lg:items-start';

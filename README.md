@@ -1,74 +1,53 @@
-# Content Ops Starter
+# Eirik Nordgaard FINOP Website
 
-![Content Ops Starter](https://assets.stackbit.com/docs/content-ops-starter-thumb.png)
+Production website for [eiriknordgaard.com](https://eiriknordgaard.com), built with Next.js and deployed as a static site on Netlify.
 
-Netlify starter that's made for customization with a flexible content model, component library, [visual editing](https://docs.netlify.com/visual-editor/overview/) and [Git Content Source](https://docs.netlify.com/create/content-sources/git/).
+## Local development
 
-**⚡ View demo:** [https://content-ops-starter.netlify.app/](https://content-ops-starter.netlify.app/)
+Use Node.js 20 or newer.
 
-## Table of Contents
-
-- [Deploying to Netlify](#deploying-to-netlify)
-- [Develop with Netlify Visual Editor Locally](#develop-with-netlify-visual-editor-locally)
-- [Building for production](#building-for-production)
-- [Setting Up Algolia Search](#setting-up-algolia-search)
-- [Next Steps](#next-steps)
-- [Support](#support)
-
-## Deploying to Netlify
-
-If you click "Deploy to Netlify" button, it will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify.
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/content-ops-starter)
-
-## Develop with Netlify Visual Editor Locally
-
-The typical development process is to begin by working locally. Clone this repository, then run `npm install` in its root directory.
-
-Run the Next.js development server:
-
-```txt
-cd content-ops-starter
+```shell
+npm ci
 npm run dev
 ```
 
-Install the [Netlify Visual Editor CLI](https://www.npmjs.com/package/@stackbit/cli). Then open a new terminal window in the same project directory and run the Netlify visual editor dev server:
+## Quality checks
 
-```txt
-npm install -g @stackbit/cli
-stackbit dev
-```
-
-This outputs your own Netlify visual editor URL. Open this, register, or sign in, and you will be directed to Netlify's visual editor for your new project.
-
-![Next.js Dev + Visual Editor Dev](https://assets.stackbit.com/docs/next-dev-stackbit-dev.png)
-
-## Building for production
-
-To build a static site for production, run the following command
+Run the full pre-deployment verification:
 
 ```shell
+npm run check
 npm run build
+npx playwright install
+npm run test:e2e
 ```
 
-## Setting Up Algolia Search
+The browser suite covers Chromium, Firefox, WebKit/Safari, and an iPhone landscape profile. It verifies the primary conversion links, mobile navigation, color theme persistence, the contact workflow, editorial content, and the custom not-found page.
 
-This starter includes Algolia search integration. To set it up:
+For a performance audit:
 
-1. Create an [Algolia](https://www.algolia.com/) account
-2. Create a new application and index
-3. Set the following environment variables:
-   - `NEXT_PUBLIC_ALGOLIA_APP_ID` - Your Algolia application ID
-   - `NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY` - Your Algolia search-only API key
-   - `NEXT_PUBLIC_ALGOLIA_INDEX_NAME` - Your index name
+```shell
+npm run audit:lighthouse
+```
 
-## Next Steps
+## Production monitoring
 
-Here are a few suggestions on what to do next if you're new to Netlify visual editor:
+`npm run smoke:production` checks the live homepage, sitemap, robots file, custom 404 response, Calendly webhook health, and retired-route redirects.
 
-- Learn [Netlify visual editor overview](https://docs.netlify.com/visual-editor/visual-editing/)
-- Check [Netlify visual editor reference documentation](https://visual-editor-reference.netlify.com/)
+GitHub Actions runs:
 
-## Support
+- the complete quality suite on pushes and pull requests;
+- a daily production smoke test;
+- weekly dependency update checks through Dependabot.
 
-If you get stuck along the way, get help in our [support forums](https://answers.netlify.com/).
+## Deployment
+
+Netlify builds the site with `node scripts/netlify-build.mjs` and publishes `out/`. The build generates and validates SEO files before compiling the static site.
+
+The Calendly webhook requires these Netlify environment variables:
+
+- `CALENDLY_WEBHOOK_SIGNING_KEY`
+- `GA4_MEASUREMENT_ID`
+- `GA4_MEASUREMENT_PROTOCOL_SECRET`
+
+The webhook uses Netlify Blobs to prevent duplicate conversion events and reports its configuration state at `/api/calendly-webhook`.

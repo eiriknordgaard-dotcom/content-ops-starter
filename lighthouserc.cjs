@@ -1,12 +1,12 @@
 module.exports = {
     ci: {
         collect: {
-            startServerCommand: 'node node_modules/next/dist/bin/next start --hostname 127.0.0.1',
-            startServerReadyPattern: 'Ready',
+            startServerCommand: 'node node_modules/serve/build/main.js out -l 4173 --no-clipboard',
+            startServerReadyPattern: 'Local:',
             url: [
-                'http://127.0.0.1:3000/',
-                'http://127.0.0.1:3000/fractional-finop/',
-                'http://127.0.0.1:3000/what-does-a-finop-do/'
+                'http://127.0.0.1:4173/',
+                'http://127.0.0.1:4173/fractional-finop/',
+                'http://127.0.0.1:4173/what-does-a-finop-do/'
             ],
             numberOfRuns: 1,
             settings: {

@@ -1,8 +1,13 @@
+import { getStore } from '@netlify/blobs';
+import type { Config, Context } from '@netlify/functions';
+
 declare const Netlify: {
     env: {
         get(name: string): string | undefined;
     };
 };
+
+const processedEvents = getStore({ name: 'calendly-webhook-events', consistency: 'strong' });
 
 const json = (body: Record<string, unknown>, status = 200) =>
     new Response(JSON.stringify(body), {
@@ -58,21 +63,27 @@ const anonymousClientId = async (source: string) => {
     return `${first}.${second}`;
 };
 
-export default async (request: Request) => {
+const sha256 = async (source: string) => {
+    const hash = new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(source)));
+    return Array.from(hash, (byte) => byte.toString(16).padStart(2, '0')).join('');
+};
+
+const calendlyWebhook = async (request: Request, context: Context) => {
+    const signingKey = Netlify.env.get('CALENDLY_WEBHOOK_SIGNING_KEY');
+    const measurementId = Netlify.env.get('GA4_MEASUREMENT_ID');
+    const apiSecret = Netlify.env.get('GA4_MEASUREMENT_PROTOCOL_SECRET');
+    const configured = Boolean(signingKey && measurementId && apiSecret);
+
     if (request.method === 'GET') {
-        return json({ ok: true, service: 'calendly-booking-analytics' });
+        return json({ ok: configured, service: 'calendly-booking-analytics', configured }, configured ? 200 : 503);
     }
 
     if (request.method !== 'POST') {
         return json({ ok: false, error: 'method_not_allowed' }, 405);
     }
 
-    const signingKey = Netlify.env.get('CALENDLY_WEBHOOK_SIGNING_KEY');
-    const measurementId = Netlify.env.get('GA4_MEASUREMENT_ID');
-    const apiSecret = Netlify.env.get('GA4_MEASUREMENT_PROTOCOL_SECRET');
-
     if (!signingKey || !measurementId || !apiSecret) {
-        console.error('Calendly analytics environment is incomplete.');
+        console.error(`Calendly analytics environment is incomplete. Request: ${context.requestId}`);
         return json({ ok: false, error: 'service_unavailable' }, 503);
     }
 
@@ -100,40 +111,61 @@ export default async (request: Request) => {
             ? (payload.scheduled_event as Record<string, unknown>)
             : {};
     const sourceId = String(payload.uri || scheduledEvent.uri || webhook.created_at || 'calendly-booking');
+    const eventKey = `invitee-created/${await sha256(sourceId)}`;
+    const existingEvent = await processedEvents.getMetadata(eventKey);
+
+    if (existingEvent) {
+        return json({ ok: true, duplicate: true });
+    }
+
     const clientId = await anonymousClientId(sourceId);
 
-    const gaResponse = await fetch(
-        `https://www.google-analytics.com/mp/collect?measurement_id=${encodeURIComponent(measurementId)}&api_secret=${encodeURIComponent(apiSecret)}`,
-        {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({
-                client_id: clientId,
-                timestamp_micros: Date.now() * 1000,
-                events: [
-                    {
-                        name: 'schedule_call_complete',
-                        params: {
-                            engagement_time_msec: 1,
-                            method: 'calendly',
-                            form_type: 'calendar',
-                            lead_type: 'scheduled_call',
-                            source: 'calendly_webhook'
+    let gaResponse: Response;
+    try {
+        gaResponse = await fetch(
+            `https://www.google-analytics.com/mp/collect?measurement_id=${encodeURIComponent(measurementId)}&api_secret=${encodeURIComponent(apiSecret)}`,
+            {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                signal: AbortSignal.timeout(8_000),
+                body: JSON.stringify({
+                    client_id: clientId,
+                    timestamp_micros: Date.now() * 1000,
+                    events: [
+                        {
+                            name: 'schedule_call_complete',
+                            params: {
+                                engagement_time_msec: 1,
+                                method: 'calendly',
+                                form_type: 'calendar',
+                                lead_type: 'scheduled_call',
+                                source: 'calendly_webhook'
+                            }
                         }
-                    }
-                ]
-            })
-        }
-    );
-
-    if (!gaResponse.ok) {
-        console.error(`GA4 Measurement Protocol returned ${gaResponse.status}.`);
+                    ]
+                })
+            }
+        );
+    } catch (error) {
+        console.error(`GA4 Measurement Protocol request failed. Request: ${context.requestId}`, error);
         return json({ ok: false, error: 'analytics_delivery_failed' }, 502);
     }
+
+    if (!gaResponse.ok) {
+        console.error(`GA4 Measurement Protocol returned ${gaResponse.status}. Request: ${context.requestId}`);
+        return json({ ok: false, error: 'analytics_delivery_failed' }, 502);
+    }
+
+    await processedEvents.setJSON(eventKey, {
+        processedAt: new Date().toISOString(),
+        event: 'invitee.created'
+    });
 
     return json({ ok: true });
 };
 
-export const config = {
+export default calendlyWebhook;
+
+export const config: Config = {
     path: '/api/calendly-webhook'
 };

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Script from 'next/script';
+import Router from 'next/router';
 
 import { trackEvent } from '../utils/analytics';
 
@@ -52,14 +53,39 @@ export default function Analytics() {
             trackedDepths = new Set<number>();
         };
 
+        const trackPageView = (url: string) => {
+            resetScrollDepth();
+            trackEvent('page_view', {
+                page_location: window.location.href,
+                page_path: url,
+                page_title: document.title
+            });
+        };
+
+        const handleWindowError = (event: ErrorEvent) => {
+            trackEvent('exception', {
+                description: `${event.message || 'Unknown browser error'}${event.filename ? ` at ${event.filename}` : ''}`.slice(0, 300),
+                fatal: false
+            });
+        };
+
+        const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
+            const description = event.reason instanceof Error ? event.reason.message : String(event.reason || 'Unhandled promise rejection');
+            trackEvent('exception', { description: description.slice(0, 300), fatal: false });
+        };
+
         document.addEventListener('click', handleClick);
         window.addEventListener('scroll', handleScroll, { passive: true });
-        window.addEventListener('popstate', resetScrollDepth);
+        Router.events.on('routeChangeComplete', trackPageView);
+        window.addEventListener('error', handleWindowError);
+        window.addEventListener('unhandledrejection', handleUnhandledRejection);
 
         return () => {
             document.removeEventListener('click', handleClick);
             window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('popstate', resetScrollDepth);
+            Router.events.off('routeChangeComplete', trackPageView);
+            window.removeEventListener('error', handleWindowError);
+            window.removeEventListener('unhandledrejection', handleUnhandledRejection);
         };
     }, []);
 

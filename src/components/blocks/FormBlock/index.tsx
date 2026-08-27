@@ -6,6 +6,7 @@ import { getComponent } from '../../components-registry';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 import SubmitButtonFormControl from './SubmitButtonFormControl';
 import { trackEvent } from '../../../utils/analytics';
+import { fetchWithTimeout, isAbortError } from '../../../utils/fetch-with-timeout';
 
 export default function FormBlock(props) {
     const [status, setStatus] = React.useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -33,7 +34,7 @@ export default function FormBlock(props) {
         data.forEach((value, key) => body.append(key, String(value)));
 
         try {
-            const response = await fetch('/__forms.html', {
+            const response = await fetchWithTimeout('/__forms.html', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: body.toString()
@@ -47,9 +48,9 @@ export default function FormBlock(props) {
             setStatus('success');
             trackEvent('contact_form_submit', { form_name: formName });
             trackEvent('generate_lead', { form_name: formName, lead_type: 'contact_form' });
-        } catch {
+        } catch (error) {
             setStatus('error');
-            trackEvent('contact_form_error', { form_name: formName, error_type: 'submission_failed' });
+            trackEvent('contact_form_error', { form_name: formName, error_type: isAbortError(error) ? 'timeout' : 'submission_failed' });
         }
     }
 

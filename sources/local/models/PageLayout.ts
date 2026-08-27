@@ -40,16 +40,10 @@ export const PageLayout: Model = {
                 type: 'model',
                 models: [
                     'ApproachSection',
-                    'CarouselSection',
                     'DividerSection',
                     'FaqSection',
                     'FeaturedItemsSection',
-                    'FeaturedPeopleSection',
-                    'FeaturedPostsSection',
-                    'GenericSection',
-                    'ImageGallerySection',
-                    'PricingSection',
-                    'RecentPostsSection'
+                    'GenericSection'
                 ]
             }
         },
