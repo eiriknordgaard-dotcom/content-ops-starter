@@ -5,10 +5,78 @@ import Router from 'next/router';
 import { trackEvent } from '../utils/analytics';
 
 const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const productionHosts = new Set(['eiriknordgaard.com', 'www.eiriknordgaard.com']);
+
+type GtagWindow = typeof window & {
+    gtag?: (...args: any[]) => void;
+};
+
+const getGtagValue = (field: 'client_id' | 'session_id') =>
+    new Promise<string | undefined>((resolve) => {
+        const gtag = (window as GtagWindow).gtag;
+        if (!gtag || !measurementId) {
+            resolve(undefined);
+            return;
+        }
+
+        let resolved = false;
+        const finish = (value?: unknown) => {
+            if (resolved) return;
+            resolved = true;
+            resolve(typeof value === 'string' || typeof value === 'number' ? String(value) : undefined);
+        };
+
+        window.setTimeout(() => finish(), 700);
+        gtag('get', measurementId, field, finish);
+    });
+
+const addCalendlyAttribution = async (href: string) => {
+    const [clientId, sessionId] = await Promise.all([getGtagValue('client_id'), getGtagValue('session_id')]);
+    if (!clientId || !sessionId) return href;
+
+    try {
+        const response = await fetch('/api/analytics-attribution', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ clientId, sessionId }),
+            keepalive: true,
+            signal: AbortSignal.timeout(1_500)
+        });
+        if (!response.ok) return href;
+
+        const result = (await response.json()) as { token?: string };
+        if (!result.token) return href;
+
+        const url = new URL(href);
+        url.searchParams.set('utm_content', `ga_${result.token}`);
+        return url.toString();
+    } catch {
+        return href;
+    }
+};
 
 export default function Analytics() {
+    const [enabled, setEnabled] = React.useState(false);
+
     React.useEffect(() => {
-        if (!measurementId) return;
+        const production = productionHosts.has(window.location.hostname);
+        if (production) {
+            const url = new URL(window.location.href);
+            const internalTraffic = url.searchParams.get('internal_traffic');
+            if (internalTraffic === '1') window.localStorage.setItem('ga_internal_traffic', 'true');
+            if (internalTraffic === '0') window.localStorage.removeItem('ga_internal_traffic');
+
+            if (internalTraffic === '1' || internalTraffic === '0') {
+                url.searchParams.delete('internal_traffic');
+                window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`);
+            }
+        }
+
+        setEnabled(Boolean(measurementId) && production);
+    }, []);
+
+    React.useEffect(() => {
+        if (!measurementId || !enabled) return;
 
         let trackedDepths = new Set<number>();
 
@@ -28,8 +96,20 @@ export default function Analytics() {
                 });
             }
 
-            if (href.includes('calendly.com/')) trackEvent('schedule_call_click', { link_text: label, link_url: href });
-            else if (href.includes('linkedin.com/')) trackEvent('linkedin_click', { link_text: label, link_url: href });
+            if (href.includes('calendly.com/')) {
+                trackEvent('schedule_call_click', { link_text: label, link_url: href });
+
+                if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+                    event.preventDefault();
+                    const bookingWindow = window.open('', link.target || '_self');
+                    if (bookingWindow) bookingWindow.opener = null;
+
+                    void addCalendlyAttribution(href).then((attributedHref) => {
+                        if (bookingWindow) bookingWindow.location.href = attributedHref;
+                        else window.location.href = attributedHref;
+                    });
+                }
+            } else if (href.includes('linkedin.com/')) trackEvent('linkedin_click', { link_text: label, link_url: href });
             else if (href.includes('brokercheck.finra.org/')) trackEvent('brokercheck_click', { link_text: label, link_url: href });
             else if (href.startsWith('mailto:')) trackEvent('email_click', { link_text: label });
             else if (/what-does-a-finop-do|series-27-vs-series-28-finop|outsourced-vs-in-house-finop/.test(href)) {
@@ -87,15 +167,15 @@ export default function Analytics() {
             window.removeEventListener('error', handleWindowError);
             window.removeEventListener('unhandledrejection', handleUnhandledRejection);
         };
-    }, []);
+    }, [enabled]);
 
-    if (!measurementId) return null;
+    if (!measurementId || !enabled) return null;
 
     return (
         <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} strategy="afterInteractive" />
             <Script id="google-analytics" strategy="afterInteractive">
-                {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;var debugMode=!/(^|\\.)eiriknordgaard\\.com$/.test(window.location.hostname);gtag('js',new Date());gtag('config','${measurementId}',{anonymize_ip:true,allow_google_signals:false,allow_ad_personalization_signals:false,debug_mode:debugMode});`}
+                {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;var gaConfig={anonymize_ip:true,allow_google_signals:false,allow_ad_personalization_signals:false};if(window.localStorage.getItem('ga_internal_traffic')==='true'){gaConfig.traffic_type='internal'}gtag('js',new Date());gtag('config','${measurementId}',gaConfig);`}
             </Script>
         </>
     );

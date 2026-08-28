@@ -12,6 +12,11 @@ const getProcessedEvents = (context: Context) =>
         ? getStore({ name: 'calendly-webhook-events', consistency: 'strong' })
         : getDeployStore({ name: 'calendly-webhook-events', deployID: context.deploy.id, consistency: 'strong' });
 
+const getAttributionStore = (context: Context) =>
+    context.deploy.context === 'production'
+        ? getStore({ name: 'analytics-attribution', consistency: 'strong' })
+        : getDeployStore({ name: 'analytics-attribution', deployID: context.deploy.id, consistency: 'strong' });
+
 const json = (body: Record<string, unknown>, status = 200) =>
     new Response(JSON.stringify(body), {
         status,
@@ -41,16 +46,8 @@ const verifyCalendlySignature = async (body: string, header: string, signingKey:
     if (!timestamp || !Number.isFinite(timestampSeconds) || signatures.length === 0) return false;
     if (Math.abs(Math.floor(Date.now() / 1000) - timestampSeconds) > 300) return false;
 
-    const key = await crypto.subtle.importKey(
-        'raw',
-        new TextEncoder().encode(signingKey),
-        { name: 'HMAC', hash: 'SHA-256' },
-        false,
-        ['sign']
-    );
-    const digest = new Uint8Array(
-        await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(`${timestamp}.${body}`))
-    );
+    const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(signingKey), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+    const digest = new Uint8Array(await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(`${timestamp}.${body}`)));
     const expected = Array.from(digest, (byte) => byte.toString(16).padStart(2, '0')).join('');
 
     return signatures.some((signature) => safeEqual(signature, expected));
@@ -69,6 +66,33 @@ const anonymousClientId = async (source: string) => {
 const sha256 = async (source: string) => {
     const hash = new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(source)));
     return Array.from(hash, (byte) => byte.toString(16).padStart(2, '0')).join('');
+};
+
+type Attribution = {
+    clientId: string;
+    sessionId: string;
+    createdAt: string;
+};
+
+const getAttribution = async (payload: Record<string, unknown>, context: Context) => {
+    const tracking = payload.tracking && typeof payload.tracking === 'object' ? (payload.tracking as Record<string, unknown>) : {};
+    const content = String(tracking.utm_content || '');
+    const token = content.startsWith('ga_') ? content.slice(3) : '';
+    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(token)) return null;
+
+    const attributionStore = getAttributionStore(context);
+    const attribution = (await attributionStore.get(`session/${token}`, { type: 'json' })) as Attribution | null;
+    if (!attribution) return null;
+
+    const createdAt = Date.parse(attribution.createdAt);
+    const age = Date.now() - createdAt;
+    if (!Number.isFinite(createdAt) || age < 0 || age > 24 * 60 * 60 * 1000) {
+        await attributionStore.delete(`session/${token}`);
+        return null;
+    }
+
+    if (!/^\d+\.\d+$/.test(attribution.clientId) || !/^\d+$/.test(attribution.sessionId)) return null;
+    return { ...attribution, token };
 };
 
 const calendlyWebhook = async (request: Request, context: Context) => {
@@ -109,10 +133,7 @@ const calendlyWebhook = async (request: Request, context: Context) => {
     }
 
     const payload = (webhook.payload && typeof webhook.payload === 'object' ? webhook.payload : {}) as Record<string, unknown>;
-    const scheduledEvent =
-        payload.scheduled_event && typeof payload.scheduled_event === 'object'
-            ? (payload.scheduled_event as Record<string, unknown>)
-            : {};
+    const scheduledEvent = payload.scheduled_event && typeof payload.scheduled_event === 'object' ? (payload.scheduled_event as Record<string, unknown>) : {};
     const sourceId = String(payload.uri || scheduledEvent.uri || webhook.created_at || 'calendly-booking');
     const eventKey = `invitee-created/${await sha256(sourceId)}`;
     const processedEvents = getProcessedEvents(context);
@@ -122,7 +143,8 @@ const calendlyWebhook = async (request: Request, context: Context) => {
         return json({ ok: true, duplicate: true });
     }
 
-    const clientId = await anonymousClientId(sourceId);
+    const attribution = await getAttribution(payload, context);
+    const clientId = attribution?.clientId || (await anonymousClientId(sourceId));
 
     let gaResponse: Response;
     try {
@@ -139,6 +161,7 @@ const calendlyWebhook = async (request: Request, context: Context) => {
                         {
                             name: 'schedule_call_complete',
                             params: {
+                                ...(attribution ? { session_id: attribution.sessionId } : {}),
                                 engagement_time_msec: 1,
                                 method: 'calendly',
                                 form_type: 'calendar',
@@ -164,6 +187,7 @@ const calendlyWebhook = async (request: Request, context: Context) => {
         processedAt: new Date().toISOString(),
         event: 'invitee.created'
     });
+    if (attribution) await getAttributionStore(context).delete(`session/${attribution.token}`);
 
     return json({ ok: true });
 };
