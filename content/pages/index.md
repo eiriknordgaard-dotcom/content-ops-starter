@@ -473,9 +473,7 @@ sections:
       type: TitleBlock
     subtitle: ''
     text: |
-      Tell me where your firm is today and what kind of support you need. I'll follow up personally to discuss the right next step.
-
-      On an introductory call, we'll discuss your firm, current FINOP responsibilities, and whether my support is a suitable fit.
+      Tell me where your firm is today and what support you need. I'll follow up personally to discuss your current FINOP responsibilities, the right next step, and whether my support is a suitable fit.
 
       - Confidential conversation
       - Response within one business day
