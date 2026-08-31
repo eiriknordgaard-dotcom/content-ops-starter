@@ -313,7 +313,9 @@ sections:
       type: TitleBlock
     description: >-
       I work with introducing broker-dealers that need experienced financial
-      oversight without building a full internal FINOP function.
+      oversight without building a full internal FINOP function. Support can be
+      structured as ongoing fractional oversight or focused assistance for a
+      specific need.
     items:
       - type: FeaturedItem
         tagline: Formation
@@ -410,6 +412,8 @@ sections:
       As an outsourced FINOP consultant, I bring internal FINOP experience to
       a flexible external role, working directly with management to keep
       financial reporting, controls, and regulatory responsibilities organized.
+      Management gains clearer visibility into deadlines, capital position,
+      open items, and what requires attention next.
     principles:
       - title: Direct accountability
         text: >-
@@ -418,8 +422,8 @@ sections:
         icon: accountability
       - title: Proactive oversight
         text: >-
-          Clear updates on deadlines, capital position, open items, and what
-          needs attention next.
+          Regular updates surface developing issues early and reduce
+          last-minute decisions.
         icon: oversight
       - title: Operational continuity
         text: >-
@@ -470,6 +474,8 @@ sections:
     subtitle: ''
     text: |
       Tell me where your firm is today and what kind of support you need. I'll follow up personally to discuss the right next step.
+
+      On an introductory call, we'll discuss your firm, current FINOP responsibilities, and whether my support is a suitable fit.
 
       - Confidential conversation
       - Response within one business day

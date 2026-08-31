@@ -116,7 +116,10 @@ export default function Analytics() {
             if (!link) return;
             const href = link.href;
             const label = link.textContent?.trim().replace(/\s+/g, ' ').slice(0, 120) || link.getAttribute('aria-label') || 'Unlabeled link';
-            const location = link.closest<HTMLElement>('section[id]')?.id || (link.closest('header') ? 'header' : link.closest('footer') ? 'footer' : 'page');
+            const location =
+                link.closest<HTMLElement>('#services, #services-projects, #about, #why, #contact')?.id ||
+                (link.closest('header') ? 'header' : link.closest('footer') ? 'footer' : 'page');
+            const navigationTarget = link.hash.replace(/^#/, '');
 
             if (link.classList.contains('sb-component-button')) {
                 trackEvent('cta_click', {
@@ -142,8 +145,16 @@ export default function Analytics() {
             } else if (href.includes('linkedin.com/')) trackEvent('linkedin_click', { link_text: label, link_url: href });
             else if (href.includes('brokercheck.finra.org/')) trackEvent('brokercheck_click', { link_text: label, link_url: href });
             else if (href.startsWith('mailto:')) trackEvent('email_click', { link_text: label });
-            else if (/what-does-a-finop-do|series-27-vs-series-28-finop|outsourced-vs-in-house-finop/.test(href)) {
+            else if (/what-does-a-finop-do|series-27-vs-series-28-finop|outsourced-vs-in-house-finop|finop-audit-readiness-checklist/.test(href)) {
                 trackEvent('resource_click', { link_text: label, link_url: href });
+            }
+
+            if ((location === 'header' || location === 'footer') && ['services', 'about', 'why', 'contact'].includes(navigationTarget)) {
+                trackEvent('navigation_click', {
+                    link_text: label,
+                    navigation_target: navigationTarget,
+                    navigation_location: location
+                });
             }
         };
 
