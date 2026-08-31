@@ -23,6 +23,41 @@
   ]
 
 [[redirects]]
+  from = "/go/linkedin"
+  to = "/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=linkedin_profile"
+  status = 302
+
+[[redirects]]
+  from = "/go/linkedin/finop-consulting"
+  to = "/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=finop_consulting&utm_content=homepage"
+  status = 302
+
+[[redirects]]
+  from = "/go/linkedin/what-does-a-finop-do"
+  to = "/what-does-a-finop-do/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=finop_education&utm_content=what_does_a_finop_do"
+  status = 302
+
+[[redirects]]
+  from = "/go/linkedin/series-27-vs-28"
+  to = "/series-27-vs-series-28-finop/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=finop_education&utm_content=series_27_vs_28"
+  status = 302
+
+[[redirects]]
+  from = "/go/linkedin/outsourced-vs-in-house"
+  to = "/outsourced-vs-in-house-finop/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=outsourced_finop&utm_content=outsourced_vs_in_house"
+  status = 302
+
+[[redirects]]
+  from = "/go/linkedin/fractional-finop"
+  to = "/fractional-finop/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=outsourced_finop&utm_content=fractional_finop"
+  status = 302
+
+[[redirects]]
+  from = "/go/linkedin/audit-readiness"
+  to = "/finop-audit-readiness-checklist/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=audit_readiness&utm_content=checklist"
+  status = 302
+
+[[redirects]]
   from = "/pricing"
   to = "/fractional-finop/"
   status = 301

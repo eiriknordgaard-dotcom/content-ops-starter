@@ -39,6 +39,20 @@ if (redirectResponse.status !== 301 || redirectResponse.headers.get('location') 
     failures.push('/pricing: permanent redirect is incorrect');
 }
 
+const linkedinRedirect = await fetch(new URL('/go/linkedin/finop-consulting', siteUrl), {
+    redirect: 'manual',
+    signal: AbortSignal.timeout(10_000),
+    headers: { 'user-agent': 'finop-production-monitor/1.0' }
+});
+
+const linkedinLocation = linkedinRedirect.headers.get('location');
+if (
+    linkedinRedirect.status !== 302 ||
+    linkedinLocation !== '/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=finop_consulting&utm_content=homepage'
+) {
+    failures.push('/go/linkedin/finop-consulting: campaign redirect is incorrect');
+}
+
 if (failures.length > 0) {
     console.error(`Production smoke test failed:\n${failures.map((failure) => `- ${failure}`).join('\n')}`);
     process.exit(1);
