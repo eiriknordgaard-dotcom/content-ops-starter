@@ -28,21 +28,22 @@ test('mobile navigation opens as a dropdown and closes after navigation', async 
     await expect(page.getByRole('button', { name: 'Open Menu' })).toBeVisible();
 });
 
-test('client illustrations reliably animate when each mobile card enters view', async ({ page }) => {
+test('client illustrations animate as each illustration enters the mobile viewport', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
 
     for (let index = 0; index < 2; index += 1) {
         await page.goto('/');
 
         const illustration = page.locator('[data-client-illustration="true"]').nth(index);
-        const trigger = page.locator('[data-client-animation-trigger="true"]').nth(index);
 
         await expect(illustration.locator('..')).toHaveClass(/client-illustration-pending/);
         await expect(illustration).toHaveAttribute('data-animation-replay-count', '0');
 
-        await trigger.scrollIntoViewIfNeeded();
+        await illustration.scrollIntoViewIfNeeded();
         await expect(illustration).toHaveAttribute('data-animation-replay-count', '1');
         await expect(illustration.locator('..')).not.toHaveClass(/client-illustration-pending/);
+        await expect(illustration).toHaveJSProperty('complete', true);
+        expect(await illustration.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0);
     }
 });
 

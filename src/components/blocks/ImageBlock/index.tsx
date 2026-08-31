@@ -21,6 +21,7 @@ export default function ImageBlock(props) {
     const [replayCount, setReplayCount] = React.useState(0);
     const [animationInstance, setAnimationInstance] = React.useState('');
     const [clientAnimationStarted, setClientAnimationStarted] = React.useState(false);
+    const [clientImageLoaded, setClientImageLoaded] = React.useState(false);
     const isHeroSystemImage = url === '/images/hero-finop-system.svg';
     const isClientIllustration = url === '/images/client-formation.svg' || url === '/images/client-ongoing.svg';
     const isReplayableIllustration = isHeroSystemImage || isClientIllustration;
@@ -51,6 +52,7 @@ export default function ImageBlock(props) {
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             if (isClientIllustration) {
                 setClientAnimationStarted(true);
+                setClientImageLoaded(true);
             }
             return;
         }
@@ -69,31 +71,47 @@ export default function ImageBlock(props) {
         }
 
         if (isClientIllustration) {
-            const clientTrigger = imageWrap.closest('.sb-card')?.querySelector<HTMLElement>('[data-client-animation-trigger]');
-            if (!clientTrigger) {
+            const cardTrigger = imageWrap.closest('.sb-card')?.querySelector<HTMLElement>('[data-client-animation-trigger]');
+            if (!cardTrigger) {
                 return;
             }
 
-            let wasVisible = false;
-            const clientObserver = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting && !wasVisible) {
-                        wasVisible = true;
-                        setClientAnimationStarted(true);
-                        setReplayCount((count) => count + 1);
-                    } else if (!entry.isIntersecting) {
-                        wasVisible = false;
-                        setClientAnimationStarted(false);
-                    }
-                },
-                {
-                    rootMargin: '0px 0px -16px 0px',
-                    threshold: 0.1
-                }
-            );
+            const mobileClientQuery = window.matchMedia('(max-width: 767px)');
+            let clientObserver: IntersectionObserver | undefined;
 
-            clientObserver.observe(clientTrigger);
-            return () => clientObserver.disconnect();
+            const observeClientAnimation = () => {
+                clientObserver?.disconnect();
+                let wasVisible = false;
+                const useIllustrationTrigger = mobileClientQuery.matches;
+                const clientTrigger = useIllustrationTrigger ? imageWrap : cardTrigger;
+
+                clientObserver = new IntersectionObserver(
+                    ([entry]) => {
+                        if (entry.isIntersecting && !wasVisible) {
+                            wasVisible = true;
+                            setClientAnimationStarted(true);
+                            setClientImageLoaded(false);
+                            setReplayCount((count) => count + 1);
+                        } else if (!entry.isIntersecting) {
+                            wasVisible = false;
+                            setClientAnimationStarted(false);
+                        }
+                    },
+                    useIllustrationTrigger
+                        ? { rootMargin: '0px 0px -10% 0px', threshold: 0.25 }
+                        : { rootMargin: '0px 0px -16px 0px', threshold: 0.1 }
+                );
+
+                clientObserver.observe(clientTrigger);
+            };
+
+            observeClientAnimation();
+            mobileClientQuery.addEventListener('change', observeClientAnimation);
+
+            return () => {
+                clientObserver?.disconnect();
+                mobileClientQuery.removeEventListener('change', observeClientAnimation);
+            };
         }
 
         let initialized = false;
@@ -146,7 +164,7 @@ export default function ImageBlock(props) {
                 'sb-component-image-block',
                 {
                     'client-illustration-wrap': isClientIllustration,
-                    'client-illustration-pending': isClientIllustration && !clientAnimationStarted
+                    'client-illustration-pending': isClientIllustration && (!clientAnimationStarted || !clientImageLoaded)
                 },
                 className,
                 styles?.self?.margin ? mapStyles({ margin: styles?.self?.margin }) : undefined
@@ -180,6 +198,7 @@ export default function ImageBlock(props) {
                 loading={isHeroSystemImage ? 'eager' : 'lazy'}
                 fetchPriority={isHeroSystemImage ? 'high' : 'auto'}
                 decoding="async"
+                onLoad={isClientIllustration ? () => setClientImageLoaded(true) : undefined}
             />
         </div>
     );
