@@ -34,7 +34,7 @@ export default function FormBlock(props) {
         data.forEach((value, key) => body.append(key, String(value)));
 
         try {
-            const response = await fetchWithTimeout('/__forms.html', {
+            const response = await fetchWithTimeout('/api/contact-submit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: body.toString()
@@ -47,7 +47,6 @@ export default function FormBlock(props) {
             form.reset();
             setStatus('success');
             trackEvent('contact_form_submit', { form_name: formName });
-            trackEvent('generate_lead', { form_name: formName, lead_type: 'contact_form' });
         } catch (error) {
             setStatus('error');
             trackEvent('contact_form_error', { form_name: formName, error_type: isAbortError(error) ? 'timeout' : 'submission_failed' });

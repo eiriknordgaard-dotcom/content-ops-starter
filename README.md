@@ -44,10 +44,10 @@ GitHub Actions runs:
 
 Netlify builds the site with `node scripts/netlify-build.mjs` and publishes `out/`. The build generates and validates SEO files before compiling the static site.
 
-The Calendly webhook requires these Netlify environment variables:
+The Calendly webhook and server-side contact conversion tracking require these Netlify environment variables:
 
 - `CALENDLY_WEBHOOK_SIGNING_KEY`
 - `GA4_MEASUREMENT_ID`
 - `GA4_MEASUREMENT_PROTOCOL_SECRET`
 
-The webhook uses Netlify Blobs to prevent duplicate conversion events and reports its configuration state at `/api/calendly-webhook`.
+The Calendly webhook uses Netlify Blobs to prevent duplicate conversion events and reports its configuration state at `/api/calendly-webhook`. The contact form submits through `/api/contact-submit`, which records `generate_lead` only after Netlify Forms accepts the message.

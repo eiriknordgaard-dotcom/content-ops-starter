@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test('successful contact form submission emits the qualified lead event', async ({ page }) => {
+test('successful contact form submission uses the server-side conversion endpoint', async ({ page }) => {
     await page.addInitScript(() => {
         const analyticsWindow = window as typeof window & {
             __analyticsTestEvents?: unknown[][];
@@ -10,7 +10,7 @@ test('successful contact form submission emits the qualified lead event', async 
         analyticsWindow.gtag = (...args: unknown[]) => analyticsWindow.__analyticsTestEvents?.push(args);
     });
 
-    await page.route('**/__forms.html', async (route) => {
+    await page.route('**/api/contact-submit', async (route) => {
         await route.fulfill({ status: 200, contentType: 'text/html', body: 'ok' });
     });
     await page.goto('/#contact');
@@ -26,5 +26,6 @@ test('successful contact form submission emits the qualified lead event', async 
         return analyticsWindow.__analyticsTestEvents || [];
     });
 
-    expect(events).toContainEqual(['event', 'generate_lead', { form_name: 'contact-form', lead_type: 'contact_form' }]);
+    expect(events).toContainEqual(['event', 'contact_form_submit', { form_name: 'contact-form' }]);
+    expect(events.some((event) => event[0] === 'event' && event[1] === 'generate_lead')).toBe(false);
 });
