@@ -3,7 +3,7 @@
     "siteUrl": "https://eiriknordgaard.com",
     "footer": "content/data/footer.json",
     "titleSuffix": "Eirik Nordgaard | Outsourced FINOP",
-    "defaultSocialImage": "/images/finop-social-card.png",
+    "defaultSocialImage": "/images/finop-social-card-v2.png",
     "type": "Config",
     "header": "content/data/header.json"
 }

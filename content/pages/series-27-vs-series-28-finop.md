@@ -229,7 +229,7 @@ seo:
   metaDescription: >-
     Compare Series 27 and Series 28 FINOP qualifications, including which
     broker-dealers use each category and the responsibilities they cover.
-  socialImage: /images/finop-social-card.png
+  socialImage: /images/finop-social-card-v2.png
   metaTags:
     - property: og:type
       content: article

@@ -227,7 +227,7 @@ seo:
     Learn what a FINOP does for a broker-dealer, including financial reporting,
     books and records, net capital, FOCUS filings, audits, and regulatory
     oversight.
-  socialImage: /images/finop-social-card.png
+  socialImage: /images/finop-social-card-v2.png
   metaTags:
     - property: og:type
       content: article

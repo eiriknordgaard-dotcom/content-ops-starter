@@ -553,7 +553,7 @@ seo:
     FINOP consultant providing outsourced Series 28 services for introducing
     broker-dealers, including net capital, FOCUS filings, audits, and FINRA
     responses.
-  socialImage: /images/finop-social-card.png
+  socialImage: /images/finop-social-card-v2.png
   metaTags:
     - property: og:description
       content: FINOP consultant providing outsourced Series 28 services for introducing broker-dealers, including net capital, FOCUS filings, audits, books and records, and FINRA responses.
