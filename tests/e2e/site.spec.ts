@@ -12,6 +12,12 @@ test('homepage exposes the primary conversion path and trust links', async ({ pa
 
     await expect(page.getByRole('link', { name: /LinkedIn/i }).last()).toBeVisible();
     await expect(page.getByRole('link', { name: /BrokerCheck/i }).last()).toBeVisible();
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+        'content',
+        'https://eiriknordgaard.com/images/finop-social-card.png'
+    );
+    await expect(page.locator('meta[property="og:image:width"]')).toHaveAttribute('content', '1200');
+    await expect(page.locator('meta[property="og:image:height"]')).toHaveAttribute('content', '630');
 });
 
 test('mobile navigation opens as a dropdown and closes after navigation', async ({ page }) => {

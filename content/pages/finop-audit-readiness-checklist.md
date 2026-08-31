@@ -320,7 +320,7 @@ seo:
   metaDescription: >-
     Use this FINOP and audit readiness checklist to review broker-dealer books
     and records, net capital, FOCUS reporting, annual-audit support, and controls.
-  socialImage: /images/main-hero.jpg
+  socialImage: /images/finop-social-card.png
   metaTags:
     - property: og:type
       content: article

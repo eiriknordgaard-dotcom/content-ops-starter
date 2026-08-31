@@ -56,7 +56,7 @@ seo:
   metaTitle: Privacy Policy | Eirik Nordgaard
   addTitleSuffix: false
   metaDescription: Privacy policy for eiriknordgaard.com, including how contact-form information is collected, used, retained, and protected.
-  socialImage: /images/main-hero.jpg
+  socialImage: /images/finop-social-card.png
   type: Seo
 type: PageLayout
 ---

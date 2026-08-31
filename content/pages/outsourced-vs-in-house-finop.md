@@ -273,7 +273,7 @@ seo:
     Compare outsourced, fractional, and in-house FINOP models for
     broker-dealers, including operating cadence, responsibilities, cost, and
     provider questions.
-  socialImage: /images/main-hero.jpg
+  socialImage: /images/finop-social-card.png
   metaTags:
     - property: og:type
       content: article

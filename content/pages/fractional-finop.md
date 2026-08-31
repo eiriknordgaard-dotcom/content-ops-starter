@@ -464,7 +464,7 @@ seo:
     Series 28 FINOP consultant for introducing broker-dealers. Fractional
     support for net capital, FOCUS filings, books and records,
     audits, and FINRA response.
-  socialImage: /images/main-hero.jpg
+  socialImage: /images/finop-social-card.png
   metaTags:
     - property: og:description
       content: Series 28 FINOP consulting for introducing broker-dealers, including net capital, FOCUS filings, books and records, annual audits, and FINRA responses.

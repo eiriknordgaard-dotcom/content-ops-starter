@@ -30,8 +30,9 @@ function Page(props) {
                 {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
                 {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
                 {metaDescription && <meta name="description" content={metaDescription} />}
-                {socialImage?.endsWith('/images/main-hero.jpg') && <meta property="og:image:width" content="735" />}
-                {socialImage?.endsWith('/images/main-hero.jpg') && <meta property="og:image:height" content="464" />}
+                {socialImage?.endsWith('/images/finop-social-card.png') && <meta property="og:image:width" content="1200" />}
+                {socialImage?.endsWith('/images/finop-social-card.png') && <meta property="og:image:height" content="630" />}
+                {socialImage?.endsWith('/images/finop-social-card.png') && <meta property="og:image:type" content="image/png" />}
                 {socialImage && <meta property="og:image:alt" content={`${page.title} | Eirik Nordgaard`} />}
                 {shouldNoIndex && <meta name="robots" content="noindex, nofollow" />}
                 {googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
