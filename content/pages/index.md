@@ -11,9 +11,9 @@ sections:
       type: TitleBlock
     subtitle: ''
     text: >
-      Work directly with an experienced FINOP consultant for outsourced Series
-      28 support that keeps your books and records, net capital, FOCUS filings,
-      audits, and FINRA responses organized, ready, and compliant.
+      Get experienced Series 28 oversight that keeps financial responsibilities
+      organized, identifies issues early, and helps your firm remain ready and
+      compliant without building a full internal FINOP function.
     actions:
       - label: Schedule a 30-Minute Call
         altText: Schedule a confidential 30-minute introductory call
@@ -66,7 +66,7 @@ sections:
     type: DividerSection
   - type: FeaturedItemsSection
     title:
-      text: FINOP Consulting, Organized Around Your Firm
+      text: Stay Ahead of Filings, Capital Issues, and Regulatory Requests
       color: text-dark
       styles:
         self:
@@ -305,7 +305,7 @@ sections:
     type: DividerSection
   - type: FeaturedItemsSection
     title:
-      text: FINOP Support for Every Stage of Your Firm
+      text: FINOP Support That Fits Where Your Firm Is Today
       color: text-dark
       styles:
         self:

@@ -65,7 +65,7 @@ test('theme preference survives a page reload', async ({ page }) => {
 });
 
 test('contact form succeeds without leaving the page', async ({ page }) => {
-    await page.route('**/__forms.html', async (route) => {
+    await page.route('**/api/contact-submit', async (route) => {
         await route.fulfill({ status: 200, contentType: 'text/html', body: 'ok' });
     });
     await page.goto('/#contact');
