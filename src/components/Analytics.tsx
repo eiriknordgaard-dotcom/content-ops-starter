@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Script from 'next/script';
 import Router from 'next/router';
 
 import { trackEvent } from '../utils/analytics';
@@ -8,7 +7,9 @@ const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const productionHosts = new Set(['eiriknordgaard.com', 'www.eiriknordgaard.com']);
 
 type GtagWindow = typeof window & {
+    dataLayer?: unknown[];
     gtag?: (...args: any[]) => void;
+    __gaInitialized?: boolean;
 };
 
 const getGtagValue = (field: 'client_id' | 'session_id') =>
@@ -77,6 +78,35 @@ export default function Analytics() {
 
     React.useEffect(() => {
         if (!measurementId || !enabled) return;
+
+        const analyticsWindow = window as GtagWindow;
+        if (!analyticsWindow.__gaInitialized) {
+            analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
+            analyticsWindow.gtag = function gtag(...args: any[]) {
+                analyticsWindow.dataLayer?.push(args);
+            };
+
+            const gaConfig: Record<string, boolean | string> = {
+                anonymize_ip: true,
+                allow_google_signals: false,
+                allow_ad_personalization_signals: false
+            };
+            if (window.localStorage.getItem('ga_internal_traffic') === 'true') gaConfig.traffic_type = 'internal';
+
+            analyticsWindow.gtag('js', new Date());
+            analyticsWindow.gtag('config', measurementId, gaConfig);
+
+            const loaderId = 'google-analytics-loader';
+            if (!document.getElementById(loaderId)) {
+                const script = document.createElement('script');
+                script.id = loaderId;
+                script.async = true;
+                script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+                document.head.appendChild(script);
+            }
+
+            analyticsWindow.__gaInitialized = true;
+        }
 
         let trackedDepths = new Set<number>();
 
@@ -169,14 +199,5 @@ export default function Analytics() {
         };
     }, [enabled]);
 
-    if (!measurementId || !enabled) return null;
-
-    return (
-        <>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} strategy="afterInteractive" />
-            <Script id="google-analytics" strategy="afterInteractive">
-                {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;var gaConfig={anonymize_ip:true,allow_google_signals:false,allow_ad_personalization_signals:false};if(window.localStorage.getItem('ga_internal_traffic')==='true'){gaConfig.traffic_type='internal'}gtag('js',new Date());gtag('config','${measurementId}',gaConfig);`}
-            </Script>
-        </>
-    );
+    return null;
 }
