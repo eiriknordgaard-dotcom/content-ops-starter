@@ -134,7 +134,7 @@ export default function FeaturedItem(props) {
                 )}
             </div>
             {hasClientIllustration && (
-                <span className="absolute inset-x-0 bottom-0 h-px pointer-events-none" data-client-animation-trigger aria-hidden="true" />
+                <span className="absolute inset-x-0 bottom-0 h-16 pointer-events-none" data-client-animation-trigger aria-hidden="true" />
             )}
         </div>
     );

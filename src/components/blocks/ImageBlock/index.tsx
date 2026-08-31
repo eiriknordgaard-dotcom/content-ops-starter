@@ -86,7 +86,10 @@ export default function ImageBlock(props) {
                         setClientAnimationStarted(false);
                     }
                 },
-                { threshold: 0.01 }
+                {
+                    rootMargin: '0px 0px -16px 0px',
+                    threshold: 0.1
+                }
             );
 
             clientObserver.observe(clientTrigger);
