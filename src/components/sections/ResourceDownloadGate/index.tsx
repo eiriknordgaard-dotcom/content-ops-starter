@@ -32,7 +32,7 @@ export default function ResourceDownloadGate() {
         body.set('form-name', FORM_NAME);
 
         try {
-            const response = await fetchWithTimeout('/__forms.html', {
+            const response = await fetchWithTimeout('/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: body.toString()

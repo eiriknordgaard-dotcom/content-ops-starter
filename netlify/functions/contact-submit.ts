@@ -104,7 +104,7 @@ const contactSubmit = async (request: Request, context: Context) => {
         return json({ ok: false, error: 'invalid_form' }, 400);
     }
 
-    const formsResponse = await fetch(new URL('/__forms.html', request.url), {
+    const formsResponse = await fetch(new URL('/', request.url), {
         method: 'POST',
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
         body: rawBody,
