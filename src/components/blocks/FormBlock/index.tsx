@@ -11,12 +11,9 @@ import { fetchWithTimeout, isAbortError } from '../../../utils/fetch-with-timeou
 
 export default function FormBlock(props) {
     const [status, setStatus] = React.useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-    const [isHydrated, setIsHydrated] = React.useState(false);
     const formStarted = React.useRef(false);
     const { fields = [], elementId, heading, privacyText, submitButton, className, styles = {}, 'data-sb-field-path': fieldPath } = props;
     const formName = elementId || 'contact-form';
-
-    React.useEffect(() => setIsHydrated(true), []);
 
     if (fields.length === 0) {
         return null;
@@ -28,9 +25,8 @@ export default function FormBlock(props) {
         trackEvent('form_start', { form_name: formName, form_type: 'contact' });
     }
 
-    async function handleSubmit(event: React.FormEvent<HTMLFormElement | HTMLDivElement>) {
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        if (!(event.currentTarget instanceof HTMLFormElement)) return;
         setStatus('submitting');
 
         const form = event.currentTarget;
@@ -66,10 +62,8 @@ export default function FormBlock(props) {
         }
     }
 
-    const FormElement = isHydrated ? 'form' : 'div';
-
     return (
-        <FormElement
+        <form
             className={classNames(
                 'sb-component',
                 'sb-component-block',
@@ -87,7 +81,6 @@ export default function FormBlock(props) {
                 styles?.self?.borderRadius ? mapStyles({ borderRadius: styles?.self?.borderRadius }) : undefined
             )}
             id={elementId}
-            role={isHydrated ? undefined : 'form'}
             onSubmit={handleSubmit}
             onFocus={handleFormStart}
             data-sb-field-path={fieldPath}
@@ -140,6 +133,6 @@ export default function FormBlock(props) {
                     {status === 'error' && <p>Something went wrong. Please email me directly or try again.</p>}
                 </div>
             )}
-        </FormElement>
+        </form>
     );
 }
