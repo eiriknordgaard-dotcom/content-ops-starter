@@ -1488,6 +1488,42 @@
         font-size: 1rem;
         line-height: 1.7;
     }
+    #why .approach-experience {
+        margin: 1.75rem 0 2.125rem;
+        padding: 1.25rem 0;
+        border-top: 1px solid rgba(15, 34, 53, 0.13);
+        border-bottom: 1px solid rgba(15, 34, 53, 0.13);
+    }
+    #why .approach-experience-label {
+        margin-bottom: 0.8125rem;
+        color: rgba(15, 34, 53, 0.68);
+        font-size: 0.75rem;
+        font-weight: 650;
+        letter-spacing: 0.075em;
+        text-transform: uppercase;
+    }
+    #why .approach-experience-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.625rem;
+    }
+    #why .approach-experience-list li {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5625rem 0.6875rem;
+        color: #0f2235;
+        background-color: #f4f8fb;
+        border-radius: 0.4375rem;
+        font-size: 0.8125rem;
+        font-weight: 650;
+        line-height: 1.35;
+    }
+    #why .approach-experience-list li::before {
+        color: #007aff;
+        font-weight: 700;
+        content: '\2713';
+    }
     #why .approach-kicker,
     #why .approach-qualifications-label {
         color: #007aff;
@@ -1624,8 +1660,9 @@
         }
     }
     #why .approach-profile {
+        align-self: center;
         overflow: hidden;
-        margin-top: 6rem;
+        margin-top: 0;
         border: 1px solid rgba(15, 34, 53, 0.11);
         border-radius: 1.125rem;
         background-color: #ffffff;
@@ -1779,11 +1816,18 @@
             font-size: 2.25rem;
         }
         #why .approach-profile {
+            align-self: stretch;
             max-width: 27rem;
             margin-top: 0;
         }
         #why .approach-photo-wrap {
             height: 26rem;
+        }
+        #why .approach-experience-list {
+            display: grid;
+        }
+        #why .approach-experience-list li {
+            width: 100%;
         }
     }
 
@@ -2226,7 +2270,7 @@
         }
 
         #why .approach-profile {
-            margin-top: 2rem;
+            margin-top: 0;
         }
 
         #why .approach-photo-wrap {
@@ -2383,9 +2427,23 @@
     html[data-theme='dark'] #services-projects .sb-card .sb-markdown,
     html[data-theme='dark'] #about .sb-card .sb-markdown,
     html[data-theme='dark'] #why .approach-intro,
+    html[data-theme='dark'] #why .approach-experience-label,
     html[data-theme='dark'] #why .approach-principle p,
     html[data-theme='dark'] #contact .sb-markdown {
         color: var(--site-label-secondary);
+    }
+
+    html[data-theme='dark'] #why .approach-experience {
+        border-color: var(--site-separator);
+    }
+
+    html[data-theme='dark'] #why .approach-experience-list li {
+        color: var(--site-label);
+        background-color: var(--site-surface-elevated);
+    }
+
+    html[data-theme='dark'] #why .approach-experience-list li::before {
+        color: var(--site-blue);
     }
 
     html[data-theme='dark'] #services .featured-items-group-label,

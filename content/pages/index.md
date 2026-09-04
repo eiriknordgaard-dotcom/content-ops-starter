@@ -2,7 +2,7 @@
 title: FINOP Consultant and Outsourced FINOP Services
 slug: /
 datePublished: '2026-08-26'
-dateModified: '2026-08-27'
+dateModified: '2026-09-02'
 sections:
   - type: GenericSection
     title:
@@ -11,9 +11,10 @@ sections:
       type: TitleBlock
     subtitle: ''
     text: >
-      Get experienced Series 28 oversight that keeps financial responsibilities
-      organized, identifies issues early, and helps your firm remain ready and
-      compliant without building a full internal FINOP function.
+      Get experienced FINOP consulting and outsourced Series 28 services that
+      keep financial responsibilities organized, identify issues early, and
+      help your firm remain ready and compliant without building a full internal
+      FINOP function.
     actions:
       - label: Schedule a 30-Minute Call
         altText: Schedule a confidential 30-minute introductory call
@@ -73,8 +74,9 @@ sections:
           textAlign: center
       type: TitleBlock
     description: >-
-      Ongoing oversight and focused project support that keep your regulatory
-      responsibilities monitored, documented, and ready.
+      FINOP services for introducing broker-dealers, including ongoing
+      oversight and focused project support that keep regulatory responsibilities
+      monitored, documented, and ready.
     groupLabel: Ongoing oversight
     items:
       - type: FeaturedItem
@@ -117,7 +119,15 @@ sections:
           altText: FOCUS reporting icon
           elementId: ''
           type: ImageBlock
-        actions: []
+        actions:
+          - label: Explore FOCUS and Net Capital Support
+            altText: Learn about broker-dealer FOCUS reporting and net capital support
+            url: /focus-reporting-net-capital-support/
+            showIcon: true
+            icon: arrowRight
+            iconPosition: right
+            style: secondary
+            type: Link
         colors: bg-light-fg-dark
         styles:
           self:
@@ -414,6 +424,10 @@ sections:
       financial reporting, controls, and regulatory responsibilities organized.
       Management gains clearer visibility into deadlines, capital position,
       open items, and what requires attention next.
+    experienceItems:
+      - Led several annual broker-dealer audits
+      - Participated in FINRA examinations
+      - Supported regulatory information requests
     principles:
       - title: Direct accountability
         text: >-

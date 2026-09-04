@@ -33,6 +33,12 @@
             "type": "Link"
         },
         {
+            "label": "FOCUS Reporting and Net Capital",
+            "url": "/focus-reporting-net-capital-support/",
+            "style": "secondary",
+            "type": "Link"
+        },
+        {
             "label": "Privacy Policy",
             "url": "/privacy/",
             "style": "secondary",

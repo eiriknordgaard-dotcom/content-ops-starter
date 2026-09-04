@@ -2,7 +2,7 @@
 title: Series 28 FINOP Consultant for Introducing Broker-Dealers
 slug: fractional-finop
 datePublished: '2026-08-27'
-dateModified: '2026-08-27'
+dateModified: '2026-09-02'
 sections:
   - type: GenericSection
     title:
@@ -82,6 +82,12 @@ sections:
       Fractional describes the flexible level of involvement; outsourced
       describes the external delivery model. [See the full outsourced FINOP
       service overview](/#services).
+
+
+      Firms may also describe a similar need as part-time FINOP support,
+      interim FINOP coverage, or designated FINOP services. The appropriate
+      structure depends on the firm's registration needs, activities, and the
+      responsibilities assigned to the external principal.
     actions:
       - label: View Outsourced FINOP Services
         altText: Return to the outsourced FINOP services overview
@@ -354,6 +360,12 @@ sections:
           membership approval, or as an established firm grows. The model can
           be especially useful when responsibilities are recurring and
           important but do not require a full-time internal position.
+      - question: Can you provide interim or designated FINOP services?
+        answer: >-
+          Yes, when the firm's qualification requirements and engagement scope
+          are an appropriate fit. Support can be structured as ongoing
+          outsourced coverage, a part-time engagement, or interim FINOP
+          coverage while the firm addresses a transition or replacement.
       - question: What is the difference between Series 27 and Series 28?
         answer: >-
           FINRA identifies Series 28 as the Introducing Broker-Dealer Financial

@@ -15,6 +15,7 @@ export default function ApproachSection(props) {
         badge,
         title,
         intro,
+        experienceItems = [],
         principles = [],
         profileImage,
         profileName,
@@ -79,6 +80,22 @@ export default function ApproachSection(props) {
                         <p className="approach-intro" {...(enableAnnotations && { 'data-sb-field-path': '.intro' })}>
                             {intro}
                         </p>
+                    )}
+
+                    {experienceItems.length > 0 && (
+                        <div className="approach-experience">
+                            <p className="approach-experience-label">Relevant experience</p>
+                            <ul
+                                className="approach-experience-list"
+                                {...(enableAnnotations && { 'data-sb-field-path': '.experienceItems' })}
+                            >
+                                {experienceItems.map((item, index) => (
+                                    <li key={index} {...(enableAnnotations && { 'data-sb-field-path': `.${index}` })}>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     )}
 
                     <p className="approach-kicker">How I work</p>

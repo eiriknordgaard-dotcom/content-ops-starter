@@ -70,7 +70,8 @@ function generateStructuredData(page, site, canonicalUrl, metaDescription, socia
         '/what-does-a-finop-do/',
         '/series-27-vs-series-28-finop/',
         '/outsourced-vs-in-house-finop/',
-        '/finop-audit-readiness-checklist/'
+        '/finop-audit-readiness-checklist/',
+        '/how-to-prepare-broker-dealer-focus-report/'
     ];
 
     graph.push(
@@ -148,6 +149,22 @@ function generateStructuredData(page, site, canonicalUrl, metaDescription, socia
                 name: 'United States'
             },
             serviceType: 'Series 28, fractional, and outsourced FINOP consulting'
+        });
+    }
+
+    if (pagePath === '/focus-reporting-net-capital-support/') {
+        graph.push({
+            '@type': 'Service',
+            '@id': `${canonicalUrl}#service`,
+            name: 'FOCUS Reporting and Net Capital Support for Broker-Dealers',
+            url: canonicalUrl,
+            description: metaDescription,
+            provider: { '@id': businessId },
+            areaServed: {
+                '@type': 'Country',
+                name: 'United States'
+            },
+            serviceType: 'Broker-dealer FOCUS reporting and net capital support'
         });
     }
 
