@@ -6,7 +6,7 @@ test('homepage exposes the primary conversion path and trust links', async ({ pa
     await expect(page).toHaveTitle(/FINOP Consultant/i);
     await expect(page.getByRole('heading', { level: 1, name: /Outsourced FINOP Consultant/i })).toBeVisible();
 
-    const scheduleLink = page.getByRole('link', { name: /Schedule a confidential 30-minute introductory call/i }).first();
+    const scheduleLink = page.getByRole('link', { name: 'Schedule a 30-Minute Call', exact: true });
     await expect(scheduleLink).toHaveAttribute('target', '_blank');
     await expect(scheduleLink).toHaveAttribute('rel', /noopener/);
 
@@ -56,7 +56,7 @@ test('client illustrations animate as each illustration enters the mobile viewpo
 test('theme preference survives a page reload', async ({ page }) => {
     await page.goto('/');
 
-    const toggle = page.getByRole('button', { name: /Switch to dark mode|Toggle color theme/ });
+    const toggle = page.getByRole('button', { name: /Light\s*Dark/ });
     await toggle.click();
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
 

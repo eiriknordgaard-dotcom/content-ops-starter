@@ -157,18 +157,17 @@ function ThemeToggle() {
         <button
             className={classNames('theme-toggle', { 'theme-toggle-dark': isDark })}
             type="button"
-            aria-label={label}
             title={label}
             aria-pressed={isDark}
             onClick={toggleTheme}
         >
-            <span className={classNames('theme-toggle-label', { 'theme-toggle-label-active': !isDark })} aria-hidden="true">
+            <span className={classNames('theme-toggle-label', { 'theme-toggle-label-active': !isDark })}>
                 Light
             </span>
             <span className="theme-toggle-track" aria-hidden="true">
                 <span className="theme-toggle-thumb" />
             </span>
-            <span className={classNames('theme-toggle-label', { 'theme-toggle-label-active': isDark })} aria-hidden="true">
+            <span className={classNames('theme-toggle-label', { 'theme-toggle-label-active': isDark })}>
                 Dark
             </span>
         </button>

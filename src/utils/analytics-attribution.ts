@@ -2,6 +2,7 @@ const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const storageKey = 'ga_session_attribution';
 
 type GtagWindow = typeof window & {
+    __analyticsMeasurementId?: string;
     gtag?: (...args: any[]) => void;
 };
 
@@ -63,8 +64,10 @@ const getSessionAttribution = (): Omit<AnalyticsAttribution, 'clientId' | 'sessi
 
 const getGtagValue = (field: 'client_id' | 'session_id') =>
     new Promise<string | undefined>((resolve) => {
-        const gtag = (window as GtagWindow).gtag;
-        if (!gtag || !measurementId) {
+        const analyticsWindow = window as GtagWindow;
+        const gtag = analyticsWindow.gtag;
+        const analyticsMeasurementId = measurementId || analyticsWindow.__analyticsMeasurementId;
+        if (!gtag || !analyticsMeasurementId) {
             resolve(undefined);
             return;
         }
@@ -78,7 +81,7 @@ const getGtagValue = (field: 'client_id' | 'session_id') =>
 
         window.setTimeout(() => finish(), 700);
         try {
-            gtag('get', measurementId, field, finish);
+            gtag('get', analyticsMeasurementId, field, finish);
         } catch {
             finish();
         }

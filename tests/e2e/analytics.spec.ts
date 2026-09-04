@@ -3,9 +3,11 @@ import { expect, test } from '@playwright/test';
 test('successful contact form submission uses the server-side conversion endpoint', async ({ page }) => {
     await page.addInitScript(() => {
         const analyticsWindow = window as typeof window & {
+            __analyticsMeasurementId?: string;
             __analyticsTestEvents?: unknown[][];
             gtag?: (...args: unknown[]) => void;
         };
+        analyticsWindow.__analyticsMeasurementId = 'G-TEST123456';
         analyticsWindow.__analyticsTestEvents = [];
         analyticsWindow.gtag = (...args: unknown[]) => {
             analyticsWindow.__analyticsTestEvents?.push(args);

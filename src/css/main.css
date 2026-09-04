@@ -102,7 +102,7 @@
         --site-label-secondary: rgba(235, 235, 245, 0.72);
         --site-label-tertiary: rgba(235, 235, 245, 0.60);
         --site-separator: rgba(84, 84, 88, 0.72);
-        --site-blue: #0a84ff;
+        --site-blue: #409cff;
         --site-blue-hover: #409cff;
         --site-green: #30d158;
         --site-green-label: #5ee477;
@@ -2352,8 +2352,8 @@
 
     html[data-theme='dark'] .sb-component-button-primary {
         color: #ffffff;
-        background-color: var(--site-blue);
-        border-color: var(--site-blue);
+        background-color: #0071e3;
+        border-color: #0071e3;
     }
 
     html[data-theme='dark'] .sb-component-button-primary:hover {

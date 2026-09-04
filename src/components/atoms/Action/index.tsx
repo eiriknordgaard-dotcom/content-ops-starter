@@ -15,7 +15,7 @@ export default function Action(props) {
     return (
         <Link
             href={url}
-            aria-label={altText}
+            aria-label={label ? undefined : altText}
             id={elementId}
             className={classNames(
                 'sb-component',

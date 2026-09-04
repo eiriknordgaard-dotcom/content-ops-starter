@@ -2,10 +2,21 @@ const siteUrl = process.env.SITE_URL || 'https://eiriknordgaard.com';
 
 const checks = [
     { path: '/', status: 200, contains: 'Outsourced FINOP Consultant' },
-    { path: '/sitemap.xml', status: 200, contains: '<urlset' },
+    {
+        path: '/sitemap.xml',
+        status: 200,
+        contains: ['<urlset', '/focus-reporting-net-capital-support/', '/how-to-prepare-broker-dealer-focus-report/']
+    },
     { path: '/robots.txt', status: 200, contains: 'Sitemap: https://eiriknordgaard.com/sitemap.xml' },
     { path: '/missing-production-monitor/', status: 404, contains: 'That page is not available.' },
-    { path: '/api/calendly-webhook', status: 200, contains: '"ok":true' }
+    { path: '/api/calendly-webhook', status: 200, contains: '"ok":true' },
+    { path: '/api/contact-submit', status: 200, contains: ['"ok":true', '"configured":true'] },
+    { path: '/focus-reporting-net-capital-support/', status: 200, contains: 'FOCUS Reporting and Net Capital Support' },
+    {
+        path: '/how-to-prepare-broker-dealer-focus-report/',
+        status: 200,
+        contains: 'How to Prepare a Broker-Dealer FOCUS Report'
+    }
 ];
 
 const failures = [];
@@ -21,7 +32,7 @@ for (const check of checks) {
 
         if (response.status !== check.status) {
             failures.push(`${check.path}: expected ${check.status}, received ${response.status}`);
-        } else if (!body.includes(check.contains)) {
+        } else if (!(Array.isArray(check.contains) ? check.contains.every((value) => body.includes(value)) : body.includes(check.contains))) {
             failures.push(`${check.path}: expected content was missing`);
         }
     } catch (error) {
