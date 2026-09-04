@@ -25,7 +25,7 @@
         "classnames": "^2.5.1",
         "front-matter": "^4.0.2",
         "glob": "^13.0.6",
-        "markdown-to-jsx": "^7.7.3",
+        "markdown-to-jsx": "^9.10.2",
         "next": "16.3.4",
         "react": "19.2.8",
         "react-dom": "19.2.8",
