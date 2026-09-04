@@ -25,7 +25,16 @@ const anonymousClientId = async (source: string) => {
     return `${first}.${second}`;
 };
 
-const sendLeadEvent = async (requestId: string) => {
+type Attribution = {
+    clientId?: string;
+    sessionId?: string;
+    source: string;
+    medium: string;
+    campaign: string;
+    landingPage: string;
+};
+
+const sendLeadEvent = async (requestId: string, attribution: Attribution) => {
     const measurementId = Netlify.env.get('GA4_MEASUREMENT_ID');
     const apiSecret = Netlify.env.get('GA4_MEASUREMENT_PROTOCOL_SECRET');
     if (!measurementId || !apiSecret) return false;
@@ -38,17 +47,22 @@ const sendLeadEvent = async (requestId: string) => {
                 headers: { 'content-type': 'application/json' },
                 signal: AbortSignal.timeout(8_000),
                 body: JSON.stringify({
-                    client_id: await anonymousClientId(requestId),
+                    client_id: attribution.clientId || (await anonymousClientId(requestId)),
                     timestamp_micros: Date.now() * 1000,
                     events: [
                         {
                             name: 'generate_lead',
                             params: {
+                                ...(attribution.sessionId ? { session_id: attribution.sessionId } : {}),
+                                source: attribution.source,
+                                medium: attribution.medium,
+                                campaign: attribution.campaign,
+                                landing_page: attribution.landingPage,
                                 engagement_time_msec: 1,
                                 method: 'netlify_forms',
                                 form_name: 'contact-form',
                                 lead_type: 'contact_form',
-                                source: 'contact_submit_function'
+                                event_origin: 'contact_submit_function'
                             }
                         }
                     ]
@@ -103,7 +117,18 @@ const contactSubmit = async (request: Request, context: Context) => {
     }
 
     const spam = Boolean(formData.get('bot-field'));
-    const analyticsTracked = spam ? false : await sendLeadEvent(context.requestId);
+    const clientId = String(formData.get('ga-client-id') || '');
+    const sessionId = String(formData.get('ga-session-id') || '');
+    const clean = (name: string, fallback: string) => String(formData.get(name) || fallback).trim().slice(0, 100);
+    const attribution: Attribution = {
+        clientId: /^\d+\.\d+$/.test(clientId) ? clientId : undefined,
+        sessionId: /^\d+$/.test(sessionId) ? sessionId : undefined,
+        source: clean('ga-source', '(direct)'),
+        medium: clean('ga-medium', '(none)'),
+        campaign: clean('ga-campaign', '(not set)'),
+        landingPage: clean('ga-landing-page', '/')
+    };
+    const analyticsTracked = spam ? false : await sendLeadEvent(context.requestId, attribution);
     if (!spam && !analyticsTracked) {
         console.error(`GA4 lead event delivery failed. Request: ${context.requestId}`);
     }

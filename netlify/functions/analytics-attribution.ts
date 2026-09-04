@@ -31,10 +31,16 @@ const analyticsAttribution = async (request: Request, context: Context) => {
         return json({ ok: false, error: 'invalid_attribution' }, 400);
     }
 
+    const clean = (value: unknown, fallback: string) => String(value || fallback).trim().slice(0, 100);
+
     const token = crypto.randomUUID();
     await getAttributionStore(context).setJSON(`session/${token}`, {
         clientId,
         sessionId,
+        source: clean(body.source, '(direct)'),
+        medium: clean(body.medium, '(none)'),
+        campaign: clean(body.campaign, '(not set)'),
+        landingPage: clean(body.landingPage, '/'),
         createdAt: new Date().toISOString()
     });
 

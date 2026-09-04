@@ -71,6 +71,10 @@ const sha256 = async (source: string) => {
 type Attribution = {
     clientId: string;
     sessionId: string;
+    source: string;
+    medium: string;
+    campaign: string;
+    landingPage: string;
     createdAt: string;
 };
 
@@ -92,7 +96,14 @@ const getAttribution = async (payload: Record<string, unknown>, context: Context
     }
 
     if (!/^\d+\.\d+$/.test(attribution.clientId) || !/^\d+$/.test(attribution.sessionId)) return null;
-    return { ...attribution, token };
+    return {
+        ...attribution,
+        source: String(attribution.source || '(direct)').slice(0, 100),
+        medium: String(attribution.medium || '(none)').slice(0, 100),
+        campaign: String(attribution.campaign || '(not set)').slice(0, 100),
+        landingPage: String(attribution.landingPage || '/').slice(0, 100),
+        token
+    };
 };
 
 const calendlyWebhook = async (request: Request, context: Context) => {
@@ -162,11 +173,19 @@ const calendlyWebhook = async (request: Request, context: Context) => {
                             name: 'schedule_call_complete',
                             params: {
                                 ...(attribution ? { session_id: attribution.sessionId } : {}),
+                                ...(attribution
+                                    ? {
+                                          source: attribution.source,
+                                          medium: attribution.medium,
+                                          campaign: attribution.campaign,
+                                          landing_page: attribution.landingPage
+                                      }
+                                    : {}),
                                 engagement_time_msec: 1,
                                 method: 'calendly',
                                 form_type: 'calendar',
                                 lead_type: 'scheduled_call',
-                                source: 'calendly_webhook'
+                                event_origin: 'calendly_webhook'
                             }
                         }
                     ]

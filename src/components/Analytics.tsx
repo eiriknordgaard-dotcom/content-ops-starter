@@ -2,6 +2,7 @@ import * as React from 'react';
 import Router from 'next/router';
 
 import { trackEvent } from '../utils/analytics';
+import { getAnalyticsAttribution } from '../utils/analytics-attribution';
 
 const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const productionHosts = new Set(['eiriknordgaard.com', 'www.eiriknordgaard.com']);
@@ -12,34 +13,15 @@ type GtagWindow = typeof window & {
     __gaInitialized?: boolean;
 };
 
-const getGtagValue = (field: 'client_id' | 'session_id') =>
-    new Promise<string | undefined>((resolve) => {
-        const gtag = (window as GtagWindow).gtag;
-        if (!gtag || !measurementId) {
-            resolve(undefined);
-            return;
-        }
-
-        let resolved = false;
-        const finish = (value?: unknown) => {
-            if (resolved) return;
-            resolved = true;
-            resolve(typeof value === 'string' || typeof value === 'number' ? String(value) : undefined);
-        };
-
-        window.setTimeout(() => finish(), 700);
-        gtag('get', measurementId, field, finish);
-    });
-
 const addCalendlyAttribution = async (href: string) => {
-    const [clientId, sessionId] = await Promise.all([getGtagValue('client_id'), getGtagValue('session_id')]);
+    const { clientId, sessionId, source, medium, campaign, landingPage } = await getAnalyticsAttribution();
     if (!clientId || !sessionId) return href;
 
     try {
         const response = await fetch('/api/analytics-attribution', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ clientId, sessionId }),
+            body: JSON.stringify({ clientId, sessionId, source, medium, campaign, landingPage }),
             keepalive: true,
             signal: AbortSignal.timeout(1_500)
         });
@@ -107,6 +89,8 @@ export default function Analytics() {
 
             analyticsWindow.__gaInitialized = true;
         }
+
+        void getAnalyticsAttribution();
 
         let trackedDepths = new Set<number>();
 

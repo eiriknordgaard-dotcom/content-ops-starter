@@ -6,6 +6,7 @@ import { getComponent } from '../../components-registry';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 import SubmitButtonFormControl from './SubmitButtonFormControl';
 import { trackEvent } from '../../../utils/analytics';
+import { getAnalyticsAttribution } from '../../../utils/analytics-attribution';
 import { fetchWithTimeout, isAbortError } from '../../../utils/fetch-with-timeout';
 
 export default function FormBlock(props) {
@@ -32,6 +33,13 @@ export default function FormBlock(props) {
         const data = new FormData(form);
         const body = new URLSearchParams();
         data.forEach((value, key) => body.append(key, String(value)));
+        const attribution = await getAnalyticsAttribution();
+        if (attribution.clientId) body.set('ga-client-id', attribution.clientId);
+        if (attribution.sessionId) body.set('ga-session-id', attribution.sessionId);
+        body.set('ga-source', attribution.source);
+        body.set('ga-medium', attribution.medium);
+        body.set('ga-campaign', attribution.campaign);
+        body.set('ga-landing-page', attribution.landingPage);
 
         try {
             const response = await fetchWithTimeout('/api/contact-submit', {
