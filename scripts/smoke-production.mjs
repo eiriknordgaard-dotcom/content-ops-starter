@@ -1,7 +1,7 @@
 const siteUrl = process.env.SITE_URL || 'https://eiriknordgaard.com';
 
 const checks = [
-    { path: '/', status: 200, contains: 'Outsourced FINOP Consultant' },
+    { path: '/', status: 200, contains: ['Outsourced FINOP Consultant', '<div id="__next"><div class="sb-page"'] },
     {
         path: '/sitemap.xml',
         status: 200,
@@ -11,12 +11,17 @@ const checks = [
     { path: '/missing-production-monitor/', status: 404, contains: 'That page is not available.' },
     { path: '/api/calendly-webhook', status: 200, contains: '"ok":true' },
     { path: '/api/contact-submit', status: 200, contains: ['"ok":true', '"configured":true'] },
-    { path: '/focus-reporting-net-capital-support/', status: 200, contains: 'FOCUS Reporting and Net Capital Support' },
+    {
+        path: '/focus-reporting-net-capital-support/',
+        status: 200,
+        contains: ['FOCUS Reporting and Net Capital Support', '<div id="__next"><div class="sb-page"']
+    },
     {
         path: '/how-to-prepare-broker-dealer-focus-report/',
         status: 200,
-        contains: 'How to Prepare a Broker-Dealer FOCUS Report'
-    }
+        contains: ['How to Prepare a Broker-Dealer FOCUS Report', '<div id="__next"><div class="sb-page"']
+    },
+    { path: '/fractional-finop/', status: 200, contains: '<div id="__next"><div class="sb-page"' }
 ];
 
 const failures = [];

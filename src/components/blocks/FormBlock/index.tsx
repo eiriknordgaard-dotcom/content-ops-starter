@@ -84,8 +84,6 @@ export default function FormBlock(props) {
             method="POST"
             onSubmit={handleSubmit}
             onFocus={handleFormStart}
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
             data-sb-field-path={fieldPath}
         >
             {heading && (

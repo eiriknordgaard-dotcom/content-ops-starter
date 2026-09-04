@@ -70,8 +70,6 @@ export default function ResourceDownloadGate() {
                     className="resource-gate-form"
                     name={FORM_NAME}
                     method="POST"
-                    data-netlify="true"
-                    data-netlify-honeypot="bot-field"
                     onSubmit={handleSubmit}
                     onFocus={handleFormStart}
                 >
