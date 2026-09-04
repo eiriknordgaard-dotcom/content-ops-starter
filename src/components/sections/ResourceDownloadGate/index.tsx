@@ -9,7 +9,10 @@ const DOWNLOAD_URL = '/downloads/finop-audit-readiness-checklist.pdf';
 
 export default function ResourceDownloadGate() {
     const [status, setStatus] = React.useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+    const [isHydrated, setIsHydrated] = React.useState(false);
     const formStarted = React.useRef(false);
+
+    React.useEffect(() => setIsHydrated(true), []);
 
     function handleFormStart() {
         if (formStarted.current) return;
@@ -17,8 +20,9 @@ export default function ResourceDownloadGate() {
         trackEvent('form_start', { form_name: FORM_NAME, form_type: 'resource_download' });
     }
 
-    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement | HTMLDivElement>) {
         event.preventDefault();
+        if (!(event.currentTarget instanceof HTMLFormElement)) return;
         setStatus('submitting');
 
         const form = event.currentTarget;
@@ -58,6 +62,8 @@ export default function ResourceDownloadGate() {
         }
     }
 
+    const FormElement = isHydrated ? 'form' : 'div';
+
     return (
         <section id="download-checklist" className="resource-gate-wrap" aria-labelledby="resource-gate-title">
             <div className="resource-gate">
@@ -67,8 +73,9 @@ export default function ResourceDownloadGate() {
                     <p>Enter your work email and the six-page FINOP and audit readiness checklist will download immediately.</p>
                 </div>
 
-                <form
+                <FormElement
                     className="resource-gate-form"
+                    role={isHydrated ? undefined : 'form'}
                     onSubmit={handleSubmit}
                     onFocus={handleFormStart}
                 >
@@ -115,7 +122,7 @@ export default function ResourceDownloadGate() {
                         )}
                         {status === 'error' && <p>Something went wrong. Please try again or contact me directly.</p>}
                     </div>
-                </form>
+                </FormElement>
             </div>
         </section>
     );
