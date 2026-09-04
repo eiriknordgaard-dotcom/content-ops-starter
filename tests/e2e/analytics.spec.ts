@@ -50,3 +50,35 @@ test('successful contact form submission uses the server-side conversion endpoin
     expect(parameters.get('ga-campaign')).toBe('finop_advice');
     expect(parameters.get('ga-landing-page')).toBe('/');
 });
+
+test('audit checklist downloads directly and records the resource event', async ({ page }) => {
+    await page.addInitScript(() => {
+        const analyticsWindow = window as typeof window & {
+            __analyticsTestEvents?: unknown[][];
+            gtag?: (...args: unknown[]) => void;
+        };
+        analyticsWindow.__analyticsTestEvents = [];
+        analyticsWindow.gtag = (...args: unknown[]) => {
+            analyticsWindow.__analyticsTestEvents?.push(args);
+        };
+    });
+
+    await page.goto('/finop-audit-readiness-checklist/');
+    const downloadPromise = page.waitForEvent('download');
+    await page.getByRole('link', { name: 'Download the Checklist', exact: true }).click();
+    const download = await downloadPromise;
+
+    expect(download.suggestedFilename()).toBe('finop-audit-readiness-checklist.pdf');
+    const events = await page.evaluate(() => {
+        const analyticsWindow = window as typeof window & { __analyticsTestEvents?: unknown[][] };
+        return analyticsWindow.__analyticsTestEvents || [];
+    });
+    expect(events).toContainEqual([
+        'event',
+        'resource_download',
+        {
+            resource: 'finop_audit_readiness_checklist',
+            file_name: 'finop-audit-readiness-checklist.pdf'
+        }
+    ]);
+});

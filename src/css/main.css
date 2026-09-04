@@ -799,17 +799,17 @@
         white-space: nowrap;
     }
 
-    .resource-gate-wrap {
+    .resource-download-wrap {
         padding: 2.75rem 1.5rem 0;
         background: var(--site-bg);
         scroll-margin-top: 6rem;
     }
 
-    .resource-gate {
-        display: grid;
-        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-        align-items: start;
-        gap: clamp(2rem, 5vw, 3.5rem);
+    .resource-download {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: clamp(1.5rem, 5vw, 3.5rem);
         max-width: 48rem;
         margin: 0 auto;
         padding: clamp(1.75rem, 5vw, 2.75rem);
@@ -818,13 +818,14 @@
         background: var(--site-surface-elevated);
     }
 
-    .resource-gate-copy {
+    .resource-download-copy {
         display: flex;
         flex-direction: column;
         gap: 0.85rem;
+        max-width: 30rem;
     }
 
-    .resource-gate-kicker {
+    .resource-download-kicker {
         color: var(--site-blue);
         font-size: 0.75rem;
         font-weight: 700;
@@ -832,7 +833,7 @@
         text-transform: uppercase;
     }
 
-    .resource-gate-copy h2 {
+    .resource-download-copy h2 {
         color: var(--site-label);
         font-size: clamp(1.65rem, 3vw, 2rem);
         font-weight: 700;
@@ -840,69 +841,17 @@
         line-height: 1.15;
     }
 
-    .resource-gate-copy p {
+    .resource-download-copy p {
         color: var(--site-label-secondary);
         font-size: 0.9375rem;
         line-height: 1.65;
     }
 
-    .resource-gate-form {
-        display: grid;
-        gap: 1rem;
-    }
-
-    .resource-gate-field {
-        display: grid;
-        gap: 0.45rem;
-        color: var(--site-label);
-        font-size: 0.8125rem;
-        font-weight: 650;
-    }
-
-    .resource-gate-field small {
-        margin-left: 0.25rem;
-        color: var(--site-label-tertiary);
-        font-size: 0.6875rem;
-        font-weight: 500;
-    }
-
-    .resource-gate-field input {
-        width: 100%;
-        min-height: 3rem;
-        padding: 0.75rem 0.875rem;
-        border: 1px solid var(--site-separator);
-        border-radius: 0.65rem;
-        background: var(--site-bg);
-        color: var(--site-label);
-        font-size: 0.9375rem;
-        font-weight: 400;
-        outline: none;
-        transition: border-color 150ms ease, box-shadow 150ms ease;
-    }
-
-    .resource-gate-field input:focus {
-        border-color: var(--site-blue);
-        box-shadow: 0 0 0 3px color-mix(in srgb, var(--site-blue) 18%, transparent);
-    }
-
-    .resource-gate-consent {
-        display: grid;
-        grid-template-columns: 1rem minmax(0, 1fr);
-        align-items: start;
-        gap: 0.6rem;
-        color: var(--site-label-secondary);
-        font-size: 0.75rem;
-        line-height: 1.5;
-    }
-
-    .resource-gate-consent input {
-        width: 1rem;
-        height: 1rem;
-        margin-top: 0.1rem;
-        accent-color: var(--site-blue);
-    }
-
-    .resource-gate-form button {
+    .resource-download-button {
+        display: inline-flex;
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
         min-height: 3rem;
         padding: 0.75rem 1rem;
         border-radius: 0.65rem;
@@ -910,34 +859,18 @@
         color: #fff;
         font-size: 0.875rem;
         font-weight: 700;
+        text-align: center;
+        text-decoration: none;
         transition: opacity 150ms ease, transform 150ms ease;
     }
 
-    .resource-gate-form button:hover:not(:disabled) {
+    .resource-download-button:hover {
         transform: translateY(-1px);
     }
 
-    .resource-gate-form button:disabled {
-        cursor: wait;
-        opacity: 0.65;
-    }
-
-    .resource-gate-privacy,
-    .resource-gate-status {
-        color: var(--site-label-tertiary);
-        font-size: 0.6875rem;
-        line-height: 1.5;
-    }
-
-    .resource-gate-privacy a,
-    .resource-gate-status a {
-        color: var(--site-blue);
-        text-decoration: underline;
-        text-underline-offset: 0.16em;
-    }
-
-    .resource-gate-status:empty {
-        display: none;
+    .resource-download-button:focus-visible {
+        outline: 3px solid color-mix(in srgb, var(--site-blue) 35%, transparent);
+        outline-offset: 3px;
     }
 
     .editorial-guide .sb-component-divider-section {
@@ -1080,12 +1013,13 @@
             white-space: normal;
         }
 
-        .resource-gate-wrap {
+        .resource-download-wrap {
             padding: 2.25rem 1.25rem 0;
         }
 
-        .resource-gate {
-            grid-template-columns: 1fr;
+        .resource-download {
+            align-items: stretch;
+            flex-direction: column;
             gap: 1.75rem;
         }
 

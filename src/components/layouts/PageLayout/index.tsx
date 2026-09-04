@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { getBaseLayoutComponent } from '../../../utils/base-layout';
 import { getComponent } from '../../components-registry';
-import ResourceDownloadGate from '../../sections/ResourceDownloadGate';
+import ResourceDownload from '../../sections/ResourceDownload';
 
 export default function PageLayout(props) {
     const { page, site } = props;
@@ -44,7 +44,7 @@ export default function PageLayout(props) {
                                         {...(enableAnnotations && { 'data-sb-field-path': `sections.${index}` })}
                                     />
                                     {isEditorialGuide && index === 0 && <ArticleMeta readingTime={readingTime} dateModified={page.dateModified} />}
-                                    {page.slug === 'finop-audit-readiness-checklist' && index === 0 && <ResourceDownloadGate />}
+                                    {page.slug === 'finop-audit-readiness-checklist' && index === 0 && <ResourceDownload />}
                                 </React.Fragment>
                             );
                         })}

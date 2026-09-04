@@ -15,7 +15,7 @@ sections:
       Use the online checklist or download the printable six-page PDF.
     actions:
       - label: Get the PDF Checklist
-        altText: Open the form to receive the FINOP and audit readiness checklist PDF
+        altText: Jump to the direct FINOP and audit readiness checklist PDF download
         url: '#download-checklist'
         showIcon: true
         icon: arrowDown
@@ -230,7 +230,7 @@ sections:
       **Days 27-30: Review and institutionalize.** Complete FINOP and management review and document the recurring cadence. Produce an approved close package and future calendar.
     actions:
       - label: Get the Printable Plan
-        altText: Open the form to receive the printable FINOP and audit readiness checklist
+        altText: Jump to the direct printable FINOP and audit readiness checklist download
         url: '#download-checklist'
         showIcon: true
         icon: arrowDown
