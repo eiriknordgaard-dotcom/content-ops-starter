@@ -33,6 +33,7 @@ export default function FormBlock(props) {
         const data = new FormData(form);
         const body = new URLSearchParams();
         data.forEach((value, key) => body.append(key, String(value)));
+        body.set('form-name', formName);
         const attribution = await getAnalyticsAttribution();
         if (attribution.clientId) body.set('ga-client-id', attribution.clientId);
         if (attribution.sessionId) body.set('ga-session-id', attribution.sessionId);
@@ -79,9 +80,7 @@ export default function FormBlock(props) {
                     : undefined,
                 styles?.self?.borderRadius ? mapStyles({ borderRadius: styles?.self?.borderRadius }) : undefined
             )}
-            name={elementId}
             id={elementId}
-            method="POST"
             onSubmit={handleSubmit}
             onFocus={handleFormStart}
             data-sb-field-path={fieldPath}
@@ -96,7 +95,6 @@ export default function FormBlock(props) {
                 className={classNames('contact-form-fields', 'w-full', 'flex', 'flex-wrap', 'gap-8', mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }))}
                 {...(fieldPath && { 'data-sb-field-path': '.fields' })}
             >
-                <input type="hidden" name="form-name" value={elementId} />
                 <p className="hidden" aria-hidden="true">
                     <label>
                         Do not fill this out: <input name="bot-field" tabIndex={-1} autoComplete="off" />

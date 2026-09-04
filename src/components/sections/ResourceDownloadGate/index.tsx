@@ -25,6 +25,7 @@ export default function ResourceDownloadGate() {
         const data = new FormData(form);
         const body = new URLSearchParams();
         data.forEach((value, key) => body.append(key, String(value)));
+        body.set('form-name', FORM_NAME);
 
         try {
             const response = await fetchWithTimeout('/__forms.html', {
@@ -68,12 +69,9 @@ export default function ResourceDownloadGate() {
 
                 <form
                     className="resource-gate-form"
-                    name={FORM_NAME}
-                    method="POST"
                     onSubmit={handleSubmit}
                     onFocus={handleFormStart}
                 >
-                    <input type="hidden" name="form-name" value={FORM_NAME} />
                     <input type="hidden" name="resource" value="FINOP and Audit Readiness Checklist" />
                     <input type="hidden" name="subject" value="New FINOP checklist download" />
                     <p className="hidden" aria-hidden="true">

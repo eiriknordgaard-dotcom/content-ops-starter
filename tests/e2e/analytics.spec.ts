@@ -42,6 +42,7 @@ test('successful contact form submission uses the server-side conversion endpoin
     expect(events.some((event) => event[0] === 'event' && event[1] === 'generate_lead')).toBe(false);
 
     const parameters = new URLSearchParams(submittedBody);
+    expect(parameters.get('form-name')).toBe('contact-form');
     expect(parameters.get('ga-client-id')).toBe('123456789.987654321');
     expect(parameters.get('ga-session-id')).toBe('1757000000');
     expect(parameters.get('ga-source')).toBe('linkedin');
