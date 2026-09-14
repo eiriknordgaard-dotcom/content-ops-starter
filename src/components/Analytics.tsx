@@ -64,8 +64,10 @@ export default function Analytics() {
         const analyticsWindow = window as GtagWindow;
         if (!analyticsWindow.__gaInitialized) {
             analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
-            analyticsWindow.gtag = function gtag(...args: any[]) {
-                analyticsWindow.dataLayer?.push(args);
+            analyticsWindow.gtag = function gtag(..._args: any[]) {
+                // Google interprets command entries as Arguments objects, not arrays.
+                // eslint-disable-next-line prefer-rest-params
+                analyticsWindow.dataLayer?.push(arguments);
             };
 
             const gaConfig: Record<string, boolean | string> = {
