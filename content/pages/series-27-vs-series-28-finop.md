@@ -2,7 +2,7 @@
 title: Series 27 vs. Series 28 FINOP
 slug: series-27-vs-series-28-finop
 datePublished: '2026-08-27'
-dateModified: '2026-08-27'
+dateModified: '2026-09-14'
 sections:
   - type: GenericSection
     title:
@@ -53,6 +53,8 @@ sections:
       color: text-dark
       type: TitleBlock
     text: |
+      **Quick comparison:** Series 27 covers the broader Financial and Operations Principal qualification. Series 28 covers the introducing broker-dealer qualification for firms that do not carry customer accounts or hold customer funds or securities. The firm's activities and registration requirements determine the appropriate category, not whether its FINOP works full-time or part-time.
+
       The Series 28 is formally the Introducing Broker-Dealer Financial and Operations Principal Qualification Examination. FINRA describes it as the qualification for a principal performing the financial and operational functions of an introducing broker-dealer that does not carry customer accounts or hold customer funds or securities.
 
       The examination covers four major functional areas:
@@ -87,6 +89,10 @@ sections:
       FINRA specifically identifies broker-dealers with a minimum net capital requirement of $250,000 and municipal securities brokers with a minimum net capital requirement of $150,000 under SEC Rule 15c3-1 as firms whose FINOP must pass Series 27. Firm activities, customer-account structure, clearing responsibilities, and other registration requirements can also affect the correct designation.
 
       The practical takeaway is that Series 27 is not simply a more senior title and Series 28 is not simply a part-time license. They are different qualification categories tied to the firm's regulatory profile.
+
+      [FINRA's Series 27 overview provides the examination scope and registration information](https://www.finra.org/registration-exams-ce/qualification-exams/series27).
+
+      Before choosing FINOP coverage, review the firm's approved activities, clearing agreement, customer-account arrangements, minimum net capital requirement, and existing principal registrations. If the firm plans to change its business model, confirm whether those changes affect the required qualification before relying on existing coverage.
     badge:
       label: Broader Scope
       color: text-primary
@@ -130,6 +136,14 @@ sections:
       - label: Use the FINOP Readiness Checklist
         altText: Open the FINOP and audit readiness checklist
         url: /finop-audit-readiness-checklist/
+        showIcon: true
+        icon: arrowRight
+        iconPosition: right
+        style: secondary
+        type: Link
+      - label: Explore Outsourced Series 28 FINOP Coverage
+        altText: Review outsourced FINOP services for introducing broker-dealers
+        url: /fractional-finop/
         showIcon: true
         icon: arrowRight
         iconPosition: right

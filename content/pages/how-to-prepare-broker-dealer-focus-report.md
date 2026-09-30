@@ -2,7 +2,7 @@
 title: How to Prepare a Broker-Dealer FOCUS Report
 slug: how-to-prepare-broker-dealer-focus-report
 datePublished: '2026-09-02'
-dateModified: '2026-09-02'
+dateModified: '2026-09-30'
 sections:
   - type: GenericSection
     title:
@@ -10,9 +10,9 @@ sections:
       color: text-dark
       type: TitleBlock
     text: >-
-      A practical preparation guide for broker-dealer operators who need their
-      books, net capital computation, supporting schedules, and regulatory
-      filing to agree.
+      A practical six-step FOCUS report preparation guide for broker-dealer
+      operators who need their books, net capital computation, supporting
+      schedules, and regulatory filing to agree.
     actions:
       - label: Explore FOCUS Reporting Support
         altText: Learn about professional FOCUS reporting and net capital support
@@ -52,6 +52,10 @@ sections:
       color: text-dark
       type: TitleBlock
     text: |
+      **FOCUS report preparation in brief:** confirm the applicable form and reporting period, close and reconcile the books, update the net capital computation, tie each reported amount to supporting records, complete the required review, and retain the submitted filing with its workpapers.
+
+      FOCUS stands for Financial and Operational Combined Uniform Single. This guide explains the preparation workflow; it is not a substitute for the instructions attached to the firm's applicable form.
+
       Before preparing a FOCUS report, confirm which report and schedules apply to the firm, the reporting period, the due date, and the people responsible for preparation, review, approval, and submission. The requirements can vary based on the firm's activities, customer-account structure, clearing arrangement, and financial-responsibility obligations.
 
       FINRA member firms submit FOCUS reports through eFOCUS pursuant to applicable SEC requirements. [FINRA's eFOCUS resource provides current forms, filing information, and technical guidance](https://www.finra.org/filing-reporting/efocus). The firm's regulatory calendar should reflect the requirements that apply to its specific registration and business model.
@@ -60,6 +64,34 @@ sections:
       color: text-primary
       type: Badge
     colors: bg-neutral-fg-dark
+    styles:
+      self:
+        flexDirection: col
+        padding:
+          - pt-16
+          - pb-16
+          - pl-6
+          - pr-6
+  - type: GenericSection
+    title:
+      text: A Practical FOCUS Report Preparation Timeline
+      color: text-dark
+      type: TitleBlock
+    text: |
+      The preparation process should begin before the filing deadline. A practical timeline usually works backward from the due date and assigns an owner and reviewer to each stage:
+
+      - **Before period end:** confirm the applicable form, deadline, responsible people, expected capital activity, and open accounting items.
+      - **Immediately after period end:** close the books, complete reconciliations, record accruals, and resolve unusual balances.
+      - **During preparation:** update the net capital computation, populate the required schedules, and tie every reported amount to the trial balance or a supporting workpaper.
+      - **Before submission:** investigate period-over-period changes, clear review comments, obtain required approvals, and verify the reporting period and form.
+      - **After submission:** retain the accepted filing, confirmation, final workpapers, and evidence of review in one complete package.
+
+      The exact schedule depends on the firm's filing requirements, operational complexity, and close process. The important point is to leave enough time for review and correction rather than treating the due date as the start of the process.
+    badge:
+      label: Preparation Timeline
+      color: text-primary
+      type: Badge
+    colors: bg-light-fg-dark
     styles:
       self:
         flexDirection: col
@@ -145,11 +177,45 @@ sections:
       The review should address more than mathematical accuracy. Compare the filing with prior periods, investigate unexpected changes, confirm classifications, verify required schedules, and make sure narrative or supplemental information is complete. Reconcile the final report back to the books and retain the supporting workpapers with evidence of review.
 
       Before submission, confirm that the filing reflects the approved numbers, the required signoffs are complete, and the person submitting the report is using the correct reporting period and form.
+
+      Common preparation issues to investigate include unreconciled cash, stale receivables, missing expense accruals, unsupported classifications, and differences between the trial balance and filing schedules. Maintain an exception log with an owner, resolution, and reviewer for each open item rather than carrying unexplained differences into the final package.
+
+      If your team needs help connecting the close process to the filing, review my [FOCUS reporting and net capital support for introducing broker-dealers](/focus-reporting-net-capital-support/). For ongoing principal coverage, see [outsourced Series 28 FINOP services](/fractional-finop/).
     badge:
       label: Steps 4 and 5
       color: text-primary
       type: Badge
     colors: bg-light-fg-dark
+    styles:
+      self:
+        flexDirection: col
+        padding:
+          - pt-16
+          - pb-16
+          - pl-6
+          - pr-6
+  - type: GenericSection
+    title:
+      text: Common FOCUS Report Preparation Problems
+      color: text-dark
+      type: TitleBlock
+    text: |
+      Problems that delay preparation or weaken the filing package often begin before the form is populated. Common examples include:
+
+      - Unreconciled bank, clearing, revenue, or expense balances
+      - Missing accruals or unsupported manual entries
+      - Stale receivables or other assets that may require different treatment
+      - Differences between the trial balance, net capital computation, and FOCUS schedules
+      - Capital contributions, withdrawals, or planned transactions that were not communicated early
+      - Review comments without a documented owner or resolution
+      - Workpapers that do not clearly support the final reported amounts
+
+      Maintain an exception log throughout the close and filing process. Each item should have an owner, expected resolution, and reviewer. Recurring exceptions should be addressed in the underlying monthly process rather than rediscovered every reporting period.
+    badge:
+      label: Common Issues
+      color: text-primary
+      type: Badge
+    colors: bg-neutral-fg-dark
     styles:
       self:
         flexDirection: col
@@ -191,6 +257,12 @@ sections:
       type: TitleBlock
     description: Common questions about preparing and supporting a FOCUS filing.
     items:
+      - question: Where can I find FOCUS report instructions and filing deadlines?
+        answer: >-
+          Use FINRA's eFOCUS resources and the instructions for the firm's
+          applicable form and schedules. Confirm the reporting period and
+          current deadline in the firm's regulatory calendar rather than
+          assuming every broker-dealer has the same filing requirements.
       - question: Can a FOCUS report be prepared before the books are closed?
         answer: >-
           Preliminary work can begin earlier, but the final report should be
@@ -257,11 +329,11 @@ sections:
           - pl-6
           - pr-6
 seo:
-  metaTitle: How to Prepare a Broker-Dealer FOCUS Report
+  metaTitle: 'Broker-Dealer FOCUS Report Preparation: 6-Step Guide'
   addTitleSuffix: false
   metaDescription: >-
-    Learn how to prepare a broker-dealer FOCUS report, including closing the
-    books, net capital, supporting schedules, review, filing, and documentation.
+    Prepare a broker-dealer FOCUS report with a six-step process covering the
+    close, net capital, supporting schedules, review, filing, and documentation.
   socialImage: /images/finop-social-card-v2.png
   metaTags:
     - property: og:type

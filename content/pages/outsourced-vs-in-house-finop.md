@@ -2,7 +2,7 @@
 title: Outsourced vs. In-House FINOP
 slug: outsourced-vs-in-house-finop
 datePublished: '2026-08-27'
-dateModified: '2026-08-27'
+dateModified: '2026-09-30'
 sections:
   - type: GenericSection
     title:
@@ -17,7 +17,7 @@ sections:
     actions:
       - label: Explore Outsourced FINOP Services
         altText: Learn about outsourced and fractional FINOP services
-        url: /#services
+        url: /fractional-finop/
         showIcon: true
         icon: arrowRight
         iconPosition: right
@@ -247,7 +247,7 @@ sections:
         type: Button
       - label: View FINOP Consultant Services
         altText: View outsourced FINOP consultant services for introducing broker-dealers
-        url: /#services
+        url: /fractional-finop/
         showIcon: true
         icon: arrowRight
         iconPosition: right

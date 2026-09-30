@@ -16,6 +16,12 @@ function normalizePath(slug) {
 }
 
 function visit(value, visitor) {
+    if (typeof value === 'string') {
+        for (const match of value.matchAll(/\]\((\/[^\s)]*)\)/g)) {
+            visitor({ url: match[1] });
+        }
+        return;
+    }
     if (Array.isArray(value)) return value.forEach((item) => visit(item, visitor));
     if (!value || typeof value !== 'object') return;
     visitor(value);

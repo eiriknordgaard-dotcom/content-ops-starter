@@ -1,18 +1,19 @@
 ---
-title: Series 28 FINOP Consultant for Introducing Broker-Dealers
+title: Fractional Series 28 FINOP Consultant for Introducing Broker-Dealers
 slug: fractional-finop
 datePublished: '2026-08-27'
-dateModified: '2026-09-02'
+dateModified: '2026-09-30'
 sections:
   - type: GenericSection
     title:
-      text: Series 28 FINOP Consultant for Introducing Broker-Dealers
+      text: Fractional Series 28 FINOP Consultant for Introducing Broker-Dealers
       color: text-dark
       type: TitleBlock
     subtitle: ''
     text: >-
-      Get experienced outsourced or fractional FINOP support designed for an
-      introducing broker-dealer, without adding a full-time FINOP position.
+      Get experienced outsourced FINOP services with a right-sized operating
+      cadence for your introducing broker-dealer, without adding a full-time
+      FINOP position.
     actions:
       - label: Schedule a 30-Minute Call
         altText: Schedule a confidential 30-minute call with a Series 28 FINOP consultant
@@ -309,6 +310,47 @@ sections:
     type: DividerSection
   - type: GenericSection
     title:
+      text: How a Fractional FINOP Engagement Works
+      color: text-dark
+      type: TitleBlock
+    text: |
+      A fractional FINOP engagement establishes a recurring operating rhythm around the firm's actual responsibilities. The scope is defined by the broker-dealer's activities, systems, reporting frequency, financial condition, and internal team.
+
+      A typical engagement can include:
+
+      - **Initial review:** understand the firm's registration, clearing arrangement, books and records, net capital requirement, reporting calendar, audit status, and immediate priorities.
+      - **Defined responsibilities:** document what management, accounting personnel, service providers, and the FINOP are responsible for preparing, reviewing, approving, and escalating.
+      - **Recurring oversight:** review the close, reconciliations, net capital computation, FOCUS reporting, open exceptions, and upcoming regulatory deadlines on an agreed cadence.
+      - **Event-driven support:** increase involvement around audits, examinations, capital changes, new business activity, staffing transitions, or unusual financial events.
+      - **Management communication:** provide clear visibility into completed work, open items, upcoming deadlines, and matters requiring a decision.
+
+      The result should be an operating model with clear ownership and continuity, not a collection of disconnected filing tasks.
+    actions:
+      - label: Discuss the Right Operating Cadence
+        altText: Schedule a confidential call about outsourced FINOP support
+        url: https://calendly.com/eirik-nordgaard/30min
+        showIcon: true
+        icon: arrowRight
+        iconPosition: right
+        style: primary
+        type: Button
+    badge:
+      label: Engagement Model
+      color: text-primary
+      type: Badge
+    elementId: engagement-model
+    colors: bg-light-fg-dark
+    styles:
+      self:
+        flexDirection: col
+        justifyContent: center
+        padding:
+          - pt-16
+          - pb-16
+          - pl-6
+          - pr-6
+  - type: GenericSection
+    title:
       text: When Fractional Support Is the Right Fit
       color: text-dark
       type: TitleBlock
@@ -320,6 +362,8 @@ sections:
       - Is growing and needs more proactive net capital, reporting, and audit oversight
       - Wants direct principal-level involvement instead of a task-only accounting relationship
       - Needs continuity across books and records, regulatory filings, audits, and examinations
+      - Is replacing an internal FINOP or needs interim FINOP coverage during a transition
+      - Has recurring reporting issues, late reconciliations, or unclear ownership of financial-responsibility tasks
 
       I work directly with management and adapt the operating cadence to the firm's actual needs. The goal is a clear, repeatable financial process, not simply completing a filing at the deadline.
     badge:
@@ -410,6 +454,8 @@ sections:
       - [Series 27 vs. Series 28 FINOP: What's the Difference?](/series-27-vs-series-28-finop/)
       - [Outsourced vs. In-House FINOP: How to Choose](/outsourced-vs-in-house-finop/)
       - [FINOP and Audit Readiness Checklist](/finop-audit-readiness-checklist/)
+      - [How to Prepare a Broker-Dealer FOCUS Report](/how-to-prepare-broker-dealer-focus-report/)
+      - [FOCUS Reporting and Net Capital Support](/focus-reporting-net-capital-support/)
 
       These resources cover the FINOP's responsibilities, qualification categories, operating-model tradeoffs, and a practical readiness review.
     badge:
@@ -470,12 +516,12 @@ sections:
           - pl-6
           - pr-6
 seo:
-  metaTitle: Series 28 FINOP Consultant for Broker-Dealers | Eirik Nordgaard
+  metaTitle: Fractional FINOP & Series 28 Consultant | Eirik Nordgaard
   addTitleSuffix: false
   metaDescription: >-
-    Series 28 FINOP consultant for introducing broker-dealers. Fractional
-    support for net capital, FOCUS filings, books and records,
-    audits, and FINRA response.
+    Fractional and outsourced Series 28 FINOP services for introducing
+    broker-dealers, including net capital, FOCUS reporting, audits, and FINRA
+    response.
   socialImage: /images/finop-social-card-v2.png
   metaTags:
     - property: og:description

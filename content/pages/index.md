@@ -2,7 +2,7 @@
 title: FINOP Consultant and Outsourced FINOP Services
 slug: /
 datePublished: '2026-08-26'
-dateModified: '2026-09-02'
+dateModified: '2026-09-30'
 sections:
   - type: GenericSection
     title:
@@ -86,7 +86,15 @@ sections:
         text: >-
           Monthly computations, early warning monitoring, and forward planning
           to identify capital pressure before it becomes a regulatory issue.
-        actions: []
+        actions:
+          - label: Explore Fractional FINOP Services
+            altText: Learn about fractional and outsourced FINOP services for introducing broker-dealers
+            url: /fractional-finop/
+            showIcon: true
+            icon: arrowRight
+            iconPosition: right
+            style: secondary
+            type: Link
         elementId: null
         colors: bg-light-fg-dark
         styles:
@@ -526,6 +534,20 @@ sections:
           isRequired: false
           width: full
           type: TextFormControl
+        - name: service_interest
+          label: What do you need help with?
+          hideLabel: false
+          defaultValue: Select the closest option
+          options:
+            - Ongoing outsourced FINOP
+            - FOCUS reporting or net capital
+            - Interim FINOP coverage
+            - Broker-dealer formation
+            - Audit or FINRA examination support
+            - Other or not sure
+          isRequired: true
+          width: full
+          type: SelectFormControl
         - name: message
           label: How can I help?
           hideLabel: false

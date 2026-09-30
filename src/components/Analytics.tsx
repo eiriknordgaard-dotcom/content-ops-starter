@@ -13,6 +13,30 @@ type GtagWindow = typeof window & {
     __gaInitialized?: boolean;
 };
 
+const sanitizeExceptionText = (value: unknown, fallback: string) =>
+    String(value || fallback)
+        .replace(/https?:\/\/\S+/gi, '[url]')
+        .replace(/[\w.+-]+@[\w.-]+\.[a-z]{2,}/gi, '[email]')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .slice(0, 300);
+
+const normalizeErrorSource = (value: string) => {
+    if (!value) return 'unknown';
+    try {
+        const url = new URL(value, window.location.origin);
+        return `${url.origin === window.location.origin ? '' : url.hostname}${url.pathname}`.slice(0, 100) || '/';
+    } catch {
+        return sanitizeExceptionText(value, 'unknown').slice(0, 100);
+    }
+};
+
+const exceptionId = (value: string) => {
+    let hash = 5381;
+    for (let index = 0; index < value.length; index += 1) hash = (hash * 33) ^ value.charCodeAt(index);
+    return `web_${(hash >>> 0).toString(36)}`;
+};
+
 const addCalendlyAttribution = async (href: string) => {
     const { clientId, sessionId, source, medium, campaign, landingPage } = await getAnalyticsAttribution();
     if (!clientId || !sessionId) return href;
@@ -95,6 +119,7 @@ export default function Analytics() {
         void getAnalyticsAttribution();
 
         let trackedDepths = new Set<number>();
+        const reportedExceptions = new Set<string>();
 
         const handleClick = (event: MouseEvent) => {
             const target = event.target instanceof Element ? event.target : null;
@@ -131,8 +156,10 @@ export default function Analytics() {
             } else if (href.includes('linkedin.com/')) trackEvent('linkedin_click', { link_text: label, link_url: href });
             else if (href.includes('brokercheck.finra.org/')) trackEvent('brokercheck_click', { link_text: label, link_url: href });
             else if (href.startsWith('mailto:')) trackEvent('email_click', { link_text: label });
-            else if (/what-does-a-finop-do|series-27-vs-series-28-finop|outsourced-vs-in-house-finop|finop-audit-readiness-checklist/.test(href)) {
+            else if (/what-does-a-finop-do|series-27-vs-series-28-finop|outsourced-vs-in-house-finop|finop-audit-readiness-checklist|how-to-prepare-broker-dealer-focus-report/.test(href)) {
                 trackEvent('resource_click', { link_text: label, link_url: href });
+            } else if (/\/fractional-finop\/|\/focus-reporting-net-capital-support\//.test(href)) {
+                trackEvent('service_detail_click', { link_text: label, link_url: href, link_location: location });
             }
 
             if ((location === 'header' || location === 'footer') && ['services', 'about', 'why', 'contact'].includes(navigationTarget)) {
@@ -169,16 +196,58 @@ export default function Analytics() {
             });
         };
 
-        const handleWindowError = (event: ErrorEvent) => {
+        const reportException = ({
+            description,
+            errorType,
+            errorName = 'Error',
+            errorSource = 'unknown',
+            lineNumber = 0,
+            columnNumber = 0
+        }: {
+            description: string;
+            errorType: 'runtime_error' | 'unhandled_rejection';
+            errorName?: string;
+            errorSource?: string;
+            lineNumber?: number;
+            columnNumber?: number;
+        }) => {
+            const safeDescription = sanitizeExceptionText(description, 'Unknown browser error');
+            const safeSource = normalizeErrorSource(errorSource);
+            const signature = `${errorType}|${errorName}|${safeDescription}|${safeSource}|${window.location.pathname}`;
+            if (reportedExceptions.has(signature)) return;
+            reportedExceptions.add(signature);
+
             trackEvent('exception', {
-                description: `${event.message || 'Unknown browser error'}${event.filename ? ` at ${event.filename}` : ''}`.slice(0, 300),
-                fatal: false
+                description: safeDescription,
+                fatal: false,
+                error_type: errorType,
+                error_name: sanitizeExceptionText(errorName, 'Error').slice(0, 100),
+                error_source: safeSource,
+                error_id: exceptionId(signature),
+                page_path: window.location.pathname,
+                line_number: lineNumber,
+                column_number: columnNumber
+            });
+        };
+
+        const handleWindowError = (event: ErrorEvent) => {
+            reportException({
+                description: event.message,
+                errorType: 'runtime_error',
+                errorName: event.error instanceof Error ? event.error.name : 'Error',
+                errorSource: event.filename,
+                lineNumber: event.lineno,
+                columnNumber: event.colno
             });
         };
 
         const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
-            const description = event.reason instanceof Error ? event.reason.message : String(event.reason || 'Unhandled promise rejection');
-            trackEvent('exception', { description: description.slice(0, 300), fatal: false });
+            const error = event.reason instanceof Error ? event.reason : null;
+            reportException({
+                description: error?.message || String(event.reason || 'Unhandled promise rejection'),
+                errorType: 'unhandled_rejection',
+                errorName: error?.name || 'UnhandledRejection'
+            });
         };
 
         document.addEventListener('click', handleClick);

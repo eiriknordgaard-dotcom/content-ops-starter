@@ -88,6 +88,9 @@ const getGtagValue = (field: 'client_id' | 'session_id') =>
     });
 
 export const getAnalyticsAttribution = async (): Promise<AnalyticsAttribution> => {
+    // Capture the entry page before waiting for GA identifiers. A quick internal
+    // navigation must not replace the original landing page during that wait.
+    const attribution = getSessionAttribution();
     const [clientId, sessionId] = await Promise.all([getGtagValue('client_id'), getGtagValue('session_id')]);
-    return { ...getSessionAttribution(), clientId, sessionId };
+    return { ...attribution, clientId, sessionId };
 };

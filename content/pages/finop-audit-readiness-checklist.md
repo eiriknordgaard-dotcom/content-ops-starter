@@ -2,7 +2,7 @@
 title: FINOP and Audit Readiness Checklist
 slug: finop-audit-readiness-checklist
 datePublished: '2026-08-27'
-dateModified: '2026-08-27'
+dateModified: '2026-09-30'
 sections:
   - type: GenericSection
     title:
@@ -299,7 +299,7 @@ sections:
         type: Button
       - label: View FINOP Consultant Services
         altText: View outsourced FINOP consultant services for introducing broker-dealers
-        url: /#services
+        url: /fractional-finop/
         showIcon: true
         icon: arrowRight
         iconPosition: right

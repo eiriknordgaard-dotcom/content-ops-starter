@@ -31,6 +31,7 @@ export default function FormBlock(props) {
 
         const form = event.currentTarget;
         const data = new FormData(form);
+        const serviceInterest = String(data.get('service_interest') || 'not_provided').slice(0, 100);
         const body = new URLSearchParams();
         data.forEach((value, key) => body.append(key, String(value)));
         body.set('form-name', formName);
@@ -55,7 +56,7 @@ export default function FormBlock(props) {
 
             form.reset();
             setStatus('success');
-            trackEvent('contact_form_submit', { form_name: formName });
+            trackEvent('contact_form_submit', { form_name: formName, service_interest: serviceInterest });
         } catch (error) {
             setStatus('error');
             trackEvent('contact_form_error', { form_name: formName, error_type: isAbortError(error) ? 'timeout' : 'submission_failed' });

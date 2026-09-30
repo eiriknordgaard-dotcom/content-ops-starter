@@ -2,7 +2,7 @@
 title: FOCUS Reporting and Net Capital Support
 slug: focus-reporting-net-capital-support
 datePublished: '2026-09-02'
-dateModified: '2026-09-02'
+dateModified: '2026-09-30'
 sections:
   - type: GenericSection
     title:
@@ -10,9 +10,9 @@ sections:
       color: text-dark
       type: TitleBlock
     text: >-
-      Get experienced Series 28 FINOP support for accurate FOCUS reporting,
-      current net capital computations, reconciled books and records, and a
-      regulatory calendar built around your introducing broker-dealer.
+      Get hands-on Series 28 FINOP support to prepare or review FOCUS reports,
+      maintain current net capital computations, resolve reporting exceptions,
+      and keep your introducing broker-dealer ahead of filing deadlines.
     actions:
       - label: Schedule a 30-Minute Call
         altText: Schedule a confidential call about FOCUS reporting and net capital support
@@ -54,6 +54,36 @@ sections:
           - pb-7
           - pr-7
     type: DividerSection
+  - type: GenericSection
+    title:
+      text: When Broker-Dealers Need FOCUS and Net Capital Support
+      color: text-dark
+      type: TitleBlock
+    text: |
+      This service is for introducing broker-dealers that need direct help with a recurring reporting responsibility or a specific financial-responsibility issue. Common engagement triggers include:
+
+      - A FOCUS filing is approaching and the books, schedules, or net capital computation are not ready
+      - Management wants an independent review of the filing package before submission
+      - Net capital is tightening or planned activity could affect the firm's cushion
+      - Reconciliations, accruals, or supporting workpapers are repeatedly late or incomplete
+      - The firm is preparing for its annual audit or responding to a FINRA financial request
+      - An internal FINOP is leaving and the firm needs interim continuity
+      - A new or growing broker-dealer needs a repeatable close and regulatory reporting process
+
+      The engagement can focus on a defined reporting need or become part of an ongoing outsourced FINOP relationship. The first step is to identify the immediate deadline, the current condition of the records, and who owns each required input.
+    badge:
+      label: When to Engage
+      color: text-primary
+      type: Badge
+    colors: bg-light-fg-dark
+    styles:
+      self:
+        flexDirection: col
+        padding:
+          - pt-16
+          - pb-16
+          - pl-6
+          - pr-6
   - type: GenericSection
     title:
       text: FOCUS Report Preparation Starts With Reliable Books
@@ -138,6 +168,8 @@ sections:
       - Capital planning and evaluation of material financial events
 
       The engagement can be structured as ongoing outsourced FINOP services, interim FINOP coverage, or focused support around a reporting, audit, or regulatory need.
+
+      Expected work products are defined for the engagement and can include a close calendar, reconciliation list, current net capital computation, FOCUS workpapers, exception log, filing review checklist, audit schedules, and a record of open items and management decisions. Deliverables depend on the firm's requirements and agreed scope.
     actions:
       - label: Compare Outsourced and In-House FINOP
         altText: Compare outsourced and internal FINOP operating models
@@ -236,11 +268,11 @@ sections:
           - pl-6
           - pr-6
 seo:
-  metaTitle: FOCUS Reporting and Net Capital Support | FINOP
+  metaTitle: Broker-Dealer FOCUS Reporting & Net Capital Support
   addTitleSuffix: false
   metaDescription: >-
-    Series 28 FINOP support for broker-dealer FOCUS reporting, net capital
-    monitoring, books and records, annual audits, and regulatory requests.
+    Series 28 FINOP support for broker-dealer FOCUS report preparation, net
+    capital monitoring, reconciliations, audits, and regulatory requests.
   socialImage: /images/finop-social-card-v2.png
   metaTags:
     - property: og:type

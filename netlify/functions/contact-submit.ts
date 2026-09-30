@@ -34,7 +34,16 @@ type Attribution = {
     landingPage: string;
 };
 
-const sendLeadEvent = async (requestId: string, attribution: Attribution) => {
+const serviceInterestValues = new Set([
+    'Ongoing outsourced FINOP',
+    'FOCUS reporting or net capital',
+    'Interim FINOP coverage',
+    'Broker-dealer formation',
+    'Audit or FINRA examination support',
+    'Other or not sure'
+]);
+
+const sendLeadEvent = async (requestId: string, attribution: Attribution, serviceInterest: string, firmProvided: boolean) => {
     const measurementId = Netlify.env.get('GA4_MEASUREMENT_ID');
     const apiSecret = Netlify.env.get('GA4_MEASUREMENT_PROTOCOL_SECRET');
     if (!measurementId || !apiSecret) return false;
@@ -62,6 +71,8 @@ const sendLeadEvent = async (requestId: string, attribution: Attribution) => {
                                 method: 'netlify_forms',
                                 form_name: 'contact-form',
                                 lead_type: 'contact_form',
+                                service_interest: serviceInterest,
+                                firm_provided: firmProvided,
                                 event_origin: 'contact_submit_function'
                             }
                         }
@@ -128,7 +139,10 @@ const contactSubmit = async (request: Request, context: Context) => {
         campaign: clean('ga-campaign', '(not set)'),
         landingPage: clean('ga-landing-page', '/')
     };
-    const analyticsTracked = spam ? false : await sendLeadEvent(context.requestId, attribution);
+    const submittedInterest = String(formData.get('service_interest') || '');
+    const serviceInterest = serviceInterestValues.has(submittedInterest) ? submittedInterest : 'not_provided';
+    const firmProvided = Boolean(String(formData.get('firm') || '').trim());
+    const analyticsTracked = spam ? false : await sendLeadEvent(context.requestId, attribution, serviceInterest, firmProvided);
     if (!spam && !analyticsTracked) {
         console.error(`GA4 lead event delivery failed. Request: ${context.requestId}`);
     }
