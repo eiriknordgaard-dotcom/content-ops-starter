@@ -37,6 +37,8 @@ const exceptionId = (value: string) => {
     return `web_${(hash >>> 0).toString(36)}`;
 };
 
+const errorSourceFromStack = (stack?: string) => stack?.match(/https?:\/\/[^\s)]+/i)?.[0]?.replace(/:\d+:\d+$/, '') || 'unknown';
+
 const addCalendlyAttribution = async (href: string) => {
     const { clientId, sessionId, source, medium, campaign, landingPage } = await getAnalyticsAttribution();
     if (!clientId || !sessionId) return href;
@@ -70,8 +72,12 @@ export default function Analytics() {
         if (production) {
             const url = new URL(window.location.href);
             const internalTraffic = url.searchParams.get('internal_traffic');
-            if (internalTraffic === '1') window.localStorage.setItem('ga_internal_traffic', 'true');
-            if (internalTraffic === '0') window.localStorage.removeItem('ga_internal_traffic');
+            try {
+                if (internalTraffic === '1') window.localStorage.setItem('ga_internal_traffic', 'true');
+                if (internalTraffic === '0') window.localStorage.removeItem('ga_internal_traffic');
+            } catch {
+                // Browser privacy settings must not interrupt analytics setup.
+            }
 
             if (internalTraffic === '1' || internalTraffic === '0') {
                 url.searchParams.delete('internal_traffic');
@@ -99,7 +105,11 @@ export default function Analytics() {
                 allow_google_signals: false,
                 allow_ad_personalization_signals: false
             };
-            if (window.localStorage.getItem('ga_internal_traffic') === 'true') gaConfig.traffic_type = 'internal';
+            try {
+                if (window.localStorage.getItem('ga_internal_traffic') === 'true') gaConfig.traffic_type = 'internal';
+            } catch {
+                // Continue collecting ordinary events when storage is blocked.
+            }
 
             analyticsWindow.gtag('js', new Date());
             analyticsWindow.gtag('config', measurementId, gaConfig);
@@ -219,6 +229,7 @@ export default function Analytics() {
 
             trackEvent('exception', {
                 description: safeDescription,
+                error_message: safeDescription.slice(0, 100),
                 fatal: false,
                 error_type: errorType,
                 error_name: sanitizeExceptionText(errorName, 'Error').slice(0, 100),
@@ -246,7 +257,8 @@ export default function Analytics() {
             reportException({
                 description: error?.message || String(event.reason || 'Unhandled promise rejection'),
                 errorType: 'unhandled_rejection',
-                errorName: error?.name || 'UnhandledRejection'
+                errorName: error?.name || 'UnhandledRejection',
+                errorSource: errorSourceFromStack(error?.stack)
             });
         };
 

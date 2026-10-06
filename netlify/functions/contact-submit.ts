@@ -15,16 +15,6 @@ const json = (body: Record<string, unknown>, status = 200) =>
         }
     });
 
-const anonymousClientId = async (source: string) => {
-    const bytes = new TextEncoder().encode(source);
-    const hash = new Uint8Array(await crypto.subtle.digest('SHA-256', bytes));
-    const view = new DataView(hash.buffer);
-    const first = (view.getUint32(0) || 1).toString();
-    const second = (view.getUint32(4) || 1).toString();
-
-    return `${first}.${second}`;
-};
-
 type Attribution = {
     clientId?: string;
     sessionId?: string;
@@ -43,7 +33,10 @@ const serviceInterestValues = new Set([
     'Other or not sure'
 ]);
 
-const sendLeadEvent = async (requestId: string, attribution: Attribution, serviceInterest: string, firmProvided: boolean) => {
+const sendLeadEvent = async (attribution: Attribution, serviceInterest: string, firmProvided: boolean) => {
+    // Only supplement an existing browser session. Inventing an anonymous
+    // client creates Unassigned conversions and synthetic users in GA4.
+    if (!attribution.clientId || !attribution.sessionId) return false;
     const measurementId = Netlify.env.get('GA4_MEASUREMENT_ID');
     const apiSecret = Netlify.env.get('GA4_MEASUREMENT_PROTOCOL_SECRET');
     if (!measurementId || !apiSecret) return false;
@@ -56,7 +49,7 @@ const sendLeadEvent = async (requestId: string, attribution: Attribution, servic
                 headers: { 'content-type': 'application/json' },
                 signal: AbortSignal.timeout(8_000),
                 body: JSON.stringify({
-                    client_id: attribution.clientId || (await anonymousClientId(requestId)),
+                    client_id: attribution.clientId,
                     timestamp_micros: Date.now() * 1000,
                     events: [
                         {
@@ -67,6 +60,7 @@ const sendLeadEvent = async (requestId: string, attribution: Attribution, servic
                                 medium: attribution.medium,
                                 campaign: attribution.campaign,
                                 landing_page: attribution.landingPage,
+                                page_location: `https://eiriknordgaard.com${attribution.landingPage.startsWith('/') ? attribution.landingPage : '/'}`,
                                 engagement_time_msec: 1,
                                 method: 'netlify_forms',
                                 form_name: 'contact-form',
@@ -142,8 +136,11 @@ const contactSubmit = async (request: Request, context: Context) => {
     const submittedInterest = String(formData.get('service_interest') || '');
     const serviceInterest = serviceInterestValues.has(submittedInterest) ? submittedInterest : 'not_provided';
     const firmProvided = Boolean(String(formData.get('firm') || '').trim());
-    const analyticsTracked = spam ? false : await sendLeadEvent(context.requestId, attribution, serviceInterest, firmProvided);
-    if (!spam && !analyticsTracked) {
+    const internal = formData.get('ga-traffic-type') === 'internal';
+    const preview = Boolean(context.deploy?.context && context.deploy.context !== 'production');
+    const excluded = spam || internal || preview;
+    const analyticsTracked = excluded ? false : await sendLeadEvent(attribution, serviceInterest, firmProvided);
+    if (!excluded && !analyticsTracked) {
         console.error(`GA4 lead event delivery failed. Request: ${context.requestId}`);
     }
 

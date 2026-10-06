@@ -38,6 +38,7 @@ export default function FormBlock(props) {
         const attribution = await getAnalyticsAttribution();
         if (attribution.clientId) body.set('ga-client-id', attribution.clientId);
         if (attribution.sessionId) body.set('ga-session-id', attribution.sessionId);
+        if (attribution.trafficType) body.set('ga-traffic-type', attribution.trafficType);
         body.set('ga-source', attribution.source);
         body.set('ga-medium', attribution.medium);
         body.set('ga-campaign', attribution.campaign);

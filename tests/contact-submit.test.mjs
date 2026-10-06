@@ -23,6 +23,15 @@ test('server conversion fires only after accepted non-spam submission and contai
     try {
         assert.deepEqual(await (await submit()).json(), { ok: true, analyticsTracked: true });
         assert.equal(deliveries.length, 1);
+        assert.equal((await (await submit({ 'ga-traffic-type': 'internal' })).json()).analyticsTracked, false);
+        assert.equal((await (await submit({ 'ga-client-id': '', 'ga-session-id': '' })).json()).analyticsTracked, false);
+        assert.equal(deliveries.length, 1);
+        const previewRequest = new Request('https://preview.invalid/api/contact-submit', {
+            method: 'POST', headers: { 'content-type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ 'form-name': 'contact-form', 'ga-client-id': '123.456', 'ga-session-id': '123456' })
+        });
+        assert.equal((await (await contactSubmit(previewRequest, { requestId: 'preview-test', deploy: { context: 'deploy-preview' } })).json()).analyticsTracked, false);
+        assert.equal(deliveries.length, 1);
         assert.equal(deliveries[0].client_id, '123.456');
         assert.equal(deliveries[0].events[0].name, 'generate_lead');
         assert.equal(deliveries[0].events[0].params.medium, 'organic');

@@ -79,6 +79,17 @@ test('browser exceptions include diagnostic dimensions, redact sensitive text, a
     expect(String((exceptions[0][2] as { description: string }).description)).toContain('[email]');
     expect(String((exceptions[0][2] as { description: string }).description)).toContain('[url]');
     expect(JSON.stringify(exceptions[0][2])).not.toContain('secret');
+    await page.evaluate(() => {
+        const error = new TypeError('Network request failed');
+        error.stack = 'TypeError: Network request failed\n    at https://eiriknordgaard.com/_next/static/chunks/request.js?token=secret:25:8';
+        window.dispatchEvent(new PromiseRejectionEvent('unhandledrejection', { reason: error, promise: Promise.resolve() }));
+    });
+    const rejections = await page.evaluate(() => {
+        const dataLayer = (window as typeof window & { dataLayer?: unknown[][] }).dataLayer || [];
+        return dataLayer.filter((event) => event[0] === 'event' && event[1] === 'exception');
+    });
+    expect(rejections[1][2]).toMatchObject({ error_type: 'unhandled_rejection', error_name: 'TypeError', error_message: 'Network request failed', error_source: '/_next/static/chunks/request.js' });
+    expect(JSON.stringify(rejections[1][2])).not.toContain('secret');
 });
 
 test('organic attribution survives subsequent direct navigation', async ({ page }) => {
@@ -138,6 +149,7 @@ test('successful contact form submission uses the server-side conversion endpoin
             gtag?: (...args: unknown[]) => void;
         };
         analyticsWindow.__analyticsMeasurementId = 'G-TEST123456';
+        window.localStorage.setItem('ga_internal_traffic', 'true');
         analyticsWindow.__analyticsTestEvents = [];
         analyticsWindow.gtag = (...args: unknown[]) => {
             analyticsWindow.__analyticsTestEvents?.push(args);
@@ -181,6 +193,7 @@ test('successful contact form submission uses the server-side conversion endpoin
     expect(parameters.get('form-name')).toBe('contact-form');
     expect(parameters.get('ga-client-id')).toBe('123456789.987654321');
     expect(parameters.get('ga-session-id')).toBe('1757000000');
+    expect(parameters.get('ga-traffic-type')).toBe('internal');
     expect(parameters.get('ga-source')).toBe('linkedin');
     expect(parameters.get('ga-medium')).toBe('social');
     expect(parameters.get('ga-campaign')).toBe('finop_advice');

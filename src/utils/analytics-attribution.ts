@@ -9,6 +9,7 @@ type GtagWindow = typeof window & {
 export type AnalyticsAttribution = {
     clientId?: string;
     sessionId?: string;
+    trafficType?: 'internal';
     source: string;
     medium: string;
     campaign: string;
@@ -79,7 +80,7 @@ const getGtagValue = (field: 'client_id' | 'session_id') =>
             resolve(typeof value === 'string' || typeof value === 'number' ? String(value) : undefined);
         };
 
-        window.setTimeout(() => finish(), 700);
+        window.setTimeout(() => finish(), 2_500);
         try {
             gtag('get', analyticsMeasurementId, field, finish);
         } catch {
@@ -92,5 +93,11 @@ export const getAnalyticsAttribution = async (): Promise<AnalyticsAttribution> =
     // navigation must not replace the original landing page during that wait.
     const attribution = getSessionAttribution();
     const [clientId, sessionId] = await Promise.all([getGtagValue('client_id'), getGtagValue('session_id')]);
-    return { ...attribution, clientId, sessionId };
+    let trafficType: 'internal' | undefined;
+    try {
+        if (window.localStorage.getItem('ga_internal_traffic') === 'true') trafficType = 'internal';
+    } catch {
+        // A blocked storage API must not prevent a contact submission.
+    }
+    return { ...attribution, clientId, sessionId, trafficType };
 };
