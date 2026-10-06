@@ -12,6 +12,7 @@ const checks = [
     { path: '/missing-production-monitor/', status: 404, contains: 'That page is not available.' },
     { path: '/api/calendly-webhook', status: 200, contains: '"ok":true' },
     { path: '/api/contact-submit', status: 200, contains: ['"ok":true', '"configured":true'] },
+    { path: '/api/analytics-attribution', status: 405, contains: '"error":"method_not_allowed"' },
     {
         path: '/focus-reporting-net-capital-support/',
         status: 200,
@@ -28,9 +29,7 @@ const checks = [
 const failures = [];
 
 for (const check of checks) {
-    // Drafts deliberately lack production conversion secrets and Netlify adds
-    // noindex headers. Check those requirements only on the production domain.
-    if (isPreview && check.path.startsWith('/api/')) continue;
+    // Preview functions must boot even without production conversion secrets.
     try {
         const response = await fetch(new URL(check.path, siteUrl), {
             redirect: 'manual',
@@ -38,6 +37,7 @@ for (const check of checks) {
             headers: { 'user-agent': 'finop-production-monitor/1.0' }
         });
         const body = await response.text();
+        if (isPreview && check.path.startsWith('/api/') && response.status === 503 && body.includes('"configured":false')) continue;
         if (check.status === 200 && !check.path.startsWith('/api/') && check.path.endsWith('/')) {
             const canonical = new URL(check.path, 'https://eiriknordgaard.com').toString();
             if (!body.includes(`rel="canonical" href="${canonical}"`)) failures.push(`${check.path}: canonical URL is incorrect`);

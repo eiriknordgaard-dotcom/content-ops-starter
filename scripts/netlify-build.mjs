@@ -27,3 +27,5 @@ const exported404 = path.join(projectDir, 'out', '404', 'index.html');
 if (existsSync(exported404)) {
     copyFileSync(exported404, path.join(projectDir, 'out', '404.html'));
 }
+
+await import('./bundle-functions.mjs');

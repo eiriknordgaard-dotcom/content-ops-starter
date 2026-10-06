@@ -3,6 +3,7 @@
   publish = "out"
 
 [functions]
+  directory = ".netlify/finop-functions-bundled"
   included_files = [
     "!node_modules/@img/sharp-darwin-*/**/*",
     "!node_modules/@img/sharp-win32-*/**/*",
