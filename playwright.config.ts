@@ -10,12 +10,12 @@ export default defineConfig({
     workers: process.env.CI ? 2 : undefined,
     reporter: process.env.CI ? [['github'], ['html', { open: 'never' }]] : 'list',
     use: {
-        baseURL: 'http://127.0.0.1:4173',
+        baseURL: process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:4173',
         trace: 'retain-on-failure',
         screenshot: 'only-on-failure',
         video: 'retain-on-failure'
     },
-    webServer: {
+    webServer: process.env.STATIC_EXPORT_TEST === '1' ? undefined : {
         command: 'node node_modules/serve/build/main.js out -l 4173 --no-clipboard',
         url: 'http://127.0.0.1:4173',
         reuseExistingServer: !process.env.CI,

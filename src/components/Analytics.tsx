@@ -3,6 +3,7 @@ import Router from 'next/router';
 
 import { trackEvent } from '../utils/analytics';
 import { getAnalyticsAttribution } from '../utils/analytics-attribution';
+import BookingModal from './BookingModal';
 
 const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const productionHosts = new Set(['eiriknordgaard.com', 'www.eiriknordgaard.com']);
@@ -38,31 +39,6 @@ const exceptionId = (value: string) => {
 };
 
 const errorSourceFromStack = (stack?: string) => stack?.match(/https?:\/\/[^\s)]+/i)?.[0]?.replace(/:\d+:\d+$/, '') || 'unknown';
-
-const addCalendlyAttribution = async (href: string) => {
-    const { clientId, sessionId, source, medium, campaign, landingPage } = await getAnalyticsAttribution();
-    if (!clientId || !sessionId) return href;
-
-    try {
-        const response = await fetch('/api/analytics-attribution', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ clientId, sessionId, source, medium, campaign, landingPage }),
-            keepalive: true,
-            signal: AbortSignal.timeout(1_500)
-        });
-        if (!response.ok) return href;
-
-        const result = (await response.json()) as { token?: string };
-        if (!result.token) return href;
-
-        const url = new URL(href);
-        url.searchParams.set('utm_content', `ga_${result.token}`);
-        return url.toString();
-    } catch {
-        return href;
-    }
-};
 
 export default function Analytics() {
     const [enabled, setEnabled] = React.useState(false);
@@ -153,16 +129,6 @@ export default function Analytics() {
             if (href.includes('calendly.com/')) {
                 trackEvent('schedule_call_click', { link_text: label, link_url: href });
 
-                if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
-                    event.preventDefault();
-                    const bookingWindow = window.open('', link.target || '_self');
-                    if (bookingWindow) bookingWindow.opener = null;
-
-                    void addCalendlyAttribution(href).then((attributedHref) => {
-                        if (bookingWindow) bookingWindow.location.href = attributedHref;
-                        else window.location.href = attributedHref;
-                    });
-                }
             } else if (href.includes('linkedin.com/')) trackEvent('linkedin_click', { link_text: label, link_url: href });
             else if (href.includes('brokercheck.finra.org/')) trackEvent('brokercheck_click', { link_text: label, link_url: href });
             else if (href.startsWith('mailto:')) trackEvent('email_click', { link_text: label });
@@ -277,5 +243,5 @@ export default function Analytics() {
         };
     }, [enabled]);
 
-    return null;
+    return <BookingModal />;
 }

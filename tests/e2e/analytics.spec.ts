@@ -1,10 +1,22 @@
 import { expect, test } from '@playwright/test';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 
 test('organic guide visitors carry attribution into Calendly without counting a booking click as a completion', async ({ page }) => {
     // Serve the local export under the production hostname. All analytics and
     // booking requests are intercepted, so no real events or appointments occur.
     await page.route('https://eiriknordgaard.com/**', async (route) => {
         const url = new URL(route.request().url());
+        if (process.env.STATIC_EXPORT_TEST === '1') {
+            const filePath = path.join(process.cwd(), 'out', url.pathname.endsWith('/') ? `${url.pathname}index.html` : url.pathname);
+            const types: Record<string, string> = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp' };
+            try {
+                await route.fulfill({ contentType: types[path.extname(filePath)] || 'application/octet-stream', body: await readFile(filePath) });
+            } catch {
+                await route.fulfill({ status: 404, body: 'Not found' });
+            }
+            return;
+        }
         const response = await route.fetch({ url: `http://127.0.0.1:4173${url.pathname}${url.search}` });
         await route.fulfill({ response });
     });
@@ -15,25 +27,46 @@ test('organic guide visitors carry attribution into Calendly without counting a 
             if (args[0] === 'get') args[3](args[2] === 'client_id' ? '123456789.987654321' : '1757000000');
         };`
     }));
-    let attribution: Record<string, unknown> = {};
-    await page.route('https://eiriknordgaard.com/api/analytics-attribution', async (route) => {
-        attribution = route.request().postDataJSON();
-        await route.fulfill({ contentType: 'application/json', body: '{"ok":true,"token":"12345678-1234-4123-8123-123456789012"}' });
+    let widgetLoads = 0;
+    await page.route('https://assets.calendly.com/**', (route) => {
+        widgetLoads += 1;
+        return route.fulfill({ contentType: 'application/javascript', body: `window.Calendly = { initInlineWidget({parentElement}) {
+            const frame = document.createElement('iframe'); frame.src = 'https://calendly.com/test-booking'; parentElement.appendChild(frame);
+        } };` });
     });
-    await page.context().route('https://calendly.com/**', (route) => route.fulfill({ contentType: 'text/html', body: '<h1>Local booking destination</h1>' }));
+    await page.context().route('https://calendly.com/**', (route) => route.fulfill({ contentType: 'text/html', body: `<h1>Local booking destination</h1>
+        <button onclick="parent.postMessage({event:'calendly.event_scheduled',payload:{event:{uri:'test-booking'},invitee:{email:'private@example.com'}}}, '*')">Complete test booking</button>
+        <script>parent.postMessage({event:'calendly.event_type_viewed'}, '*')</script>` }));
     await page.goto('https://eiriknordgaard.com/how-to-prepare-broker-dealer-focus-report/', { referer: 'https://www.google.com/' });
     await expect(page.locator('#google-analytics-loader')).toBeAttached();
     await page.getByRole('link', { name: 'Explore FOCUS Reporting Support', exact: true }).first().click();
     await expect(page).toHaveURL('https://eiriknordgaard.com/focus-reporting-net-capital-support/');
-    const popupPromise = page.waitForEvent('popup');
+    expect(widgetLoads).toBe(0);
     await page.getByRole('link', { name: 'Schedule a Confidential Call', exact: true }).click();
-    const popup = await popupPromise;
-    await expect(popup).toHaveURL(/utm_content=ga_12345678-1234-4123-8123-123456789012/);
-    expect(attribution).toMatchObject({ clientId: '123456789.987654321', sessionId: '1757000000', source: 'google.com', medium: 'organic', landingPage: '/how-to-prepare-broker-dealer-focus-report/' });
+    await expect(page.getByRole('dialog')).toBeVisible();
+    await expect(page.frameLocator('dialog iframe').getByRole('heading', { name: 'Local booking destination' })).toBeVisible();
     const events = await page.evaluate(() => (window as typeof window & { dataLayer?: unknown[][] }).dataLayer || []);
     expect(events.some((event) => event[1] === 'schedule_call_click')).toBe(true);
     expect(events.some((event) => event[1] === 'service_detail_click')).toBe(true);
     expect(events.some((event) => ['schedule_call_complete', 'generate_lead'].includes(String(event[1])))).toBe(false);
+    // A forged parent-page message is ignored, even if it claims the right origin.
+    await page.evaluate(() => window.dispatchEvent(new MessageEvent('message', { origin: 'https://calendly.com', source: window, data: { event: 'calendly.event_scheduled' } })));
+    const complete = page.frameLocator('dialog iframe').getByRole('button', { name: 'Complete test booking' });
+    await complete.click();
+    await complete.click();
+    await expect.poll(() => page.evaluate(() => (window as typeof window & { dataLayer?: unknown[][] }).dataLayer?.filter((event) => event[1] === 'schedule_call_complete').length)).toBe(1);
+    const conversions = await page.evaluate(() => (window as typeof window & { dataLayer?: unknown[][] }).dataLayer?.filter((event) => event[1] === 'schedule_call_complete'));
+    expect(conversions?.[0][2]).toMatchObject({ source: 'google.com', medium: 'organic', landing_page: '/how-to-prepare-broker-dealer-focus-report/', origin: 'calendly_embed' });
+    expect(JSON.stringify(conversions)).not.toContain('private@example.com');
+    expect(JSON.stringify(conversions)).not.toContain('test-booking');
+    await page.getByRole('button', { name: 'Close booking calendar' }).click();
+    await expect(page.getByRole('dialog')).not.toBeVisible();
+    await expect(page.getByRole('link', { name: 'Schedule a Confidential Call', exact: true })).toBeFocused();
+    await page.getByRole('link', { name: 'Schedule a Confidential Call', exact: true }).click();
+    await expect(page.getByRole('dialog')).toBeVisible();
+    await page.getByRole('button', { name: 'Close booking calendar' }).press('Escape');
+    await expect(page.getByRole('dialog')).not.toBeVisible();
+    expect(widgetLoads).toBe(1);
 });
 
 test('browser exceptions include diagnostic dimensions, redact sensitive text, and deduplicate repeats', async ({ page }) => {

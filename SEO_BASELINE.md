@@ -1,4 +1,43 @@
-# SEO Baseline: September 30, 2026
+# SEO Baseline: October 7, 2026
+
+## Latest Check: October 7
+
+Search Console Web performance, unfiltered by country, covers August 26 through October 4. This is a cumulative reporting window, so changes against September 30 are directional and not an equal-period comparison.
+
+| Metric | Latest | September 30 snapshot |
+| --- | ---: | ---: |
+| Clicks | 12 | 11 |
+| Impressions | 380 | 327 |
+| CTR | 3.2% | 3.4% |
+| Average position | 27.9 | 29.4 |
+
+| Query | Clicks | Impressions | Average position |
+| --- | ---: | ---: | ---: |
+| outsourced finop | 0 | 32 | 44.3 |
+| finop services | 0 | 20 | 43.2 |
+| finop consulting | 0 | 15 | 68.0 |
+| finop consultant | 0 | 11 | 55.3 |
+| finop broker dealer | 0 | 11 | 42.1 |
+| finop support | 0 | 9 | 26.9 |
+| finop outsourcing | 0 | 8 | 63.4 |
+| focus report | 0 | 4 | 28.8 |
+| focus reporting | 0 | 2 | 29.0 |
+
+Exact fractional FINOP, FOCUS report preparation, and broker-dealer net capital support remain absent from the complete disclosed query table. No disclosed commercial FINOP or FOCUS query has generated a click. New long-tail disclosures include what is a FINOP with four impressions and FINOP licensed consultant with one impression.
+
+| Landing page | Clicks | Impressions | CTR | Average position |
+| --- | ---: | ---: | ---: | ---: |
+| `/` | 11 | 69 | 15.9% | 4.8 |
+| `/fractional-finop/` | 1 | 154 | 0.6% | 43.0 |
+| `/how-to-prepare-broker-dealer-focus-report/` | 0 | 74 | 0% | 11.4 |
+| `/what-does-a-finop-do/` | 0 | 53 | 0% | 38.0 |
+| `/series-27-vs-series-28-finop/` | 0 | 22 | 0% | 10.4 |
+| `/outsourced-vs-in-house-finop/` | 0 | 12 | 0% | 21.9 |
+| `/focus-reporting-net-capital-support/` | 0 | 0 | 0% | Not ranked |
+
+The sitemap remains healthy: Success, nine discovered pages, and last read October 7. The indexing report, last updated October 3, now shows eight indexed pages and one not indexed. The sole excluded URL is `/privacy/`, which is intentionally being allowed to index naturally. This confirms `/focus-reporting-net-capital-support/` has moved from discovered but not indexed into the indexed set, although it has not yet earned a Search Console impression.
+
+Interpretation: qualified visibility is improving. Aggregate average position moved from 29.4 to 27.9, the fractional FINOP page improved from 46.5 to 43.0, the role guide improved from 44.5 to 38.0, and the Series 27 versus Series 28 guide is now averaging position 10.4. The FOCUS preparation guide remains close to page one at 11.4. Commercial demand is still unconverted: the additional click cannot be attributed to any disclosed commercial query, and all disclosed target terms remain at zero clicks.
 
 ## Latest Check: September 30
 

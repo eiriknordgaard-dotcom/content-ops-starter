@@ -2,20 +2,22 @@
 title: Privacy Policy
 slug: /privacy
 datePublished: '2026-08-26'
-dateModified: '2026-08-26'
+dateModified: '2026-10-07'
 sections:
   - type: GenericSection
     title:
       text: Privacy Policy
       color: text-dark
       type: TitleBlock
-    subtitle: Effective August 27, 2026
+    subtitle: Effective October 7, 2026
     text: |
       This website collects the information you choose to provide through the contact form, including your name, email address, and message. That information is used only to respond to your inquiry, discuss services you request, and maintain related business records.
 
       **How information is handled**
 
       Contact-form submissions are processed and stored by Netlify, the service provider that hosts this website. Information may also be handled by other service providers when reasonably necessary to operate the website or respond to you. Personal information is not sold or shared for cross-context behavioral advertising.
+
+      Selecting a scheduling link loads a Calendly booking window. Calendly processes the booking information you provide and may use its own cookies or similar technologies, as described in [Calendly's privacy notice](https://calendly.com/privacy). The website measures completed bookings separately from scheduling-link clicks. Names, email addresses, and Calendly booking identifiers are not included in those website analytics events.
 
       **Retention and security**
 
