@@ -109,12 +109,15 @@ export default function BookingModal() {
         });
         return () => {
             disposed = true;
+            const opener = openerRef.current;
             window.clearTimeout(timeout);
             window.removeEventListener('message', receive);
             embed.replaceChildren();
             dialog.close();
             document.body.style.overflow = overflow;
-            openerRef.current?.focus();
+            // Native dialog focus restoration can run after close(). Restore the
+            // triggering link on the next frame so every close path is stable.
+            window.requestAnimationFrame(() => opener?.focus());
         };
     }, [bookingUrl]);
 
