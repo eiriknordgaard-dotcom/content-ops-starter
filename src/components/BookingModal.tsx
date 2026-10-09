@@ -115,15 +115,14 @@ export default function BookingModal() {
             embed.replaceChildren();
             dialog.close();
             document.body.style.overflow = overflow;
-            // Native dialog focus restoration can run after close(). Restore the
-            // triggering link on the next frame so every close path is stable.
-            window.requestAnimationFrame(() => opener?.focus());
+            // Restore after the dialog's native close work and React cleanup.
+            window.setTimeout(() => opener?.focus({ preventScroll: true }), 0);
         };
     }, [bookingUrl]);
 
     return (
         <dialog ref={dialogRef} className={styles.dialog} aria-labelledby="booking-dialog-title"
-            onCancel={() => setBookingUrl('')}
+            onCancel={(event) => { event.preventDefault(); setBookingUrl(''); }}
             onClick={(event) => { if (event.target === event.currentTarget) setBookingUrl(''); }}>
             <div className={styles.shell}>
                 <div className={styles.header}>
