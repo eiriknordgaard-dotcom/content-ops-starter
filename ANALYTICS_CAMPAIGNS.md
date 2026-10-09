@@ -55,9 +55,9 @@ Grace: confirm actual inquiry receipt and qualification from the stored message,
 
 Steve: if a new inquiry lacks stored service interest, investigate this site's form-registration update procedure. If Eirik chooses embedded booking, implement source-checked completion-event handling, deduplication, internal-test exclusion, accessible loading/closing, and an external-link fallback. Do not introduce a paid subscription without Eirik's spending approval.
 
-### Approved booking popup: October 7, 2026
+### Booking popup release review: October 7, 2026
 
-Eirik approved the on-site booking window. Implemented locally, not published:
+Eirik approved the on-site booking window. At the time of this review, it was implemented locally and had not yet been published:
 
 - Existing Calendly anchors retain their appearance and fallback destination. Ordinary clicks open a native modal dialog; modifier clicks retain normal browser navigation. Calendly's official JavaScript widget loads only after opening the dialog. The close button, Escape, focus restoration, body-scroll lock, mobile full-height layout, and separate-tab fallback are included.
 - `schedule_call_click` remains a click event. `schedule_call_complete` requires `calendly.event_scheduled` from the active iframe and exact Calendly origin. Completion is deduplicated within the open flow and by booking identifier in memory across reopenings. Booking identifiers and invitee payloads are never sent to GA4.
@@ -66,3 +66,13 @@ Eirik approved the on-site booking window. Implemented locally, not published:
 - Production build, type check, targeted lint, SEO validation, analytics bootstrap regression, and eight isolated attribution/handler/event-validation tests passed. The updated browser regression includes lazy loading, forged-message rejection, duplicate completion, PII exclusion, closing/reopening, and focus restoration, but could not execute: local ports and browser subprocesses were denied by this environment. Desktop/mobile visual QA and a safely intercepted browser completion test are still required before production publishing. No real bookings or live conversion events were created.
 
 Steve's release check: run the browser test with collection and booking requests intercepted, review the real Calendly widget on desktop/mobile in a preview, and confirm the deployed CSP allows it. Max and Grace should reconcile the next real booking with GA4 session attribution and the calendar; a booking is not automatically a qualified opportunity.
+
+### Booking popup publication: October 7, 2026
+
+- Release event: Netlify production deploy `6ac67628650d007e86379491` was published October 7, 2026 at 9:41:14 AM PDT with the title `Publish verified booking popup`.
+- Verification observation: Steve reconfirmed the deploy as ready and active in the production context on October 8, 2026 at 6:31:07 PM PDT.
+- Before publication, preview deploy `6ac674ef61834713cad06221` returned HTTP 200 with `X-Robots-Tag: noindex`. Sixteen preview browser checks passed across Chromium, Firefox, WebKit, and iPhone landscape. They covered desktop and mobile sizing, overflow, focus, Escape, close control, backdrop closing, and a simulated completion that produced no live analytics or appointment request.
+- Four isolated completion-flow checks passed across the same browser engines. The test accepted one valid active-frame Calendly completion, rejected a forged parent message, deduplicated repeated completion messages, and excluded invitee email and booking identifiers from analytics.
+- Twelve production interaction checks then passed with Google Analytics, Calendly, and attribution requests intercepted. No synthetic appointment or live analytics event was created during release verification.
+- The deployed CSP permits only Calendly's official frame and widget-script origins needed by the popup. The privacy notice records the integration and its analytics limits.
+- Real conversion attribution remains pending. Max should not report completed-booking attribution until a genuine booking can be reconciled between GA4 and Calendly. Grace retains responsibility for confirming whether that booking is a qualified opportunity.
