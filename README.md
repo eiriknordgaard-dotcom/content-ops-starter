@@ -32,7 +32,9 @@ npm run audit:lighthouse
 
 ## Production monitoring
 
-`npm run smoke:production` checks the live homepage, sitemap, robots file, custom 404 response, Calendly webhook health, and retired-route redirects.
+`npm run smoke:production` checks the live homepage, sitemap, robots file, custom 404 response, Calendly webhook health, and retired-route redirects. A failed scheduled or manual monitor run opens one assigned GitHub issue for the repository owner. Repeated failures update the same issue, and the next successful run records recovery and closes it.
+
+The manual workflow includes a controlled failure option for verifying alert delivery. It runs the live smoke check first, does not submit forms or create appointments, and does not send analytics events.
 
 GitHub Actions runs:
 
