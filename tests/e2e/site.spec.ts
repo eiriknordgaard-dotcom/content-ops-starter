@@ -72,6 +72,7 @@ test('contact form succeeds without leaving the page', async ({ page }) => {
 
     await page.getByLabel('Full name').fill('Automated Test');
     await page.getByLabel('Work email').fill('qa@example.com');
+    await page.getByLabel('What do you need help with?').selectOption('Ongoing outsourced FINOP');
     await page.getByLabel('How can I help?').fill('Regression test submission');
     await page.getByRole('button', { name: 'Send Confidential Message' }).click();
 

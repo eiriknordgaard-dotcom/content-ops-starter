@@ -80,6 +80,7 @@ test('browser exceptions include diagnostic dimensions, redact sensitive text, a
         body: ''
     }));
     await page.goto('https://eiriknordgaard.com/fractional-finop/');
+    await expect(page.locator('#google-analytics-loader')).toBeAttached();
 
     await page.evaluate(() => {
         const error = new Error('Request failed for client@example.com at https://private.example.test/path?token=secret');
