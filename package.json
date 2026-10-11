@@ -29,8 +29,7 @@
         "markdown-to-jsx": "^7.7.3",
         "next": "16.4.0",
         "react": "19.2.8",
-        "react-dom": "19.2.8",
-        "tailwindcss": "^3.4.3"
+        "react-dom": "19.2.8"
     },
     "devDependencies": {
         "@base2/pretty-print-object": "^1.0.3",
@@ -49,7 +48,12 @@
         "postcss-import": "^15.1.0",
         "prettier": "^3.9.9",
         "serve": "^14.2.6",
+        "tailwindcss": "^3.4.3",
         "typescript": "^5.6.2"
+    },
+    "overrides": {
+        "proxy-addr": "2.0.8",
+        "sharp": "0.35.5"
     },
     "main": "next.config.js"
 }
