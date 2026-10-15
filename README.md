@@ -24,6 +24,21 @@ npm run test:e2e
 
 The browser suite covers Chromium, Firefox, WebKit/Safari, and an iPhone landscape profile. It verifies the primary conversion links, mobile navigation, color theme persistence, the contact workflow, editorial content, and the custom not-found page.
 
+### Safe lead-flow release check
+
+Before a release that touches inquiries or booking, build the static preview and run:
+
+```shell
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-TEST123456 npm run build
+npm run test:e2e -- tests/e2e/lead-flow.spec.ts tests/e2e/analytics.spec.ts tests/e2e/booking-modal.spec.ts
+```
+
+`lead-flow.spec.ts` checks the contact and booking entry points at desktop and portrait mobile sizes. It verifies required-field and email validation, one simulated contact completion and its tracking event, booking dialog opening and closing by keyboard and button, focus restoration, and a simulated calendar completion. The contact endpoint and Calendly widget are fulfilled in the browser. Analytics, fonts, and all other external traffic are blocked. An unexpected external request fails the test with its method and host/path. The analytics suite separately verifies that a simulated Calendly completion is counted once under the production hostname while still serving local pages and intercepting the widget and analytics loader. The booking suite checks dialog layout and overflow.
+
+The test measurement ID is deliberately fake. Never deploy this local test build to production. These checks do not submit a live contact form, send analytics events, or book an appointment. Review the browser test report and any trace, screenshot, or video before promoting a separately built preview. A green local suite is not proof that third-party services are available in production; keep the read-only production smoke check as a separate release gate.
+
+Recovery: this check changes test code and release instructions only, not public site behavior or business records. If it causes a release failure, revert the lead-flow test commit, rebuild the preview, and rerun the prior suite. Browser traces and screenshots are local diagnostics and are not a substitute for the versioned source checkpoint.
+
 For a performance audit:
 
 ```shell
