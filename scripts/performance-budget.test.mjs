@@ -55,3 +55,18 @@ test('a low score alone stays advisory rather than creating a vanity gate', () =
     const result = evaluateReports(reports, budget, now);
     assert.equal(result.passed, true); assert.equal(result.warnings.length, 3);
 });
+
+test('CI uses its reviewed baseline and cannot silently accept another browser profile', () => {
+    const reports = fixture();
+    for (const report of reports) {
+        report.userAgent = `HeadlessChrome/${budget.ciBaseline.profile.chromeMajor}.0.0.0`;
+        const baseline = budget.ciBaseline.pages[new URL(report.finalUrl).pathname];
+        report.audits['largest-contentful-paint'].numericValue = baseline.lcp;
+    }
+    assert.equal(evaluateReports(reports, budget, now, 'github-actions').passed, true);
+    assert.equal(evaluateReports(reports, budget, now).passed, false);
+    assert.equal(evaluateReports(fixture(), budget, now, 'github-actions').passed, false);
+    reports[0].userAgent = 'HeadlessChrome/157.0.0.0';
+    assert.equal(evaluateReports(reports, budget, now, 'github-actions').passed, false);
+    assert.throws(() => evaluateReports(reports, budget, now, 'unreviewed'));
+});

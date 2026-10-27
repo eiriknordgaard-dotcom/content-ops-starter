@@ -13,7 +13,7 @@ npm run dev
 
 ## Build runtime
 
-Use the Node.js 24 runtime selected by `.nvmrc`, matching hosted release checks. The production build rejects exports that omit the rendered page content. Lighthouse uses Playwright's installed Chromium so its measurement profile matches the versioned budget.
+Use the Node.js 24 runtime selected by `.nvmrc`, matching hosted release checks. The production build rejects exports that omit the rendered page content. Local Lighthouse uses the recorded local browser profile. Hosted CI selects its separately reviewed system-Chrome baseline with `PERFORMANCE_BUDGET_PROFILE=github-actions`, preserving the runner's working sandbox. Each environment enforces its exact browser/tooling profile and the same absolute performance limits.
 
 ## Quality checks
 

@@ -5,10 +5,13 @@ import { pathToFileURL } from 'node:url';
 const median = values => [...values].sort((a, b) => a - b)[Math.floor(values.length / 2)];
 const auditNames = { lcp: 'largest-contentful-paint', tbt: 'total-blocking-time', cls: 'cumulative-layout-shift' };
 
-export function evaluateReports(reports, budget, now = Date.now()) {
+export function evaluateReports(reports, budget, now = Date.now(), profileName = 'local') {
     const errors = [], warnings = [], pages = [];
     if (budget.schema !== 1 || budget.runsPerPage !== 3) throw new Error('Unsupported performance budget');
-    const groups = Object.fromEntries(Object.keys(budget.previewBaseline.pages).map(route => [route, []]));
+    if (!['local', 'github-actions'].includes(profileName)) throw new Error('Unknown measurement environment');
+    const selected = profileName === 'github-actions' ? budget.ciBaseline : budget.previewBaseline;
+    if (!selected?.pages) throw new Error('Missing reviewed measurement baseline');
+    const groups = Object.fromEntries(Object.keys(selected.pages).map(route => [route, []]));
     const identities = Object.fromEntries(Object.keys(groups).map(route => [route, new Set()]));
     for (const report of reports) {
         let url;
@@ -18,7 +21,7 @@ export function evaluateReports(reports, budget, now = Date.now()) {
             errors.push('Unexpected measurement target'); continue;
         }
         const settings = report.configSettings || {};
-        const profile = budget.profile;
+        const profile = selected.profile || budget.profile;
         const major = Number(report.userAgent?.match(/(?:Headless)?Chrome\/(\d+)/)?.[1]);
         if (settings.formFactor !== profile.formFactor || settings.throttlingMethod !== profile.throttlingMethod
             || settings.throttling?.cpuSlowdownMultiplier !== profile.cpuSlowdownMultiplier
@@ -45,7 +48,7 @@ export function evaluateReports(reports, budget, now = Date.now()) {
     for (const [route, runs] of Object.entries(groups)) {
         if (runs.length !== budget.runsPerPage) { errors.push(`${route}: expected exactly three complete runs`); continue; }
         const values = Object.fromEntries(['lcp', 'tbt', 'cls', 'score'].map(metric => [metric, median(runs.map(run => run[metric]))]));
-        const baseline = budget.previewBaseline.pages[route];
+        const baseline = selected.pages[route];
         const lcpLimit = Math.min(budget.blocking.lcp, Math.max(baseline.lcp * (1 + budget.lcpRegression.fraction), baseline.lcp + budget.lcpRegression.minimumMarginMs));
         for (const metric of ['lcp', 'tbt', 'cls']) {
             const limit = metric === 'lcp' ? lcpLimit : budget.blocking[metric];
@@ -57,7 +60,7 @@ export function evaluateReports(reports, budget, now = Date.now()) {
         if (values.score < budget.warning.score) warnings.push(`${route}: advisory performance score below ${budget.warning.score}`);
         pages.push({ route, median: values, lcpLimit });
     }
-    return { schema: 1, passed: errors.length === 0, errors, warnings, pages };
+    return { schema: 1, profile: profileName, passed: errors.length === 0, errors, warnings, pages };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
@@ -65,7 +68,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
     const directory = path.resolve(process.argv[2] || '.lighthouseci');
     const files = (await readdir(directory)).filter(file => /^lhr-.*\.json$/.test(file));
     const reports = await Promise.all(files.map(file => readFile(path.join(directory, file), 'utf8').then(JSON.parse)));
-    const result = evaluateReports(reports, budget);
+    const result = evaluateReports(reports, budget, Date.now(), process.env.PERFORMANCE_BUDGET_PROFILE || 'local');
     await mkdir('test-results', { recursive: true });
     await writeFile('test-results/performance-budget.json', JSON.stringify(result, null, 2));
     for (const warning of result.warnings) console.warn(`Performance warning: ${warning}`);
