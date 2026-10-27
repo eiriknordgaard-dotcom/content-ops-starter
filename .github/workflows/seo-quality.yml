@@ -10,26 +10,28 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      NEXT_PUBLIC_GA_MEASUREMENT_ID: G-TEST
+      NEXT_PUBLIC_GA_MEASUREMENT_ID: G-TEST123456
+      NEXT_TELEMETRY_DISABLED: '1'
+      PERFORMANCE_BUDGET_PROFILE: github-actions
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
       - run: npm ci
-      - run: npm run typecheck
-      - run: npm run lint
-      - run: npm run build
+      - name: Select a reviewed sandboxed CI browser
+        run: node scripts/select-ci-browser.mjs
       - run: npx playwright install --with-deps chromium firefox webkit
-      - run: npm run test:e2e
-      - run: npm run audit:lighthouse
+      - name: Verify local release candidate
+        run: npm run verify:release
       - run: npm audit --omit=dev --audit-level=critical
       - uses: actions/upload-artifact@v4
-        if: failure()
+        if: always()
         with:
-          name: browser-test-results
+          name: release-quality-results
           path: |
             playwright-report/
             test-results/
+            .lighthouseci/
           retention-days: 14

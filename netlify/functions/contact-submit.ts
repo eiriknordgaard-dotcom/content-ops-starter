@@ -1,4 +1,5 @@
 import type { Config, Context } from '@netlify/functions';
+import { cleanDimension, cleanLandingPage } from '../lib/retention';
 
 declare const Netlify: {
     env: {
@@ -124,14 +125,14 @@ const contactSubmit = async (request: Request, context: Context) => {
     const spam = Boolean(formData.get('bot-field'));
     const clientId = String(formData.get('ga-client-id') || '');
     const sessionId = String(formData.get('ga-session-id') || '');
-    const clean = (name: string, fallback: string) => String(formData.get(name) || fallback).trim().slice(0, 100);
+    const clean = (name: string, fallback: string) => cleanDimension(formData.get(name), fallback);
     const attribution: Attribution = {
         clientId: /^\d+\.\d+$/.test(clientId) ? clientId : undefined,
         sessionId: /^\d+$/.test(sessionId) ? sessionId : undefined,
         source: clean('ga-source', '(direct)'),
         medium: clean('ga-medium', '(none)'),
         campaign: clean('ga-campaign', '(not set)'),
-        landingPage: clean('ga-landing-page', '/')
+        landingPage: cleanLandingPage(formData.get('ga-landing-page'))
     };
     const submittedInterest = String(formData.get('service_interest') || '');
     const serviceInterest = serviceInterestValues.has(submittedInterest) ? submittedInterest : 'not_provided';

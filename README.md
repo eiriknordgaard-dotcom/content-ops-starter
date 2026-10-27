@@ -11,18 +11,39 @@ npm ci
 npm run dev
 ```
 
+## Build runtime
+
+Use the Node.js 24 runtime selected by `.nvmrc`, matching hosted release checks. The production build rejects exports that omit the rendered page content. Local Lighthouse uses the recorded local browser profile. Hosted CI selects its separately reviewed system-Chrome baseline with `PERFORMANCE_BUDGET_PROFILE=github-actions`, preserving the runner's working sandbox. Each environment enforces its exact browser/tooling profile and the same absolute performance limits.
+
 ## Quality checks
 
-Run the full pre-deployment verification:
+Run the full release verification against an isolated local preview:
 
 ```shell
-npm run check
-npm run build
-npx playwright install
-npm run test:e2e
+npx playwright install chromium firefox webkit
+npm run verify:release
 ```
 
-The browser suite covers Chromium, Firefox, WebKit/Safari, and an iPhone landscape profile. It verifies the primary conversion links, mobile navigation, color theme persistence, the contact workflow, editorial content, and the custom not-found page.
+The browser suite covers Chromium, Firefox, desktop WebKit, and iPhone portrait and landscape profiles. It verifies the primary conversion links, mobile navigation, color theme persistence, the contact workflow, editorial content, and the custom not-found page. Accessibility checks cover critical pages and booking controls. Lighthouse measures three local mobile runs per representative URL and retains reports locally rather than uploading them publicly. See [release quality checks](https://github.com/eiriknordgaard-dotcom/finop-website-operations/blob/codex/approved-development-queue/RELEASE-QUALITY.md) for failure thresholds, isolation rules, report locations, and rollback.
+
+The release runner produces a fake-ID test export. Build the accepted production candidate separately using the established production configuration.
+
+The versioned [performance budget](https://github.com/eiriknordgaard-dotcom/finop-website-operations/blob/codex/approved-development-queue/PERFORMANCE-BUDGET.md) records production and preview baselines, measurement variance, blocking metric thresholds, and the remediation/rebaseline process. `npm run audit:performance-budget` validates the freshly collected Lighthouse reports.
+
+### Safe lead-flow release check
+
+Before a release that touches inquiries or booking, build the static preview and run:
+
+```shell
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-TEST123456 npm run build
+npm run test:e2e -- tests/e2e/lead-flow.spec.ts tests/e2e/analytics.spec.ts tests/e2e/booking-modal.spec.ts
+```
+
+`lead-flow.spec.ts` checks the contact and booking entry points at desktop and portrait mobile sizes. It verifies required-field and email validation, one simulated contact completion and its tracking event, booking dialog opening and closing by keyboard and button, focus restoration, and a simulated calendar completion. The contact endpoint and Calendly widget are fulfilled in the browser. Analytics, fonts, and all other external traffic are blocked. An unexpected external request fails the test with its method and host/path. The analytics suite separately verifies that a simulated Calendly completion is counted once under the production hostname while still serving local pages and intercepting the widget and analytics loader. The booking suite checks dialog layout and overflow.
+
+The test measurement ID is deliberately fake. Never deploy this local test build to production. These checks do not submit a live contact form, send analytics events, or book an appointment. Review the browser test report and any trace, screenshot, or video before promoting a separately built preview. A green local suite is not proof that third-party services are available in production; keep the read-only production smoke check as a separate release gate.
+
+Recovery: this check changes test code and release instructions only, not public site behavior or business records. If it causes a release failure, revert the lead-flow test commit, rebuild the preview, and rerun the prior suite. Browser traces and screenshots are local diagnostics and are not a substitute for the versioned source checkpoint.
 
 For a performance audit:
 

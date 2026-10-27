@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures/safe-test';
 
 test('homepage exposes the primary conversion path and trust links', async ({ page }) => {
     await page.goto('/');

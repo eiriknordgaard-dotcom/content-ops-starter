@@ -84,12 +84,12 @@
         --site-surface-elevated: #f2f2f7;
         --site-label: #0f2235;
         --site-label-secondary: rgba(15, 34, 53, 0.68);
-        --site-label-tertiary: rgba(15, 34, 53, 0.56);
+        --site-label-tertiary: rgba(15, 34, 53, 0.68);
         --site-separator: rgba(15, 34, 53, 0.12);
-        --site-blue: #007aff;
-        --site-blue-hover: #0062cc;
+        --site-blue: #005fca;
+        --site-blue-hover: #0055b5;
         --site-green: #34c759;
-        --site-green-label: #238a43;
+        --site-green-label: #1f7d3c;
         --site-shadow: 0 1px 2px rgba(15, 34, 53, 0.035), 0 8px 24px rgba(15, 34, 53, 0.045);
     }
 
@@ -131,6 +131,14 @@
 }
 
 @layer components {
+    .section-bottom-text {
+        color: var(--site-label-secondary);
+    }
+
+    .bg-dark-fg-light .section-bottom-text {
+        color: rgba(255, 255, 255, 0.75);
+    }
+
     .sb-markdown {
         @apply leading-relaxed;
         a {
@@ -549,7 +557,7 @@
         margin-block: -0.625rem;
         padding-inline: 0.125rem;
         border-radius: 9999px;
-        color: rgba(255, 255, 255, 0.46);
+        color: rgba(255, 255, 255, 0.64);
         background: transparent;
         font-size: 0.75rem;
         font-weight: 600;
@@ -1069,7 +1077,7 @@
 
     .header-brand-subtitle {
         margin-top: 0.1875rem;
-        color: rgba(15, 34, 53, 0.56);
+        color: var(--site-label-tertiary);
         font-size: 0.75rem;
         font-weight: 500;
         letter-spacing: 0.035em;
@@ -1078,7 +1086,7 @@
 
     .sb-component-header .sb-component-link-secondary {
         min-height: 2.75rem;
-        color: rgba(15, 34, 53, 0.60);
+        color: var(--site-label-secondary);
         font-weight: 500;
         letter-spacing: -0.005em;
         transition: color 160ms ease;
@@ -1199,7 +1207,7 @@
         display: inline-flex;
         align-items: center;
         gap: 0.45rem;
-        color: #238a43;
+        color: var(--site-green-label);
         font-size: 0.6875rem;
         font-weight: 700;
         letter-spacing: 0.08em;
@@ -1240,7 +1248,7 @@
     }
     #services .sb-card .text-sm,
     #services-projects .sb-card .text-sm {
-        color: #007aff;
+        color: var(--site-blue);
         font-size: 0.75rem;
         font-weight: 650;
         letter-spacing: 0.055em;
@@ -1268,7 +1276,7 @@
         text-align: center;
     }
     #services-projects .featured-items-bottom-text {
-        color: rgba(15, 34, 53, 0.55);
+        color: var(--site-label-tertiary);
         font-size: 0.8125rem;
     }
     @media (max-width: 639px) {
@@ -1331,7 +1339,7 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        color: #238a43;
+        color: var(--site-green-label);
         font-size: 0.75rem;
         font-weight: 700;
         letter-spacing: 0.075em;
@@ -1379,7 +1387,7 @@
         flex: 0 0 0.9rem;
         border: 1.8px solid #34c759;
         border-radius: 9999px;
-        color: #238a43;
+        color: var(--site-green-label);
         font-size: 0.625rem;
         font-weight: 700;
         line-height: 1;
@@ -1454,13 +1462,13 @@
         line-height: 1.35;
     }
     #why .approach-experience-list li::before {
-        color: #007aff;
+        color: var(--site-blue);
         font-weight: 700;
         content: '\2713';
     }
     #why .approach-kicker,
     #why .approach-qualifications-label {
-        color: #007aff;
+        color: var(--site-blue);
         font-size: 0.75rem;
         font-weight: 650;
         letter-spacing: 0.075em;
@@ -1651,7 +1659,7 @@
         place-items: center;
         width: 2.75rem;
         height: 2.75rem;
-        color: #007aff;
+        color: var(--site-blue);
         transition: color 150ms ease, transform 150ms ease;
     }
     #why .approach-profile-linkedin:hover {
@@ -1668,7 +1676,7 @@
     }
     #why .approach-profile-role {
         margin-top: 0.1875rem;
-        color: rgba(15, 34, 53, 0.6);
+        color: var(--site-label-tertiary);
         font-size: 0.75rem;
     }
     #why .approach-qualifications-label {
@@ -1692,7 +1700,7 @@
         width: 2.5rem;
         height: 2.5rem;
         border-radius: 0.625rem;
-        color: #007aff;
+        color: var(--site-blue);
         background-color: rgba(0, 122, 255, 0.09);
         font-size: 0.8125rem;
         font-weight: 650;
@@ -1707,7 +1715,7 @@
     }
     #why .approach-qualification-detail {
         margin-top: 0.125rem;
-        color: rgba(15, 34, 53, 0.6);
+        color: var(--site-label-tertiary);
         font-size: 0.6875rem;
         line-height: 1.35;
     }
@@ -1886,7 +1894,7 @@
     #contact .contact-form-privacy {
         display: block;
         margin-top: 1.5rem;
-        color: rgba(15, 34, 53, 0.58);
+        color: var(--site-label-tertiary);
         font-size: 0.75rem;
         line-height: 1.5;
         text-align: center;
@@ -2291,8 +2299,8 @@
     }
 
     html[data-theme='dark'] .sb-component-button-primary:hover {
-        background-color: var(--site-blue-hover);
-        border-color: var(--site-blue-hover);
+        background-color: #0062cc;
+        border-color: #0062cc;
     }
 
     html[data-theme='dark'] .sb-component-button-secondary {

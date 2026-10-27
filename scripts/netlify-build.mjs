@@ -1,5 +1,5 @@
 import { spawnSync } from 'node:child_process';
-import { copyFileSync, existsSync } from 'node:fs';
+import { copyFileSync, existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -20,6 +20,15 @@ for (const args of steps) {
 
     if (result.status !== 0) {
         process.exit(result.status ?? 1);
+    }
+}
+
+// A successful framework exit must still contain the statically rendered page.
+// Node 20 produced dialog-only HTML in the hosted build and caused hydration shifts.
+for (const route of ['', 'fractional-finop', 'what-does-a-finop-do']) {
+    const html = readFileSync(path.join(projectDir, 'out', route, 'index.html'), 'utf8');
+    if (!/<main\b/.test(html) || !/<h1\b/.test(html)) {
+        throw new Error(`Static page content missing for /${route}. Use the Node version in .nvmrc; do not publish this export.`);
     }
 }
 

@@ -1,5 +1,5 @@
-import { getDeployStore, getStore } from '@netlify/blobs';
 import type { Config, Context } from '@netlify/functions';
+import { boundedBody, cleanDimension, cleanLandingPage, expirationMetadata, retentionStore, TOKEN_TTL } from '../lib/retention';
 
 const json = (body: Record<string, unknown>, status = 200) =>
     new Response(JSON.stringify(body), {
@@ -10,17 +10,18 @@ const json = (body: Record<string, unknown>, status = 200) =>
         }
     });
 
-const getAttributionStore = (context: Context) =>
-    context.deploy.context === 'production'
-        ? getStore({ name: 'analytics-attribution', consistency: 'strong' })
-        : getDeployStore({ name: 'analytics-attribution', deployID: context.deploy.id, consistency: 'strong' });
-
 const analyticsAttribution = async (request: Request, context: Context) => {
     if (request.method !== 'POST') return json({ ok: false, error: 'method_not_allowed' }, 405);
+    if (request.headers.get('origin') !== new URL(request.url).origin) return json({ ok: false, error: 'forbidden_origin' }, 403);
+    if (request.headers.get('content-type')?.split(';')[0].trim() !== 'application/json') return json({ ok: false, error: 'unsupported_media_type' }, 415);
+    const raw = await boundedBody(request, 8192);
+    if (raw === null) return json({ ok: false, error: 'payload_too_large' }, 413);
 
     let body: Record<string, unknown>;
     try {
-        body = (await request.json()) as Record<string, unknown>;
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw new Error('Invalid object');
+        body = parsed;
     } catch {
         return json({ ok: false, error: 'invalid_json' }, 400);
     }
@@ -31,18 +32,17 @@ const analyticsAttribution = async (request: Request, context: Context) => {
         return json({ ok: false, error: 'invalid_attribution' }, 400);
     }
 
-    const clean = (value: unknown, fallback: string) => String(value || fallback).trim().slice(0, 100);
-
     const token = crypto.randomUUID();
-    await getAttributionStore(context).setJSON(`session/${token}`, {
+    const now = Date.now();
+    await retentionStore(context, 'analytics-attribution').setJSON(`session/${token}`, {
         clientId,
         sessionId,
-        source: clean(body.source, '(direct)'),
-        medium: clean(body.medium, '(none)'),
-        campaign: clean(body.campaign, '(not set)'),
-        landingPage: clean(body.landingPage, '/'),
-        createdAt: new Date().toISOString()
-    });
+        source: cleanDimension(body.source, '(direct)'),
+        medium: cleanDimension(body.medium, '(none)'),
+        campaign: cleanDimension(body.campaign, '(not set)'),
+        landingPage: cleanLandingPage(body.landingPage),
+        createdAt: new Date(now).toISOString()
+    }, { metadata: expirationMetadata(now, TOKEN_TTL) });
 
     return json({ ok: true, token });
 };
@@ -50,5 +50,6 @@ const analyticsAttribution = async (request: Request, context: Context) => {
 export default analyticsAttribution;
 
 export const config: Config = {
-    path: '/api/analytics-attribution'
+    path: '/api/analytics-attribution',
+    rateLimit: { action: 'rate_limit', aggregateBy: ['ip', 'domain'], windowSize: 60, windowLimit: 20 }
 };
