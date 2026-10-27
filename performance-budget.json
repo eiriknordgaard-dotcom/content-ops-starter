@@ -1,0 +1,29 @@
+{
+    "schema": 1,
+    "recordedAt": "2026-10-27",
+    "runsPerPage": 3,
+    "maxReportAgeHours": 24,
+    "profile": { "formFactor": "mobile", "throttlingMethod": "simulate", "cpuSlowdownMultiplier": 4, "rttMs": 150, "throughputKbps": 1638.4, "viewportWidth": 412, "viewportHeight": 823, "deviceScaleFactor": 1.75, "lighthouseVersion": "12.6.1", "chromeMajor": 153 },
+    "warning": { "lcp": 3000, "tbt": 200, "cls": 0.05, "score": 0.85 },
+    "blocking": { "lcp": 3500, "tbt": 300, "cls": 0.1 },
+    "lcpRegression": { "fraction": 0.35, "minimumMarginMs": 600 },
+    "varianceWarningFraction": 0.35,
+    "previewBaseline": {
+        "sourceCommit": "28fc3a22f448cc530f52d228f817a42efa838f5f",
+        "measuredAt": "2026-10-27T16:40:16Z",
+        "pages": {
+            "/": { "lcp": 2567, "tbt": 11, "cls": 0, "score": 0.96 },
+            "/fractional-finop/": { "lcp": 2299, "tbt": 13.5, "cls": 0, "score": 0.97 },
+            "/what-does-a-finop-do/": { "lcp": 2267, "tbt": 7.5, "cls": 0, "score": 0.98 }
+        }
+    },
+    "productionBaseline": {
+        "measuredAt": "2026-10-27",
+        "mode": "read-only isolated lab; integrations and remote fonts blocked",
+        "pages": {
+            "/": { "lcp": 2959, "tbt": 26, "cls": 1.181083, "score": 0.69 },
+            "/fractional-finop/": { "lcp": 2945, "tbt": 33, "cls": 0.230863, "score": 0.82 },
+            "/what-does-a-finop-do/": { "lcp": 2032, "tbt": 59, "cls": 0, "score": 0.98 }
+        }
+    }
+}

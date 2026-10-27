@@ -1,5 +1,10 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const baseURL = process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:4173';
+if (!['localhost', '127.0.0.1'].includes(new URL(baseURL).hostname)) {
+    throw new Error('Release browser checks require a local preview. Use smoke:production for read-only live checks.');
+}
+
 export default defineConfig({
     testDir: './tests/e2e',
     timeout: 30_000,
@@ -8,9 +13,10 @@ export default defineConfig({
     forbidOnly: Boolean(process.env.CI),
     retries: process.env.CI ? 2 : 0,
     workers: process.env.CI ? 2 : undefined,
-    reporter: process.env.CI ? [['github'], ['html', { open: 'never' }]] : 'list',
+    reporter: process.env.CI ? [['github'], ['html', { open: 'never' }]] : [['list'], ['html', { open: 'never' }]],
     use: {
-        baseURL: process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:4173',
+        baseURL,
+        serviceWorkers: 'block',
         trace: 'retain-on-failure',
         screenshot: 'only-on-failure',
         video: 'retain-on-failure'
@@ -25,6 +31,7 @@ export default defineConfig({
         { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
         { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
         { name: 'webkit', use: { ...devices['Desktop Safari'] } },
+        { name: 'iphone-portrait', use: { ...devices['iPhone 15 Pro'] } },
         {
             name: 'iphone-landscape',
             use: {

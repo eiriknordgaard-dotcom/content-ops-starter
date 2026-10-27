@@ -1,22 +1,10 @@
-import { expect, test } from '@playwright/test';
-import { readFile } from 'node:fs/promises';
-import path from 'node:path';
+import { expect, test } from './fixtures/safe-test';
 
 test('organic guide visitors carry attribution into Calendly without counting a booking click as a completion', async ({ page }) => {
     // Serve the local export under the production hostname. All analytics and
     // booking requests are intercepted, so no real events or appointments occur.
     await page.route('https://eiriknordgaard.com/**', async (route) => {
         const url = new URL(route.request().url());
-        if (process.env.STATIC_EXPORT_TEST === '1') {
-            const filePath = path.join(process.cwd(), 'out', url.pathname.endsWith('/') ? `${url.pathname}index.html` : url.pathname);
-            const types: Record<string, string> = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp' };
-            try {
-                await route.fulfill({ contentType: types[path.extname(filePath)] || 'application/octet-stream', body: await readFile(filePath) });
-            } catch {
-                await route.fulfill({ status: 404, body: 'Not found' });
-            }
-            return;
-        }
         const response = await route.fetch({ url: `http://127.0.0.1:4173${url.pathname}${url.search}` });
         await route.fulfill({ response });
     });

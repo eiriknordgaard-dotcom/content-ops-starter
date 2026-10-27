@@ -1,5 +1,5 @@
-import { getDeployStore, getStore } from '@netlify/blobs';
 import type { Config, Context } from '@netlify/functions';
+import { cleanDimension, cleanLandingPage, expirationMetadata, knownExpiration, retentionStore, TOKEN_TTL, MARKER_TTL } from '../lib/retention';
 
 declare const Netlify: {
     env: {
@@ -8,14 +8,10 @@ declare const Netlify: {
 };
 
 const getProcessedEvents = (context: Context) =>
-    context.deploy.context === 'production'
-        ? getStore({ name: 'calendly-webhook-events', consistency: 'strong' })
-        : getDeployStore({ name: 'calendly-webhook-events', deployID: context.deploy.id, consistency: 'strong' });
+    retentionStore(context, 'calendly-webhook-events');
 
 const getAttributionStore = (context: Context) =>
-    context.deploy.context === 'production'
-        ? getStore({ name: 'analytics-attribution', consistency: 'strong' })
-        : getDeployStore({ name: 'analytics-attribution', deployID: context.deploy.id, consistency: 'strong' });
+    retentionStore(context, 'analytics-attribution');
 
 const json = (body: Record<string, unknown>, status = 200) =>
     new Response(JSON.stringify(body), {
@@ -90,7 +86,7 @@ const getAttribution = async (payload: Record<string, unknown>, context: Context
 
     const createdAt = Date.parse(attribution.createdAt);
     const age = Date.now() - createdAt;
-    if (!Number.isFinite(createdAt) || age < 0 || age > 24 * 60 * 60 * 1000) {
+    if (!Number.isFinite(createdAt) || age < 0 || age >= TOKEN_TTL) {
         await attributionStore.delete(`session/${token}`);
         return null;
     }
@@ -98,10 +94,10 @@ const getAttribution = async (payload: Record<string, unknown>, context: Context
     if (!/^\d+\.\d+$/.test(attribution.clientId) || !/^\d+$/.test(attribution.sessionId)) return null;
     return {
         ...attribution,
-        source: String(attribution.source || '(direct)').slice(0, 100),
-        medium: String(attribution.medium || '(none)').slice(0, 100),
-        campaign: String(attribution.campaign || '(not set)').slice(0, 100),
-        landingPage: String(attribution.landingPage || '/').slice(0, 100),
+        source: cleanDimension(attribution.source, '(direct)'),
+        medium: cleanDimension(attribution.medium, '(none)'),
+        campaign: cleanDimension(attribution.campaign, '(not set)'),
+        landingPage: cleanLandingPage(attribution.landingPage),
         token
     };
 };
@@ -142,6 +138,7 @@ const calendlyWebhook = async (request: Request, context: Context) => {
     if (webhook.event !== 'invitee.created') {
         return json({ ok: true, ignored: true });
     }
+    if (context.deploy.context !== 'production') return json({ ok: true, excluded: 'preview' });
 
     const payload = (webhook.payload && typeof webhook.payload === 'object' ? webhook.payload : {}) as Record<string, unknown>;
     const scheduledEvent = payload.scheduled_event && typeof payload.scheduled_event === 'object' ? (payload.scheduled_event as Record<string, unknown>) : {};
@@ -150,7 +147,8 @@ const calendlyWebhook = async (request: Request, context: Context) => {
     const processedEvents = getProcessedEvents(context);
     const existingEvent = await processedEvents.getMetadata(eventKey);
 
-    if (existingEvent) {
+    const expiry = existingEvent ? knownExpiration(existingEvent.metadata, MARKER_TTL, Date.now()) : null;
+    if (existingEvent && (expiry === null || expiry > Date.now())) {
         return json({ ok: true, duplicate: true });
     }
 
@@ -192,8 +190,8 @@ const calendlyWebhook = async (request: Request, context: Context) => {
                 })
             }
         );
-    } catch (error) {
-        console.error(`GA4 Measurement Protocol request failed. Request: ${context.requestId}`, error);
+    } catch {
+        console.error(`GA4 Measurement Protocol request failed. Request: ${context.requestId}`);
         return json({ ok: false, error: 'analytics_delivery_failed' }, 502);
     }
 
@@ -202,10 +200,11 @@ const calendlyWebhook = async (request: Request, context: Context) => {
         return json({ ok: false, error: 'analytics_delivery_failed' }, 502);
     }
 
+    const now = Date.now();
     await processedEvents.setJSON(eventKey, {
-        processedAt: new Date().toISOString(),
+        processedAt: new Date(now).toISOString(),
         event: 'invitee.created'
-    });
+    }, { metadata: expirationMetadata(now, MARKER_TTL) });
     if (attribution) await getAttributionStore(context).delete(`session/${attribution.token}`);
 
     return json({ ok: true });

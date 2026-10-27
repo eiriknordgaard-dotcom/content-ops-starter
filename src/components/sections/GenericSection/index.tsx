@@ -153,7 +153,7 @@ export default function GenericSection(props) {
                             <p
                                 className={classNames(
                                     'text-sm',
-                                    'opacity-70',
+                                    'section-bottom-text',
                                     { 'hero-bottom-text': isHero },
                                     isHero ? 'mt-6' : 'mt-4',
                                     styles?.bottomText ? mapStyles(styles?.bottomText) : undefined

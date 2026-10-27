@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures/safe-test';
 
 async function installMockCalendly(page: Page) {
     await page.route(/https:\/\/[^/]*(?:googletagmanager|google-analytics)\.com\//, (route) => route.fulfill({
