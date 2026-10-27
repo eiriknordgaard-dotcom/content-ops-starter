@@ -21,7 +21,11 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium firefox webkit
       - name: Select the installed Chromium for Lighthouse
-        run: node -e 'require("node:fs").appendFileSync(process.env.GITHUB_ENV, "CHROME_PATH=" + require("playwright").chromium.executablePath() + "\n")'
+        run: |
+          test -u /opt/google/chrome/chrome-sandbox
+          node -e 'require("node:fs").appendFileSync(process.env.GITHUB_ENV, "CHROME_PATH=" + require("playwright").chromium.executablePath() + "\nCHROME_DEVEL_SANDBOX=/opt/google/chrome/chrome-sandbox\n")'
+      - name: Verify the sandboxed Lighthouse browser starts
+        run: timeout 30s "$CHROME_PATH" --headless --disable-gpu --no-first-run --no-default-browser-check --disable-background-networking --dump-dom about:blank > /dev/null
       - name: Verify local release candidate
         run: npm run verify:release
       - run: npm audit --omit=dev --audit-level=critical
