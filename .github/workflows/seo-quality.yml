@@ -16,10 +16,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps chromium firefox webkit
+      - name: Select the installed Chromium for Lighthouse
+        run: node -e 'require("node:fs").appendFileSync(process.env.GITHUB_ENV, "CHROME_PATH=" + require("playwright").chromium.executablePath() + "\n")'
       - name: Verify local release candidate
         run: npm run verify:release
       - run: npm audit --omit=dev --audit-level=critical

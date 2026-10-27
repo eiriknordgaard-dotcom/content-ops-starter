@@ -11,6 +11,10 @@ npm ci
 npm run dev
 ```
 
+## Build runtime
+
+Use the Node.js 24 runtime selected by `.nvmrc`, matching hosted release checks. The production build rejects exports that omit the rendered page content. Lighthouse uses Playwright's installed Chromium so its measurement profile matches the versioned budget.
+
 ## Quality checks
 
 Run the full release verification against an isolated local preview:
