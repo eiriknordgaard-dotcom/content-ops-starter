@@ -9,8 +9,9 @@ export function evaluateReports(reports, budget, now = Date.now(), profileName =
     const errors = [], warnings = [], pages = [];
     if (budget.schema !== 1 || budget.runsPerPage !== 3) throw new Error('Unsupported performance budget');
     if (!['local', 'github-actions'].includes(profileName)) throw new Error('Unknown measurement environment');
-    const selected = profileName === 'github-actions' ? budget.ciBaseline : budget.previewBaseline;
-    if (!selected?.pages) throw new Error('Missing reviewed measurement baseline');
+    const observedMajor = Number(reports[0]?.userAgent?.match(/(?:Headless)?Chrome\/(\d+)/)?.[1]);
+    const selected = profileName === 'github-actions' ? budget.ciBaselines?.[observedMajor] : budget.previewBaseline;
+    if (!selected?.pages) return { schema: 1, profile: profileName, passed: false, errors: ['Unreviewed measurement browser profile'], warnings, pages };
     const groups = Object.fromEntries(Object.keys(selected.pages).map(route => [route, []]));
     const identities = Object.fromEntries(Object.keys(groups).map(route => [route, new Set()]));
     for (const report of reports) {

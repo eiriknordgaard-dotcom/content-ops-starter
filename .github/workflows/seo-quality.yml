@@ -20,6 +20,8 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - name: Select a reviewed sandboxed CI browser
+        run: node scripts/select-ci-browser.mjs
       - run: npx playwright install --with-deps chromium firefox webkit
       - name: Verify local release candidate
         run: npm run verify:release

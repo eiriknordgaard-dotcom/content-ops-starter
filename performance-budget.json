@@ -79,41 +79,81 @@
             }
         }
     },
-    "ciBaseline": {
-        "environment": "GitHub Actions ubuntu-latest, system Chrome with its installed sandbox",
-        "sourceCommit": "da5725e889225678c4dc53fc5ec8b11e5a88da5a",
-        "measuredAt": "2026-10-27T20:24:45.309Z",
-        "workflowRunId": 40576937752,
-        "profile": {
-            "formFactor": "mobile",
-            "throttlingMethod": "simulate",
-            "cpuSlowdownMultiplier": 4,
-            "rttMs": 150,
-            "throughputKbps": 1638.4,
-            "viewportWidth": 412,
-            "viewportHeight": 823,
-            "deviceScaleFactor": 1.75,
-            "lighthouseVersion": "12.6.1",
-            "chromeMajor": 156
+    "ciBaselines": {
+        "155": {
+            "environment": "GitHub Actions ubuntu-latest, system Chrome with its installed sandbox",
+            "sourceCommit": "939104cd4741f6d8fa6d84cd6d854270403abdf3",
+            "measuredAt": "2026-10-27T20:50:44.095Z",
+            "workflowRunId": 40580806669,
+            "profile": {
+                "formFactor": "mobile",
+                "throttlingMethod": "simulate",
+                "cpuSlowdownMultiplier": 4,
+                "rttMs": 150,
+                "throughputKbps": 1638.4,
+                "viewportWidth": 412,
+                "viewportHeight": 823,
+                "deviceScaleFactor": 1.75,
+                "lighthouseVersion": "12.6.1",
+                "chromeMajor": 155
+            },
+            "pages": {
+                "/": {
+                    "lcp": 2445.42,
+                    "tbt": 66,
+                    "cls": 0,
+                    "score": 0.97
+                },
+                "/fractional-finop/": {
+                    "lcp": 2351.45,
+                    "tbt": 55,
+                    "cls": 0,
+                    "score": 0.97
+                },
+                "/what-does-a-finop-do/": {
+                    "lcp": 2298.67,
+                    "tbt": 72,
+                    "cls": 0,
+                    "score": 0.97
+                }
+            }
         },
-        "pages": {
-            "/": {
-                "lcp": 2331.45,
-                "tbt": 48,
-                "cls": 0,
-                "score": 0.97
+        "156": {
+            "environment": "GitHub Actions ubuntu-latest, system Chrome with its installed sandbox",
+            "sourceCommit": "da5725e889225678c4dc53fc5ec8b11e5a88da5a",
+            "measuredAt": "2026-10-27T20:24:45.309Z",
+            "workflowRunId": 40576937752,
+            "profile": {
+                "formFactor": "mobile",
+                "throttlingMethod": "simulate",
+                "cpuSlowdownMultiplier": 4,
+                "rttMs": 150,
+                "throughputKbps": 1638.4,
+                "viewportWidth": 412,
+                "viewportHeight": 823,
+                "deviceScaleFactor": 1.75,
+                "lighthouseVersion": "12.6.1",
+                "chromeMajor": 156
             },
-            "/fractional-finop/": {
-                "lcp": 2349.87,
-                "tbt": 58,
-                "cls": 0,
-                "score": 0.97
-            },
-            "/what-does-a-finop-do/": {
-                "lcp": 2279.86,
-                "tbt": 75,
-                "cls": 0,
-                "score": 0.97
+            "pages": {
+                "/": {
+                    "lcp": 2331.45,
+                    "tbt": 48,
+                    "cls": 0,
+                    "score": 0.97
+                },
+                "/fractional-finop/": {
+                    "lcp": 2349.87,
+                    "tbt": 58,
+                    "cls": 0,
+                    "score": 0.97
+                },
+                "/what-does-a-finop-do/": {
+                    "lcp": 2279.86,
+                    "tbt": 75,
+                    "cls": 0,
+                    "score": 0.97
+                }
             }
         }
     }
