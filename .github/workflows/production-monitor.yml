@@ -32,7 +32,7 @@ jobs:
           exit 1
       - name: Open or update production alert
         if: ${{ failure() }}
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const { handleMonitorAlert } = require('./scripts/production-monitor-alert.cjs');
@@ -44,7 +44,7 @@ jobs:
             });
       - name: Close recovered production alert
         if: ${{ success() }}
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const { handleMonitorAlert } = require('./scripts/production-monitor-alert.cjs');
