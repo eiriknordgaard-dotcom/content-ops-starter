@@ -4,6 +4,7 @@ import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { test } from 'node:test';
+import { fileURLToPath } from 'node:url';
 
 function run(failScript) {
     const directory = mkdtempSync(join(tmpdir(), 'finop-release-runner-'));
@@ -14,7 +15,7 @@ function run(failScript) {
 const script = process.argv[3];
 appendFileSync(process.env.RELEASE_TEST_LOG, JSON.stringify({ script, id: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID, telemetry: process.env.NEXT_TELEMETRY_DISABLED }) + '\\n');
 process.exit(script === process.env.RELEASE_TEST_FAIL ? 1 : 0);`);
-        const result = spawnSync(process.execPath, [new URL('./verify-release.mjs', import.meta.url).pathname], {
+        const result = spawnSync(process.execPath, [fileURLToPath(new URL('./verify-release.mjs', import.meta.url))], {
             env: { ...process.env, npm_execpath: stub, RELEASE_TEST_LOG: log, RELEASE_TEST_FAIL: failScript,
                 NEXT_PUBLIC_GA_MEASUREMENT_ID: 'G-REAL-MUST-NOT-PASS-THROUGH' },
             encoding: 'utf8'
